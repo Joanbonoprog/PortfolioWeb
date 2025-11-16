@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "about": "About Me",
+    "skills": "Skills",
+    "contact": "Contact",
+    "projects": "View Projects"
+  },
+  "hero": {
+    "greeting": "",
+    "name": "Joan Bono Frigols",
+    "title": "Software Developer + AI Specialist",
+    "cta": "View Projects & Experience"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a recent graduate in APP development, with knowledge of various programming languages, the main one being JAVA."
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "items": [
+      "Knowledge in Java Environment",
+      "Basic knowledge in C#",
+      "Database Development in mySQL",
+      "Basic knowledge of JavaScript and PHP",
+      "Knowledge in Android development",
+      "Basic knowledge in the use of graphic engines like Unity",
+      "Knowledge in automation tools like n8n or Make",
+      "Knowledge in Generative AIs and their implementation in Applications"
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "linkedin": "LinkedIn"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "items": [
+      {
+        "id": "exp-1",
+        "role": "Content Creator",
+        "company": "Asociación Cultura Festiva Sellent",
+        "period": "2016-2018",
+        "description": "Social media management and design, Product Sales, Design of posters, flyers, etc., Event Organization.",
+        "icon": "📱"
+      },
+      {
+        "id": "exp-2",
+        "role": "WordPress Web Developer",
+        "company": "Artimark",
+        "period": "June 2024 - January 2025",
+        "description": "Participation in Web Design and Structure, In charge of the Introduction and Testing of the Custom Product System, Participation in the Maintenance and Scalability of the Website, In charge of Testing and Maintenance of the eShop Payment Gateway, Support in Web Positioning (SEO).",
+        "icon": "💼"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "items": [
+      {
+        "id": "proj-1",
+        "name": "Live Football App",
+        "subtitle": "Final Degree Project",
+        "description": "An Android application programmed in Java, whose purpose is to perform a complete management of a football match. Essentially, I was in charge of the Backend, as well as the design and deployment of the database.",
+        "icon": "⚽",
+        "tech": ["Java", "Android", "MySQL"],
+        "github": "https://github.com/Slenderman1314/LiveFootball"
+      },
+      {
+        "id": "proj-2",
+        "name": "App Prototype Creator",
+        "subtitle": "Final Master Project",
+        "description": "A tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes. Built with Kotlin Multiplatform and Compose Multiplatform, allowing developers and designers to visualize and export their concepts efficiently.",
+        "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
+        "icon": "🤖",
+        "tech": ["Kotlin", "Compose Multiplatform", "AI"]
+      }
+    ]
+  },
+  "education": {
+    "title": "Academic Background",
+    "items": [
+      {
+        "title": "Generative AI Specialist",
+        "type": "Master - 480h",
+        "institution": "EVOLVE",
+        "year": "2025"
+      },
+      {
+        "title": "Multiplatform Application Developer",
+        "type": "Higher Degree",
+        "institution": "IFP FORMACIÓN",
+        "year": "2021-2025"
+      }
+    ]
+  },
+  "languages": {
+    "title": "Languages",
+    "items": [
+      "Spanish (Native)",
+      "Valencian/Catalan (Native)",
+      "English (Professional Basic)"
+    ]
+  },
+  "phone": {
+    "title": "My Projects & Experience",
+    "subtitle": "Tap the apps to see more details"
+  },
+  "footer": {
+    "builtWith": "Built With"
+  }
+}

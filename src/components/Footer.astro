@@ -1,0 +1,49 @@
+---
+import { getTranslations, type Language } from '../i18n';
+
+// Obtener idioma de la URL
+const url = Astro.url;
+const langParam = url.searchParams.get('lang');
+const currentLang: Language = (langParam === 'en' || langParam === 'es') ? langParam as Language : 'es';
+const translations = getTranslations(currentLang);
+
+// Footer con stack tecnológico
+const techStack = [
+  { name: 'Astro', url: 'https://astro.build', logo: 'https://astro.build/assets/press/astro-icon-light.svg' },
+  { name: 'TypeScript', url: 'https://www.typescriptlang.org', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'Tailwind CSS', url: 'https://tailwindcss.com', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+];
+---
+
+<footer class="bg-gray-900 text-white py-12 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Tech Stack Section -->
+    <h3 class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-6">
+      {translations.footer.builtWith}
+    </h3>
+    <div class="flex flex-wrap items-center justify-center gap-8 mb-8">
+      {techStack.map((tech) => (
+        <a
+          href={tech.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex flex-col items-center gap-2 hover:scale-110 transition-transform"
+          title={tech.name}
+        >
+          <div class="w-12 h-12 bg-gray-800 rounded-lg p-2 flex items-center justify-center group-hover:bg-gray-700 transition-colors">
+            <img src={tech.logo} alt={tech.name} class="w-full h-full object-contain" />
+          </div>
+          <span class="text-gray-400 text-xs group-hover:text-white transition-colors">
+            {tech.name}
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-gray-400 text-sm">
+      © {new Date().getFullYear()} Joan Bono Frigols. All rights reserved.
+    </p>
+  </div>
+</footer>
