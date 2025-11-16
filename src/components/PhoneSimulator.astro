@@ -1,0 +1,208 @@
+---
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+const { projects, experience, phone } = translations;
+
+// Combinar proyectos y experiencias como "apps"
+const apps = [
+  ...projects.items.map((proj: any) => ({
+    ...proj,
+    type: 'project'
+  })),
+  ...experience.items.map((exp: any) => ({
+    ...exp,
+    type: 'experience'
+  }))
+];
+---
+
+<div class="phone-simulator-container flex flex-col items-center justify-center py-12">
+  <!-- Phone Frame -->
+  <div class="phone-frame relative bg-gray-900 rounded-[3rem] p-4 shadow-2xl">
+    <!-- Notch más realista -->
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-44 h-8 bg-black rounded-b-3xl z-20 flex items-center justify-center">
+      <div class="w-16 h-1.5 bg-gray-800 rounded-full mt-2"></div>
+    </div>
+    
+    <!-- Screen -->
+    <div class="phone-screen relative rounded-[2.5rem] overflow-hidden shadow-inner bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+      <!-- Status Bar más realista completamente transparente -->
+      <div class="status-bar px-6 pt-7 pb-2 flex items-center justify-between text-white text-xs font-semibold">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M2 22h20V2z"/>
+          </svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+          </svg>
+          <span class="text-[10px] font-bold">5G</span>
+        </div>
+        <span class="font-bold text-sm tracking-wide" id="phone-time">19:13</span>
+        <div class="flex items-center gap-1.5">
+          <span class="text-[10px] font-bold">95%</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="p-6 pb-24 min-h-[600px] relative">
+        <!-- Title -->
+        <div class="text-center mb-8 mt-4">
+          <h2 class="text-white text-2xl font-bold drop-shadow-lg" data-i18n="phone.title">
+            {phone.title}
+          </h2>
+          <p class="text-white/90 text-sm mt-2 drop-shadow" data-i18n="phone.subtitle">
+            {phone.subtitle}
+          </p>
+        </div>
+
+        <!-- Apps Grid -->
+        <div class="apps-grid grid grid-cols-3 gap-6 mt-8">
+          {apps.map((app: any) => (
+            <button 
+              class="app-icon flex flex-col items-center gap-2 group cursor-pointer"
+              data-app-id={app.id}
+              data-app-type={app.type}
+            >
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                {app.icon}
+              </div>
+              <span class="text-white text-xs font-medium text-center drop-shadow line-clamp-2 max-w-[80px]">
+                {app.type === 'project' ? app.name : app.role}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Navigation Bar (Android style) con mejor espaciado -->
+      <div class="navigation-bar absolute bottom-2 left-0 right-0 pb-1 flex items-center justify-around px-12">
+          <!-- Back Button -->
+          <button class="flex flex-col items-center justify-center hover:scale-110 transition-all active:scale-95 group">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full group-hover:bg-white/10 transition-colors">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <!-- Home Button -->
+          <button class="flex flex-col items-center justify-center hover:scale-110 transition-all active:scale-95 group">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full group-hover:bg-white/10 transition-colors">
+              <div class="w-5 h-5 rounded-full border-3 border-white"></div>
+            </div>
+          </button>
+          
+          <!-- Recent Apps Button -->
+          <button class="flex flex-col items-center justify-center hover:scale-110 transition-all active:scale-95 group">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full group-hover:bg-white/10 transition-colors">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2.5"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phone-frame {
+    width: 375px;
+    height: 750px;
+    border: 12px solid #1a1d24;
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      0 0 0 2px rgba(255, 255, 255, 0.1) inset,
+      0 0 20px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3) inset;
+  }
+
+  .app-icon {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .app-icon:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+  .app-icon:nth-child(2) { animation-delay: 0.15s; opacity: 0; }
+  .app-icon:nth-child(3) { animation-delay: 0.2s; opacity: 0; }
+  .app-icon:nth-child(4) { animation-delay: 0.25s; opacity: 0; }
+  .app-icon:nth-child(5) { animation-delay: 0.3s; opacity: 0; }
+  .app-icon:nth-child(6) { animation-delay: 0.35s; opacity: 0; }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .phone-frame {
+      width: 320px;
+      height: 640px;
+    }
+
+    .apps-grid {
+      gap: 1rem;
+    }
+
+    .app-icon .w-16 {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+</style>
+
+<script define:vars={{ apps }}>
+  // Actualizar hora en el teléfono
+  function updatePhoneTime() {
+    const timeElement = document.getElementById('phone-time');
+    if (timeElement) {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      timeElement.textContent = `${hours}:${minutes}`;
+    }
+  }
+
+  updatePhoneTime();
+  setInterval(updatePhoneTime, 60000);
+
+  // Manejar clicks en las apps
+  const appIcons = document.querySelectorAll('.app-icon');
+  
+  appIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const appId = icon.getAttribute('data-app-id');
+      const appType = icon.getAttribute('data-app-type');
+      
+      // Encontrar los datos de la app
+      const appData = apps.find(app => app.id === appId);
+      
+      if (appData) {
+        // Disparar evento personalizado para abrir el modal
+        const event = new CustomEvent('openAppModal', {
+          detail: { app: appData, type: appType }
+        });
+        window.dispatchEvent(event);
+      }
+    });
+  });
+</script>

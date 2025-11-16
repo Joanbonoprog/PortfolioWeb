@@ -1,0 +1,65 @@
+---
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+const { skills } = translations;
+
+// Mapeo de tecnologías con sus logos (usando Simple Icons via CDN)
+// IMPORTANTE: JavaScript debe ir antes que Java para evitar conflictos
+const techLogos: Record<string, string> = {
+  'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+  'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+  'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+  'mySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+  'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+  'Android': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg',
+  'Unity': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg',
+  'n8n': 'https://cdn.simpleicons.org/n8n/EA4B71',
+  'Make': '⚙️',
+  'IA': 'https://cdn.simpleicons.org/openai/412991'
+};
+
+// Función para obtener el logo basado en palabras clave
+function getTechLogo(skill: string): string {
+  for (const [tech, logo] of Object.entries(techLogos)) {
+    if (skill.includes(tech)) {
+      return logo;
+    }
+  }
+  return '💻'; // Logo por defecto
+}
+---
+
+<section id="skills" class="py-20 px-6 bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <!-- Title -->
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center" data-i18n="skills.title">
+      {skills.title}
+    </h2>
+
+    <!-- Skills Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {skills.items.map((skill: string, index: number) => (
+        <div 
+          class="bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-lg transition-all group"
+          style={`animation-delay: ${index * 0.1}s;`}
+        >
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+              {getTechLogo(skill).startsWith('http') ? (
+                <img src={getTechLogo(skill)} alt="" class="w-8 h-8 object-contain" />
+              ) : (
+                <span class="text-2xl">{getTechLogo(skill)}</span>
+              )}
+            </div>
+            <p class="text-gray-700 leading-relaxed flex-1">
+              {skill}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "about": "Sobre Mí",
+    "skills": "Habilidades",
+    "contact": "Contacto",
+    "projects": "Ver Proyectos"
+  },
+  "hero": {
+    "greeting": "",
+    "name": "Joan Bono Frigols",
+    "title": "Desarrollador de Software + IA Specialist",
+    "cta": "Ver Proyectos y Experiencia"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description": "Soy una persona recién titulada en desarrollo de APPS, con conocimientos de diversos lenguajes de programación, siendo el principal JAVA."
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "items": [
+      "Conocimientos en Entorno Java",
+      "Conocimientos básicos en C#",
+      "Desarrollo de Bases de Datos en mySQL",
+      "Conocimientos básicos de JavaScript y PHP",
+      "Conocimientos en desarrollo Android",
+      "Conocimientos básicos en el uso de motores gráficos como Unity",
+      "Conocimientos en herramientas de automatización como n8n o Make",
+      "Conocimientos en IAs Generativas y su implementación en Aplicaciones"
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "phone": "Teléfono",
+    "email": "Email",
+    "address": "Dirección",
+    "linkedin": "LinkedIn"
+  },
+  "experience": {
+    "title": "Experiencia Laboral",
+    "items": [
+      {
+        "id": "exp-1",
+        "role": "Creador de Contenido",
+        "company": "Asociación Cultura Festiva Sellent",
+        "period": "2016-2018",
+        "description": "Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.",
+        "icon": "📱"
+      },
+      {
+        "id": "exp-2",
+        "role": "Web Developer WordPress",
+        "company": "Artimark",
+        "period": "Junio 2024 - Enero 2025",
+        "icon": "💼"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "items": [
+      {
+        "id": "proj-1",
+        "name": "Live Football App",
+        "subtitle": "Proyecto Final de Grado",
+        "description": "Una aplicación de Android programado en Java, cuya finalidad es destinada a realizar una gestión completa de un partido de futbol. Esencialmente, me encargue del Backend, además del diseño y despliegue de la base de datos.",
+        "icon": "⚽",
+        "tech": ["Java", "Android", "MySQL"],
+        "github": "https://github.com/Slenderman1314/LiveFootball"
+      },
+      {
+        "id": "proj-2",
+        "name": "App Prototype Creator",
+        "subtitle": "Proyecto Final de Master",
+        "description": "Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.",
+        "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
+        "icon": "🤖",
+        "tech": ["Kotlin", "Compose Multiplatform", "IA"]
+      }
+    ]
+  },
+  "education": {
+    "title": "Formación Académica",
+    "items": [
+      {
+        "title": "Especialista en IA Generativa",
+        "type": "Master - 480h",
+        "institution": "EVOLVE",
+        "year": "2025"
+      },
+      {
+        "title": "Desarrollador de Aplicaciones Multiplataforma",
+        "type": "Grado Superior",
+        "institution": "IFP FORMACIÓN",
+        "year": "2021-2025"
+      }
+    ]
+  },
+  "languages": {
+    "title": "Idiomas",
+    "items": [
+      "Castellano (Nativo)",
+      "Valenciano/Catalán (Nativo)",
+      "Inglés (Básico Profesional)"
+    ]
+  },
+  "phone": {
+    "title": "Mis Proyectos y Experiencia",
+    "subtitle": "Toca las apps para ver más detalles"
+  },
+  "footer": {
+    "builtWith": "Construido Con"
+  }
+}
