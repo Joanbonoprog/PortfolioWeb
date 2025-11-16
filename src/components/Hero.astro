@@ -1,0 +1,51 @@
+---
+interface Props {
+  translations: any;
+  currentLang: string;
+}
+
+const { translations, currentLang } = Astro.props;
+const { hero } = translations;
+---
+
+<section class="min-h-screen flex items-center justify-center px-6 pt-20">
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- Greeting -->
+    <p class="text-lg md:text-xl text-gray-600 mb-4 animate-fade-in" style="animation-delay: 0.1s; opacity: 0;" data-i18n="hero.greeting">
+      {hero.greeting}
+    </p>
+
+    <!-- Name -->
+    <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 animate-fade-in" style="animation-delay: 0.2s; opacity: 0;">
+      {hero.name}
+    </h1>
+
+    <!-- Title -->
+    <h2 class="text-2xl md:text-3xl text-blue-600 font-semibold mb-12 animate-fade-in" style="animation-delay: 0.3s; opacity: 0;" data-i18n="hero.title">
+      {hero.title}
+    </h2>
+
+    <!-- CTA Button -->
+    <a 
+      href={`/projects?lang=${currentLang}`}
+      class="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all hover:scale-105 shadow-lg hover:shadow-xl animate-fade-in"
+      style="animation-delay: 0.4s; opacity: 0;"
+    >
+      <span class="material-icons">smartphone</span>
+      <span data-i18n="hero.cta">{hero.cta}</span>
+    </a>
+
+    <!-- Scroll Indicator -->
+    <div class="mt-20 animate-bounce">
+      <span class="material-icons text-4xl text-gray-400">
+        keyboard_arrow_down
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+</style>

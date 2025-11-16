@@ -1,0 +1,94 @@
+---
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+const { contact } = translations;
+
+// Datos de contacto
+const contactInfo = {
+  phone: "(+34) 630 41 46 12",
+  email: "joanbonoprog@gmail.com",
+  address: "Calle Assagador, 15. Sellent (Valencia) 46295 - España",
+  linkedin: "linkedin.com/in/bono-joan"
+};
+---
+
+<section id="contact" class="py-20 px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <!-- Title -->
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center" data-i18n="contact.title">
+      {contact.title}
+    </h2>
+
+    <!-- Contact Cards -->
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Phone -->
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-200 hover:shadow-lg transition-all">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+            <span class="material-icons text-white">phone</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900" data-i18n="contact.phone">
+            {contact.phone}
+          </h3>
+        </div>
+        <p class="text-gray-700 text-lg">
+          {contactInfo.phone}
+        </p>
+      </div>
+
+      <!-- Email -->
+      <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-200 hover:shadow-lg transition-all">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+            <span class="material-icons text-white">email</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900" data-i18n="contact.email">
+            {contact.email}
+          </h3>
+        </div>
+        <p class="text-gray-700 text-lg break-all">
+          {contactInfo.email}
+        </p>
+      </div>
+
+      <!-- Address -->
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl border border-green-200 hover:shadow-lg transition-all">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+            <span class="material-icons text-white">location_on</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900" data-i18n="contact.address">
+            {contact.address}
+          </h3>
+        </div>
+        <p class="text-gray-700 text-lg">
+          {contactInfo.address}
+        </p>
+      </div>
+
+      <!-- LinkedIn -->
+      <a 
+        href={`https://${contactInfo.linkedin}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-2xl border border-cyan-200 hover:shadow-lg hover:scale-105 transition-all cursor-pointer block"
+      >
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-cyan-600 rounded-full flex items-center justify-center">
+            <span class="material-icons text-white">business</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900" data-i18n="contact.linkedin">
+            {contact.linkedin}
+          </h3>
+        </div>
+        <p class="text-gray-700 text-lg flex items-center gap-2">
+          {contactInfo.linkedin}
+          <span class="material-icons text-cyan-600">open_in_new</span>
+        </p>
+      </a>
+    </div>
+  </div>
+</section>
