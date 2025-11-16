@@ -64,9 +64,9 @@
         "name": "Live Football App",
         "subtitle": "Final Degree Project",
         "description": "An Android application programmed in Java, whose purpose is to perform a complete management of a football match. Essentially, I was in charge of the Backend, as well as the design and deployment of the database.",
-        "github": "https://github.com/Slenderman1314/LiveFootball",
         "icon": "⚽",
-        "tech": ["Java", "Android", "MySQL"]
+        "tech": ["Java", "Android", "MySQL"],
+        "github": "https://github.com/Slenderman1314/LiveFootball"
       },
       {
         "id": "proj-2",
@@ -107,5 +107,8 @@
   "phone": {
     "title": "My Projects & Experience",
     "subtitle": "Tap the apps to see more details"
+  },
+  "footer": {
+    "builtWith": "Built With"
   }
 }

@@ -51,22 +51,21 @@
         "role": "Web Developer WordPress",
         "company": "Artimark",
         "period": "Junio 2024 - Enero 2025",
-        "description": "Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).",
         "icon": "💼"
       }
     ]
   },
   "projects": {
-    "title": "Proyectos",
+    "title": "Mis Proyectos",
     "items": [
       {
         "id": "proj-1",
         "name": "Live Football App",
         "subtitle": "Proyecto Final de Grado",
         "description": "Una aplicación de Android programado en Java, cuya finalidad es destinada a realizar una gestión completa de un partido de futbol. Esencialmente, me encargue del Backend, además del diseño y despliegue de la base de datos.",
-        "github": "https://github.com/Slenderman1314/LiveFootball",
         "icon": "⚽",
-        "tech": ["Java", "Android", "MySQL"]
+        "tech": ["Java", "Android", "MySQL"],
+        "github": "https://github.com/Slenderman1314/LiveFootball"
       },
       {
         "id": "proj-2",
@@ -107,5 +106,8 @@
   "phone": {
     "title": "Mis Proyectos y Experiencia",
     "subtitle": "Toca las apps para ver más detalles"
+  },
+  "footer": {
+    "builtWith": "Construido Con"
   }
 }

@@ -10,6 +10,18 @@ const { hero } = translations;
 
 <section class="min-h-screen flex items-center justify-center px-6 pt-20">
   <div class="max-w-4xl mx-auto text-center">
+    <!-- Profile Photo -->
+    <div class="mb-8 animate-fade-in" style="animation-delay: 0s; opacity: 0;">
+      <div class="w-48 h-48 md:w-56 md:h-56 rounded-full mx-auto overflow-hidden shadow-2xl border-4 border-white">
+        <img 
+          src="/FotoPorfolio.png" 
+          alt="Joan Bono Frigols" 
+          class="w-full h-full object-cover scale-110"
+          style="object-position: 90% 5%;"
+        />
+      </div>
+    </div>
+
     <!-- Greeting -->
     <p class="text-lg md:text-xl text-gray-600 mb-4 animate-fade-in" style="animation-delay: 0.1s; opacity: 0;" data-i18n="hero.greeting">
       {hero.greeting}
@@ -36,11 +48,11 @@ const { hero } = translations;
     </a>
 
     <!-- Scroll Indicator -->
-    <div class="mt-20 animate-bounce">
-      <span class="material-icons text-4xl text-gray-400">
+    <a href="#contact" class="block mt-20 animate-bounce cursor-pointer hover:text-blue-600 transition-colors">
+      <span class="material-icons text-4xl text-gray-400 hover:text-blue-600 transition-colors">
         keyboard_arrow_down
       </span>
-    </div>
+    </a>
   </div>
 </section>
 
