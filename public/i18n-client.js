@@ -13,7 +13,7 @@ const translations = {
     },
     about: {
       title: "Sobre Mí",
-      description: "Soy una persona recién titulada en desarrollo de APPS, con conocimientos de diversos lenguajes de programación, siendo el principal JAVA."
+      description: "Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables. Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario. Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua."
     },
     education: {
       title: "Formación Académica"
@@ -49,7 +49,7 @@ const translations = {
     },
     about: {
       title: "About Me",
-      description: "I am a recent graduate in APP development, with knowledge of various programming languages, the main one being JAVA."
+      description: "Software developer specialized in Java and multiplatform development, with experience in designing and deploying scalable applications. I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience. Passionate about technological innovation, code efficiency and continuous improvement."
     },
     education: {
       title: "Academic Background"
@@ -85,6 +85,7 @@ const contentTranslations = {
     'Período': 'Período',
     'Empresa': 'Empresa',
     'Ver en GitHub': 'Ver en GitHub',
+    'Visitar Sitio Web': 'Visitar Sitio Web',
     // Proyectos
     'Proyecto Final de Grado': 'Proyecto Final de Grado',
     'Proyecto Final de Master': 'Proyecto Final de Master',
@@ -93,60 +94,137 @@ const contentTranslations = {
     // Experiencias
     'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.': 'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.',
     'Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).': 'Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).',
+    // Sobre Mí (About Me)
+    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables': 'Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables',
+    'Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario': 'Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario',
+    'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua': 'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua',
     // Idiomas
     'Castellano (Nativo)': 'Castellano (Nativo)',
     'Valenciano/Catalán (Nativo)': 'Valenciano/Catalán (Nativo)',
     'Inglés (Básico Profesional)': 'Inglés (Básico Profesional)',
     // Educación
-    'Especialista en IA Generativa': 'Especialista en IA Generativa',
-    'Master - 480h': 'Master - 480h',
+    'Máster en IA Generativa': 'Máster en IA Generativa',
+    'Master - 480h + TFM': 'Master - 480h + TFM',
     'Desarrollador de Aplicaciones Multiplataforma': 'Desarrollador de Aplicaciones Multiplataforma',
-    'Grado Superior': 'Grado Superior',
+    'Grado Superior - FP': 'Grado Superior - FP',
+    'Agentes de IA: Desarrollo de agentes autónomos': 'Agentes de IA: Desarrollo de agentes autónomos',
+    'Automatización con IA: Integración de las Capacidades de la IA generativa en flujos de trabajo automatizados': 'Automatización con IA: Integración de las Capacidades de la IA generativa en flujos de trabajo automatizados',
+    'Chatbots con IA: Diseño, implementación y optimización de chatbots potenciados con IA generativa': 'Chatbots con IA: Diseño, implementación y optimización de chatbots potenciados con IA generativa',
+    'Desarrollo de aplicaciones sin código con IA: Creación de apps completas usando plataformas y herramientas con capacidad de IA generativa': 'Desarrollo de aplicaciones sin código con IA: Creación de apps completas usando plataformas y herramientas con capacidad de IA generativa',
+    'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa': 'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa',
+    'Desarrollo de aplicaciones para dispositivos móviles Android y Escritorio': 'Desarrollo de aplicaciones para dispositivos móviles Android y Escritorio',
+    'Programación orientada a objetos con Java y C#': 'Programación orientada a objetos con Java y C#',
+    'Desarrollo web con PHP y JavaScript': 'Desarrollo web con PHP y JavaScript',
+    'Diseño y gestión de bases de datos relacionales con MySQL': 'Diseño y gestión de bases de datos relacionales con MySQL',
+    'Desarrollo básico de videojuegos con Unity': 'Desarrollo básico de videojuegos con Unity',
+    'Creación y consumo de servicios web (APIs REST)': 'Creación y consumo de servicios web (APIs REST)',
+    'Gestión de proyectos de desarrollo de software': 'Gestión de proyectos de desarrollo de software',
+    'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa': 'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa',
     // Habilidades
-    'Conocimientos en Entorno Java': 'Conocimientos en Entorno Java',
+    'Desarrollo en Entorno Java (Java + Kotlin)': 'Desarrollo en Entorno Java (Java + Kotlin)',
     'Conocimientos básicos en C#': 'Conocimientos básicos en C#',
     'Desarrollo de Bases de Datos en mySQL': 'Desarrollo de Bases de Datos en mySQL',
     'Conocimientos básicos de JavaScript y PHP': 'Conocimientos básicos de JavaScript y PHP',
-    'Conocimientos en desarrollo Android': 'Conocimientos en desarrollo Android',
+    'Desarrollo de aplicaciones Android': 'Desarrollo de aplicaciones Android',
+    'Conocimientos básicos en Unity': 'Conocimientos básicos en Unity',
+    'Conocimientos en automatización con n8n y Make': 'Conocimientos en automatización con n8n y Make',
+    'Conocimientos en IAs Generativas y su implementación en Aplicaciones': 'Conocimientos en IAs Generativas y su implementación en Aplicaciones',
+    'Conocimientos en desarrollo de chatbots con IA': 'Conocimientos en desarrollo de chatbots con IA',
     'Conocimientos básicos en el uso de motores gráficos como Unity': 'Conocimientos básicos en el uso de motores gráficos como Unity',
-    'Conocimientos en herramientas de automatización como n8n o Make': 'Conocimientos en herramientas de automatización como n8n o Make',
-    'Conocimientos en IAs Generativas y su implementación en Aplicaciones': 'Conocimientos en IAs Generativas y su implementación en Aplicaciones'
+    'Conocimientos básicos en Docker': 'Conocimientos básicos en Docker',
+    'Conocimientos básicos en Git': 'Conocimientos básicos en Git'
   },
   en: {
     // Navigation
     'Volver al Inicio': 'Back to Home',
+    'Contacto': 'Contact',
+    'Sobre Mí': 'About Me',
+    'Proyectos': 'Projects',
+    'Experiencia': 'Experience',
+    'Habilidades': 'Skills',
+    // Section Titles
+    'Mis Proyectos': 'Projects',
+    'Proyectos destacados que demuestran mis habilidades técnicas y creatividad': 'Featured projects that demonstrate my technical skills and creativity',
+    'Experiencia Laboral': 'Work Experience',
+    'Mi trayectoria profesional y experiencias laborales': 'My professional career and work experiences',
     // Modal labels
     'Descripción': 'Description',
     'Tecnologías': 'Technologies',
     'Período': 'Period',
     'Empresa': 'Company',
     'Ver en GitHub': 'View on GitHub',
+    'Visitar Sitio Web': 'Visit Website',
     // Projects
+    'Live Football App: TFG': 'Live Football App: TFG',
+    'App Prototype Creator: TFM': 'App Prototype Creator: TFM',
+    'App Prototype Creator': 'App Prototype Creator',
     'Proyecto Final de Grado': 'Final Degree Project',
     'Proyecto Final de Master': 'Final Master Project',
-    'Una aplicación de Android programado en Java, cuya finalidad es destinada a realizar una gestión completa de un partido de futbol. Esencialmente, me encargue del Backend, además del diseño y despliegue de la base de datos.': 'An Android application programmed in Java, whose purpose is to perform a complete management of a football match. Essentially, I was in charge of the Backend, as well as the design and deployment of the database.',
+    'Final Master Project': 'Final Master Project',
+    'Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol. Específicamente, me encargué del diseño y despliegue de la base de datos.': 'An Android application programmed in Java, whose purpose is to perform a complete management of a football match. Specifically, I was in charge of the design and deployment of the database.',
     'Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.': 'A tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes. Built with Kotlin Multiplatform and Compose Multiplatform, allowing developers and designers to visualize and export their concepts efficiently.',
     // Experiences
-    'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.': 'Social media management and design, Product Sales, Design of posters, flyers, etc., Event Organization.',
-    'Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).': 'Participation in Web Design and Structure, In charge of the Introduction and Testing of the Custom Product System, Participation in the Maintenance and Scalability of the Website, In charge of Testing and Maintenance of the eShop Payment Gateway, Support in Web Positioning (SEO).',
+    'Web Developer WordPress': 'WordPress Web Developer',
+    'Creador de Contenido': 'Content Creator',
+    'Artimark, Llanera de Ranes, Valencia': 'Artimark, Llanera de Ranes, Valencia',
+    'Asociación Cultura Festiva Sellent': 'Asociación Cultura Festiva Sellent',
+    'Junio 2024 - Enero 2025': 'June 2024 - January 2025',
+    '2016-2018': '2016-2018',
+    'Participación en el Diseño y Estructura de la Web. Encargado de la Introducción y Prueba del Sistema Personalizado de Productos. Participación en el Mantenimiento y Escalabilidad de la Página Web. Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop. Apoyo en el Posicionamiento de la Web (SEO).': 'Participation in Web Design and Structure. In charge of the Introduction and Testing of the Custom Product System. Participation in the Maintenance and Scalability of the Website. In charge of Testing and Maintenance of the eShop Payment Gateway. Support in Web Positioning (SEO).',
+    'Participación en el Diseño y Estructura de la Web': 'Participation in Web Design and Structure',
+    'Participación en el Diseño y Estructura de la Web.': 'Participation in Web Design and Structure.',
+    'Encargado de la Introducción y Prueba del Sistema Personalizado de Productos': 'In charge of the Introduction and Testing of the Custom Product System',
+    'Encargado de la Introducción y Prueba del Sistema Personalizado de Productos.': 'In charge of the Introduction and Testing of the Custom Product System.',
+    'Participación en el Mantenimiento y Escalabilidad de la Página Web': 'Participation in the Maintenance and Scalability of the Website',
+    'Participación en el Mantenimiento y Escalabilidad de la Página Web.': 'Participation in the Maintenance and Scalability of the Website.',
+    'Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop': 'In charge of Testing and Maintenance of the eShop Payment Gateway',
+    'Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop.': 'In charge of Testing and Maintenance of the eShop Payment Gateway.',
+    'Apoyo en el Posicionamiento de la Web (SEO)': 'Support in Web Positioning (SEO)',
+    'Apoyo en el Posicionamiento de la Web (SEO).': 'Support in Web Positioning (SEO).',
+    'Se diseñaron y ejecutaron campañas digitales que incrementaron la visibilidad de los eventos en un +60%. Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%.': 'Digital campaigns were designed and executed that increased event visibility by +60%. Events were coordinated that increased the number of attendees by 40%.',
+    'Se diseñaron y ejecutaron campañas digitales que incrementaron la visibilidad de los eventos en un +60%': 'Digital campaigns were designed and executed that increased event visibility by +60%',
+    'Se diseñaron y ejecutaron campañas digitales que incrementaron la visibilidad de los eventos en un +60%.': 'Digital campaigns were designed and executed that increased event visibility by +60%.',
+    'Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%': 'Events were coordinated that increased the number of attendees by 40%',
+    'Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%.': 'Events were coordinated that increased the number of attendees by 40%.',
+    // About Me
+    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables': 'Software developer specialized in Java and multiplatform development, with experience in designing and deploying scalable applications',
+    'Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario': 'I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience',
+    'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua.': 'Passionate about technological innovation, code efficiency and continuous improvement',
     // Languages
     'Castellano (Nativo)': 'Spanish (Native)',
     'Valenciano/Catalán (Nativo)': 'Valencian/Catalan (Native)',
     'Inglés (Básico Profesional)': 'English (Professional Basic)',
     // Education
-    'Especialista en IA Generativa': 'Generative AI Specialist',
-    'Master - 480h': 'Master - 480h',
+    'Máster en IA Generativa': 'Master in Generative AI',
+    'Master - 480h + TFM': 'Master - 480h + TFM',
     'Desarrollador de Aplicaciones Multiplataforma': 'Multiplatform Application Developer',
-    'Grado Superior': 'Higher Degree',
+    'Grado Superior - FP': 'Higher Degree - FP',
+    'Agentes de IA: Desarrollo de agentes autónomos': 'AI Agents: Development of autonomous agents',
+    'Automatización con IA: Integración de las Capacidades de la IA generativa en flujos de trabajo automatizados': 'Automation with AI: Integration of Generative AI capabilities in automated workflows',
+    'Chatbots con IA: Diseño, implementación y optimización de chatbots potenciados con IA generativa': 'AI Chatbots: Design, implementation and optimization of chatbots powered by generative AI',
+    'Desarrollo de aplicaciones sin código con IA: Creación de apps completas usando plataformas y herramientas con capacidad de IA generativa': 'No-code application development with AI: Creation of complete apps using platforms and tools with generative AI capability',
+    'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa': 'Content Creation with AI (Image, Video, Audio): Content creation using Generative AI tools',
+    'Desarrollo de aplicaciones para dispositivos móviles Android y Escritorio': 'Development of applications for Android and Desktop mobile devices',
+    'Programación orientada a objetos con Java y C#': 'Object-oriented programming with Java and C#',
+    'Desarrollo web con PHP y JavaScript': 'Web development with PHP and JavaScript',
+    'Diseño y gestión de bases de datos relacionales con MySQL': 'Design and management of relational databases with MySQL',
+    'Desarrollo básico de videojuegos con Unity': 'Basic video game development with Unity',
+    'Creación y consumo de servicios web (APIs REST)': 'Creation and consumption of web services (REST APIs)',
+    'Gestión de proyectos de desarrollo de software.': 'Software development project management',
+    'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa.': 'Content Creation with AI (Image, Video, Audio): Content creation using Generative AI tools',
     // Skills
-    'Conocimientos en Entorno Java': 'Knowledge in Java Environment',
+    'Desarrollo en Entorno Java (Java + Kotlin)': 'Java Development (Java + Kotlin)',
     'Conocimientos básicos en C#': 'Basic knowledge in C#',
     'Desarrollo de Bases de Datos en mySQL': 'Database Development in mySQL',
     'Conocimientos básicos de JavaScript y PHP': 'Basic knowledge of JavaScript and PHP',
-    'Conocimientos en desarrollo Android': 'Knowledge in Android development',
+    'Desarrollo de aplicaciones Android': 'Android application development',
+    'Conocimientos básicos en Unity': 'Basic knowledge in Unity',
+    'Conocimientos en automatización con n8n y Make': 'Knowledge in automation with n8n and Make',
+    'Conocimientos en IAs Generativas y su implementación en Aplicaciones': 'Knowledge in Generative AIs and their implementation in Applications',
+    'Conocimientos en desarrollo de chatbots con IA': 'Knowledge in AI chatbot development',
     'Conocimientos básicos en el uso de motores gráficos como Unity': 'Basic knowledge in the use of graphic engines like Unity',
-    'Conocimientos en herramientas de automatización como n8n o Make': 'Knowledge in automation tools like n8n or Make',
-    'Conocimientos en IAs Generativas y su implementación en Aplicaciones': 'Knowledge in Generative AIs and their implementation in Applications'
+    'Conocimientos básicos en Docker': 'Basic knowledge in Docker',
+    'Conocimientos básicos en Git': 'Basic knowledge in Git'
   }
 };
 

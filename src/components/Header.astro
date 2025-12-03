@@ -29,14 +29,20 @@ const { nav } = translations;
 
     <!-- Navigation Links centrados (solo en página principal) -->
     {showNav && (
-      <div class="flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
-        <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.contact">
+      <div class="flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
+        <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.contact" data-i18n-content={nav.contact}>
           {nav.contact}
         </a>
-        <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.about">
+        <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.about" data-i18n-content={nav.about}>
           {nav.about}
         </a>
-        <a href="#skills" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.skills">
+        <a href="#projects" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.projects" data-i18n-content={nav.projects || 'Proyectos'}>
+          {nav.projects || 'Proyectos'}
+        </a>
+        <a href="#experience" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.experience" data-i18n-content={nav.experience || 'Experiencia'}>
+          {nav.experience || 'Experiencia'}
+        </a>
+        <a href="#skills" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.skills" data-i18n-content={nav.skills}>
           {nav.skills}
         </a>
       </div>
