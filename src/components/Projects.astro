@@ -1,0 +1,112 @@
+---
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+const { projects } = translations;
+---
+
+<section id="projects" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-gray-900 mb-4 text-center">
+      <span class="material-icons text-5xl text-blue-600 align-middle mr-2">code</span>
+      <span data-i18n="projects.title" data-i18n-content={projects.title}>{projects.title}</span>
+    </h2>
+    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-i18n-content="Proyectos destacados que demuestran mis habilidades técnicas y creatividad">
+      Proyectos destacados que demuestran mis habilidades técnicas y creatividad
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {projects.items.map((project: any) => (
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+          <div class="p-8">
+            <!-- Header -->
+            <div class="flex items-start gap-4 mb-6">
+              {project.icon.startsWith('/') ? (
+                <div class="w-28 h-28 flex-shrink-0 bg-white rounded-xl p-4 shadow-sm">
+                  <img src={project.icon} alt={project.name} class="w-full h-full object-contain" />
+                </div>
+              ) : (
+                <div class="text-5xl flex-shrink-0">{project.icon}</div>
+              )}
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-i18n-content={project.name}>
+                  {project.name}
+                </h3>
+                <p class="text-blue-600 font-medium text-sm" data-i18n-content={project.subtitle}>
+                  {project.subtitle}
+                </p>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-gray-700 leading-relaxed mb-6" data-i18n-content={project.description}>
+              {project.description}
+            </p>
+
+            <!-- Technologies -->
+            {project.tech && (
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <span class="material-icons text-blue-600 text-lg">code</span>
+                  Tecnologías
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  {project.tech.map((tech: string) => (
+                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Actions -->
+            <div class="flex gap-3">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all hover:scale-105 font-medium"
+                >
+                  <span class="material-icons text-lg">code</span>
+                  <span data-i18n-content="Ver en GitHub">Ver en GitHub</span>
+                </a>
+              )}
+              {project.website && (
+                <a
+                  href={project.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
+                >
+                  <span class="material-icons text-lg">language</span>
+                  <span data-i18n-content="Visitar Sitio Web">Visitar Sitio Web</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
