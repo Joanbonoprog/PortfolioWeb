@@ -1,0 +1,91 @@
+---
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+const { experience } = translations;
+---
+
+<section id="experience" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-gray-900 mb-4 text-center">
+      <span class="material-icons text-5xl text-blue-600 align-middle mr-2">work</span>
+      <span data-i18n="experience.title" data-i18n-content={experience.title}>{experience.title}</span>
+    </h2>
+    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-i18n-content="Mi trayectoria profesional y experiencias laborales">
+      Mi trayectoria profesional y experiencias laborales
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {experience.items.map((exp: any) => (
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+          <div class="p-8">
+            <!-- Header -->
+            <div class="flex items-start gap-4 mb-6">
+              <div class="text-5xl">{exp.icon}</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-i18n-content={exp.role}>
+                  {exp.role}
+                </h3>
+                <p class="text-blue-600 font-medium mb-1" data-i18n-content={exp.company}>
+                  {exp.company}
+                </p>
+                <p class="text-gray-600 text-sm flex items-center gap-1">
+                  <span class="material-icons text-sm">calendar_today</span>
+                  <span data-i18n-content={exp.period}>{exp.period}</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Description -->
+            {exp.description.includes('|') ? (
+              <ul class="space-y-3 mb-6">
+                {exp.description.split('|').map((item: string) => (
+                  <li class="text-gray-700 leading-relaxed flex items-start gap-2">
+                    <span class="text-blue-600 mt-1">•</span>
+                    <span class="flex-1" data-i18n-content={item.trim()}>{item.trim()}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-gray-700 leading-relaxed mb-6" data-i18n-content={exp.description}>
+                {exp.description}
+              </p>
+            )}
+
+            <!-- Website Link -->
+            {exp.website && (
+              <a
+                href={exp.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
+              >
+                <span class="material-icons text-lg">language</span>
+                <span data-i18n-content="Visitar Sitio Web">Visitar Sitio Web</span>
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

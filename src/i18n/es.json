@@ -1,31 +1,36 @@
 {
   "nav": {
-    "about": "Sobre Mí",
-    "skills": "Habilidades",
     "contact": "Contacto",
-    "projects": "Ver Proyectos"
+    "about": "Sobre Mí",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "skills": "Habilidades"
   },
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frigols",
-    "title": "Desarrollador de Software + IA Specialist",
     "cta": "Ver Proyectos y Experiencia"
   },
   "about": {
     "title": "Sobre Mí",
-    "description": "Soy una persona recién titulada en desarrollo de APPS, con conocimientos de diversos lenguajes de programación, siendo el principal JAVA."
+    "description": "Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables. Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario. Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua."
   },
   "skills": {
     "title": "Habilidades Técnicas",
     "items": [
-      "Conocimientos en Entorno Java",
+      "Desarrollo en Entorno Java (Java + Kotlin)",
       "Conocimientos básicos en C#",
       "Desarrollo de Bases de Datos en mySQL",
       "Conocimientos básicos de JavaScript y PHP",
-      "Conocimientos en desarrollo Android",
+      "Desarrollo de aplicaciones Android",
+      "Conocimientos básicos en Unity",
+      "Conocimientos en automatización con n8n y Make",
+      "Conocimientos en IAs Generativas y su implementación en Aplicaciones",
+      "Conocimientos en desarrollo de chatbots con IA",
       "Conocimientos básicos en el uso de motores gráficos como Unity",
-      "Conocimientos en herramientas de automatización como n8n o Make",
-      "Conocimientos en IAs Generativas y su implementación en Aplicaciones"
+      "Conocimientos básicos en Docker",
+      "Conocimientos básicos en Git"
+
     ]
   },
   "contact": {
@@ -40,18 +45,20 @@
     "items": [
       {
         "id": "exp-1",
-        "role": "Creador de Contenido",
-        "company": "Asociación Cultura Festiva Sellent",
-        "period": "2016-2018",
-        "description": "Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.",
-        "icon": "📱"
+        "role": "Web Developer WordPress",
+        "company": "Artimark, Llanera de Ranes, Valencia",
+        "period": "Junio 2024 - Enero 2025",
+        "description": "Participación en el Diseño y Estructura de la Web|Encargado de la Introducción y Prueba del Sistema Personalizado de Productos|Participación en el Mantenimiento y Escalabilidad de la Página Web|Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop|Apoyo en el Posicionamiento de la Web (SEO)",
+        "icon": "💼",
+        "website": "https://artimark.es"
       },
       {
         "id": "exp-2",
-        "role": "Web Developer WordPress",
-        "company": "Artimark",
-        "period": "Junio 2024 - Enero 2025",
-        "icon": "💼"
+        "role": "Creador de Contenido",
+        "company": "Asociación Cultura Festiva Sellent",
+        "period": "2016-2018",
+        "description": "Se diseñaron y ejecutaron campañas digitales que incrementaron la visibilidad de los eventos en un +60%|Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%",
+        "icon": "📱"
       }
     ]
   },
@@ -60,11 +67,11 @@
     "items": [
       {
         "id": "proj-1",
-        "name": "Live Football App",
+        "name": "Live Football App: TFG",
         "subtitle": "Proyecto Final de Grado",
-        "description": "Una aplicación de Android programado en Java, cuya finalidad es destinada a realizar una gestión completa de un partido de futbol. Esencialmente, me encargue del Backend, además del diseño y despliegue de la base de datos.",
-        "icon": "⚽",
-        "tech": ["Java", "Android", "MySQL"],
+        "description": "Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol. Específicamente, me encargué del diseño y despliegue de la base de datos.",
+        "icon": "/livefootbal_logo.png",
+        "tech": ["Java", "Android", "MySQL", "XML Squema"],
         "github": "https://github.com/Slenderman1314/LiveFootball"
       },
       {
@@ -73,8 +80,8 @@
         "subtitle": "Proyecto Final de Master",
         "description": "Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.",
         "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
-        "icon": "🤖",
-        "tech": ["Kotlin", "Compose Multiplatform", "IA"]
+        "icon": "/app_prototipado_icon.png",
+        "tech": ["Kotlin", "Compose Multiplatform", "IA", "PostGreSQL"]
       }
     ]
   },
@@ -82,16 +89,18 @@
     "title": "Formación Académica",
     "items": [
       {
-        "title": "Especialista en IA Generativa",
-        "type": "Master - 480h",
-        "institution": "EVOLVE",
-        "year": "2025"
+        "title": "Máster en IA Generativa",
+        "type": "Master - 480h + TFM",
+        "institution": "EVOLVE, Remoto",
+        "year": "2025",
+        "details": "Agentes de IA: Desarrollo de agentes autónomos. Automatización con IA: Integración de las Capacidades de la IA generativa en flujos de trabajo automatizados. Chatbots con IA: Diseño, implementación y optimización de chatbots potenciados con IA generativa. Desarrollo de aplicaciones sin código con IA: Creación de apps completas usando plataformas y herramientas con capacidad de IA generativa. Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa."
       },
       {
         "title": "Desarrollador de Aplicaciones Multiplataforma",
-        "type": "Grado Superior",
-        "institution": "IFP FORMACIÓN",
-        "year": "2021-2025"
+        "type": "Grado Superior - FP",
+        "institution": "IFP FORMACIÓN, Remoto",
+        "year": "2021-2025",
+        "details": "Desarrollo de aplicaciones para dispositivos móviles Android y Escritorio. Programación orientada a objetos con Java y C#. Desarrollo web con PHP y JavaScript. Diseño y gestión de bases de datos relacionales con MySQL. Desarrollo básico de videojuegos con Unity. Creación y consumo de servicios web (APIs REST). Gestión de proyectos de desarrollo de software."
       }
     ]
   },
