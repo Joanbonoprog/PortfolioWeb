@@ -7,9 +7,12 @@ const translations = {
       cta: "Ver Proyectos y Experiencia"
     },
     nav: {
+      contact: "Contacto",
       about: "Sobre Mí",
-      skills: "Habilidades",
-      contact: "Contacto"
+      education: "Educación",
+      projects: "Proyectos",
+      experience: "Experiencia",
+      skills: "Habilidades"
     },
     about: {
       title: "Sobre Mí",
@@ -43,9 +46,12 @@ const translations = {
       cta: "View Projects & Experience"
     },
     nav: {
+      contact: "Contact",
       about: "About Me",
-      skills: "Skills",
-      contact: "Contact"
+      education: "Education",
+      projects: "Projects",
+      experience: "Experience",
+      skills: "Skills"
     },
     about: {
       title: "About Me",
@@ -139,6 +145,7 @@ const contentTranslations = {
     'Volver al Inicio': 'Back to Home',
     'Contacto': 'Contact',
     'Sobre Mí': 'About Me',
+    'Educación': 'Education',
     'Proyectos': 'Projects',
     'Experiencia': 'Experience',
     'Habilidades': 'Skills',
