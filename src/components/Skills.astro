@@ -9,9 +9,11 @@ const { skills } = translations;
 // Mapeo de tecnologías con sus logos (usando Simple Icons via CDN)
 // IMPORTANTE: JavaScript debe ir antes que Java para evitar conflictos
 const techLogos: Record<string, string> = {
+  'IAs Generativas': 'https://cdn.simpleicons.org/openai/412991',
+  'IA': 'https://cdn.simpleicons.org/openai/412991',
+  'chatbots': '🤖',
   'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
   'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-  'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
   'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
   'mySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
   'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
@@ -19,15 +21,24 @@ const techLogos: Record<string, string> = {
   'Unity': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg',
   'n8n': 'https://cdn.simpleicons.org/n8n/EA4B71',
   'Make': '⚙️',
-  'IA': 'https://cdn.simpleicons.org/openai/412991',
   'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
   'Git': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'
 };
 
-// Función para obtener el logo basado en palabras clave
 function getTechLogo(skill: string): string {
+  const skillLower = skill.toLowerCase();
+  
+  // Buscar coincidencias exactas primero (frases más largas)
+  if (skillLower.includes('ias generativas') || skillLower.includes('ia generativa') || skillLower.includes('generative ai')) {
+    return 'https://cdn.simpleicons.org/openai/000000';
+  }
+  if (skillLower.includes('chatbot')) {
+    return 'https://cdn.simpleicons.org/telegram/26A5E4';
+  }
+  
+  // Luego buscar en el mapeo
   for (const [tech, logo] of Object.entries(techLogos)) {
-    if (skill.includes(tech)) {
+    if (skillLower.includes(tech.toLowerCase())) {
       return logo;
     }
   }
