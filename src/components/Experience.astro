@@ -23,7 +23,13 @@ const { experience } = translations;
           <div class="p-8">
             <!-- Header -->
             <div class="flex items-start gap-4 mb-6">
-              <div class="text-5xl">{exp.icon}</div>
+              {exp.icon.startsWith('/') ? (
+                <div class="w-16 h-16 flex-shrink-0">
+                  <img src={exp.icon} alt={exp.role} class="w-full h-full object-contain" />
+                </div>
+              ) : (
+                <div class="text-5xl flex-shrink-0">{exp.icon}</div>
+              )}
               <div class="flex-1">
                 <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-i18n-content={exp.role}>
                   {exp.role}
@@ -60,7 +66,7 @@ const { experience } = translations;
                 href={exp.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
+                class="flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
               >
                 <span class="material-icons text-lg">language</span>
                 <span data-i18n-content="Visitar Sitio Web">Visitar Sitio Web</span>

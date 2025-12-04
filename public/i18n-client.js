@@ -219,6 +219,16 @@ const contentTranslations = {
     'Creación y consumo de servicios web (APIs REST)': 'Creation and consumption of web services (REST APIs)',
     'Gestión de proyectos de desarrollo de software.': 'Software development project management',
     'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa.': 'Content Creation with AI (Image, Video, Audio): Content creation using Generative AI tools',
+    // Technologies (Projects)
+    'Tecnologías': 'Technologies',
+    'Java': 'Java',
+    'Android': 'Android',
+    'MySQL': 'MySQL',
+    'XML Squema': 'XML Schema',
+    'Kotlin': 'Kotlin',
+    'Compose Multiplatform': 'Compose Multiplatform',
+    'IA': 'AI',
+    'PostGreSQL': 'PostgreSQL',
     // Skills
     'Desarrollo en Entorno Java (Java + Kotlin)': 'Java Development (Java + Kotlin)',
     'Conocimientos básicos en C#': 'Basic knowledge in C#',

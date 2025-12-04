@@ -2,6 +2,7 @@
   "nav": {
     "contact": "Contacto",
     "about": "Sobre Mí",
+    "education": "Educación",
     "projects": "Proyectos",
     "experience": "Experiencia",
     "skills": "Habilidades"
@@ -27,10 +28,8 @@
       "Conocimientos en automatización con n8n y Make",
       "Conocimientos en IAs Generativas y su implementación en Aplicaciones",
       "Conocimientos en desarrollo de chatbots con IA",
-      "Conocimientos básicos en el uso de motores gráficos como Unity",
       "Conocimientos básicos en Docker",
       "Conocimientos básicos en Git"
-
     ]
   },
   "contact": {
@@ -49,7 +48,7 @@
         "company": "Artimark, Llanera de Ranes, Valencia",
         "period": "Junio 2024 - Enero 2025",
         "description": "Participación en el Diseño y Estructura de la Web|Encargado de la Introducción y Prueba del Sistema Personalizado de Productos|Participación en el Mantenimiento y Escalabilidad de la Página Web|Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop|Apoyo en el Posicionamiento de la Web (SEO)",
-        "icon": "💼",
+        "icon": "/artimark_logo.webp",
         "website": "https://artimark.es"
       },
       {
