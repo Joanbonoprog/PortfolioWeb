@@ -2,6 +2,7 @@
   "nav": {
     "contact": "Contact",
     "about": "About Me",
+    "education": "Education",
     "projects": "Projects",
     "experience": "Experience",
     "skills": "Skills"
@@ -27,14 +28,8 @@
       "Knowledge in automation with n8n and Make",
       "Knowledge in Generative AIs and their implementation in Applications",
       "Knowledge in AI chatbot development",
-      "Knowledge in creating autonomous agents with AI",
-      "Basic knowledge in iOS development with Swift",
-      "Knowledge in application design and implementation",
-      "Basic knowledge in the use of graphic engines like Unity",
       "Basic knowledge in Docker",
-      "Basic knowledge in Git",
-      "MS Infoapp",
-      "LibreOffice"
+      "Basic knowledge in Git"
     ]
   },
   "contact": {
@@ -53,7 +48,7 @@
         "company": "Artimark, Llanera de Ranes, Valencia",
         "period": "June 2024 - January 2025",
         "description": "Participation in Web Design and Structure|In charge of the Introduction and Testing of the Custom Product System|Participation in the Maintenance and Scalability of the Website|In charge of Testing and Maintenance of the eShop Payment Gateway|Support in Web Positioning (SEO)",
-        "icon": "💼",
+        "icon": "/artimark_logo.webp",
         "website": "https://artimark.es"
       },
       {
@@ -75,7 +70,7 @@
         "subtitle": "Final Degree Project",
         "description": "An Android application programmed in Java, whose purpose is to perform a complete management of a football match. Specifically, I was in charge of the design and deployment of the database.",
         "icon": "/livefootbal_logo.png",
-        "tech": ["Java", "Android", "MySQL"],
+        "tech": ["Java", "Android", "MySQL", "XML Schema"],
         "github": "https://github.com/Slenderman1314/LiveFootball"
       },
       {
@@ -85,7 +80,7 @@
         "description": "A tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes. Built with Kotlin Multiplatform and Compose Multiplatform, allowing developers and designers to visualize and export their concepts efficiently.",
         "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
-        "tech": ["Kotlin", "Compose Multiplatform", "AI"]
+        "tech": ["Kotlin", "Compose Multiplatform", "AI, PostgreSQL"]
       }
     ]
   },
