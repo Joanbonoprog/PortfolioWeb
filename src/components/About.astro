@@ -4,7 +4,7 @@ interface Props {
 }
 
 const { translations } = Astro.props;
-const { about, education, languages } = translations;
+const { about, languages } = translations;
 ---
 
 <section id="about" class="py-20 px-6 bg-white">
@@ -14,67 +14,33 @@ const { about, education, languages } = translations;
       {about.title}
     </h2>
 
-    <div class="grid md:grid-cols-2 gap-12">
+    <div class="grid md:grid-cols-2 gap-8">
       <!-- About Description -->
-      <div class="space-y-6">
-        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all">
-          <ul class="space-y-3">
-            {about.description.split('. ').filter((item: string) => item.trim()).map((sentence: string) => (
-              <li class="text-gray-700 leading-relaxed flex items-start gap-3">
-                <span class="text-blue-600 mt-1.5 text-xl">•</span>
-                <span class="flex-1" data-i18n-content={sentence.trim()}>{sentence.trim()}{sentence.endsWith('.') ? '' : '.'}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Languages -->
-        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all">
-          <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <span class="material-icons text-blue-600">language</span>
-            <span data-i18n="languages.title">{languages.title}</span>
-          </h3>
-          <ul class="space-y-2">
-            {languages.items.map((lang: string) => (
-              <li class="text-gray-700 flex items-center gap-2">
-                <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-                {lang}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all">
+        <ul class="space-y-3">
+          {about.description.split('. ').filter((item: string) => item.trim()).map((sentence: string) => (
+            <li class="text-gray-700 leading-relaxed flex items-start gap-3">
+              <span class="text-blue-600 mt-1.5 text-xl">•</span>
+              <span class="flex-1" data-i18n-content={sentence.trim()}>{sentence.trim()}{sentence.endsWith('.') ? '' : '.'}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <!-- Education -->
-      <div class="space-y-6">
-        <h3 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-          <span class="material-icons text-blue-600">school</span>
-          <span data-i18n="education.title">{education.title}</span>
+      <!-- Languages -->
+      <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="material-icons text-blue-600">language</span>
+          <span data-i18n="languages.title">{languages.title}</span>
         </h3>
-        
-        {education.items.map((edu: any) => (
-          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-200 hover:shadow-lg transition-all">
-            <h4 class="text-xl font-semibold text-gray-900 mb-2">
-              {edu.title}
-            </h4>
-            <p class="text-blue-600 font-medium mb-1">
-              {edu.type}
-            </p>
-            <p class="text-gray-600 mb-3">
-              {edu.institution} • {edu.year}
-            </p>
-            {edu.details && (
-              <ul class="mt-3 pt-3 border-t border-blue-200 space-y-2">
-                {edu.details.split('. ').filter((item: string) => item.trim()).map((detail: string) => (
-                  <li class="text-gray-700 text-sm leading-relaxed flex items-start gap-2">
-                    <span class="text-blue-600 mt-1">•</span>
-                    <span data-i18n-content={detail.trim()}>{detail.trim()}{detail.endsWith('.') ? '' : '.'}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+        <ul class="space-y-2">
+          {languages.items.map((lang: string) => (
+            <li class="text-gray-700 flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+              {lang}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </div>

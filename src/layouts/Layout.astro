@@ -36,7 +36,40 @@ const {
 	<body class="bg-gray-50 text-gray-900 antialiased">
 		<slot />
 		
+		<!-- Botón flotante para volver arriba -->
+		<button 
+			id="scroll-to-top" 
+			class="fixed left-6 bottom-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-110 flex items-center justify-center opacity-0 pointer-events-none z-40"
+			aria-label="Volver arriba"
+		>
+			<span class="material-icons">arrow_upward</span>
+		</button>
+		
 		<!-- Sistema de traducciones del lado del cliente -->
 		<script is:inline src="/i18n-client.js"></script>
+		
+		<!-- Script para el botón de scroll -->
+		<script is:inline>
+			const scrollButton = document.getElementById('scroll-to-top');
+			
+			// Mostrar/ocultar botón según scroll
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 300) {
+					scrollButton.classList.remove('opacity-0', 'pointer-events-none');
+					scrollButton.classList.add('opacity-100');
+				} else {
+					scrollButton.classList.add('opacity-0', 'pointer-events-none');
+					scrollButton.classList.remove('opacity-100');
+				}
+			});
+			
+			// Scroll suave al inicio
+			scrollButton.addEventListener('click', () => {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			});
+		</script>
 	</body>
 </html>

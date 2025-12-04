@@ -36,6 +36,9 @@ const { nav } = translations;
         <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.about" data-i18n-content={nav.about}>
           {nav.about}
         </a>
+        <a href="#education" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.education" data-i18n-content={nav.education || 'Educación'}>
+          {nav.education || 'Educación'}
+        </a>
         <a href="#projects" class="text-gray-700 hover:text-blue-600 transition-colors font-medium" data-i18n="nav.projects" data-i18n-content={nav.projects || 'Proyectos'}>
           {nav.projects || 'Proyectos'}
         </a>

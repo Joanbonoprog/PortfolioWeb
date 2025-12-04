@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
+import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
@@ -30,6 +31,7 @@ const translations = getTranslations(currentLang);
 		<Hero translations={translations} currentLang={currentLang} />
 		<Contact translations={translations} />
 		<About translations={translations} />
+		<Education translations={translations} />
 		<Projects translations={translations} />
 		<Experience translations={translations} />
 		<Skills translations={translations} />
