@@ -194,7 +194,7 @@ const contentTranslations = {
     'Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%': 'Events were coordinated that increased the number of attendees by 40%',
     'Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%.': 'Events were coordinated that increased the number of attendees by 40%.',
     // About Me
-    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables': 'Software developer specialized in Java and multiplatform development, with experience in designing and deploying scalable applications',
+    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimentos en diseño y despliegue de aplicaciones escalables': 'Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications',
     'Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario': 'I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience',
     'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua.': 'Passionate about technological innovation, code efficiency and continuous improvement',
     // Languages
