@@ -1,4 +1,7 @@
 ---
+import Image from 'astro/components/Image.astro';
+import { getImage } from 'astro:assets';
+
 interface Props {
   translations: any;
 }
@@ -6,23 +9,21 @@ interface Props {
 const { translations } = Astro.props;
 const { skills } = translations;
 
-// Mapeo de tecnologías con sus logos (usando Simple Icons via CDN)
+// Mapeo de tecnologías con sus logos
 // IMPORTANTE: JavaScript debe ir antes que Java para evitar conflictos
 const techLogos: Record<string, string> = {
-  'IAs Generativas': 'https://cdn.simpleicons.org/openai/412991',
-  'IA': 'https://cdn.simpleicons.org/openai/412991',
-  'chatbots': '🤖',
-  'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-  'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-  'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
-  'mySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-  'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
-  'Android': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg',
-  'Unity': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg',
-  'n8n': 'https://cdn.simpleicons.org/n8n/EA4B71',
-  'Make': '⚙️',
-  'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-  'Git': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'
+  'IAs Generativas': '/openai.svg',
+  'chatbots': '/telegram.svg',
+  'JavaScript': '/javascript-original.svg',
+  'Java': '/java-original.svg',
+  'C#': '/csharp-original.svg',
+  'mySQL': '/mysql-original.svg',
+  'PHP': '/php-original.svg',
+  'Android': '/android-original.svg',
+  'Unity': '/unity-original.svg',
+  'n8n': '/n8n.svg',
+  'Docker': '/docker-original.svg',
+  'Git': '/git-original.svg'
 };
 
 function getTechLogo(skill: string): string {
@@ -30,10 +31,7 @@ function getTechLogo(skill: string): string {
   
   // Buscar coincidencias exactas primero (frases más largas)
   if (skillLower.includes('ias generativas') || skillLower.includes('ia generativa') || skillLower.includes('generative ai')) {
-    return 'https://cdn.simpleicons.org/openai/412991';
-  }
-  if (skillLower.includes('chatbot')) {
-    return 'https://cdn.simpleicons.org/telegram/26A5E4';
+    return 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg';
   }
   
   // Luego buscar en el mapeo
@@ -62,7 +60,7 @@ function getTechLogo(skill: string): string {
         >
           <div class="flex items-start gap-4">
             <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-              {getTechLogo(skill).startsWith('http') ? (
+              {getTechLogo(skill).startsWith('http') || getTechLogo(skill).startsWith('/') ? (
                 <img src={getTechLogo(skill)} alt="" class="w-8 h-8 object-contain" />
               ) : (
                 <span class="text-2xl">{getTechLogo(skill)}</span>
