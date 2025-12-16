@@ -13,8 +13,8 @@ const { projects } = translations;
       <span class="material-icons text-5xl text-blue-600 align-middle mr-2">code</span>
       <span data-i18n="projects.title" data-i18n-content={projects.title}>{projects.title}</span>
     </h2>
-    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-i18n-content="Proyectos destacados que demuestran mis habilidades técnicas y creatividad">
-      Proyectos destacados que demuestran mis habilidades técnicas y creatividad
+    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-i18n="projects.subtitle">
+      {projects.subtitle}
     </p>
 
     <div class="grid md:grid-cols-2 gap-8">
@@ -45,7 +45,7 @@ const { projects } = translations;
             </div>
 
             <!-- Description -->
-            <p class="text-gray-700 leading-relaxed mb-6" data-i18n-content={project.description}>
+            <p class="text-gray-700 leading-relaxed mb-6 whitespace-pre-line" data-i18n-content={project.description}>
               {project.description}
             </p>
 
@@ -54,7 +54,7 @@ const { projects } = translations;
               <div class="mb-6">
                 <h4 class="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
                   <span class="material-icons text-blue-600 text-lg">code</span>
-                  <span data-i18n-content="Tecnologías">Tecnologías</span>
+                  <span data-i18n="projects.technologies">{projects.technologies}</span>
                 </h4>
                 <div class="flex flex-wrap gap-2">
                   {project.tech.map((tech: string) => (
@@ -76,7 +76,7 @@ const { projects } = translations;
                   class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all hover:scale-105 font-medium"
                 >
                   <span class="material-icons text-lg">code</span>
-                  <span data-i18n-content="Ver en GitHub">Ver en GitHub</span>
+                  <span data-i18n="projects.viewGithub">{projects.viewGithub}</span>
                 </a>
               )}
               {project.website && (
@@ -87,7 +87,7 @@ const { projects } = translations;
                   class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
                 >
                   <span class="material-icons text-lg">language</span>
-                  <span data-i18n-content="Visitar Sitio Web">Visitar Sitio Web</span>
+                  <span data-i18n="projects.visitWebsite">{projects.visitWebsite}</span>
                 </a>
               )}
             </div>

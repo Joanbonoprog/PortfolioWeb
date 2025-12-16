@@ -16,10 +16,23 @@ const translations = {
     },
     about: {
       title: "Sobre Mí",
-      description: "Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables. Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario. Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua."
+      description: "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua"
     },
     education: {
-      title: "Formación Académica"
+      title: "Formación Académica",
+      subtitle: "Mi formación académica y certificaciones"
+    },
+    experience: {
+      title: "Experiencia Laboral",
+      subtitle: "Mi trayectoria profesional y experiencias laborales",
+      visitWebsite: "Visitar Sitio Web"
+    },
+    projects: {
+      title: "Mis Proyectos",
+      subtitle: "Proyectos destacados que demuestran mis habilidades técnicas y creatividad",
+      technologies: "Tecnologías",
+      viewGithub: "Ver en GitHub",
+      visitWebsite: "Visitar Sitio Web"
     },
     languages: {
       title: "Idiomas"
@@ -30,13 +43,26 @@ const translations = {
     contact: {
       title: "Contacto",
       phone: "Teléfono",
+      phoneValue: "(+34) 630 41 46 12",
       email: "Email",
+      emailValue: "joanbonoprog@gmail.com",
       address: "Dirección",
-      linkedin: "LinkedIn"
+      addressValue: "Calle Assagador, 15. Sellent (Valencia) 46295 - España",
+      linkedin: "LinkedIn",
+      linkedinValue: "linkedin.com/in/bono-joan"
     },
     phone: {
       title: "Mis Proyectos y Experiencia",
       subtitle: "Toca las apps para ver más detalles"
+    },
+    footer: {
+      builtWith: "Construido Con",
+      techStack: [
+        { name: "Astro", url: "https://astro.build", logo: "https://astro.build/assets/press/astro-icon-light.svg" },
+        { name: "TypeScript", url: "https://www.typescriptlang.org", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+        { name: "Tailwind CSS", url: "https://tailwindcss.com", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+        { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
+      ]
     }
   },
   en: {
@@ -55,10 +81,23 @@ const translations = {
     },
     about: {
       title: "About Me",
-      description: "Software developer specialized in Java and multiplatform development, with experience in designing and deploying scalable applications. I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience. Passionate about technological innovation, code efficiency and continuous improvement."
+      description: "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement."
     },
     education: {
-      title: "Academic Background"
+      title: "Academic Background",
+      subtitle: "My academic background and certifications"
+    },
+    experience: {
+      title: "Work Experience",
+      subtitle: "My professional career and work experiences",
+      visitWebsite: "Visit Website"
+    },
+    projects: {
+      title: "Projects",
+      subtitle: "Featured projects that demonstrate my technical skills and creativity",
+      technologies: "Technologies",
+      viewGithub: "View on GitHub",
+      visitWebsite: "Visit Website"
     },
     languages: {
       title: "Languages"
@@ -69,13 +108,26 @@ const translations = {
     contact: {
       title: "Contact",
       phone: "Phone",
+      phoneValue: "(+34) 630 41 46 12",
       email: "Email",
+      emailValue: "joanbonoprog@gmail.com",
       address: "Address",
-      linkedin: "LinkedIn"
+      addressValue: "Assagador Street, 15. Sellent (Valencia) 46295 - Spain",
+      linkedin: "LinkedIn",
+      linkedinValue: "linkedin.com/in/bono-joan"
     },
     phone: {
       title: "My Projects & Experience",
       subtitle: "Tap the apps to see more details"
+    },
+    footer: {
+      builtWith: "Built With",
+      techStack: [
+        { name: "Astro", url: "https://astro.build", logo: "https://astro.build/assets/press/astro-icon-light.svg" },
+        { name: "TypeScript", url: "https://www.typescriptlang.org", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+        { name: "Tailwind CSS", url: "https://tailwindcss.com", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+        { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
+      ]
     }
   }
 };
@@ -101,7 +153,7 @@ const contentTranslations = {
     'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.': 'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.',
     'Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).': 'Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).',
     // Sobre Mí (About Me)
-    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables': 'Desarrollador de software especializado en Java y desarrollo multiplataforma, con experiencia en diseño y despliegue de aplicaciones escalables',
+    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables': 'Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables',
     'Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario': 'Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario',
     'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua': 'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua',
     // Idiomas
@@ -168,8 +220,8 @@ const contentTranslations = {
     'Proyecto Final de Grado': 'Final Degree Project',
     'Proyecto Final de Master': 'Final Master Project',
     'Final Master Project': 'Final Master Project',
-    'Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol. Específicamente, me encargué del diseño y despliegue de la base de datos.': 'An Android application programmed in Java, whose purpose is to perform a complete management of a football match. Specifically, I was in charge of the design and deployment of the database.',
-    'Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.': 'A tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes. Built with Kotlin Multiplatform and Compose Multiplatform, allowing developers and designers to visualize and export their concepts efficiently.',
+    'Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol.\n\nEspecíficamente, me encargué del diseño y despliegue de la base de datos.': 'An Android application programmed in Java, whose purpose is to perform a complete management of a football match.\n\nSpecifically, I was in charge of the design and deployment of the database.',
+    'Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones.\n\nConstruida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.': 'A tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes.\n\nBuilt with Kotlin Multiplatform and Compose Multiplatform, allowing developers and designers to visualize and export their concepts efficiently.',
     // Experiences
     'Web Developer WordPress': 'WordPress Web Developer',
     'Creador de Contenido': 'Content Creator',
@@ -194,9 +246,9 @@ const contentTranslations = {
     'Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%': 'Events were coordinated that increased the number of attendees by 40%',
     'Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%.': 'Events were coordinated that increased the number of attendees by 40%.',
     // About Me
-    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimentos en diseño y despliegue de aplicaciones escalables': 'Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications',
+    'Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables': 'Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications',
     'Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario': 'I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience',
-    'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua.': 'Passionate about technological innovation, code efficiency and continuous improvement',
+    'Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua': 'Passionate about technological innovation, code efficiency and continuous improvement',
     // Languages
     'Castellano (Nativo)': 'Spanish (Native)',
     'Valenciano/Catalán (Nativo)': 'Valencian/Catalan (Native)',
@@ -204,6 +256,8 @@ const contentTranslations = {
     // Education
     'Máster en IA Generativa': 'Master in Generative AI',
     'Master - 480h + TFM': 'Master - 480h + TFM',
+    "EVOLVE, Remoto": "EVOLVE, Remote",
+    "IFP FORMACIÓN, Remoto": "IFP FORMACIÓN, Remote",
     'Desarrollador de Aplicaciones Multiplataforma': 'Multiplatform Application Developer',
     'Grado Superior - FP': 'Higher Degree - FP',
     'Agentes de IA: Desarrollo de agentes autónomos': 'AI Agents: Development of autonomous agents',
@@ -241,7 +295,9 @@ const contentTranslations = {
     'Conocimientos en desarrollo de chatbots con IA': 'Knowledge in AI chatbot development',
     'Conocimientos básicos en el uso de motores gráficos como Unity': 'Basic knowledge in the use of graphic engines like Unity',
     'Conocimientos básicos en Docker': 'Basic knowledge in Docker',
-    'Conocimientos básicos en Git': 'Basic knowledge in Git'
+    'Conocimientos básicos en Git': 'Basic knowledge in Git',
+    // Footer
+    'Construido Con': 'Built With'
   }
 };
 

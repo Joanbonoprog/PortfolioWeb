@@ -14,7 +14,7 @@
   },
   "about": {
     "title": "Sobre Mí",
-    "description": "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables. Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario. Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua."
+    "description": "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua"
   },
   "skills": {
     "title": "Habilidades Técnicas",
@@ -35,12 +35,18 @@
   "contact": {
     "title": "Contacto",
     "phone": "Teléfono",
+    "phoneValue": "(+34) 630 41 46 12",
     "email": "Email",
+    "emailValue": "joanbonoprog@gmail.com",
     "address": "Dirección",
-    "linkedin": "LinkedIn"
+    "addressValue": "Calle Assagador, 15. Sellent (Valencia) 46295 - España",
+    "linkedin": "LinkedIn",
+    "linkedinValue": "linkedin.com/in/bono-joan"
   },
   "experience": {
     "title": "Experiencia Laboral",
+    "subtitle": "Mi trayectoria profesional y experiencias laborales",
+    "visitWebsite": "Visitar Sitio Web",
     "items": [
       {
         "id": "exp-1",
@@ -63,12 +69,16 @@
   },
   "projects": {
     "title": "Mis Proyectos",
+    "subtitle": "Proyectos destacados que demuestran mis habilidades técnicas y creatividad",
+    "technologies": "Tecnologías",
+    "viewGithub": "Ver en GitHub",
+    "visitWebsite": "Visitar Sitio Web",
     "items": [
       {
         "id": "proj-1",
         "name": "Live Football App: TFG",
         "subtitle": "Proyecto Final de Grado",
-        "description": "Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol. Específicamente, me encargué del diseño y despliegue de la base de datos.",
+        "description": "Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol.\n\nEspecíficamente, me encargué del diseño y despliegue de la base de datos.",
         "icon": "/livefootbal_logo.png",
         "tech": ["Java", "Android", "MySQL", "XML Squema"],
         "github": "https://github.com/Slenderman1314/LiveFootball"
@@ -77,7 +87,7 @@
         "id": "proj-2",
         "name": "App Prototype Creator",
         "subtitle": "Proyecto Final de Master",
-        "description": "Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.",
+        "description": "Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones.\n\nConstruida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.",
         "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
         "tech": ["Kotlin", "Compose Multiplatform", "IA", "PostGreSQL"]
@@ -86,6 +96,7 @@
   },
   "education": {
     "title": "Formación Académica",
+    "subtitle": "Mi formación académica y certificaciones",
     "items": [
       {
         "title": "Máster en IA Generativa",
@@ -111,11 +122,13 @@
       "Inglés (Básico Profesional)"
     ]
   },
-  "phone": {
-    "title": "Mis Proyectos y Experiencia",
-    "subtitle": "Toca las apps para ver más detalles"
-  },
   "footer": {
-    "builtWith": "Construido Con"
+    "builtWith": "Construido Con",
+    "techStack": [
+      { "name": "Astro", "url": "https://astro.build", "logo": "https://astro.build/assets/press/astro-icon-light.svg" },
+      { "name": "TypeScript", "url": "https://www.typescriptlang.org", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { "name": "Tailwind CSS", "url": "https://tailwindcss.com", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
+    ]
   }
 }

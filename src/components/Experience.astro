@@ -13,8 +13,8 @@ const { experience } = translations;
       <span class="material-icons text-5xl text-blue-600 align-middle mr-2">work</span>
       <span data-i18n="experience.title" data-i18n-content={experience.title}>{experience.title}</span>
     </h2>
-    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-i18n-content="Mi trayectoria profesional y experiencias laborales">
-      Mi trayectoria profesional y experiencias laborales
+    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-i18n="experience.subtitle">
+      {experience.subtitle}
     </p>
 
     <div class="grid md:grid-cols-2 gap-8">
@@ -69,7 +69,7 @@ const { experience } = translations;
                 class="flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
               >
                 <span class="material-icons text-lg">language</span>
-                <span data-i18n-content="Visitar Sitio Web">Visitar Sitio Web</span>
+                <span data-i18n="experience.visitWebsite">{experience.visitWebsite}</span>
               </a>
             )}
           </div>
