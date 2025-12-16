@@ -5,14 +5,6 @@ interface Props {
 
 const { translations } = Astro.props;
 const { contact } = translations;
-
-// Datos de contacto
-const contactInfo = {
-  phone: "(+34) 630 41 46 12",
-  email: "joanbonoprog@gmail.com",
-  address: "Calle Assagador, 15. Sellent (Valencia) 46295 - España",
-  linkedin: "linkedin.com/in/bono-joan"
-};
 ---
 
 <section id="contact" class="py-20 px-6 bg-white">
@@ -35,7 +27,7 @@ const contactInfo = {
           </h3>
         </div>
         <p class="text-gray-700 text-lg">
-          {contactInfo.phone}
+          {contact.phoneValue}
         </p>
       </div>
 
@@ -50,7 +42,7 @@ const contactInfo = {
           </h3>
         </div>
         <p class="text-gray-700 text-lg break-all">
-          {contactInfo.email}
+          {contact.emailValue}
         </p>
       </div>
 
@@ -64,14 +56,14 @@ const contactInfo = {
             {contact.address}
           </h3>
         </div>
-        <p class="text-gray-700 text-lg">
-          {contactInfo.address}
+        <p class="text-gray-700 text-lg" data-i18n="contact.addressValue">
+          {contact.addressValue}
         </p>
       </div>
 
       <!-- LinkedIn -->
       <a 
-        href={`https://${contactInfo.linkedin}`}
+        href={`https://${contact.linkedinValue}`}
         target="_blank"
         rel="noopener noreferrer"
         class="bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-2xl border border-cyan-200 hover:shadow-lg transition-all"
@@ -85,7 +77,7 @@ const contactInfo = {
           </h3>
         </div>
         <p class="text-gray-700 text-lg flex items-center gap-2">
-          {contactInfo.linkedin}
+          {contact.linkedinValue}
           <span class="material-icons text-cyan-600">open_in_new</span>
         </p>
       </a>

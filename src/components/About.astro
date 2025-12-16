@@ -17,14 +17,9 @@ const { about, languages } = translations;
     <div class="grid md:grid-cols-2 gap-8">
       <!-- About Description -->
       <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all">
-        <ul class="space-y-3">
-          {about.description.split('. ').filter((item: string) => item.trim()).map((sentence: string) => (
-            <li class="text-gray-700 leading-relaxed flex items-start gap-3">
-              <span class="text-blue-600 mt-1.5 text-xl">•</span>
-              <span class="flex-1" data-i18n-content={sentence.trim()}>{sentence.trim()}{sentence.endsWith('.') ? '' : '.'}</span>
-            </li>
-          ))}
-        </ul>
+        <p class="text-gray-700 leading-relaxed whitespace-pre-line" data-i18n="about.description">
+          {about.description}
+        </p>
       </div>
 
       <!-- Languages -->
@@ -33,11 +28,11 @@ const { about, languages } = translations;
           <span class="material-icons text-blue-600">language</span>
           <span data-i18n="languages.title">{languages.title}</span>
         </h3>
-        <ul class="space-y-2">
+        <ul class="space-y-3">
           {languages.items.map((lang: string) => (
-            <li class="text-gray-700 flex items-center gap-2">
-              <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-              {lang}
+            <li class="text-gray-700 flex items-start gap-3">
+              <span class="text-blue-600 mt-0.5 text-xl">•</span>
+              <span class="flex-1">{lang}</span>
             </li>
           ))}
         </ul>
