@@ -29,11 +29,6 @@ const techLogos: Record<string, string> = {
 function getTechLogo(skill: string): string {
   const skillLower = skill.toLowerCase();
   
-  // Buscar coincidencias exactas primero (frases más largas)
-  if (skillLower.includes('ias generativas') || skillLower.includes('ia generativa') || skillLower.includes('generative ai')) {
-    return 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg';
-  }
-  
   // Luego buscar en el mapeo
   for (const [tech, logo] of Object.entries(techLogos)) {
     if (skillLower.includes(tech.toLowerCase())) {
