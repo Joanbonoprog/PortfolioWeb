@@ -32,7 +32,7 @@ const { about, languages } = translations;
           {languages.items.map((lang: string) => (
             <li class="text-gray-700 flex items-start gap-3">
               <span class="text-blue-600 mt-0.5 text-xl">•</span>
-              <span class="flex-1">{lang}</span>
+              <span class="flex-1" data-i18n-content={lang}>{lang}</span>
             </li>
           ))}
         </ul>
