@@ -61,13 +61,13 @@
   
   // Aplicar tema inmediatamente para evitar flash
   const theme = getStoredTheme();
-  console.log('🎨 Tema inicial:', theme);
+  console.log('Tema inicial:', theme);
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');
   }
-  console.log('🎨 Clases del HTML:', document.documentElement.className);
+  console.log('Clases del HTML:', document.documentElement.className);
   
   // Inicializar cuando el DOM esté listo
   if (document.readyState === 'loading') {
