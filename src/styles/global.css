@@ -1,7 +1,60 @@
 @import "tailwindcss";
 
 /* Configuración de modo oscuro para Tailwind v4 */
-@custom-variant dark (&:is(.dark *));
+@variant dark (.dark &);
+
+/* Efecto de ondas animadas en el fondo */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  animation: wave-animation 20s ease-in-out infinite;
+}
+
+.wave:nth-child(2) {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  animation: wave-animation 15s ease-in-out infinite reverse;
+  animation-delay: -5s;
+}
+
+.wave:nth-child(3) {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+  animation: wave-animation 25s ease-in-out infinite;
+  animation-delay: -10s;
+}
+
+/* Ondas más visibles en modo claro */
+:not(.dark) .wave {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, transparent 70%);
+}
+
+:not(.dark) .wave:nth-child(2) {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%);
+}
+
+:not(.dark) .wave:nth-child(3) {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.35) 0%, transparent 70%);
+}
+
+@keyframes wave-animation {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-30%, -60%) rotate(180deg);
+  }
+}
 
 /* Estilos base personalizados */
 @layer base {

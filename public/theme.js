@@ -2,12 +2,12 @@
 (function() {
   const THEME_KEY = 'portfolio-theme';
   
-  // Obtener tema guardado o usar 'light' por defecto
+  // Obtener tema guardado o usar 'dark' por defecto
   function getStoredTheme() {
     const stored = localStorage.getItem(THEME_KEY);
-    // Si no hay tema guardado, devolver 'light'
+    // Si no hay tema guardado, devolver 'dark'
     if (!stored) {
-      return 'light';
+      return 'dark';
     }
     return stored;
   }
