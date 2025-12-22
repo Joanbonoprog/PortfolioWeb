@@ -58,10 +58,10 @@ const translations = {
     footer: {
       builtWith: "Construido Con",
       techStack: [
-        { name: "Astro", url: "https://astro.build", logo: "https://astro.build/assets/press/astro-icon-light.svg" },
-        { name: "TypeScript", url: "https://www.typescriptlang.org", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-        { name: "Tailwind CSS", url: "https://tailwindcss.com", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-        { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
+        { name: "Astro", url: "https://astro.build", logo: "public/astro-icon-light.svg" },
+        { name: "TypeScript", url: "https://www.typescriptlang.org", logo: "public/typescript-original.svg" },
+        { name: "Tailwind CSS", url: "https://tailwindcss.com", logo: "public/tailwindcss-original.svg" },
+        { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", logo: "public/images/tech/javascript.svg" }
       ]
     }
   },
