@@ -7,40 +7,40 @@ const { translations } = Astro.props;
 const { education } = translations;
 ---
 
-<section id="education" class="py-20 px-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+<section id="education" class="py-20 px-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
   <div class="max-w-6xl mx-auto">
     <!-- Title -->
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
-      <span class="material-icons text-5xl text-blue-600 align-middle mr-2">school</span>
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+      <span class="material-icons text-5xl text-blue-600 dark:text-blue-400 align-middle mr-2">school</span>
       <span data-i18n="education.title">{education.title}</span>
     </h2>
-    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-i18n="education.subtitle">
+    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-i18n="education.subtitle">
       {education.subtitle}
     </p>
 
     <!-- Education Grid -->
     <div class="grid md:grid-cols-2 gap-8">
       {education.items.map((edu: any) => (
-        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group">
-          <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors" data-i18n-content={edu.title}>
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={edu.title}>
             {edu.title}
           </h3>
-          <p class="text-blue-600 font-medium mb-1" data-i18n-content={edu.type}>
+          <p class="text-blue-600 dark:text-blue-400 font-medium mb-1" data-i18n-content={edu.type}>
             {edu.type}
           </p>
-          <p class="text-gray-600 mb-4 flex items-center gap-2">
+          <p class="text-gray-600 dark:text-gray-400 mb-4 flex items-center gap-2">
             <span class="material-icons text-sm">business</span>
             <span data-i18n-content={edu.institution}>{edu.institution}</span>
           </p>
-          <p class="text-gray-600 mb-4 flex items-center gap-2">
+          <p class="text-gray-600 dark:text-gray-400 mb-4 flex items-center gap-2">
             <span class="material-icons text-sm">calendar_today</span>
             <span data-i18n-content={edu.year}>{edu.year}</span>
           </p>
           {edu.details && (
-            <ul class="mt-4 pt-4 border-t border-gray-200 space-y-2">
+            <ul class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
               {edu.details.split('. ').filter((item: string) => item.trim()).map((detail: string) => (
-                <li class="text-gray-700 leading-relaxed flex items-start gap-2">
-                  <span class="text-blue-600 mt-1">•</span>
+                <li class="text-gray-700 dark:text-gray-300 leading-relaxed flex items-start gap-2">
+                  <span class="text-blue-600 dark:text-blue-400 mt-1">•</span>
                   <span class="flex-1" data-i18n-content={detail.trim()}>{detail.trim()}{detail.endsWith('.') ? '' : '.'}</span>
                 </li>
               ))}

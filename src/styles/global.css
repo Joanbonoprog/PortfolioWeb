@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Configuración de modo oscuro para Tailwind v4 */
+@custom-variant dark (&:is(.dark *));
+
 /* Estilos base personalizados */
 @layer base {
   * {

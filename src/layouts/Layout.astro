@@ -33,17 +33,20 @@ const {
 		
 		<title>{title}</title>
 	</head>
-	<body class="bg-gray-50 text-gray-900 antialiased">
+	<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased transition-colors duration-300">
 		<slot />
 		
 		<!-- Botón flotante para volver arriba -->
 		<button 
 			id="scroll-to-top" 
-			class="fixed left-6 bottom-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-110 flex items-center justify-center opacity-0 pointer-events-none z-40"
+			class="fixed left-6 bottom-6 w-12 h-12 bg-blue-600 dark:bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all hover:scale-110 flex items-center justify-center opacity-0 pointer-events-none z-40"
 			aria-label="Volver arriba"
 		>
 			<span class="material-icons">arrow_upward</span>
 		</button>
+		
+		<!-- Sistema de temas (debe cargarse primero para evitar flash) -->
+		<script is:inline src="/theme.js"></script>
 		
 		<!-- Sistema de traducciones del lado del cliente -->
 		<script is:inline src="/i18n-client.js"></script>

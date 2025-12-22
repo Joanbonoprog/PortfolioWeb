@@ -7,31 +7,31 @@ const { translations} = Astro.props;
 const { about, languages } = translations;
 ---
 
-<section id="about" class="py-20 px-6 bg-white">
+<section id="about" class="py-20 px-6 bg-white dark:bg-gray-800 transition-colors duration-300">
   <div class="max-w-6xl mx-auto">
     <!-- Title -->
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center" data-i18n="about.title">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-12 text-center" data-i18n="about.title">
       {about.title}
     </h2>
 
     <div class="grid md:grid-cols-2 gap-8">
       <!-- About Description -->
-      <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all">
-        <p class="text-gray-700 leading-relaxed whitespace-pre-line" data-i18n="about.description">
+      <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line" data-i18n="about.description">
           {about.description}
         </p>
       </div>
 
       <!-- Languages -->
-      <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all">
-        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-          <span class="material-icons text-blue-600">language</span>
+      <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <span class="material-icons text-blue-600 dark:text-blue-400">language</span>
           <span data-i18n="languages.title">{languages.title}</span>
         </h3>
         <ul class="space-y-3">
           {languages.items.map((lang: string) => (
-            <li class="text-gray-700 flex items-start gap-3">
-              <span class="text-blue-600 mt-0.5 text-xl">•</span>
+            <li class="text-gray-700 dark:text-gray-300 flex items-start gap-3">
+              <span class="text-blue-600 dark:text-blue-400 mt-0.5 text-xl">•</span>
               <span class="flex-1" data-i18n-content={lang}>{lang}</span>
             </li>
           ))}
