@@ -306,7 +306,7 @@ function applyTranslations() {
   const urlParams = new URLSearchParams(window.location.search);
   const lang = urlParams.get('lang') || 'es';
   
-  console.log('🌍 Aplicando traducciones para idioma:', lang);
+  console.log('Aplicando traducciones para idioma:', lang);
   
   const t = translations[lang] || translations.es;
   const ct = contentTranslations[lang] || contentTranslations.es;
@@ -327,7 +327,7 @@ function applyTranslations() {
     
     if (value) {
       el.textContent = value;
-      console.log(`✅ Traducido: ${key} = ${value}`);
+      console.log(`Traducido: ${key} = ${value}`);
     }
   });
   
@@ -336,7 +336,7 @@ function applyTranslations() {
     const text = el.getAttribute('data-i18n-content');
     if (ct[text]) {
       el.textContent = ct[text];
-      console.log(`✅ Traducido (content): ${text} → ${ct[text]}`);
+      console.log(`Traducido (content): ${text} → ${ct[text]}`);
     }
   });
   
@@ -345,7 +345,7 @@ function applyTranslations() {
     const text = el.textContent.trim();
     if (ct[text]) {
       el.textContent = ct[text];
-      console.log(`✅ Contenido traducido: ${text} → ${ct[text]}`);
+      console.log(`Contenido traducido: ${text} → ${ct[text]}`);
     }
   });
 }
