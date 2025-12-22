@@ -125,7 +125,7 @@
   "footer": {
     "builtWith": "Built With",
     "techStack": [
-      { "name": "Astro", "url": "https://astro.build", "logo": "https://astro.build/assets/press/astro-icon-light.svg" },
+      { "name": "Astro", "url": "https://astro.build", "logo": "https://astro.build/assets/press/astro-icon-dark.svg", "logoDark": "https://astro.build/assets/press/astro-icon-light.svg" },
       { "name": "TypeScript", "url": "https://www.typescriptlang.org", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
       { "name": "Tailwind CSS", "url": "https://tailwindcss.com", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
       { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
