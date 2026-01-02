@@ -15,7 +15,6 @@ export default defineConfig({
   preview: {
     host: true,
     port: 4321,
-    strictPort: false,
     allowedHosts: ['joanbonoprog.es'],
   },
   // Configuración de base para subdominios o rutas
