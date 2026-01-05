@@ -9,6 +9,11 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     strictPort: false,
+    proxy: {},
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   base: '/',
+  appType: 'mpa',
 });
