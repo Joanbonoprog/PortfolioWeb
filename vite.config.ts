@@ -11,6 +11,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 4321,
     strictPort: false,
+    allowedHosts: ['joanbonoprog.es', 'www.joanbonoprog.es', '.joanbonoprog.es'],
   },
   base: '/',
 });
