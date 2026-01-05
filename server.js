@@ -1,8 +1,8 @@
-import { createServer } from 'http';
-import { readFileSync, existsSync, statSync } from 'fs';
-import { join, extname } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { createServer } from 'node:http';
+import { readFileSync, existsSync, statSync } from 'node:fs';
+import { join, extname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -10,10 +10,14 @@ const __dirname = dirname(__filename);
 const PORT = process.env.PORT || 3000;
 const DIST_DIR = join(__dirname, 'dist');
 
+console.log(`Starting server on port ${PORT}`);
+console.log(`Serving files from ${DIST_DIR}`);
+
 const MIME_TYPES = {
-  '.html': 'text/html',
-  '.js': 'text/javascript',
-  '.css': 'text/css',
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.mjs': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
   '.json': 'application/json',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
@@ -28,6 +32,8 @@ const MIME_TYPES = {
 };
 
 const server = createServer((req, res) => {
+  console.log(`Request: ${req.method} ${req.url}`);
+  
   let filePath = join(DIST_DIR, req.url === '/' ? 'index.html' : req.url);
   
   // Remove query strings
@@ -54,14 +60,25 @@ const server = createServer((req, res) => {
   
   try {
     const content = readFileSync(filePath);
-    res.writeHead(200, { 'Content-Type': contentType });
+    res.writeHead(200, { 
+      'Content-Type': contentType,
+      'Cache-Control': 'public, max-age=0'
+    });
     res.end(content);
+    console.log(`Served: ${filePath}`);
   } catch (error) {
-    res.writeHead(404);
+    console.error(`Error serving ${filePath}:`, error.message);
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not Found');
   }
 });
 
+server.on('error', (err) => {
+  console.error('Server error:', err);
+  process.exit(1);
+});
+
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running at http://0.0.0.0:${PORT}/`);
+  console.log(`✓ Server running at http://0.0.0.0:${PORT}/`);
+  console.log(`✓ Ready to accept connections`);
 });
