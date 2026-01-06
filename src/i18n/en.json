@@ -5,7 +5,8 @@
     "education": "Education",
     "projects": "Projects",
     "experience": "Experience",
-    "skills": "Skills"
+    "skills": "Skills",
+    "sections": "Sections"
   },
   "hero": {
     "greeting": "",
