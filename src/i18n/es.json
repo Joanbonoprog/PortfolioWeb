@@ -15,10 +15,12 @@
   },
   "about": {
     "title": "Sobre Mí",
+    "subtitle": "Conoce más sobre mi trayectoria profesional",
     "description": "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua."
   },
   "skills": {
     "title": "Habilidades Técnicas",
+    "subtitle": "Tecnologías y herramientas que domino",
     "items": [
       "Desarrollo en Entorno Java (Java + Kotlin)",
       "Conocimientos básicos en C#",
@@ -35,6 +37,7 @@
   },
   "contact": {
     "title": "Contacto",
+    "subtitle": "Aqui tienes varias formas de contactarme",
     "phone": "Teléfono",
     "phoneValue": "(+34) 630 41 46 12",
     "email": "Email",

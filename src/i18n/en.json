@@ -15,10 +15,12 @@
   },
   "about": {
     "title": "About Me",
+    "subtitle": "Learn more about my professional background",
     "description": "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement."
   },
   "skills": {
     "title": "Technical Skills",
+    "subtitle": "Technologies and tools I master",
     "items": [
       "Java Development",
       "Basic knowledge in C#",
@@ -35,6 +37,7 @@
   },
   "contact": {
     "title": "Contact",
+    "subtitle": "Here are several ways to contact me",
     "phone": "Phone",
     "phoneValue": "(+34) 630 41 46 12",
     "email": "Email",
