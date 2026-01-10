@@ -77,7 +77,7 @@
     "items": [
       {
         "id": "proj-1",
-        "name": "Live Football App: TFG",
+        "name": "Live Football",
         "subtitle": "Final Degree Project",
         "description": "An Android application programmed in Java, whose purpose is to perform a complete management of a football match.\n\nSpecifically, I was in charge of the design and deployment of the database.",
         "icon": "/livefootbal_logo.png",
@@ -101,14 +101,14 @@
     "items": [
       {
         "title": "Master in Generative AI",
-        "type": "Master - 480h + TFM",
+        "type": "Master (480h + Final Project)",
         "institution": "EVOLVE, Remote",
         "year": "2025",
         "details": "AI Agents: Development of autonomous agents. Automation with AI: Integration of Generative AI capabilities in automated workflows. AI Chatbots: Design, implementation and optimization of chatbots powered by generative AI. No-code application development with AI: Creation of complete apps using platforms and tools with generative AI capability. Content Creation with AI (Image, Video, Audio): Content creation using Generative AI tools."
       },
       {
         "title": "Multiplatform Application Developer",
-        "type": "Higher Degree - FP",
+        "type": "Higher Degree - Vocational Training",
         "institution": "IFP FORMACIÓN, Remote",
         "year": "2021-2025",
         "details": "Development of applications for Android and Desktop mobile devices. Object-oriented programming with Java and C#. Web development with PHP and JavaScript. Design and management of relational databases with MySQL. Basic video game development with Unity. Creation and consumption of web services (REST APIs). Software development project management."
