@@ -11,30 +11,34 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
+    "title": "Software Developer + AI Specialist",
     "cta": "View Projects & Experience"
   },
   "about": {
     "title": "About Me",
+    "subtitle": "Learn more about my professional background",
     "description": "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement."
   },
   "skills": {
     "title": "Technical Skills",
+    "subtitle": "Technologies and tools I master",
     "items": [
-      "Java Development",
-      "Basic knowledge in C#",
-      "Database Development in mySQL",
-      "Basic knowledge of JavaScript and PHP",
-      "Android application development",
-      "Basic knowledge in Unity",
-      "Knowledge in automation with n8n and Make",
-      "Knowledge in Generative AIs and their implementation in Applications",
-      "Knowledge in AI chatbot development",
-      "Basic knowledge in Docker",
-      "Basic knowledge in Git"
+      { "name": "Java Development", "level": 65, "levelName": "Intermediate" },
+      { "name": "Basic knowledge in C#", "level": 30, "levelName": "Basic" },
+      { "name": "Database Development in mySQL", "level": 60, "levelName": "Intermediate-Advanced" },
+      { "name": "Basic knowledge of JavaScript and PHP", "level": 40, "levelName": "Basic" },
+      { "name": "Android application development", "level": 65, "levelName": "Intermediate" },
+      { "name": "Basic knowledge in Unity", "level": 25, "levelName": "Basic" },
+      { "name": "Knowledge in automation with n8n and Make", "level": 55, "levelName": "Intermediate" },
+      { "name": "Knowledge in Generative AIs and their implementation in Applications", "level": 60, "levelName": "Intermediate" },
+      { "name": "Knowledge in AI chatbot development", "level": 55, "levelName": "Intermediate" },
+      { "name": "Basic knowledge in Docker", "level": 35, "levelName": "Basic" },
+      { "name": "Basic knowledge in Git", "level": 50, "levelName": "Intermediate" }
     ]
   },
   "contact": {
     "title": "Contact",
+    "subtitle": "Here are several ways to contact me",
     "phone": "Phone",
     "phoneValue": "(+34) 630 41 46 12",
     "email": "Email",
@@ -77,7 +81,7 @@
     "items": [
       {
         "id": "proj-1",
-        "name": "Live Football App: TFG",
+        "name": "Live Football",
         "subtitle": "Final Degree Project",
         "description": "An Android application programmed in Java, whose purpose is to perform a complete management of a football match.\n\nSpecifically, I was in charge of the design and deployment of the database.",
         "icon": "/livefootbal_logo.png",
@@ -101,14 +105,14 @@
     "items": [
       {
         "title": "Master in Generative AI",
-        "type": "Master - 480h + TFM",
+        "type": "Master (480h + Final Project)",
         "institution": "EVOLVE, Remote",
         "year": "2025",
         "details": "AI Agents: Development of autonomous agents. Automation with AI: Integration of Generative AI capabilities in automated workflows. AI Chatbots: Design, implementation and optimization of chatbots powered by generative AI. No-code application development with AI: Creation of complete apps using platforms and tools with generative AI capability. Content Creation with AI (Image, Video, Audio): Content creation using Generative AI tools."
       },
       {
         "title": "Multiplatform Application Developer",
-        "type": "Higher Degree - FP",
+        "type": "Higher Degree - Vocational Training",
         "institution": "IFP FORMACIÓN, Remote",
         "year": "2021-2025",
         "details": "Development of applications for Android and Desktop mobile devices. Object-oriented programming with Java and C#. Web development with PHP and JavaScript. Design and management of relational databases with MySQL. Basic video game development with Unity. Creation and consumption of web services (REST APIs). Software development project management."
