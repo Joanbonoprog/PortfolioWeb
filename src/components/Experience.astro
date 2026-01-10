@@ -22,18 +22,23 @@ const { experience } = translations;
         <div class="animate-card bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
           <div class="p-8">
             <!-- Header -->
-            <div class="flex items-start gap-4 mb-6">
+            <div class="flex items-start gap-4 mb-6 relative">
               {exp.icon.startsWith('/') ? (
-                <div class="w-16 h-16 flex-shrink-0">
-                  <img src={exp.icon} alt={exp.role} class="w-full h-full object-contain" />
-                </div>
+                <img src={exp.icon} alt={exp.role} class="w-24 h-24 flex-shrink-0 object-contain group-hover:scale-110 transition-transform duration-300" />
               ) : (
-                <div class="text-5xl flex-shrink-0">{exp.icon}</div>
+                <div class="text-6xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{exp.icon}</div>
               )}
               <div class="flex-1">
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={exp.role}>
-                  {exp.role}
-                </h3>
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={exp.role}>
+                    {exp.role}
+                  </h3>
+                  {exp.period.includes('2025') && !exp.period.includes('-') && (
+                    <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full">
+                      Actual
+                    </span>
+                  )}
+                </div>
                 <p class="text-blue-600 dark:text-blue-400 font-medium mb-1" data-i18n-content={exp.company}>
                   {exp.company}
                 </p>

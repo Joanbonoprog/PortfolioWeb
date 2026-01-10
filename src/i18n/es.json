@@ -11,6 +11,7 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
+    "title": "Desarrollador de Software + IA Specialist",
     "cta": "Ver Proyectos y Experiencia"
   },
   "about": {
@@ -22,17 +23,17 @@
     "title": "Habilidades Técnicas",
     "subtitle": "Tecnologías y herramientas que domino",
     "items": [
-      "Desarrollo en Entorno Java (Java + Kotlin)",
-      "Conocimientos básicos en C#",
-      "Desarrollo de Bases de Datos en mySQL",
-      "Conocimientos básicos de JavaScript y PHP",
-      "Desarrollo de aplicaciones Android",
-      "Conocimientos básicos en Unity",
-      "Conocimientos en automatización con n8n y Make",
-      "Conocimientos en IAs Generativas y su implementación en Aplicaciones",
-      "Conocimientos en desarrollo de chatbots con IA",
-      "Conocimientos básicos en Docker",
-      "Conocimientos básicos en Git"
+      { "name": "Desarrollo en Entorno Java (Java + Kotlin)", "level": 65, "levelName": "Intermedio" },
+      { "name": "Conocimientos básicos en C#", "level": 30, "levelName": "Básico" },
+      { "name": "Desarrollo de Bases de Datos en mySQL", "level": 60, "levelName": "Intermedio-Avanzado" },
+      { "name": "Conocimientos básicos de JavaScript y PHP", "level": 40, "levelName": "Básico" },
+      { "name": "Desarrollo de aplicaciones Android", "level": 65, "levelName": "Intermedio" },
+      { "name": "Conocimientos básicos en Unity", "level": 25, "levelName": "Básico" },
+      { "name": "Conocimientos en automatización con n8n y Make", "level": 55, "levelName": "Intermedio" },
+      { "name": "Conocimientos en IAs Generativas y su implementación en Aplicaciones", "level": 60, "levelName": "Intermedio" },
+      { "name": "Conocimientos en desarrollo de chatbots con IA", "level": 55, "levelName": "Intermedio" },
+      { "name": "Conocimientos básicos en Docker", "level": 35, "levelName": "Básico" },
+      { "name": "Conocimientos básicos en Git", "level": 50, "levelName": "Intermedio" }
     ]
   },
   "contact": {
