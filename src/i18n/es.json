@@ -77,7 +77,7 @@
     "items": [
       {
         "id": "proj-1",
-        "name": "Live Football App: TFG",
+        "name": "Live Football",
         "subtitle": "Proyecto Final de Grado",
         "description": "Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol.\n\nEspecíficamente, me encargué del diseño y despliegue de la base de datos.",
         "icon": "/livefootbal_logo.png",
@@ -101,14 +101,14 @@
     "items": [
       {
         "title": "Máster en IA Generativa",
-        "type": "Master - 480h + TFM",
+        "type": "Master (480h + TFM)",
         "institution": "EVOLVE, Remoto",
         "year": "2025",
         "details": "Agentes de IA: Desarrollo de agentes autónomos. Automatización con IA: Integración de las Capacidades de la IA generativa en flujos de trabajo automatizados. Chatbots con IA: Diseño, implementación y optimización de chatbots potenciados con IA generativa. Desarrollo de aplicaciones sin código con IA: Creación de apps completas usando plataformas y herramientas con capacidad de IA generativa. Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa."
       },
       {
         "title": "Desarrollador de Aplicaciones Multiplataforma",
-        "type": "Grado Superior - FP",
+        "type": "Grado Superior",
         "institution": "IFP FORMACIÓN, Remoto",
         "year": "2021-2025",
         "details": "Desarrollo de aplicaciones para dispositivos móviles Android y Escritorio. Programación orientada a objetos con Java y C#. Desarrollo web con PHP y JavaScript. Diseño y gestión de bases de datos relacionales con MySQL. Desarrollo básico de videojuegos con Unity. Creación y consumo de servicios web (APIs REST). Gestión de proyectos de desarrollo de software."

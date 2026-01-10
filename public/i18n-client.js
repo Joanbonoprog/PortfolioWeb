@@ -162,7 +162,7 @@ const contentTranslations = {
     'Inglés (Básico Profesional)': 'Inglés (Básico Profesional)',
     // Educación
     'Máster en IA Generativa': 'Máster en IA Generativa',
-    'Master - 480h + TFM': 'Master - 480h + TFM',
+    'Master (480h + TFM)': 'Master (480h + TFM)',
     'Desarrollador de Aplicaciones Multiplataforma': 'Desarrollador de Aplicaciones Multiplataforma',
     'Grado Superior - FP': 'Grado Superior - FP',
     'Agentes de IA: Desarrollo de agentes autónomos': 'Agentes de IA: Desarrollo de agentes autónomos',
@@ -255,11 +255,11 @@ const contentTranslations = {
     'Inglés (Básico Profesional)': 'English (Professional Basic)',
     // Education
     'Máster en IA Generativa': 'Master in Generative AI',
-    'Master - 480h + TFM': 'Master - 480h + TFM',
+    'Master (480h + TFM)': 'Master (480h + Final Project)',
+    'Grado Superior': 'Higher Degree',
     "EVOLVE, Remoto": "EVOLVE, Remote",
     "IFP FORMACIÓN, Remoto": "IFP FORMACIÓN, Remote",
     'Desarrollador de Aplicaciones Multiplataforma': 'Multiplatform Application Developer',
-    'Grado Superior - FP': 'Higher Degree - FP',
     'Agentes de IA: Desarrollo de agentes autónomos': 'AI Agents: Development of autonomous agents',
     'Automatización con IA: Integración de las Capacidades de la IA generativa en flujos de trabajo automatizados': 'Automation with AI: Integration of Generative AI capabilities in automated workflows',
     'Chatbots con IA: Diseño, implementación y optimización de chatbots potenciados con IA generativa': 'AI Chatbots: Design, implementation and optimization of chatbots powered by generative AI',
