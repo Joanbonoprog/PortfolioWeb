@@ -12,31 +12,33 @@ const { nav } = translations;
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-    <!-- Back Button o Hamburger Menu -->
-    {showBackButton ? (
-      <a 
-        href={`/?lang=${currentLang}`}
-        class="flex items-center gap-2 px-3 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all hover:scale-105 shadow-md font-medium text-sm"
-        data-i18n-content="Volver al Inicio"
-      >
-        <span class="material-icons text-sm">arrow_back</span>
-        <span class="hidden sm:inline">{currentLang === 'es' ? 'Volver al Inicio' : 'Back to Home'}</span>
-      </a>
-    ) : showNav && (
-      <button
-        id="mobile-menu-toggle"
-        class="lg:hidden flex items-center gap-2 p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        aria-label="Toggle menu"
-      >
-        <span class="material-icons text-2xl">menu</span>
-        <span id="menu-sections-text" class="font-medium text-sm">{currentLang === 'es' ? 'Secciones' : 'Sections'}</span>
-      </button>
-    )}
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between relative">
+    <!-- Back Button o Hamburger Menu (izquierda) -->
+    <div class="flex items-center">
+      {showBackButton ? (
+        <a 
+          href={`/?lang=${currentLang}`}
+          class="flex items-center gap-2 px-3 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all hover:scale-105 shadow-md font-medium text-sm"
+          data-i18n-content="Volver al Inicio"
+        >
+          <span class="material-icons text-sm">arrow_back</span>
+          <span class="hidden sm:inline">{currentLang === 'es' ? 'Volver al Inicio' : 'Back to Home'}</span>
+        </a>
+      ) : showNav && (
+        <button
+          id="mobile-menu-toggle"
+          class="lg:hidden flex items-center gap-2 p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          aria-label="Toggle menu"
+        >
+          <span class="material-icons text-2xl">menu</span>
+          <span id="menu-sections-text" class="font-medium text-sm">{currentLang === 'es' ? 'Secciones' : 'Sections'}</span>
+        </button>
+      )}
+    </div>
 
-    <!-- Navigation Links (desktop) -->
+    <!-- Navigation Links (desktop - centrado absoluto) -->
     {showNav && (
-      <div class="hidden lg:flex items-center gap-4 xl:gap-6 mx-auto">
+      <div class="hidden lg:flex items-center gap-4 xl:gap-6 absolute left-1/2 transform -translate-x-1/2">
         <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base" data-i18n="nav.contact" data-i18n-content={nav.contact}>
           {nav.contact}
         </a>
@@ -58,8 +60,8 @@ const { nav } = translations;
       </div>
     )}
 
-    <!-- Theme Toggle & Language Selector -->
-    <div class="flex items-center gap-2 sm:gap-3 ml-auto">
+    <!-- Theme Toggle & Language Selector (derecha) -->
+    <div class="flex items-center gap-2 sm:gap-3">
       <!-- Theme Toggle Button -->
       <button
         id="theme-toggle"
@@ -117,12 +119,6 @@ const { nav } = translations;
   if (selector) {
     selector.value = currentLang;
     console.log('Idioma actual:', currentLang);
-  }
-
-  // Actualizar texto del menú móvil
-  const menuText = document.getElementById('menu-sections-text');
-  if (menuText) {
-    menuText.textContent = currentLang === 'es' ? 'Secciones' : 'Sections';
   }
 
   // Toggle mobile menu
