@@ -67,11 +67,21 @@
   html {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Offset para el header fijo */
   }
 
   body {
     min-height: 100vh;
     overflow-x: hidden;
+  }
+
+  /* Secciones con altura mínima de viewport */
+  section[id] {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 120px; /* Margen superior para que el contenido empiece arriba */
   }
 }
 
@@ -102,4 +112,28 @@
 
 .animate-slide-in {
   animation: slideIn 0.4s ease-out forwards;
+}
+
+/* Animaciones de scroll */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.scroll-animate.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación más suave para las tarjetas */
+.animate-card {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.animate-card.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }

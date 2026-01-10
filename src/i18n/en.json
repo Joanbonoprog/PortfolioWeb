@@ -11,30 +11,34 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
+    "title": "Software Developer + AI Specialist",
     "cta": "View Projects & Experience"
   },
   "about": {
     "title": "About Me",
+    "subtitle": "Learn more about my professional background",
     "description": "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement."
   },
   "skills": {
     "title": "Technical Skills",
+    "subtitle": "Technologies and tools I master",
     "items": [
-      "Java Development",
-      "Basic knowledge in C#",
-      "Database Development in mySQL",
-      "Basic knowledge of JavaScript and PHP",
-      "Android application development",
-      "Basic knowledge in Unity",
-      "Knowledge in automation with n8n and Make",
-      "Knowledge in Generative AIs and their implementation in Applications",
-      "Knowledge in AI chatbot development",
-      "Basic knowledge in Docker",
-      "Basic knowledge in Git"
+      { "name": "Java Development", "level": 65, "levelName": "Intermediate" },
+      { "name": "Basic knowledge in C#", "level": 30, "levelName": "Basic" },
+      { "name": "Database Development in mySQL", "level": 60, "levelName": "Intermediate-Advanced" },
+      { "name": "Basic knowledge of JavaScript and PHP", "level": 40, "levelName": "Basic" },
+      { "name": "Android application development", "level": 65, "levelName": "Intermediate" },
+      { "name": "Basic knowledge in Unity", "level": 25, "levelName": "Basic" },
+      { "name": "Knowledge in automation with n8n and Make", "level": 55, "levelName": "Intermediate" },
+      { "name": "Knowledge in Generative AIs and their implementation in Applications", "level": 60, "levelName": "Intermediate" },
+      { "name": "Knowledge in AI chatbot development", "level": 55, "levelName": "Intermediate" },
+      { "name": "Basic knowledge in Docker", "level": 35, "levelName": "Basic" },
+      { "name": "Basic knowledge in Git", "level": 50, "levelName": "Intermediate" }
     ]
   },
   "contact": {
     "title": "Contact",
+    "subtitle": "Here are several ways to contact me",
     "phone": "Phone",
     "phoneValue": "(+34) 630 41 46 12",
     "email": "Email",

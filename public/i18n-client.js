@@ -2,6 +2,7 @@
 const translations = {
   es: {
     hero: {
+      name: "Joan Bono Frígols",
       greeting: "",
       title: "Desarrollador de Software + IA Specialist",
       cta: "Ver Proyectos y Experiencia"
@@ -38,10 +39,12 @@ const translations = {
       title: "Idiomas"
     },
     skills: {
-      title: "Habilidades Técnicas"
+      title: "Habilidades Técnicas",
+      subtitle: "Tecnologías y herramientas que domino"
     },
     contact: {
       title: "Contacto",
+      subtitle: "Aqui tienes varias formas de contactarme",
       phone: "Teléfono",
       phoneValue: "(+34) 630 41 46 12",
       email: "Email",
@@ -196,6 +199,15 @@ const contentTranslations = {
     // Navigation
     'Volver al Inicio': 'Back to Home',
     'Contacto': 'Contact',
+    'Aqui tienes varias formas de contactarme': 'Here are several ways to contact me',
+    'Conoce más sobre mi trayectoria profesional': 'Learn more about my professional background',
+    'Tecnologías y herramientas que domino': 'Technologies and tools I master',
+    'Desarrollador de Software + IA Specialist': 'Software Developer + AI Specialist',
+    // Niveles de habilidades
+    'Básico': 'Basic',
+    'Intermedio': 'Intermediate',
+    'Intermedio-Avanzado': 'Intermediate-Advanced',
+    'Avanzado': 'Advanced',
     'Sobre Mí': 'About Me',
     'Educación': 'Education',
     'Proyectos': 'Projects',
