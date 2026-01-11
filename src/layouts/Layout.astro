@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import AccessibilityControls from '../components/AccessibilityControls.astro';
 
 interface Props {
 	title?: string;
@@ -43,6 +44,9 @@ const {
 		
 		<slot />
 		
+		<!-- Controles de accesibilidad -->
+		<AccessibilityControls />
+		
 		<!-- Botón flotante para volver arriba -->
 		<button 
 			id="scroll-to-top" 
@@ -60,6 +64,9 @@ const {
 		
 		<!-- Sistema de animaciones al hacer scroll -->
 		<script is:inline src="/scroll-animations.js"></script>
+		
+		<!-- Sistema de accesibilidad -->
+		<script is:inline src="/accessibility.js"></script>
 		
 		<!-- Script para el botón de scroll -->
 		<script is:inline>

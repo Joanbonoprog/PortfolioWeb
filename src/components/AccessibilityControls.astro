@@ -1,0 +1,88 @@
+---
+// Componente de controles de accesibilidad
+---
+
+<div id="accessibility-controls" class="fixed bottom-6 right-6 z-50">
+  <!-- Botón flotante para abrir/cerrar -->
+  <button
+    id="accessibility-toggle"
+    class="w-12 h-12 bg-blue-600 dark:bg-gray-800 text-white dark:text-gray-300 rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-gray-700 transition-all hover:scale-110 flex items-center justify-center"
+    aria-label="Controles de accesibilidad"
+  >
+    <span class="material-icons">settings_accessibility</span>
+  </button>
+
+  <!-- Panel de controles -->
+  <div
+    id="accessibility-panel"
+    class="absolute bottom-16 right-0 bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-4 w-64 hidden transition-all duration-300"
+  >
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+      Accesibilidad
+    </h3>
+
+    <!-- Control de tamaño de fuente -->
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        Tamaño de texto
+      </label>
+      <div class="flex gap-2">
+        <button
+          data-font-size="normal"
+          class="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          Normal
+        </button>
+        <button
+          data-font-size="large"
+          class="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          Grande
+        </button>
+        <button
+          data-font-size="extra-large"
+          class="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          Muy Grande
+        </button>
+      </div>
+    </div>
+
+    <!-- Información -->
+    <p class="text-xs text-gray-500 dark:text-gray-400">
+      Usa estos controles para mejorar tu experiencia de lectura
+    </p>
+  </div>
+</div>
+
+<script>
+  // Toggle del panel
+  const toggle = document.getElementById('accessibility-toggle');
+  const panel = document.getElementById('accessibility-panel');
+
+  toggle?.addEventListener('click', () => {
+    panel?.classList.toggle('hidden');
+  });
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    const controls = document.getElementById('accessibility-controls');
+    if (controls && !controls.contains(e.target as Node)) {
+      panel?.classList.add('hidden');
+    }
+  });
+</script>
+
+<style>
+  /* Estilo para botón activo */
+  [data-font-size].active {
+    background-color: rgb(59, 130, 246);
+    color: white;
+    border-color: rgb(59, 130, 246);
+  }
+
+  .dark [data-font-size].active {
+    background-color: rgb(96, 165, 250);
+    border-color: rgb(96, 165, 250);
+  }
+</style>

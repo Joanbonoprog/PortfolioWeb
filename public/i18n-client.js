@@ -208,6 +208,9 @@ const contentTranslations = {
     'Intermedio': 'Intermediate',
     'Intermedio-Avanzado': 'Intermediate-Advanced',
     'Avanzado': 'Advanced',
+    // Footer
+    'Todos los derechos reservados': 'All rights reserved',
+    'Hecho con ❤️ en Valencia, España': 'Made with ❤️ in Valencia, Spain',
     'Sobre Mí': 'About Me',
     'Educación': 'Education',
     'Proyectos': 'Projects',
