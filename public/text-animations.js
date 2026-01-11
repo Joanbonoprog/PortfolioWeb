@@ -1,8 +1,12 @@
 // Animaciones de texto
 document.addEventListener('DOMContentLoaded', () => {
-  // Agregar clase de animación a títulos de sección
-  const sectionTitles = document.querySelectorAll('section h2');
+  // Agregar clase de animación a títulos de sección (excepto Hero y typewriter)
+  const sectionTitles = document.querySelectorAll('section h2:not(#typewriter-title)');
   sectionTitles.forEach(title => {
+    // Ignorar si está dentro del Hero o es el typewriter
+    if (title.id === 'typewriter-title' || title.closest('section')?.querySelector('#typewriter-title')) {
+      return;
+    }
     title.classList.add('section-title');
     
     // Buscar todos los spans dentro del título
