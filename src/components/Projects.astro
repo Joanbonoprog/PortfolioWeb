@@ -27,7 +27,7 @@ const { projects } = translations;
                 <img 
                   src={project.icon} 
                   alt={project.name} 
-                  class={`flex-shrink-0 object-contain group-hover:scale-110 transition-transform duration-300 ${project.icon.includes('app_prototipado') ? 'w-32 h-32' : 'w-28 h-28'}`}
+                  class={`flex-shrink-0 object-contain group-hover:scale-110 transition-transform duration-300 ${project.icon.includes('app_prototipado') ? 'w-32 h-32 project-icon-clean' : 'w-28 h-28'}`}
                 />
               ) : (
                 <div class="text-6xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{project.icon}</div>
@@ -110,5 +110,10 @@ const { projects } = translations;
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Limpiar artefactos del icono de App Prototype Creator */
+  .project-icon-clean {
+    clip-path: inset(0 15% 15% 0);
   }
 </style>

@@ -62,17 +62,18 @@ const { hero } = translations;
     const currentLang = urlParams.get('lang') || 'es';
     
     // Textos según idioma
-    const texts = {
+    const texts: Record<string, string> = {
       es: 'Desarrollador de Software + IA Specialist',
       en: 'Software Developer + AI Specialist'
     };
     
-    const text = texts[currentLang] || texts.es;
+    // Validar que el idioma existe, si no usar español por defecto
+    const text = texts[currentLang] || texts['es'];
     console.log('Iniciando typewriter con texto:', text);
     let index = 0;
     
     function typeWriter() {
-      if (index < text.length) {
+      if (index < text.length && typewriterText) {
         typewriterText.textContent += text.charAt(index);
         index++;
         setTimeout(typeWriter, 80);
