@@ -3,6 +3,45 @@
 /* Configuración de modo oscuro para Tailwind v4 */
 @variant dark (.dark &);
 
+/* Controles de accesibilidad - Tamaño de fuente */
+html.font-size-normal {
+  font-size: 16px;
+}
+
+html.font-size-large {
+  font-size: 18px;
+}
+
+html.font-size-extra-large {
+  font-size: 20px;
+}
+
+/* Indicador de sección activa en navegación */
+.nav-active {
+  color: rgb(59, 130, 246) !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.dark .nav-active {
+  color: rgb(96, 165, 250) !important;
+}
+
+.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(59, 130, 246);
+  border-radius: 2px;
+}
+
+.dark .nav-active::after {
+  background: rgb(96, 165, 250);
+}
+
 /* Efecto de ondas animadas en el fondo */
 .animated-background {
   position: fixed;
