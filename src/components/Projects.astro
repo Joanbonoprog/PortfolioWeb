@@ -19,14 +19,15 @@ const { projects } = translations;
 
     <div class="grid md:grid-cols-2 gap-8">
       {projects.items.map((project: any) => (
-        <div class="animate-card bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
           <div class="p-8">
             <!-- Header -->
             <div class="flex items-start gap-4 mb-6 relative">
               {project.icon.startsWith('/') ? (
                 <img 
                   src={project.icon} 
-                  alt={project.name} 
+                  alt={project.name}
+                  loading="lazy"
                   class={`flex-shrink-0 object-contain group-hover:scale-110 transition-transform duration-300 ${project.icon.includes('app_prototipado') ? 'w-32 h-32 project-icon-clean' : 'w-28 h-28'}`}
                 />
               ) : (
@@ -71,7 +72,7 @@ const { projects } = translations;
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all hover:scale-105 font-medium"
+                  class="btn-ripple flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all hover:scale-105 font-medium"
                 >
                   <span class="material-icons text-lg">code</span>
                   <span data-i18n="projects.viewGithub">{projects.viewGithub}</span>
@@ -82,7 +83,7 @@ const { projects } = translations;
                   href={project.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
+                  class="btn-ripple flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
                 >
                   <span class="material-icons text-lg">language</span>
                   <span data-i18n="projects.visitWebsite">{projects.visitWebsite}</span>

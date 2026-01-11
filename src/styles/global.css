@@ -42,7 +42,201 @@ html.font-size-extra-large {
   background: rgb(96, 165, 250);
 }
 
-/* Efecto de ondas animadas en el fondo */
+/* Hover mejorado en tarjetas - Shimmer Effect */
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card-shimmer:hover::before {
+  left: 100%;
+}
+
+.dark .card-shimmer::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+}
+
+/* Botones con Ripple Effect */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  transition: width 0.6s, height 0.6s, opacity 0.6s;
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+}
+
+.dark .scroll-progress {
+  background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.5);
+}
+
+/* Botón de scroll to top - forzar posición fija */
+#scroll-to-top {
+  position: fixed !important;
+  left: 1.5rem !important;
+  bottom: 1.5rem !important;
+  z-index: 9998 !important;
+}
+
+#scroll-to-top.show {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Transiciones de página suaves */
+body {
+  transition: opacity 0.3s ease-in-out;
+}
+
+body.page-transition {
+  opacity: 0;
+}
+
+/* Elementos con traducción - transición suave */
+[data-i18n], [data-i18n-content] {
+  transition: opacity 0.2s ease-in-out;
+}
+
+body.language-changing [data-i18n],
+body.language-changing [data-i18n-content] {
+  opacity: 0.5;
+}
+
+/* Texto con aparición gradual - Títulos de sección */
+.section-title {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subrayado animado bajo títulos */
+.title-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 2px;
+  animation: underlineGrowCenter 1s ease-out 0.3s forwards;
+}
+
+.dark .title-underline::after {
+  background: linear-gradient(90deg, #60a5fa, #93c5fd);
+}
+
+@keyframes underlineGrow {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes underlineGrowCenter {
+  to {
+    width: 100%;
+  }
+}
+
+/* Palabras que aparecen una por una (stagger) */
+.stagger-text {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.stagger-text:nth-child(1) { animation-delay: 0.1s; }
+.stagger-text:nth-child(2) { animation-delay: 0.2s; }
+.stagger-text:nth-child(3) { animation-delay: 0.3s; }
+.stagger-text:nth-child(4) { animation-delay: 0.4s; }
+.stagger-text:nth-child(5) { animation-delay: 0.5s; }
+.stagger-text:nth-child(6) { animation-delay: 0.6s; }
+.stagger-text:nth-child(7) { animation-delay: 0.7s; }
+.stagger-text:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de ondas animadas en el fondo con parallax */
 .animated-background {
   position: fixed;
   top: 0;
@@ -51,6 +245,7 @@ html.font-size-extra-large {
   height: 100%;
   z-index: -1;
   overflow: hidden;
+  will-change: transform;
 }
 
 .wave {
@@ -58,6 +253,11 @@ html.font-size-extra-large {
   width: 200%;
   height: 200%;
   background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  animation: wave-animation 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.wave:nth-child(1) {
   animation: wave-animation 20s ease-in-out infinite;
 }
 
@@ -71,6 +271,18 @@ html.font-size-extra-large {
   background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
   animation: wave-animation 25s ease-in-out infinite;
   animation-delay: -10s;
+}
+
+@keyframes wave-animation {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(-40%, -40%) scale(1.05) rotate(5deg);
+  }
+  66% {
+    transform: translate(-30%, -30%) scale(1.1) rotate(-5deg);
+  }
 }
 
 /* Ondas más visibles en modo claro */

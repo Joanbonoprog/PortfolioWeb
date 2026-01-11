@@ -24,17 +24,24 @@ const {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- Google Fonts - Inter -->
+		<!-- Preconnect for performance -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 		
-		<!-- Material Icons -->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Google Fonts - Inter (optimized) -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+		
+		<!-- Material Icons (optimized) -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></noscript>
 		
 		<title>{title}</title>
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased transition-colors duration-300">
+		<!-- Scroll Progress Indicator -->
+		<div id="scroll-progress" class="scroll-progress"></div>
+		
 		<!-- Fondo animado con ondas -->
 		<div class="animated-background">
 			<div class="wave"></div>
@@ -50,7 +57,8 @@ const {
 		<!-- Botón flotante para volver arriba -->
 		<button 
 			id="scroll-to-top" 
-			class="fixed left-6 bottom-6 w-12 h-12 bg-blue-600 dark:bg-gray-800 text-white dark:text-gray-300 rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-gray-700 transition-all hover:scale-110 flex items-center justify-center opacity-0 pointer-events-none z-40"
+			class="btn-ripple fixed left-6 bottom-6 w-12 h-12 bg-blue-600 dark:bg-gray-800 text-white dark:text-gray-300 rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-gray-700 hover:scale-110 flex items-center justify-center z-[9998]"
+			style="opacity: 0; pointer-events: none; transition: opacity 0.3s ease;"
 			aria-label="Volver arriba"
 		>
 			<span class="material-icons">arrow_upward</span>
@@ -68,27 +76,58 @@ const {
 		<!-- Sistema de accesibilidad -->
 		<script is:inline src="/accessibility.js"></script>
 		
-		<!-- Script para el botón de scroll -->
+		<!-- Transiciones de idioma -->
+		<script is:inline src="/language-transition.js"></script>
+		
+		<!-- Animaciones de texto -->
+		<script is:inline src="/text-animations.js"></script>
+		
+		<!-- Script para el botón de scroll y progress bar -->
 		<script is:inline>
-			const scrollButton = document.getElementById('scroll-to-top');
-			
-			// Mostrar/ocultar botón según scroll
-			window.addEventListener('scroll', () => {
-				if (window.scrollY > 300) {
-					scrollButton.classList.remove('opacity-0', 'pointer-events-none');
-					scrollButton.classList.add('opacity-100');
-				} else {
-					scrollButton.classList.add('opacity-0', 'pointer-events-none');
-					scrollButton.classList.remove('opacity-100');
+			document.addEventListener('DOMContentLoaded', () => {
+				const scrollButton = document.getElementById('scroll-to-top');
+				const scrollProgress = document.getElementById('scroll-progress');
+				
+				console.log('Scroll button:', scrollButton);
+				console.log('Scroll progress:', scrollProgress);
+				
+				if (scrollButton) {
+					console.log('Estilos del botón:', window.getComputedStyle(scrollButton).opacity);
+					console.log('Posición del botón:', scrollButton.getBoundingClientRect());
 				}
-			});
-			
-			// Scroll suave al inicio
-			scrollButton.addEventListener('click', () => {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
+				
+				// Actualizar scroll progress y botón
+				window.addEventListener('scroll', () => {
+					// Progress bar
+					if (scrollProgress) {
+						const scrollTop = window.scrollY;
+						const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+						const scrollPercent = (scrollTop / docHeight) * 100;
+						scrollProgress.style.width = scrollPercent + '%';
+					}
+					
+					// Botón de scroll
+					if (scrollButton) {
+						if (window.scrollY > 300) {
+							console.log('Mostrando botón');
+							scrollButton.style.opacity = '1';
+							scrollButton.style.pointerEvents = 'auto';
+						} else {
+							scrollButton.style.opacity = '0';
+							scrollButton.style.pointerEvents = 'none';
+						}
+					}
 				});
+				
+				// Scroll suave al inicio
+				if (scrollButton) {
+					scrollButton.addEventListener('click', () => {
+						window.scrollTo({
+							top: 0,
+							behavior: 'smooth'
+						});
+					});
+				}
 			});
 		</script>
 	</body>
