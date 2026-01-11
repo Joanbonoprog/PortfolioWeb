@@ -23,17 +23,17 @@
     "title": "Habilidades Técnicas",
     "subtitle": "Tecnologías y herramientas que domino",
     "items": [
-      { "name": "Desarrollo en Entorno Java (Java + Kotlin)", "level": 65, "levelName": "Intermedio" },
+      { "name": "Desarrollo en Entorno Java (Java + Kotlin)", "level": 55, "levelName": "Intermedio" },
       { "name": "Conocimientos básicos en C#", "level": 30, "levelName": "Básico" },
-      { "name": "Desarrollo de Bases de Datos en mySQL", "level": 60, "levelName": "Intermedio-Avanzado" },
-      { "name": "Conocimientos básicos de JavaScript y PHP", "level": 40, "levelName": "Básico" },
-      { "name": "Desarrollo de aplicaciones Android", "level": 65, "levelName": "Intermedio" },
+      { "name": "Desarrollo de Bases de Datos en mySQL", "level": 50, "levelName": "Intermedio" },
+      { "name": "Conocimientos básicos de JavaScript y PHP", "level": 35, "levelName": "Básico" },
+      { "name": "Desarrollo de aplicaciones Android", "level": 55, "levelName": "Intermedio" },
       { "name": "Conocimientos básicos en Unity", "level": 25, "levelName": "Básico" },
       { "name": "Conocimientos en automatización con n8n y Make", "level": 55, "levelName": "Intermedio" },
       { "name": "Conocimientos en IAs Generativas y su implementación en Aplicaciones", "level": 60, "levelName": "Intermedio" },
       { "name": "Conocimientos en desarrollo de chatbots con IA", "level": 55, "levelName": "Intermedio" },
-      { "name": "Conocimientos básicos en Docker", "level": 35, "levelName": "Básico" },
-      { "name": "Conocimientos básicos en Git", "level": 50, "levelName": "Intermedio" }
+      { "name": "Conocimientos básicos en Docker", "level": 20, "levelName": "Básico" },
+      { "name": "Conocimientos básicos en Git", "level": 55, "levelName": "Intermedio" }
     ]
   },
   "contact": {

@@ -23,17 +23,17 @@
     "title": "Technical Skills",
     "subtitle": "Technologies and tools I master",
     "items": [
-      { "name": "Java Development", "level": 65, "levelName": "Intermediate" },
+      { "name": "Java Development", "level": 55, "levelName": "Intermediate" },
       { "name": "Basic knowledge in C#", "level": 30, "levelName": "Basic" },
-      { "name": "Database Development in mySQL", "level": 60, "levelName": "Intermediate-Advanced" },
-      { "name": "Basic knowledge of JavaScript and PHP", "level": 40, "levelName": "Basic" },
-      { "name": "Android application development", "level": 65, "levelName": "Intermediate" },
+      { "name": "Database Development in mySQL", "level": 50, "levelName": "Intermediate" },
+      { "name": "Basic knowledge of JavaScript and PHP", "level": 35, "levelName": "Basic" },
+      { "name": "Android application development", "level": 55, "levelName": "Intermediate" },
       { "name": "Basic knowledge in Unity", "level": 25, "levelName": "Basic" },
       { "name": "Knowledge in automation with n8n and Make", "level": 55, "levelName": "Intermediate" },
       { "name": "Knowledge in Generative AIs and their implementation in Applications", "level": 60, "levelName": "Intermediate" },
       { "name": "Knowledge in AI chatbot development", "level": 55, "levelName": "Intermediate" },
-      { "name": "Basic knowledge in Docker", "level": 35, "levelName": "Basic" },
-      { "name": "Basic knowledge in Git", "level": 50, "levelName": "Intermediate" }
+      { "name": "Basic knowledge in Docker", "level": 20, "levelName": "Basic" },
+      { "name": "Basic knowledge in Git", "level": 55, "levelName": "Intermediate" }
     ]
   },
   "contact": {
