@@ -211,6 +211,13 @@ const contentTranslations = {
     // Footer
     'Todos los derechos reservados': 'All rights reserved',
     'Hecho con ❤️ en Valencia, España': 'Made with ❤️ in Valencia, Spain',
+    // Accesibilidad
+    'Accesibilidad': 'Accessibility',
+    'Tamaño de texto': 'Text Size',
+    'Normal': 'Normal',
+    'Grande': 'Large',
+    'Muy Grande': 'Extra Large',
+    'Usa estos controles para mejorar tu experiencia de lectura': 'Use these controls to improve your reading experience',
     'Sobre Mí': 'About Me',
     'Educación': 'Education',
     'Proyectos': 'Projects',
