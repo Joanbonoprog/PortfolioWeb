@@ -52,7 +52,7 @@ const translations = {
       address: "Dirección",
       addressValue: "Calle Assagador, 15. Sellent (Valencia) 46295 - España",
       linkedin: "LinkedIn",
-      linkedinValue: "linkedin.com/in/bono-joan"
+      linkedinValue: "linkedin.com/in/joanbonoprog"
     },
     phone: {
       title: "Mis Proyectos y Experiencia",
@@ -117,7 +117,7 @@ const translations = {
       address: "Address",
       addressValue: "Assagador Street, 15. Sellent (Valencia) 46295 - Spain",
       linkedin: "LinkedIn",
-      linkedinValue: "linkedin.com/in/bono-joan"
+      linkedinValue: "linkedin.com/in/joanbonoprog"
     },
     phone: {
       title: "My Projects & Experience",
