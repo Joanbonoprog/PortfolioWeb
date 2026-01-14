@@ -67,15 +67,16 @@
         "role": "Content Creator",
         "company": "Asociación Cultura Festiva Sellent",
         "period": "2016-2018",
-        "description": "Digital campaigns were designed and executed that increased event visibility by +60%|Events were coordinated that increased the number of attendees by 40%",
+        "description": "Digital campaigns were designed and executed that Increased event visibility by +60%|Events were coordinated that Increased the number of attendees by 40%",
         "icon": "📱"
       }
     ]
   },
   "projects": {
-    "title": "Projects",
+    "title": "My Projects",
     "subtitle": "Featured projects that demonstrate my technical skills and creativity",
     "technologies": "Technologies",
+    "viewGallery": "View Image Gallery",
     "viewGithub": "View on GitHub",
     "visitWebsite": "Visit Website",
     "items": [

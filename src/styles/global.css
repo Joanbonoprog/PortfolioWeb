@@ -275,6 +275,52 @@ body.language-changing [data-i18n-content] {
 .stagger-text:nth-child(7) { animation-delay: 0.7s; }
 .stagger-text:nth-child(8) { animation-delay: 0.8s; }
 
+/* Visor de imágenes */
+#image-viewer-modal {
+  animation: fadeIn 0.3s ease-out;
+}
+
+#viewer-image {
+  transition: transform 0.3s ease;
+}
+
+/* Thumbnails slider */
+#thumbnails-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+#thumbnails-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+#thumbnails-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#thumbnails-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+#thumbnails-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.thumbnail {
+  transition: all 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
+}
+
+/* Evitar que los botones de los proyectos interfieran con el click de la tarjeta */
+.project-card-clickable a {
+  position: relative;
+  z-index: 10;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
