@@ -315,6 +315,12 @@ body.language-changing [data-i18n-content] {
   transform: scale(1.1);
 }
 
+/* Gesture hint */
+#gesture-hint {
+  transition: opacity 0.3s ease;
+  animation: fadeInUp 0.5s ease-out;
+}
+
 /* Evitar que los botones de los proyectos interfieran con el click de la tarjeta */
 .project-card-clickable a {
   position: relative;
