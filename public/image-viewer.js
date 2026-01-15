@@ -239,7 +239,8 @@ class ImageViewer {
       thumb.dataset.index = index;
       
       const img = document.createElement('img');
-      img.src = image.src;
+      // Codificar la URL para manejar caracteres especiales
+      img.src = encodeURI(image.src);
       img.alt = image.title;
       img.className = 'w-full h-full object-cover';
       
@@ -271,7 +272,8 @@ class ImageViewer {
     const title = document.getElementById('viewer-title');
     
     const currentImage = this.images[this.currentIndex];
-    img.src = currentImage.src;
+    // Codificar la URL para manejar caracteres especiales
+    img.src = encodeURI(currentImage.src);
     img.alt = currentImage.title;
     
     // Traducir el título
