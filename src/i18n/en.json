@@ -84,19 +84,19 @@
         "id": "proj-1",
         "name": "Live Football",
         "subtitle": "Final Degree Project",
-        "description": "An Android application programmed in Java, whose purpose is to perform a complete management of a football match.\n\nSpecifically, I was in charge of the design and deployment of the database.",
+        "description": "Comprehensive Android application for real-time football match tracking and team management. Features live updates, player statistics, custom notifications, and local storage with SQLite.\n\nSpecifically, I was responsible for designing and deploying the database architecture, implementing a robust local persistence system with SQLite for offline access.",
         "icon": "/livefootbal_logo.png",
-        "tech": ["Java", "Android", "MySQL", "XML Schema"],
+        "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson"],
         "github": "https://github.com/Slenderman1314/LiveFootball"
       },
       {
         "id": "proj-2",
-        "name": "App Prototype Creator: TFM",
+        "name": "App Prototype Creator",
         "subtitle": "Final Master Project",
-        "description": "A tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes.\n\nBuilt with Kotlin Multiplatform and Compose Multiplatform, allowing developers and designers to visualize and export their concepts efficiently.",
+        "description": "Cross-platform tool that uses AI to transform conceptual ideas into functional application prototypes. Features conversational AI chat, prototype gallery, detailed view, and export capabilities.\n\nDeveloped with Kotlin Multiplatform and Compose Multiplatform, runs on Android and Desktop with shared code, integrating Supabase for cloud persistence and full internationalization support.",
         "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
-        "tech": ["Kotlin", "Compose Multiplatform", "AI, PostgreSQL"]
+        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "Generative AI", "Napier"]
       }
     ]
   },
@@ -127,6 +127,10 @@
       "Valencian/Catalan (Native)",
       "English (Professional Basic)"
     ]
+  },
+  "gallery": {
+    "swipeDown": "Swipe down to close",
+    "swipeNavigate": "Swipe to navigate"
   },
   "footer": {
     "builtWith": "Built With",

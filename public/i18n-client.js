@@ -32,8 +32,25 @@ const translations = {
       title: "Mis Proyectos",
       subtitle: "Proyectos destacados que demuestran mis habilidades técnicas y creatividad",
       technologies: "Tecnologías",
+      viewGallery: "Ver Galería de Imágenes",
       viewGithub: "Ver en GitHub",
       visitWebsite: "Visitar Sitio Web"
+    },
+    gallery: {
+      swipeDown: "Desliza abajo para cerrar",
+      swipeNavigate: "Desliza para navegar",
+      images: {
+        'Libreria Prototipos App Prototype Creator': 'Librería de Prototipos',
+        'Chat IA Creacion Prototipos App Prototype Creator': 'Chat IA - Creación de Prototipos',
+        'Vista Prototipo App Prototype Creator': 'Vista de Prototipo',
+        'Libreria Prototipos Android App Prototype Creator': 'Librería de Prototipos Android',
+        'Vista Prototipo Android App Prototype Creator': 'Vista de Prototipo Android',
+        'Splash Screen FiveFootball': 'Pantalla de Inicio',
+        'Menu Principal FiveFootball': 'Menú Principal',
+        'Creacion Equipos LiveFootball': 'Creación de Equipos',
+        'Edicion Jugadores LiveFootball': 'Edición de Jugadores',
+        'Visualizacion Equipos LiveFootball': 'Visualización de Equipos'
+      }
     },
     languages: {
       title: "Idiomas"
@@ -99,8 +116,25 @@ const translations = {
       title: "Projects",
       subtitle: "Featured projects that demonstrate my technical skills and creativity",
       technologies: "Technologies",
+      viewGallery: "View Image Gallery",
       viewGithub: "View on GitHub",
       visitWebsite: "Visit Website"
+    },
+    gallery: {
+      swipeDown: "Swipe down to close",
+      swipeNavigate: "Swipe to navigate",
+      images: {
+        'Libreria Prototipos App Prototype Creator': 'Prototype Library',
+        'Chat IA Creacion Prototipos App Prototype Creator': 'AI Chat - Prototype Creation',
+        'Vista Prototipo App Prototype Creator': 'Prototype View',
+        'Libreria Prototipos Android App Prototype Creator': 'Android Prototype Library',
+        'Vista Prototipo Android App Prototype Creator': 'Android Prototype View',
+        'Splash Screen FiveFootball': 'Splash Screen',
+        'Menu Principal FiveFootball': 'Main Menu',
+        'Creacion Equipos LiveFootball': 'Team Creation',
+        'Edicion Jugadores LiveFootball': 'Player Editing',
+        'Visualizacion Equipos LiveFootball': 'Team Visualization'
+      }
     },
     languages: {
       title: "Languages"
@@ -150,8 +184,9 @@ const contentTranslations = {
     // Proyectos
     'Proyecto Final de Grado': 'Proyecto Final de Grado',
     'Proyecto Final de Master': 'Proyecto Final de Master',
-    'Una aplicación de Android programado en Java, cuya finalidad es destinada a realizar una gestión completa de un partido de futbol. Esencialmente, me encargue del Backend, además del diseño y despliegue de la base de datos.': 'Una aplicación de Android programado en Java, cuya finalidad es destinada a realizar una gestión completa de un partido de futbol. Esencialmente, me encargue del Backend, además del diseño y despliegue de la base de datos.',
-    'Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.': 'Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.',
+    // Descripciones actualizadas
+    'Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.': 'Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.',
+    'Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.': 'Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.',
     // Experiencias
     'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.': 'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.',
     'Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).': 'Participación en el Diseño y Estructura de la Web, Encargado de la Introducción y Prueba del Sistema de Personalizado de Productos, Participación en el Mantenimiento y Escalabilidad de la Pagina Web, Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop, Apoyo en el Posicionamiento de la Web (SEO).',
@@ -193,7 +228,23 @@ const contentTranslations = {
     'Conocimientos en desarrollo de chatbots con IA': 'Conocimientos en desarrollo de chatbots con IA',
     'Conocimientos básicos en el uso de motores gráficos como Unity': 'Conocimientos básicos en el uso de motores gráficos como Unity',
     'Conocimientos básicos en Docker': 'Conocimientos básicos en Docker',
-    'Conocimientos básicos en Git': 'Conocimientos básicos en Git'
+    'Conocimientos básicos en Git': 'Conocimientos básicos en Git',
+    // Nuevas tecnologías de proyectos
+    'Android SDK': 'Android SDK',
+    'SQLite': 'SQLite',
+    'Retrofit': 'Retrofit',
+    'Material Design': 'Material Design',
+    'Glide': 'Glide',
+    'RxJava': 'RxJava',
+    'OkHttp': 'OkHttp',
+    'Gson': 'Gson',
+    'Kotlin Multiplatform': 'Kotlin Multiplatform',
+    'Compose Multiplatform': 'Compose Multiplatform',
+    'Supabase': 'Supabase',
+    'Koin': 'Koin',
+    'Material Design 3': 'Material Design 3',
+    'IA Generativa': 'IA Generativa',
+    'Napier': 'Napier'
   },
   en: {
     // Navigation
@@ -242,8 +293,9 @@ const contentTranslations = {
     'Proyecto Final de Grado': 'Final Degree Project',
     'Proyecto Final de Master': 'Final Master Project',
     'Final Master Project': 'Final Master Project',
-    'Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol.\n\nEspecíficamente, me encargué del diseño y despliegue de la base de datos.': 'An Android application programmed in Java, whose purpose is to perform a complete management of a football match.\n\nSpecifically, I was in charge of the design and deployment of the database.',
-    'Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones.\n\nConstruida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.': 'A tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes.\n\nBuilt with Kotlin Multiplatform and Compose Multiplatform, allowing developers and designers to visualize and export their concepts efficiently.',
+    // Descripciones actualizadas
+    'Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.': 'Comprehensive Android application for real-time football match tracking and team management. Features live updates, player statistics, custom notifications, and local storage with SQLite.\n\nSpecifically, I was responsible for designing and deploying the database architecture, implementing a robust local persistence system with SQLite for offline access.',
+    'Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.': 'Cross-platform tool that uses AI to transform conceptual ideas into functional application prototypes. Features conversational AI chat, prototype gallery, detailed view, and export capabilities.\n\nDeveloped with Kotlin Multiplatform and Compose Multiplatform, runs on Android and Desktop with shared code, integrating Supabase for cloud persistence and full internationalization support.',
     // Experiences
     'Web Developer WordPress': 'WordPress Web Developer',
     'Creador de Contenido': 'Content Creator',
@@ -318,6 +370,22 @@ const contentTranslations = {
     'Conocimientos básicos en el uso de motores gráficos como Unity': 'Basic knowledge in the use of graphic engines like Unity',
     'Conocimientos básicos en Docker': 'Basic knowledge in Docker',
     'Conocimientos básicos en Git': 'Basic knowledge in Git',
+    // Nuevas tecnologías de proyectos
+    'Android SDK': 'Android SDK',
+    'SQLite': 'SQLite',
+    'Retrofit': 'Retrofit',
+    'Material Design': 'Material Design',
+    'Glide': 'Glide',
+    'RxJava': 'RxJava',
+    'OkHttp': 'OkHttp',
+    'Gson': 'Gson',
+    'Kotlin Multiplatform': 'Kotlin Multiplatform',
+    'Compose Multiplatform': 'Compose Multiplatform',
+    'Supabase': 'Supabase',
+    'Koin': 'Koin',
+    'Material Design 3': 'Material Design 3',
+    'IA Generativa': 'Generative AI',
+    'Napier': 'Napier',
     // Footer
     'Construido Con': 'Built With'
   }
