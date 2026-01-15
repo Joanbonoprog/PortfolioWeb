@@ -50,15 +50,15 @@ function getTechLogo(skill: string): string {
     </p>
 
     <!-- Skills Slider -->
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-2 md:gap-4">
       <!-- Botón Anterior -->
-      <button id="skills-prev" class="btn-ripple flex-shrink-0 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
-        <span class="material-icons text-2xl">chevron_left</span>
+      <button id="skills-prev" class="btn-ripple flex-shrink-0 hidden md:flex bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 md:p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
+        <span class="material-icons text-xl md:text-2xl">chevron_left</span>
       </button>
       
       <!-- Contenedor del slider -->
-      <div class="flex-1 overflow-hidden min-h-[400px] flex items-start">
-        <div id="skills-slider" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity duration-500 ease-out opacity-0 w-full auto-rows-max">
+      <div class="flex-1 overflow-hidden min-h-[300px] md:min-h-[400px] flex items-start">
+        <div id="skills-slider" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 transition-opacity duration-500 ease-out opacity-0 w-full auto-rows-max">
           {skills.items.map((skill: any, index: number) => {
             const skillName = typeof skill === 'string' ? skill : skill.name;
             const skillLevel = typeof skill === 'string' ? 70 : skill.level;
@@ -97,14 +97,20 @@ function getTechLogo(skill: string): string {
       </div>
       
       <!-- Botón Siguiente -->
-      <button id="skills-next" class="btn-ripple flex-shrink-0 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
-        <span class="material-icons text-2xl">chevron_right</span>
+      <button id="skills-next" class="btn-ripple flex-shrink-0 hidden md:flex bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 md:p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
+        <span class="material-icons text-xl md:text-2xl">chevron_right</span>
       </button>
     </div>
 
     <!-- Indicadores de página -->
-    <div id="skills-indicators" class="flex justify-center gap-2 mt-8">
+    <div id="skills-indicators" class="flex justify-center gap-2 mt-6 md:mt-8">
       <!-- Los indicadores se generarán dinámicamente -->
+    </div>
+    
+    <!-- Hint de gestos para móviles -->
+    <div id="skills-swipe-hint" class="md:hidden text-center mt-4 text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 opacity-70">
+      <span class="material-icons text-base">swipe</span>
+      <span>Desliza para navegar</span>
     </div>
   </div>
 </section>
@@ -290,6 +296,18 @@ function getTechLogo(skill: string): string {
     setTimeout(() => {
       if (slider) slider.style.opacity = '1';
     }, 100);
+    
+    // Ocultar hint de gestos después de 3 segundos en móviles
+    const swipeHint = document.getElementById('skills-swipe-hint');
+    if (swipeHint && window.innerWidth < 768) {
+      setTimeout(() => {
+        swipeHint.style.transition = 'opacity 0.5s ease';
+        swipeHint.style.opacity = '0';
+        setTimeout(() => {
+          swipeHint.style.display = 'none';
+        }, 500);
+      }, 3000);
+    }
   }
   
   // Inicializar slider
