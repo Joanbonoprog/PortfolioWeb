@@ -23,6 +23,13 @@ class ImageViewer {
       if (e.key === 'ArrowLeft') this.prev();
       if (e.key === 'ArrowRight') this.next();
     });
+    
+    // Escuchar cambios de idioma
+    document.addEventListener('languageChanged', () => {
+      if (this.isOpen()) {
+        this.showImage(); // Actualizar título con nuevo idioma
+      }
+    });
   }
 
   createModal() {
@@ -32,8 +39,12 @@ class ImageViewer {
     modal.innerHTML = `
       <div class="relative max-w-7xl w-full h-full flex flex-col">
         <!-- Header -->
-        <div class="flex justify-end items-center mb-4">
-          <button id="viewer-close" class="bg-black/30 hover:bg-black/50 text-white p-3 rounded-lg transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+        <div class="flex justify-between items-center mb-4">
+          <div id="swipe-hint" class="text-white text-sm md:hidden flex items-center gap-1">
+            <span class="material-icons text-lg">swipe_down</span>
+            <span data-i18n="gallery.swipeDown">Desliza abajo para cerrar</span>
+          </div>
+          <button id="viewer-close" class="btn-ripple bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
             <span class="material-icons text-2xl">close</span>
           </button>
         </div>
@@ -41,12 +52,12 @@ class ImageViewer {
         <!-- Image Container -->
         <div class="flex-1 flex items-center justify-center relative">
           <!-- Previous Button -->
-          <button id="viewer-prev" class="absolute left-4 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-lg transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-prev" class="btn-ripple absolute left-2 md:left-8 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
             <span class="material-icons text-3xl">chevron_left</span>
           </button>
 
           <!-- Image -->
-          <div class="relative max-h-full flex items-center justify-center">
+          <div class="relative max-h-full flex items-center justify-center mx-16 md:mx-24">
             <img 
               id="viewer-image" 
               src="" 
@@ -56,12 +67,12 @@ class ImageViewer {
             />
             <!-- Indicador de gestos para móviles -->
             <div id="gesture-hint" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm md:hidden">
-              Desliza para navegar
+              <span data-i18n="gallery.swipeNavigate">Desliza para navegar</span>
             </div>
           </div>
 
           <!-- Next Button -->
-          <button id="viewer-next" class="absolute right-4 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-lg transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-next" class="btn-ripple absolute right-2 md:right-8 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
             <span class="material-icons text-3xl">chevron_right</span>
           </button>
         </div>
@@ -80,13 +91,13 @@ class ImageViewer {
 
         <!-- Zoom Controls -->
         <div class="mt-4 flex justify-center gap-4">
-          <button id="viewer-zoom-out" class="bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-lg transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-zoom-out" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
             <span class="material-icons">zoom_out</span>
           </button>
-          <button id="viewer-zoom-reset" class="bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-lg transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-zoom-reset" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
             <span class="material-icons">fit_screen</span>
           </button>
-          <button id="viewer-zoom-in" class="bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-lg transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-zoom-in" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
             <span class="material-icons">zoom_in</span>
           </button>
         </div>
@@ -168,10 +179,9 @@ class ImageViewer {
     const isMobile = window.innerWidth <= 768;
     
     if (isMobile) {
-      // Ocultar botones de navegación en móviles
+      // Ocultar botones de navegación en móviles (pero mantener el botón de cerrar)
       document.getElementById('viewer-prev').style.display = 'none';
       document.getElementById('viewer-next').style.display = 'none';
-      document.getElementById('viewer-close').style.display = 'none';
       
       // Ajustar controles de zoom para móviles
       const zoomControls = document.querySelector('#image-viewer-modal .mt-4.flex.justify-center.gap-4');
@@ -185,18 +195,15 @@ class ImageViewer {
       const isMobileNow = window.innerWidth <= 768;
       const prevBtn = document.getElementById('viewer-prev');
       const nextBtn = document.getElementById('viewer-next');
-      const closeBtn = document.getElementById('viewer-close');
       const zoomControls = document.querySelector('#image-viewer-modal .mt-4.flex.justify-center.gap-4');
       
       if (isMobileNow) {
         if (prevBtn) prevBtn.style.display = 'none';
         if (nextBtn) nextBtn.style.display = 'none';
-        if (closeBtn) closeBtn.style.display = 'none';
         if (zoomControls) zoomControls.style.display = 'none';
       } else {
         if (prevBtn) prevBtn.style.display = 'block';
         if (nextBtn) nextBtn.style.display = 'block';
-        if (closeBtn) closeBtn.style.display = 'block';
         if (zoomControls) zoomControls.style.display = 'flex';
       }
     });
@@ -227,6 +234,11 @@ class ImageViewer {
         }, 300);
       }, 3000);
     }
+  }
+  
+  translateModal() {
+    // NO usar el sistema de traducción automático porque sobrescribe los títulos
+    // Las traducciones se manejan manualmente en translateImageTitle()
   }
   
   createThumbnails() {
@@ -274,8 +286,10 @@ class ImageViewer {
     img.src = currentImage.src;
     img.alt = currentImage.title;
     
-    // Traducir el título
-    title.textContent = this.translateImageTitle(currentImage.title);
+    // Traducir el título y forzar actualización
+    const translatedTitle = this.translateImageTitle(currentImage.title);
+    title.textContent = translatedTitle;
+    title.innerHTML = translatedTitle; // Forzar actualización
     
     // Resetear zoom
     this.resetZoom();
@@ -304,65 +318,43 @@ class ImageViewer {
   }
 
   translateImageTitle(filename) {
-    // Obtener el idioma actual
-    const currentLang = localStorage.getItem('language') || 'es';
+    // Obtener el idioma actual desde la URL, HTML lang o localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentLang = urlParams.get('lang') || document.documentElement.lang || localStorage.getItem('language') || 'es';
     
-    // Remover extensión y reemplazar guiones bajos por espacios
-    let title = filename.replace(/\.(png|jpg|jpeg|webp)$/i, '').replace(/_/g, ' ');
-    
-    // Traducciones específicas
+    // Diccionario de traducciones integrado
     const translations = {
-      'Chat IA Creación Prototipos App Prototype Creator': {
-        es: 'Chat IA - Creación de Prototipos',
-        en: 'AI Chat - Prototype Creation'
+      es: {
+        'Libreria Prototipos App Prototype Creator': 'Librería de Prototipos',
+        'Chat IA Creacion Prototipos App Prototype Creator': 'Chat IA - Creación de Prototipos',
+        'Vista Prototipo App Prototype Creator': 'Vista de Prototipo',
+        'Libreria Prototipos Android App Prototype Creator': 'Librería de Prototipos Android',
+        'Vista Prototipo Android App Prototype Creator': 'Vista de Prototipo Android',
+        'Splash Screen FiveFootball': 'Pantalla de Inicio',
+        'Menu Principal FiveFootball': 'Menú Principal',
+        'Creacion Equipos LiveFootball': 'Creación de Equipos',
+        'Edicion Jugadores LiveFootball': 'Edición de Jugadores',
+        'Visualizacion Equipos LiveFootball': 'Visualización de Equipos'
       },
-      'Creación Equipos LiveFootball': {
-        es: 'Creación de Equipos',
-        en: 'Team Creation'
-      },
-      'Edición Jugadores LiveFootball': {
-        es: 'Edición de Jugadores',
-        en: 'Player Editing'
-      },
-      'Libreria Prototipos Android App Prototype Creator': {
-        es: 'Librería de Prototipos Android',
-        en: 'Android Prototype Library'
-      },
-      'Libreria Prototipos App Prototype Creator': {
-        es: 'Librería de Prototipos',
-        en: 'Prototype Library'
-      },
-      'Menu Principal FiveFootball': {
-        es: 'Menú Principal',
-        en: 'Main Menu'
-      },
-      'Splash Screen FiveFootball': {
-        es: 'Pantalla de Inicio',
-        en: 'Splash Screen'
-      },
-      'Vista Prototipo Android App Prototype Creator': {
-        es: 'Vista de Prototipo Android',
-        en: 'Android Prototype View'
-      },
-      'Vista Prototipo App Prototype Creator': {
-        es: 'Vista de Prototipo',
-        en: 'Prototype View'
-      },
-      'Visualización Equipos LiveFootball': {
-        es: 'Visualización de Equipos',
-        en: 'Team Visualization'
-      },
-      'Menu Principal FiveFootball': {
-        es: 'Menú Principal',
-        en: 'Main Menu'
-      },
-      'Splash Screen FiveFootball': {
-        es: 'Pantalla de Inicio',
-        en: 'Splash Screen'
+      en: {
+        'Libreria Prototipos App Prototype Creator': 'Prototype Library',
+        'Chat IA Creacion Prototipos App Prototype Creator': 'AI Chat - Prototype Creation',
+        'Vista Prototipo App Prototype Creator': 'Prototype View',
+        'Libreria Prototipos Android App Prototype Creator': 'Android Prototype Library',
+        'Vista Prototipo Android App Prototype Creator': 'Android Prototype View',
+        'Splash Screen FiveFootball': 'Splash Screen',
+        'Menu Principal FiveFootball': 'Main Menu',
+        'Creacion Equipos LiveFootball': 'Team Creation',
+        'Edicion Jugadores LiveFootball': 'Player Editing',
+        'Visualizacion Equipos LiveFootball': 'Team Visualization'
       }
     };
     
-    return translations[title]?.[currentLang] || title;
+    // Buscar traducción
+    const translated = translations[currentLang]?.[filename];
+    
+    // Retornar traducción o el nombre original
+    return translated || filename;
   }
 
   next() {
@@ -406,7 +398,7 @@ const imageViewer = new ImageViewer();
 const projectImages = {
   'App Prototype Creator': [
     { src: '/Libreria_Prototipos_App_Prototype_Creator.png', title: 'Libreria Prototipos App Prototype Creator' },
-    { src: '/Chat_IA_Creacion_Prototipos_App_Prototype_Creator.png', title: 'Chat IA Creación Prototipos App Prototype Creator' },
+    { src: '/Chat_IA_Creacion_Prototipos_App_Prototype_Creator.png', title: 'Chat IA Creacion Prototipos App Prototype Creator' },
     { src: '/Vista_Prototipo_App_Prototype_Creator.png', title: 'Vista Prototipo App Prototype Creator' },
     { src: '/Libreria_Prototipos_Android_App_Prototype_Creator.png', title: 'Libreria Prototipos Android App Prototype Creator' },
     { src: '/Vista_Prototipo_Android_App_Prototype_Creator.png', title: 'Vista Prototipo Android App Prototype Creator' }
@@ -414,9 +406,9 @@ const projectImages = {
   'Live Football': [
     { src: '/Splash_Screen_FiveFootball.png', title: 'Splash Screen FiveFootball' },
     { src: '/Menu_Principal_FiveFootball.png', title: 'Menu Principal FiveFootball' },
-    { src: '/Creacion_Equipos_LiveFootball.png', title: 'Creación Equipos LiveFootball' },
-    { src: '/Edicion_Jugadores_LiveFootball.png', title: 'Edición Jugadores LiveFootball' },
-    { src: '/Visualizacion_Equipos_LiveFootball.png', title: 'Visualización Equipos LiveFootball' }
+    { src: '/Creacion_Equipos_LiveFootball.png', title: 'Creacion Equipos LiveFootball' },
+    { src: '/Edicion_Jugadores_LiveFootball.png', title: 'Edicion Jugadores LiveFootball' },
+    { src: '/Visualizacion_Equipos_LiveFootball.png', title: 'Visualizacion Equipos LiveFootball' }
   ]
 };
 

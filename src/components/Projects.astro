@@ -44,18 +44,6 @@ const { projects } = translations;
                 </p>
               </div>
             </div>
-            
-            <!-- Gallery Button -->
-            <div class="mb-6">
-              <button 
-                onclick={`openProjectGallery('${project.name}')`}
-                class="btn-ripple w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all hover:scale-105 font-medium shadow-lg hover:shadow-blue-500/50"
-              >
-                <span class="material-icons text-lg">photo_library</span>
-                <span data-i18n="projects.viewGallery">Ver Galería de Imágenes</span>
-                <span class="material-icons text-lg">arrow_forward</span>
-              </button>
-            </div>
 
             <!-- Description -->
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 whitespace-pre-line" data-i18n-content={project.description}>
@@ -78,6 +66,18 @@ const { projects } = translations;
                 </div>
               </div>
             )}
+
+            <!-- Gallery Button -->
+            <div class="mb-6">
+              <button 
+                onclick={`openProjectGallery('${project.name}')`}
+                class="btn-ripple w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 text-white rounded-lg hover:from-blue-700 hover:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-500 transition-all hover:scale-105 font-medium shadow-lg hover:shadow-blue-500/50"
+              >
+                <span class="material-icons text-lg">photo_library</span>
+                <span data-i18n="projects.viewGallery">Ver Galería de Imágenes</span>
+                <span class="material-icons text-lg">arrow_forward</span>
+              </button>
+            </div>
 
             <!-- Actions -->
             <div class="flex gap-3">

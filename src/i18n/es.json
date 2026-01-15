@@ -84,19 +84,19 @@
         "id": "proj-1",
         "name": "Live Football",
         "subtitle": "Proyecto Final de Grado",
-        "description": "Una aplicación de Android programado en Java, cuyo objetivo es realizar una gestión completa de un partido de fútbol.\n\nEspecíficamente, me encargué del diseño y despliegue de la base de datos.",
+        "description": "Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.",
         "icon": "/livefootbal_logo.png",
-        "tech": ["Java", "Android", "MySQL", "XML Squema"],
+        "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson"],
         "github": "https://github.com/Slenderman1314/LiveFootball"
       },
       {
         "id": "proj-2",
         "name": "App Prototype Creator",
         "subtitle": "Proyecto Final de Master",
-        "description": "Una herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones.\n\nConstruida con Kotlin Multiplatform y Compose Multiplatform, permitiendo a desarrolladores y diseñadores visualizar y exportar sus conceptos de manera eficiente.",
+        "description": "Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.",
         "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
-        "tech": ["Kotlin", "Compose Multiplatform", "IA", "PostGreSQL"]
+        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "IA Generativa", "Napier"]
       }
     ]
   },
@@ -127,6 +127,10 @@
       "Valenciano/Catalán (Nativo)",
       "Inglés (Básico Profesional)"
     ]
+  },
+  "gallery": {
+    "swipeDown": "Desliza abajo para cerrar",
+    "swipeNavigate": "Desliza para navegar"
   },
   "footer": {
     "builtWith": "Construido Con",
