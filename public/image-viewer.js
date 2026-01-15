@@ -4,6 +4,10 @@ class ImageViewer {
     this.currentProject = null;
     this.currentIndex = 0;
     this.images = [];
+    this.touchStartX = 0;
+    this.touchEndX = 0;
+    this.touchStartY = 0;
+    this.touchEndY = 0;
     this.init();
   }
 
@@ -47,9 +51,13 @@ class ImageViewer {
               id="viewer-image" 
               src="" 
               alt="" 
-              class="max-w-full max-h-[60vh] object-contain rounded-lg shadow-2xl transition-all duration-300"
+              class="max-w-full max-h-[60vh] md:max-h-[60vh] object-contain rounded-lg shadow-2xl transition-all duration-300"
               style="cursor: zoom-in;"
             />
+            <!-- Indicador de gestos para móviles -->
+            <div id="gesture-hint" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm md:hidden">
+              Desliza para navegar
+            </div>
           </div>
 
           <!-- Next Button -->
@@ -111,6 +119,87 @@ class ImageViewer {
         img.style.cursor = 'zoom-in';
       }
     });
+    
+    // Gestos táctiles para móviles
+    this.setupTouchGestures();
+    
+    // Ocultar botones en móviles
+    this.setupMobileView();
+  }
+  
+  setupTouchGestures() {
+    const imageContainer = document.querySelector('#image-viewer-modal .flex-1');
+    
+    imageContainer.addEventListener('touchstart', (e) => {
+      this.touchStartX = e.changedTouches[0].screenX;
+      this.touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    
+    imageContainer.addEventListener('touchend', (e) => {
+      this.touchEndX = e.changedTouches[0].screenX;
+      this.touchEndY = e.changedTouches[0].screenY;
+      this.handleGesture();
+    }, { passive: true });
+  }
+  
+  handleGesture() {
+    const diffX = this.touchEndX - this.touchStartX;
+    const diffY = this.touchEndY - this.touchStartY;
+    const minSwipeDistance = 50;
+    
+    // Detectar swipe horizontal (cambiar imagen)
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+      if (diffX > 0) {
+        // Swipe derecha - imagen anterior
+        this.prev();
+      } else {
+        // Swipe izquierda - imagen siguiente
+        this.next();
+      }
+    }
+    
+    // Detectar swipe vertical hacia abajo (cerrar)
+    if (diffY > minSwipeDistance && Math.abs(diffY) > Math.abs(diffX)) {
+      this.close();
+    }
+  }
+  
+  setupMobileView() {
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+      // Ocultar botones de navegación en móviles
+      document.getElementById('viewer-prev').style.display = 'none';
+      document.getElementById('viewer-next').style.display = 'none';
+      document.getElementById('viewer-close').style.display = 'none';
+      
+      // Ajustar controles de zoom para móviles
+      const zoomControls = document.querySelector('#image-viewer-modal .mt-4.flex.justify-center.gap-4');
+      if (zoomControls) {
+        zoomControls.style.display = 'none';
+      }
+    }
+    
+    // Actualizar vista al cambiar tamaño de ventana
+    window.addEventListener('resize', () => {
+      const isMobileNow = window.innerWidth <= 768;
+      const prevBtn = document.getElementById('viewer-prev');
+      const nextBtn = document.getElementById('viewer-next');
+      const closeBtn = document.getElementById('viewer-close');
+      const zoomControls = document.querySelector('#image-viewer-modal .mt-4.flex.justify-center.gap-4');
+      
+      if (isMobileNow) {
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (closeBtn) closeBtn.style.display = 'none';
+        if (zoomControls) zoomControls.style.display = 'none';
+      } else {
+        if (prevBtn) prevBtn.style.display = 'block';
+        if (nextBtn) nextBtn.style.display = 'block';
+        if (closeBtn) closeBtn.style.display = 'block';
+        if (zoomControls) zoomControls.style.display = 'flex';
+      }
+    });
   }
 
   open(projectName, images, startIndex = 0) {
@@ -127,6 +216,17 @@ class ImageViewer {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    
+    // Ocultar hint de gestos después de 3 segundos en móviles
+    const gestureHint = document.getElementById('gesture-hint');
+    if (gestureHint && window.innerWidth <= 768) {
+      setTimeout(() => {
+        gestureHint.style.opacity = '0';
+        setTimeout(() => {
+          gestureHint.style.display = 'none';
+        }, 300);
+      }, 3000);
+    }
   }
   
   createThumbnails() {
