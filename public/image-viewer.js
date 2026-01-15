@@ -239,8 +239,7 @@ class ImageViewer {
       thumb.dataset.index = index;
       
       const img = document.createElement('img');
-      // Codificar la URL para manejar caracteres especiales
-      img.src = encodeURI(image.src);
+      img.src = image.src;
       img.alt = image.title;
       img.className = 'w-full h-full object-cover';
       
@@ -272,8 +271,7 @@ class ImageViewer {
     const title = document.getElementById('viewer-title');
     
     const currentImage = this.images[this.currentIndex];
-    // Codificar la URL para manejar caracteres especiales
-    img.src = encodeURI(currentImage.src);
+    img.src = currentImage.src;
     img.alt = currentImage.title;
     
     // Traducir el título
@@ -408,7 +406,7 @@ const imageViewer = new ImageViewer();
 const projectImages = {
   'App Prototype Creator': [
     { src: '/Libreria_Prototipos_App_Prototype_Creator.png', title: 'Libreria Prototipos App Prototype Creator' },
-    { src: '/Chat_IA_Creación_Prototipos_App_Prototype_Creator.png', title: 'Chat IA Creación Prototipos App Prototype Creator' },
+    { src: '/Chat_IA_Creacion_Prototipos_App_Prototype_Creator.png', title: 'Chat IA Creación Prototipos App Prototype Creator' },
     { src: '/Vista_Prototipo_App_Prototype_Creator.png', title: 'Vista Prototipo App Prototype Creator' },
     { src: '/Libreria_Prototipos_Android_App_Prototype_Creator.png', title: 'Libreria Prototipos Android App Prototype Creator' },
     { src: '/Vista_Prototipo_Android_App_Prototype_Creator.png', title: 'Vista Prototipo Android App Prototype Creator' }
@@ -416,9 +414,9 @@ const projectImages = {
   'Live Football': [
     { src: '/Splash_Screen_FiveFootball.png', title: 'Splash Screen FiveFootball' },
     { src: '/Menu_Principal_FiveFootball.png', title: 'Menu Principal FiveFootball' },
-    { src: '/Creación_Equipos_LiveFootball.png', title: 'Creación Equipos LiveFootball' },
-    { src: '/Edición_Jugadores_LiveFootball.png', title: 'Edición Jugadores LiveFootball' },
-    { src: '/Visualización_Equipos_LiveFootball.png', title: 'Visualización Equipos LiveFootball' }
+    { src: '/Creacion_Equipos_LiveFootball.png', title: 'Creación Equipos LiveFootball' },
+    { src: '/Edicion_Jugadores_LiveFootball.png', title: 'Edición Jugadores LiveFootball' },
+    { src: '/Visualizacion_Equipos_LiveFootball.png', title: 'Visualización Equipos LiveFootball' }
   ]
 };
 
