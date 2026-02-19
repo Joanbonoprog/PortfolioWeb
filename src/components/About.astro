@@ -41,5 +41,174 @@ const { about, languages } = translations;
         </ul>
       </div>
     </div>
+
+    <!-- Botón Descargar CV -->
+    <div class="flex justify-center mt-10">
+      <button
+        id="cv-download-btn"
+        class="animate-card btn-ripple flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-300 border border-blue-400/30"
+      >
+        <span class="material-icons">download</span>
+        <span data-i18n="about.downloadCV">{about.downloadCV ?? 'Descargar CV'}</span>
+      </button>
+    </div>
   </div>
 </section>
+
+<!-- Modal de CV -->
+<div id="cv-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+  <!-- Backdrop -->
+  <div id="cv-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+  <!-- Modal Content -->
+  <div class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-lg p-8 z-10 animate-modal">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <span class="material-icons text-blue-600 dark:text-blue-400 text-3xl">description</span>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-i18n="cv.title">
+          Curriculum Vitae
+        </h3>
+      </div>
+      <button id="cv-modal-close" class="btn-ripple text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all duration-300 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+        <span class="material-icons text-2xl">close</span>
+      </button>
+    </div>
+
+    <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="cv.subtitle">
+      Selecciona el idioma y el estilo de CV que prefieras
+    </p>
+
+    <!-- Sección Español -->
+    <div class="mb-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-lg">🇪🇸</span>
+        <span class="font-semibold text-gray-900 dark:text-white text-sm tracking-wide uppercase">Español</span>
+        <div class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <!-- ES Harvard -->
+        <a
+          href="/CV/CV Harvard Español (Joan Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">article</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">Estilo Harvard</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+        <!-- ES Detallado -->
+        <a
+          href="/CV/CV Detallado Español  (Joan Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">feed</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">Detallado</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Separador -->
+    <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
+
+    <!-- Sección English -->
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-lg">🇬🇧</span>
+        <span class="font-semibold text-gray-900 dark:text-white text-sm tracking-wide uppercase">English</span>
+        <div class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <!-- EN Harvard -->
+        <a
+          href="/CV/CV Harvard Ingles (Joan Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">article</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">Harvard Style</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+        <!-- EN Detailed -->
+        <a
+          href="/CV/CV Detailed English (Joan Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">feed</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">Detailed</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes modal-in {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .animate-modal {
+    animation: modal-in 0.25s ease-out forwards;
+  }
+</style>
+
+<script>
+  function initCVModal() {
+    const btn = document.getElementById('cv-download-btn');
+    const modal = document.getElementById('cv-modal');
+    const backdrop = document.getElementById('cv-modal-backdrop');
+    const closeBtn = document.getElementById('cv-modal-close');
+
+    if (!btn || !modal) return;
+
+    function openModal() {
+      modal!.classList.remove('hidden');
+      modal!.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      // Disparar animación de entrada en las tarjetas
+      const cards = modal!.querySelectorAll('.animate-card');
+      cards.forEach((card, i) => {
+        const el = card as HTMLElement;
+        el.classList.remove('animate-in');
+        el.style.transitionDelay = `${i * 0.08}s`;
+        requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('animate-in')));
+      });
+    }
+
+    function closeModal() {
+      modal!.classList.add('hidden');
+      modal!.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', openModal);
+    backdrop?.addEventListener('click', closeModal);
+    closeBtn?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCVModal);
+  } else {
+    initCVModal();
+  }
+
+  document.addEventListener('astro:after-swap', initCVModal);
+</script>
