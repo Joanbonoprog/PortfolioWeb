@@ -17,7 +17,14 @@ const translations = {
     },
     about: {
       title: "Sobre Mí",
-      description: "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua."
+      description: "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua.",
+      downloadCV: "Descargar CV"
+    },
+    cv: {
+      title: "Curriculum Vitae",
+      subtitle: "Selecciona el idioma y el estilo de CV que prefieras",
+      styleHarvard: "Estilo Harvard",
+      styleDetailed: "Detallado"
     },
     education: {
       title: "Formación Académica",
@@ -101,7 +108,14 @@ const translations = {
     },
     about: {
       title: "About Me",
-      description: "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement."
+      description: "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement.",
+      downloadCV: "Download CV"
+    },
+    cv: {
+      title: "Curriculum Vitae",
+      subtitle: "Select the language and style of CV you prefer",
+      styleHarvard: "Harvard Style",
+      styleDetailed: "Detailed"
     },
     education: {
       title: "Academic Background",
