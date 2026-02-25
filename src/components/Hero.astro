@@ -22,6 +22,7 @@ const { hero } = translations;
     </div>
 
     <!-- Greeting -->
+    <p class="text-xl text-gray-600 dark:text-gray-400 mb-4 animate-fade-in" style="animation-delay: 0.1s; opacity: 0;" data-i18n="hero.greeting">
       {hero.greeting}
     </p>
 
@@ -49,27 +50,17 @@ const { hero } = translations;
   function initTypewriter() {
     const typewriterText = document.querySelector('.typewriter-text');
     
-    if (!typewriterText) {
-      console.error('typewriter-text no encontrado');
-      return;
-    }
-    
+    if (!typewriterText) return;
+
     // Limpiar cualquier contenido previo
     typewriterText.textContent = '';
-    
-    // Detectar idioma actual
+
+    // Leer de window.__i18n__ (fuente de verdad SSR)
     const urlParams = new URLSearchParams(window.location.search);
     const currentLang = urlParams.get('lang') || 'es';
-    
-    // Textos según idioma
-    const texts: Record<string, string> = {
-      es: 'Desarrollador de Software + IA Specialist',
-      en: 'Software Developer + AI Specialist'
-    };
-    
-    // Validar que el idioma existe, si no usar español por defecto
-    const text = texts[currentLang] || texts['es'];
-    console.log('Iniciando typewriter con texto:', text);
+    const text = (window as any).__i18n__?.[currentLang]?.hero?.title
+      || (window as any).__i18n__?.['es']?.hero?.title
+      || '';
     let index = 0;
     
     function typeWriter() {

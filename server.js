@@ -49,22 +49,18 @@ const SECURITY_HEADERS = {
 const server = createServer((req, res) => {
   console.log(`Request: ${req.method} ${req.url}`);
   
-  let filePath = join(DIST_DIR, req.url === '/' ? 'index.html' : req.url);
-  
-  // Remove query strings
-  filePath = filePath.split('?')[0];
-
-  // --- Fix: Path Traversal guard ---
-  // Resolve to an absolute path to neutralize any '../' sequences
-  const resolvedPath = resolve(filePath);
-  if (!resolvedPath.startsWith(DIST_DIR_RESOLVED + sep) &&
-      resolvedPath !== DIST_DIR_RESOLVED) {
-    res.writeHead(403, { 'Content-Type': 'text/plain', ...SECURITY_HEADERS });
-    res.end('Forbidden');
+  let rawUrl = req.url === '/' ? '/index.html' : req.url;
+  // Remove query strings before decoding to avoid decoding '?' or '&' in params
+  rawUrl = rawUrl.split('?')[0];
+  let filePath;
+  try {
+    filePath = join(DIST_DIR, decodeURIComponent(rawUrl));
+  } catch {
+    // decodeURIComponent throws on malformed sequences — treat as 404
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not Found');
     return;
   }
-  filePath = resolvedPath;
-  // ----------------------------------
   
   // Check if file exists
   if (!existsSync(filePath)) {

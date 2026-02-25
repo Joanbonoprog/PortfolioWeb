@@ -17,7 +17,18 @@
   "about": {
     "title": "Sobre Mí",
     "subtitle": "Conoce más sobre mi trayectoria profesional",
-    "description": "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua."
+    "description": "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua.",
+    "downloadCV": "Descargar CV"
+  },
+  "cv": {
+    "title": "Curriculum Vitae",
+    "subtitle": "Selecciona el idioma y el estilo de CV que prefieras",
+    "styleHarvard": "Estilo Harvard",
+    "styleDetailed": "Detallado"
+  },
+  "phone": {
+    "title": "Mis Proyectos y Experiencia",
+    "subtitle": "Toca las apps para ver más detalles"
   },
   "skills": {
     "title": "Habilidades Técnicas",
@@ -130,7 +141,19 @@
   },
   "gallery": {
     "swipeDown": "Desliza abajo para cerrar",
-    "swipeNavigate": "Desliza para navegar"
+    "swipeNavigate": "Desliza para navegar",
+    "images": {
+      "Libreria Prototipos App Prototype Creator": "Librería de Prototipos",
+      "Chat IA Creacion Prototipos App Prototype Creator": "Chat IA - Creación de Prototipos",
+      "Vista Prototipo App Prototype Creator": "Vista de Prototipo",
+      "Libreria Prototipos Android App Prototype Creator": "Librería de Prototipos Android",
+      "Vista Prototipo Android App Prototype Creator": "Vista de Prototipo Android",
+      "Splash Screen FiveFootball": "Pantalla de Inicio",
+      "Menu Principal FiveFootball": "Menú Principal",
+      "Creacion Equipos LiveFootball": "Creación de Equipos",
+      "Edicion Jugadores LiveFootball": "Edición de Jugadores",
+      "Visualizacion Equipos LiveFootball": "Visualización de Equipos"
+    }
   },
   "footer": {
     "builtWith": "Construido Con",
