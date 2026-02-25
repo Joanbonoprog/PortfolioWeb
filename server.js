@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync } from 'node:fs';
-import { join, extname } from 'node:path';
+import { readFile, existsSync, statSync } from 'node:fs';
+import { join, extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 
@@ -29,6 +29,21 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf',
   '.webp': 'image/webp',
+};
+
+const DIST_DIR_RESOLVED = resolve(DIST_DIR);
+
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Content-Security-Policy':
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline'; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "font-src 'self' https://fonts.gstatic.com; " +
+    "img-src 'self' data: https://cdn.jsdelivr.net https://astro.build; " +
+    "connect-src 'self';"
 };
 
 const server = createServer((req, res) => {
@@ -65,20 +80,20 @@ const server = createServer((req, res) => {
   
   const ext = extname(filePath);
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-  
-  try {
-    const content = readFileSync(filePath);
-    res.writeHead(200, { 
+
+  readFile(filePath, (error, content) => {
+    if (error) {
+      res.writeHead(404, { 'Content-Type': 'text/plain', ...SECURITY_HEADERS });
+      res.end('Not Found');
+      return;
+    }
+    res.writeHead(200, {
       'Content-Type': contentType,
-      'Cache-Control': 'public, max-age=0'
+      'Cache-Control': 'public, max-age=0',
+      ...SECURITY_HEADERS
     });
     res.end(content);
-    console.log(`Served: ${filePath}`);
-  } catch (error) {
-    console.error(`Error serving ${filePath}:`, error.message);
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Not Found');
-  }
+  });
 });
 
 server.on('error', (err) => {

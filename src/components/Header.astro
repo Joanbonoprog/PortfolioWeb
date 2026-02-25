@@ -76,7 +76,7 @@ const { nav } = translations;
       <select 
         id="language-selector" 
         class="px-2 sm:px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
-        onchange="window.location.href = window.location.pathname + '?lang=' + this.value"
+        onchange="var l=['es','en']; window.location.href = window.location.pathname + '?lang=' + (l.includes(this.value) ? this.value : 'es')"
       >
         <option value="es" selected={currentLang === 'es'}>🇪🇸 ES</option>
         <option value="en" selected={currentLang === 'en'}>🇬🇧 EN</option>

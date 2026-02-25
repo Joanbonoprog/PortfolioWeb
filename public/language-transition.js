@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (languageSelector) {
     // Reemplazar el onchange inline con uno que tenga transición
     languageSelector.onchange = function(e) {
-      const newLang = this.value;
+      const ALLOWED_LANGS = ['es', 'en'];
+      const newLang = ALLOWED_LANGS.includes(this.value) ? this.value : 'es';
       
       // Agregar clase de transición
       document.body.classList.add('language-changing');
