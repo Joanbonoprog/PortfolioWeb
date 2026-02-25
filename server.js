@@ -62,6 +62,16 @@ const server = createServer((req, res) => {
     return;
   }
   
+  // Path Traversal guard: ensure resolved path stays within dist/
+  const resolvedPath = resolve(filePath);
+  if (!resolvedPath.startsWith(DIST_DIR_RESOLVED + sep) &&
+      resolvedPath !== DIST_DIR_RESOLVED) {
+    res.writeHead(403, { 'Content-Type': 'text/plain', ...SECURITY_HEADERS });
+    res.end('Forbidden');
+    return;
+  }
+  filePath = resolvedPath;
+
   // Check if file exists
   if (!existsSync(filePath)) {
     // Try with .html extension
