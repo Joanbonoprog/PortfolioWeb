@@ -47,8 +47,6 @@ const SECURITY_HEADERS = {
 };
 
 const server = createServer((req, res) => {
-  console.log(`Request: ${req.method} ${req.url}`);
-  
   let rawUrl = req.url === '/' ? '/index.html' : req.url;
   // Remove query strings before decoding to avoid decoding '?' or '&' in params
   rawUrl = rawUrl.split('?')[0];
