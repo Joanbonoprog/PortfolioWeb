@@ -117,12 +117,11 @@ function getTechLogo(skill: string): string {
 
 <script>
   // Animar las barras de progreso cuando entran en viewport
-  function initSkillBars() {
+  function initSkillBars(retries = 0) {
     const progressBars = document.querySelectorAll('.skill-progress');
     
     if (progressBars.length === 0) {
-      // Si no hay barras, reintentar después de un momento
-      setTimeout(initSkillBars, 100);
+      if (retries < 20) setTimeout(() => initSkillBars(retries + 1), 100);
       return;
     }
     
@@ -146,13 +145,13 @@ function getTechLogo(skill: string): string {
   
   // Inicializar cuando el DOM esté listo
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSkillBars);
+    document.addEventListener('DOMContentLoaded', () => initSkillBars());
   } else {
     initSkillBars();
   }
   
   // También reinicializar después de cambios de idioma
-  document.addEventListener('astro:after-swap', initSkillBars);
+  document.addEventListener('astro:after-swap', () => initSkillBars());
 
   // Control del slider de skills
   function initSkillsSlider() {
