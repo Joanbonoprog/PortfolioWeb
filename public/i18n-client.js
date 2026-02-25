@@ -246,7 +246,6 @@ function applyTranslations() {
     
     if (value) {
       el.textContent = value;
-      console.log(`Traducido: ${key} = ${value}`);
     }
   });
   
@@ -255,7 +254,6 @@ function applyTranslations() {
     const text = el.getAttribute('data-i18n-content');
     if (ct[text]) {
       el.textContent = ct[text];
-      console.log(`Traducido (content): ${text} → ${ct[text]}`);
     }
   });
   
@@ -264,7 +262,6 @@ function applyTranslations() {
     const text = el.textContent.trim();
     if (ct[text]) {
       el.textContent = ct[text];
-      console.log(`Contenido traducido: ${text} → ${ct[text]}`);
     }
   });
 }

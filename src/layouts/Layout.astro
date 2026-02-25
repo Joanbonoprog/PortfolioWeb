@@ -100,14 +100,6 @@ const i18nEn = getTranslations('en');
 				const scrollButton = document.getElementById('scroll-to-top');
 				const scrollProgress = document.getElementById('scroll-progress');
 				
-				console.log('Scroll button:', scrollButton);
-				console.log('Scroll progress:', scrollProgress);
-				
-				if (scrollButton) {
-					console.log('Estilos del botón:', window.getComputedStyle(scrollButton).opacity);
-					console.log('Posición del botón:', scrollButton.getBoundingClientRect());
-				}
-				
 				// Actualizar scroll progress y botón
 				window.addEventListener('scroll', () => {
 					// Progress bar
@@ -121,7 +113,6 @@ const i18nEn = getTranslations('en');
 					// Botón de scroll
 					if (scrollButton) {
 						if (window.scrollY > 300) {
-							console.log('Mostrando botón');
 							scrollButton.style.opacity = '1';
 							scrollButton.style.pointerEvents = 'auto';
 						} else {

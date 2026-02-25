@@ -15,17 +15,7 @@ const translations = {
  * @returns Objeto con todas las traducciones
  */
 export function getTranslations(lang: Language = 'es') {
-  console.log('=== getTranslations ===');
-  console.log('Idioma solicitado:', lang);
-  console.log('Traducciones disponibles:', Object.keys(translations));
-  
-  const result = translations[lang] || translations.es;
-  
-  console.log('Saludo en español:', translations.es.hero.greeting);
-  console.log('Saludo en inglés:', translations.en.hero.greeting);
-  console.log('Saludo seleccionado:', result.hero.greeting);
-  
-  return result;
+  return translations[lang] || translations.es;
 }
 
 /**
