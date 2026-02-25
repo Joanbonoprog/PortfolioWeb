@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import AccessibilityControls from '../components/AccessibilityControls.astro';
+import { getTranslations } from '../i18n/index';
+import type { Language } from '../i18n/index';
 
 interface Props {
 	title?: string;
@@ -13,6 +15,9 @@ const {
 	description = 'Desarrollador de Software + IA Specialist',
 	lang = 'es'
 } = Astro.props;
+
+const i18nEs = getTranslations('es');
+const i18nEn = getTranslations('en');
 ---
 
 <!doctype html>
@@ -37,6 +42,10 @@ const {
 		<noscript><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></noscript>
 		
 		<title>{title}</title>
+		<!-- Traducciones SSR embebidas — fuente de verdad única para el cliente -->
+		<script is:inline define:vars={{ i18nEs, i18nEn }}>
+			window.__i18n__ = { es: i18nEs, en: i18nEn };
+		</script>
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased transition-colors duration-300">
 		<!-- Scroll Progress Indicator -->

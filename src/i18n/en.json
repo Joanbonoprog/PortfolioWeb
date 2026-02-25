@@ -17,7 +17,18 @@
   "about": {
     "title": "About Me",
     "subtitle": "Learn more about my professional background",
-    "description": "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement."
+    "description": "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement.",
+    "downloadCV": "Download CV"
+  },
+  "cv": {
+    "title": "Curriculum Vitae",
+    "subtitle": "Select the language and style of CV you prefer",
+    "styleHarvard": "Harvard Style",
+    "styleDetailed": "Detailed"
+  },
+  "phone": {
+    "title": "My Projects & Experience",
+    "subtitle": "Tap the apps to see more details"
   },
   "skills": {
     "title": "Technical Skills",
@@ -130,7 +141,19 @@
   },
   "gallery": {
     "swipeDown": "Swipe down to close",
-    "swipeNavigate": "Swipe to navigate"
+    "swipeNavigate": "Swipe to navigate",
+    "images": {
+      "Libreria Prototipos App Prototype Creator": "Prototype Library",
+      "Chat IA Creacion Prototipos App Prototype Creator": "AI Chat - Prototype Creation",
+      "Vista Prototipo App Prototype Creator": "Prototype View",
+      "Libreria Prototipos Android App Prototype Creator": "Android Prototype Library",
+      "Vista Prototipo Android App Prototype Creator": "Android Prototype View",
+      "Splash Screen FiveFootball": "Splash Screen",
+      "Menu Principal FiveFootball": "Main Menu",
+      "Creacion Equipos LiveFootball": "Team Creation",
+      "Edicion Jugadores LiveFootball": "Player Editing",
+      "Visualizacion Equipos LiveFootball": "Team Visualization"
+    }
   },
   "footer": {
     "builtWith": "Built With",

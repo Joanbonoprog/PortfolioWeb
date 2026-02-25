@@ -34,10 +34,18 @@ const MIME_TYPES = {
 const server = createServer((req, res) => {
   console.log(`Request: ${req.method} ${req.url}`);
   
-  let filePath = join(DIST_DIR, req.url === '/' ? 'index.html' : req.url);
-  
-  // Remove query strings
-  filePath = filePath.split('?')[0];
+  let rawUrl = req.url === '/' ? '/index.html' : req.url;
+  // Remove query strings before decoding to avoid decoding '?' or '&' in params
+  rawUrl = rawUrl.split('?')[0];
+  let filePath;
+  try {
+    filePath = join(DIST_DIR, decodeURIComponent(rawUrl));
+  } catch {
+    // decodeURIComponent throws on malformed sequences — treat as 404
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not Found');
+    return;
+  }
   
   // Check if file exists
   if (!existsSync(filePath)) {

@@ -318,43 +318,15 @@ class ImageViewer {
   }
 
   translateImageTitle(filename) {
-    // Obtener el idioma actual desde la URL, HTML lang o localStorage
     const urlParams = new URLSearchParams(window.location.search);
-    let currentLang = urlParams.get('lang') || document.documentElement.lang || localStorage.getItem('language') || 'es';
-    
-    // Diccionario de traducciones integrado
-    const translations = {
-      es: {
-        'Libreria Prototipos App Prototype Creator': 'Librería de Prototipos',
-        'Chat IA Creacion Prototipos App Prototype Creator': 'Chat IA - Creación de Prototipos',
-        'Vista Prototipo App Prototype Creator': 'Vista de Prototipo',
-        'Libreria Prototipos Android App Prototype Creator': 'Librería de Prototipos Android',
-        'Vista Prototipo Android App Prototype Creator': 'Vista de Prototipo Android',
-        'Splash Screen FiveFootball': 'Pantalla de Inicio',
-        'Menu Principal FiveFootball': 'Menú Principal',
-        'Creacion Equipos LiveFootball': 'Creación de Equipos',
-        'Edicion Jugadores LiveFootball': 'Edición de Jugadores',
-        'Visualizacion Equipos LiveFootball': 'Visualización de Equipos'
-      },
-      en: {
-        'Libreria Prototipos App Prototype Creator': 'Prototype Library',
-        'Chat IA Creacion Prototipos App Prototype Creator': 'AI Chat - Prototype Creation',
-        'Vista Prototipo App Prototype Creator': 'Prototype View',
-        'Libreria Prototipos Android App Prototype Creator': 'Android Prototype Library',
-        'Vista Prototipo Android App Prototype Creator': 'Android Prototype View',
-        'Splash Screen FiveFootball': 'Splash Screen',
-        'Menu Principal FiveFootball': 'Main Menu',
-        'Creacion Equipos LiveFootball': 'Team Creation',
-        'Edicion Jugadores LiveFootball': 'Player Editing',
-        'Visualizacion Equipos LiveFootball': 'Team Visualization'
-      }
-    };
-    
-    // Buscar traducción
-    const translated = translations[currentLang]?.[filename];
-    
-    // Retornar traducción o el nombre original
-    return translated || filename;
+    const currentLang = urlParams.get('lang') || document.documentElement.lang || 'es';
+
+    // Leer de window.__i18n__ (fuente de verdad SSR)
+    const images = window.__i18n__?.[currentLang]?.gallery?.images
+      || window.__i18n__?.['es']?.gallery?.images
+      || {};
+
+    return images[filename] || filename;
   }
 
   next() {
