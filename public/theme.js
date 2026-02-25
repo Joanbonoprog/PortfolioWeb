@@ -31,12 +31,8 @@
   function toggleTheme() {
     const currentTheme = getStoredTheme();
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    console.log('🔄 Cambiando tema de', currentTheme, 'a', newTheme);
     applyTheme(newTheme);
-    
-    // Actualizar icono del botón
     updateThemeButton(newTheme);
-    console.log('✅ Tema aplicado:', newTheme);
   }
   
   // Actualizar icono del botón
@@ -61,13 +57,11 @@
   
   // Aplicar tema inmediatamente para evitar flash
   const theme = getStoredTheme();
-  console.log('Tema inicial:', theme);
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');
   }
-  console.log('Clases del HTML:', document.documentElement.className);
   
   // Inicializar cuando el DOM esté listo
   if (document.readyState === 'loading') {

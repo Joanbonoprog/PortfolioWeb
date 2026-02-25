@@ -16,11 +16,6 @@ const url = Astro.url;
 const langParam = url.searchParams.get('lang');
 const currentLang: Language = (langParam === 'en' || langParam === 'es') ? langParam as Language : 'es';
 
-// Debug
-console.log('URL:', url.href);
-console.log('Lang param:', langParam);
-console.log('Current lang:', currentLang);
-
 // Obtener traducciones
 const translations = getTranslations(currentLang);
 ---

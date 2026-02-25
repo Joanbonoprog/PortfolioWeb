@@ -286,10 +286,9 @@ class ImageViewer {
     img.src = currentImage.src;
     img.alt = currentImage.title;
     
-    // Traducir el título y forzar actualización
+    // Traducir el título
     const translatedTitle = this.translateImageTitle(currentImage.title);
     title.textContent = translatedTitle;
-    title.innerHTML = translatedTitle; // Forzar actualización
     
     // Resetear zoom
     this.resetZoom();
