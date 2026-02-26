@@ -80,7 +80,7 @@ const { nav } = translations;
           aria-haspopup="listbox"
           aria-expanded="false"
         >
-          <span id="lang-flag" class={`fi fi-${currentLang === 'en' ? 'gb' : 'es'} rounded-sm`}></span>
+          <span id="lang-flag" class={`fi fi-${currentLang === 'en' ? 'gb' : 'es'} rounded-sm`}></span>{/* #6: mapping duplicado resuelto en script con langToFlag() */}
           <span id="lang-label">{currentLang.toUpperCase()}</span>
           <span class="material-icons text-base leading-none">expand_more</span>
         </button>
@@ -92,6 +92,7 @@ const { nav } = translations;
           <li
             role="option"
             data-lang="es"
+            aria-selected={currentLang === 'es' ? 'true' : 'false'}
             class="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors"
           >
             <span class="fi fi-es rounded-sm"></span> ES
@@ -99,6 +100,7 @@ const { nav } = translations;
           <li
             role="option"
             data-lang="en"
+            aria-selected={currentLang === 'en' ? 'true' : 'false'}
             class="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors"
           >
             <span class="fi fi-gb rounded-sm"></span> EN
@@ -140,6 +142,9 @@ const { nav } = translations;
   const urlParams = new URLSearchParams(window.location.search);
   const currentLang = urlParams.get('lang') || 'es';
 
+  // #6: fuente de verdad única para el mapeo idioma → código de bandera
+  const langToFlag = (lang: string) => lang === 'en' ? 'gb' : 'es';
+
   // Dropdown de idioma
   const dropdownBtn = document.getElementById('lang-dropdown-btn');
   const dropdownMenu = document.getElementById('lang-menu');
@@ -149,9 +154,15 @@ const { nav } = translations;
   if (dropdownBtn && dropdownMenu) {
     // Sincronizar estado visual con idioma actual
     if (langFlag) {
-      langFlag.className = `fi fi-${currentLang === 'en' ? 'gb' : 'es'} rounded-sm`;
+      langFlag.className = `fi fi-${langToFlag(currentLang)} rounded-sm`;
     }
     if (langLabel) langLabel.textContent = currentLang.toUpperCase();
+    dropdownMenu.querySelectorAll('li[data-lang]').forEach(item => {
+      item.setAttribute('aria-selected', item.getAttribute('data-lang') === currentLang ? 'true' : 'false');
+    });
+
+    // #7: AbortController para poder eliminar el listener global al destruir
+    const dropdownController = new AbortController();
 
     // Abrir/cerrar
     dropdownBtn.addEventListener('click', (e) => {
@@ -168,9 +179,12 @@ const { nav } = translations;
         const lang = item.getAttribute('data-lang') || 'es';
         const safeLang = ALLOWED_LANGS.includes(lang) ? lang : 'es';
         document.body.classList.add('language-changing');
-        setTimeout(() => {
+        // #4: limpiar la clase si la navegación no se completa
+        const navigationTimer = setTimeout(() => {
           window.location.href = window.location.pathname + '?lang=' + safeLang;
         }, 200);
+        window.addEventListener('pagehide', () => clearTimeout(navigationTimer), { once: true });
+        setTimeout(() => document.body.classList.remove('language-changing'), 1000);
       });
     });
 
@@ -178,7 +192,10 @@ const { nav } = translations;
     document.addEventListener('click', () => {
       dropdownMenu.classList.add('hidden');
       dropdownBtn.setAttribute('aria-expanded', 'false');
-    });
+    }, { signal: dropdownController.signal });
+
+    // Limpiar listener global al salir de la página
+    window.addEventListener('pagehide', () => dropdownController.abort(), { once: true });
   }
 
   // Toggle mobile menu
