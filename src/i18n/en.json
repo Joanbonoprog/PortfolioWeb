@@ -63,6 +63,7 @@
     "title": "Work Experience",
     "subtitle": "My professional career and work experiences",
     "visitWebsite": "Visit Website",
+    "current": "Current",
     "items": [
       {
         "id": "exp-1",
@@ -86,6 +87,7 @@
   "projects": {
     "title": "My Projects",
     "subtitle": "Featured projects that demonstrate my technical skills and creativity",
+    "current": "Current",
     "technologies": "Technologies",
     "viewGallery": "View Image Gallery",
     "viewGithub": "View on GitHub",
@@ -107,7 +109,8 @@
         "description": "Cross-platform tool that uses AI to transform conceptual ideas into functional application prototypes. Features conversational AI chat, prototype gallery, detailed view, and export capabilities.\n\nDeveloped with Kotlin Multiplatform and Compose Multiplatform, runs on Android and Desktop with shared code, integrating Supabase for cloud persistence and full internationalization support.",
         "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
-        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "Generative AI", "Napier"]
+        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "Generative AI", "Napier"],
+        "current": true
       }
     ]
   },

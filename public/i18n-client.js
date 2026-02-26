@@ -44,7 +44,6 @@ const contentTranslations = {
     'Desarrollo básico de videojuegos con Unity': 'Desarrollo básico de videojuegos con Unity',
     'Creación y consumo de servicios web (APIs REST)': 'Creación y consumo de servicios web (APIs REST)',
     'Gestión de proyectos de desarrollo de software': 'Gestión de proyectos de desarrollo de software',
-    'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa': 'Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa',
     // Habilidades
     'Desarrollo en Entorno Java (Java + Kotlin)': 'Desarrollo en Entorno Java (Java + Kotlin)',
     'Conocimientos básicos en C#': 'Conocimientos básicos en C#',
@@ -251,17 +250,9 @@ function applyTranslations() {
   
   // Actualizar elementos con data-i18n-content (para contenido específico)
   document.querySelectorAll('[data-i18n-content]').forEach(el => {
-    const text = el.getAttribute('data-i18n-content');
-    if (ct[text]) {
-      el.textContent = ct[text];
-    }
-  });
-  
-  // Traducir contenido dinámico (idiomas, educación, habilidades)
-  document.querySelectorAll('p, li, h4').forEach(el => {
-    const text = el.textContent.trim();
-    if (ct[text]) {
-      el.textContent = ct[text];
+    const key = el.getAttribute('data-i18n-content');
+    if (key && ct[key]) {
+      el.textContent = ct[key];
     }
   });
 }
