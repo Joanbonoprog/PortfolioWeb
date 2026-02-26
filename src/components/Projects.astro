@@ -36,9 +36,16 @@ const { projects } = translations;
                 <div class="text-6xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{project.icon}</div>
               )}
               <div class="flex-1">
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={project.name}>
-                  {project.name}
-                </h3>
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={project.name}>
+                    {project.name}
+                  </h3>
+                  {project.current && (
+                    <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full" data-i18n="projects.current">
+                      {projects.current}
+                    </span>
+                  )}
+                </div>
                 <p class="text-blue-600 dark:text-blue-400 font-medium text-sm" data-i18n-content={project.subtitle}>
                   {project.subtitle}
                 </p>
@@ -70,8 +77,8 @@ const { projects } = translations;
             <!-- Gallery Button -->
             <div class="mb-6">
               <button 
-                onclick={`openProjectGallery('${project.name}')`}
-                class="btn-ripple w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 text-white rounded-lg hover:from-blue-700 hover:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-500 transition-all hover:scale-105 font-medium shadow-lg hover:shadow-blue-500/50"
+                data-project-name={project.name}
+                class="gallery-btn btn-ripple w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 text-white rounded-lg hover:from-blue-700 hover:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-500 transition-all hover:scale-105 font-medium shadow-lg hover:shadow-blue-500/50"
               >
                 <span class="material-icons text-lg">photo_library</span>
                 <span data-i18n="projects.viewGallery">Ver Galería de Imágenes</span>
@@ -110,6 +117,15 @@ const { projects } = translations;
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('button.gallery-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-project-name');
+      if (name) (window as any).openProjectGallery(name);
+    });
+  });
+</script>
 
 <style>
   section {
