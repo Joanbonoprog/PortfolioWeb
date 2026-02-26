@@ -73,14 +73,40 @@ const { nav } = translations;
       </button>
       
       <!-- Language Selector -->
-      <select 
-        id="language-selector" 
-        class="px-2 sm:px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
-        onchange="var l=['es','en']; window.location.href = window.location.pathname + '?lang=' + (l.includes(this.value) ? this.value : 'es')"
-      >
-        <option value="es" selected={currentLang === 'es'}>🇪🇸 ES</option>
-        <option value="en" selected={currentLang === 'en'}>🇬🇧 EN</option>
-      </select>
+      <div id="lang-dropdown" class="relative">
+        <button
+          id="lang-dropdown-btn"
+          class="flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+        >
+          <span id="lang-flag" class={`fi fi-${currentLang === 'en' ? 'gb' : 'es'} rounded-sm`}></span>{/* #6: mapping duplicado resuelto en script con langToFlag() */}
+          <span id="lang-label">{currentLang.toUpperCase()}</span>
+          <span class="material-icons text-base leading-none">expand_more</span>
+        </button>
+        <ul
+          id="lang-menu"
+          role="listbox"
+          class="hidden absolute right-0 mt-1 w-28 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg overflow-hidden z-50"
+        >
+          <li
+            role="option"
+            data-lang="es"
+            aria-selected={currentLang === 'es' ? 'true' : 'false'}
+            class="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors"
+          >
+            <span class="fi fi-es rounded-sm"></span> ES
+          </li>
+          <li
+            role="option"
+            data-lang="en"
+            aria-selected={currentLang === 'en' ? 'true' : 'false'}
+            class="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors"
+          >
+            <span class="fi fi-gb rounded-sm"></span> EN
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -115,10 +141,61 @@ const { nav } = translations;
   // Establecer el valor del selector basado en la URL
   const urlParams = new URLSearchParams(window.location.search);
   const currentLang = urlParams.get('lang') || 'es';
-  const selector = document.getElementById('language-selector') as HTMLSelectElement;
-  if (selector) {
-    selector.value = currentLang;
-    console.log('Idioma actual:', currentLang);
+
+  // #6: fuente de verdad única para el mapeo idioma → código de bandera
+  const langToFlag = (lang: string) => lang === 'en' ? 'gb' : 'es';
+
+  // Dropdown de idioma
+  const dropdownBtn = document.getElementById('lang-dropdown-btn');
+  const dropdownMenu = document.getElementById('lang-menu');
+  const langFlag = document.getElementById('lang-flag');
+  const langLabel = document.getElementById('lang-label');
+
+  if (dropdownBtn && dropdownMenu) {
+    // Sincronizar estado visual con idioma actual
+    if (langFlag) {
+      langFlag.className = `fi fi-${langToFlag(currentLang)} rounded-sm`;
+    }
+    if (langLabel) langLabel.textContent = currentLang.toUpperCase();
+    dropdownMenu.querySelectorAll('li[data-lang]').forEach(item => {
+      item.setAttribute('aria-selected', item.getAttribute('data-lang') === currentLang ? 'true' : 'false');
+    });
+
+    // #7: AbortController para poder eliminar el listener global al destruir
+    const dropdownController = new AbortController();
+
+    // Abrir/cerrar
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !dropdownMenu.classList.contains('hidden');
+      dropdownMenu.classList.toggle('hidden');
+      dropdownBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Seleccionar idioma
+    dropdownMenu.querySelectorAll('li[data-lang]').forEach(item => {
+      item.addEventListener('click', () => {
+        const ALLOWED_LANGS = ['es', 'en'];
+        const lang = item.getAttribute('data-lang') || 'es';
+        const safeLang = ALLOWED_LANGS.includes(lang) ? lang : 'es';
+        document.body.classList.add('language-changing');
+        // #4: limpiar la clase si la navegación no se completa
+        const navigationTimer = setTimeout(() => {
+          window.location.href = window.location.pathname + '?lang=' + safeLang;
+        }, 200);
+        window.addEventListener('pagehide', () => clearTimeout(navigationTimer), { once: true });
+        setTimeout(() => document.body.classList.remove('language-changing'), 1000);
+      });
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener('click', () => {
+      dropdownMenu.classList.add('hidden');
+      dropdownBtn.setAttribute('aria-expanded', 'false');
+    }, { signal: dropdownController.signal });
+
+    // Limpiar listener global al salir de la página
+    window.addEventListener('pagehide', () => dropdownController.abort(), { once: true });
   }
 
   // Toggle mobile menu

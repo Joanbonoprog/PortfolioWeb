@@ -63,6 +63,7 @@
     "title": "Experiencia Laboral",
     "subtitle": "Mi trayectoria profesional y experiencias laborales",
     "visitWebsite": "Visitar Sitio Web",
+    "current": "Actual",
     "items": [
       {
         "id": "exp-1",
@@ -86,6 +87,7 @@
   "projects": {
     "title": "Mis Proyectos",
     "subtitle": "Proyectos destacados que demuestran mis habilidades técnicas y creatividad",
+    "current": "Actual",
     "technologies": "Tecnologías",
     "viewGallery": "Ver Galería de Imágenes",
     "viewGithub": "Ver en GitHub",
@@ -107,7 +109,8 @@
         "description": "Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.",
         "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
-        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "IA Generativa", "Napier"]
+        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "IA Generativa", "Napier"],
+        "current": true
       }
     ]
   },
