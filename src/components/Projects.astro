@@ -36,12 +36,12 @@ const { projects } = translations;
                 <div class="text-6xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{project.icon}</div>
               )}
               <div class="flex-1">
-                <div class="flex items-center gap-2 mb-2">
+                <div class="flex items-center flex-wrap gap-2 mb-2">
                   <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={project.name}>
                     {project.name}
                   </h3>
                   {project.current && (
-                    <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full" data-i18n="projects.current">
+                    <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full whitespace-nowrap" data-i18n="projects.current">
                       {projects.current}
                     </span>
                   )}
