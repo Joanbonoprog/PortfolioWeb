@@ -100,14 +100,14 @@
         "description": "Comprehensive Android application for real-time football match tracking and team management. Features live updates, player statistics, custom notifications, and local storage with SQLite.\n\nSpecifically, I was responsible for designing and deploying the database architecture, implementing a robust local persistence system with SQLite for offline access.",
         "icon": "/livefootbal_logo.png",
         "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson"],
-        "github": "https://github.com/Slenderman1314/LiveFootball"
+        "github": "https://github.com/Joanbonoprog/LiveFootball"
       },
       {
         "id": "proj-2",
         "name": "App Prototype Creator",
         "subtitle": "Final Master Project",
         "description": "Cross-platform tool that uses AI to transform conceptual ideas into functional application prototypes. Features conversational AI chat, prototype gallery, detailed view, and export capabilities.\n\nDeveloped with Kotlin Multiplatform and Compose Multiplatform, runs on Android and Desktop with shared code, integrating Supabase for cloud persistence and full internationalization support.",
-        "github": "https://github.com/Slenderman1314/App-Prototipe-Creator",
+        "github": "https://github.com/Joanbonoprog/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
         "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "Generative AI", "Napier"],
         "current": true
