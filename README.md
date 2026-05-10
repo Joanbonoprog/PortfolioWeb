@@ -1,6 +1,6 @@
 # Personal Portfolio Website
 
-A modern and responsive portfolio website built with **Astro** and **Tailwind CSS**. Showcase your projects, experience, skills, and more with an elegant, accessible, and multilingual interface.
+A modern and responsive portfolio website built with **Astro** and **Tailwind CSS**. Includes my projects, experience, skills, and more with an elegant, accessible, and multilingual interface.
 
 ## Features
 
