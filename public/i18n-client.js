@@ -68,10 +68,13 @@ const contentTranslations = {
     'Gson': 'Gson',
     'Kotlin Multiplatform': 'Kotlin Multiplatform',
     'Compose Multiplatform': 'Compose Multiplatform',
-    'Supabase': 'Supabase',
+    'SQLDelight': 'SQLDelight',
     'Koin': 'Koin',
     'Material Design 3': 'Material Design 3',
-    'IA Generativa': 'IA Generativa',
+    'OpenAI GPT-4o': 'OpenAI GPT-4o',
+    'Anthropic Claude': 'Anthropic Claude',
+    'Google Gemini': 'Google Gemini',
+    'Ktor Client': 'Ktor Client',
     'Napier': 'Napier'
   },
   en: {
