@@ -58,8 +58,8 @@ const { hero } = translations;
     // Leer de window.__i18n__ (fuente de verdad SSR)
     const urlParams = new URLSearchParams(window.location.search);
     const currentLang = urlParams.get('lang') || 'es';
-    const text = (window as any).__i18n__?.[currentLang]?.hero?.title
-      || (window as any).__i18n__?.['es']?.hero?.title
+    const text = window.__i18n__?.[currentLang]?.hero?.title
+      || window.__i18n__?.['es']?.hero?.title
       || '';
     let index = 0;
     
