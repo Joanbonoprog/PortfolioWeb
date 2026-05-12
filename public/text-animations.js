@@ -47,8 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Solo aplicar si tiene menos de 15 palabras (para no saturar)
     if (words.length <= 15 && words.length > 3) {
+      // Sanitizar cada palabra para prevenir XSS
+      const sanitizeText = (str) => {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      };
+      
       subtitle.innerHTML = words.map(word => 
-        `<span class="stagger-text">${word}</span>`
+        `<span class="stagger-text">${sanitizeText(word)}</span>`
       ).join(' ');
     }
   });

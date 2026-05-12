@@ -2,6 +2,13 @@
 let fontSize = 'normal'; // normal, large, extra-large
 
 function changeFontSize(size) {
+  // Validar que el tamaño sea uno de los permitidos
+  const validSizes = ['normal', 'large', 'extra-large'];
+  if (!validSizes.includes(size)) {
+    console.warn(`Invalid font size: ${size}. Using 'normal' instead.`);
+    size = 'normal';
+  }
+  
   const html = document.documentElement;
   
   // Remover clases previas
@@ -33,7 +40,10 @@ function updateFontSizeButtons() {
 // Cargar preferencia guardada
 document.addEventListener('DOMContentLoaded', () => {
   const savedSize = localStorage.getItem('fontSize') || 'normal';
-  changeFontSize(savedSize);
+  // Validar que el tamaño sea uno de los permitidos
+  const validSizes = ['normal', 'large', 'extra-large'];
+  const safeSize = validSizes.includes(savedSize) ? savedSize : 'normal';
+  changeFontSize(safeSize);
   
   // Agregar event listeners a botones
   const buttons = document.querySelectorAll('[data-font-size]');

@@ -5,8 +5,9 @@
   // Obtener tema guardado o usar 'dark' por defecto
   function getStoredTheme() {
     const stored = localStorage.getItem(THEME_KEY);
-    // Si no hay tema guardado, devolver 'dark'
-    if (!stored) {
+    // Validar que el tema sea uno de los permitidos
+    const validThemes = ['light', 'dark'];
+    if (!stored || !validThemes.includes(stored)) {
       return 'dark';
     }
     return stored;
