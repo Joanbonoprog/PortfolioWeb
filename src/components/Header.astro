@@ -136,7 +136,7 @@ const { nav } = translations;
   )}
 </header>
 
-<script>
+<script client:load>
   // Establecer el valor del selector basado en la URL
   const urlParams = new URLSearchParams(window.location.search);
   const currentLang = urlParams.get('lang') || 'es';
