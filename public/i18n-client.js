@@ -92,7 +92,6 @@ const contentTranslations = {
     'Avanzado': 'Advanced',
     // Footer
     'Todos los derechos reservados': 'All rights reserved',
-    'Hecho con ❤️ en Valencia, España': 'Made with ❤️ in Valencia, Spain',
     // Accesibilidad
     'Accesibilidad': 'Accessibility',
     'Tamaño de texto': 'Text Size',
