@@ -106,10 +106,10 @@
         "id": "proj-2",
         "name": "App Prototype Creator",
         "subtitle": "Final Master Project",
-        "description": "Cross-platform tool that uses AI to transform conceptual ideas into functional application prototypes. Features conversational AI chat, prototype gallery, detailed view, and export capabilities.\n\nDeveloped with Kotlin Multiplatform and Compose Multiplatform, runs on Android and Desktop with shared code, integrating Supabase for cloud persistence and full internationalization support.",
+        "description": "Tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes. Built with Kotlin Multiplatform and Compose Multiplatform, it offers a seamless experience on both Android and desktop.\n\nFeatures multi-provider AI chat (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), automatic prototype generation, gallery with search, HTML visualization, export to HTML/PDF, cross-platform support (Android 8.0+ and Desktop), light/dark theme, Spanish/English internationalization, and secure local storage with SQLDelight.",
         "github": "https://github.com/Joanbonoprog/App-Prototipe-Creator",
         "icon": "/app_prototipado_icon.png",
-        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Supabase", "Koin", "Material Design 3", "Generative AI", "Napier"],
+        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Material Design 3", "SQLDelight", "Koin", "OpenAI GPT-4o", "Anthropic Claude", "Google Gemini", "Ktor Client", "Napier"],
         "current": true
       }
     ]
