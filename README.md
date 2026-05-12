@@ -54,7 +54,7 @@ public/
 
 ## Tech Stack
 
-- **[Astro 5.15.8](https://astro.build)** - Modern SSG framework
+- **[Astro 6.3.1](https://astro.build)** - Modern SSG framework
 - **[Tailwind CSS 4.1.17](https://tailwindcss.com)** - Utility-first CSS framework
 - **[Vite](https://vitejs.dev)** - Ultra-fast bundler
 - **Vanilla JavaScript** - Client scripts without dependencies
