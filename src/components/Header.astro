@@ -142,13 +142,13 @@ const { nav } = translations;
   const currentLang = urlParams.get('lang') || 'es';
 
   // #6: fuente de verdad única para el mapeo idioma → código de bandera
-  const langToFlag = (lang: string) => lang === 'en' ? 'gb' : 'es';
+  const langToFlag = (lang) => lang === 'en' ? 'gb' : 'es';
 
   // Theme toggle button event listener
   const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle && typeof (window as any).toggleTheme === 'function') {
+  if (themeToggle && typeof window.toggleTheme === 'function') {
     themeToggle.addEventListener('click', () => {
-      (window as any).toggleTheme();
+      window.toggleTheme();
     });
   }
 
