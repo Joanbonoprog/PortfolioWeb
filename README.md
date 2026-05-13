@@ -66,7 +66,7 @@ public/
 The site automatically detects and switches between languages. Texts are dynamically loaded from JSON files.
 
 ### Accessibility Controls
-Includes options to increase font size, adjust contrast, and change fonts, improving the experience for all users.
+Includes options to increase font size, improving the experience for all users.
 
 ### Animations
 Optimized scripts that add smooth transitions when scrolling and element visibility effects.
