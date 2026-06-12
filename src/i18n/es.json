@@ -11,7 +11,7 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
-    "title": "Desarrollador de Software + IA Specialist",
+    "title": "Desarrollador de Software + IA Integrator",
     "cta": "Ver Proyectos y Experiencia"
   },
   "about": {
@@ -71,7 +71,7 @@
         "company": "Artimark, Llanera de Ranes, Valencia",
         "period": "Junio 2024 - Enero 2025",
         "description": "Participación en el Diseño y Estructura de la Web|Encargado de la Introducción y Prueba del Sistema Personalizado de Productos|Participación en el Mantenimiento y Escalabilidad de la Página Web|Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop|Apoyo en el Posicionamiento de la Web (SEO)",
-        "icon": "/artimark_logo.webp",
+        "icon": "/images/experience/artimark_logo.webp",
         "website": "https://artimark.es"
       },
       {
@@ -98,7 +98,7 @@
         "name": "Live Football",
         "subtitle": "Proyecto Final de Grado",
         "description": "Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.",
-        "icon": "/livefootbal_logo.png",
+        "icon": "/images/projects/livefootbal_logo.png",
         "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson"],
         "github": "https://github.com/Joanbonoprog/LiveFootball"
       },
@@ -108,7 +108,7 @@
         "subtitle": "Proyecto Final de Master",
         "description": "Herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, ofrece una experiencia fluida tanto en Android como en escritorio.\n\nIncluye chat con IA multi-proveedor (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), generación automática de prototipos, galería con búsqueda, visualización HTML, exportación a HTML/PDF, soporte multiplataforma (Android 8.0+ y Desktop), tema claro/oscuro, internacionalización español/inglés, y almacenamiento local seguro con SQLDelight.",
         "github": "https://github.com/Joanbonoprog/App-Prototipe-Creator",
-        "icon": "/app_prototipado_icon.png",
+        "icon": "/images/projects/app_prototipado_icon.png",
         "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Material Design 3", "SQLDelight", "Koin", "OpenAI GPT-4o", "Anthropic Claude", "Google Gemini", "Ktor Client", "Napier"],
         "current": true
       }
@@ -123,6 +123,7 @@
         "type": "Master (480h + TFM)",
         "institution": "EVOLVE, Remoto",
         "year": "2025",
+        "logo": "/images/education/evolve_icono.png",
         "details": "Agentes de IA: Desarrollo de agentes autónomos. Automatización con IA: Integración de las Capacidades de la IA generativa en flujos de trabajo automatizados. Chatbots con IA: Diseño, implementación y optimización de chatbots potenciados con IA generativa. Desarrollo de aplicaciones sin código con IA: Creación de apps completas usando plataformas y herramientas con capacidad de IA generativa. Creación de Contenido con IA (Imagen, Video, Audio): Creación de Contenido utilizando herramientas de IA Generativa."
       },
       {
@@ -130,6 +131,7 @@
         "type": "Grado Superior",
         "institution": "IFP FORMACIÓN, Remoto",
         "year": "2021-2025",
+        "logo": "/images/education/ifp_logo.png",
         "details": "Desarrollo de aplicaciones para dispositivos móviles Android y Escritorio. Programación orientada a objetos con Java y C#. Desarrollo web con PHP y JavaScript. Diseño y gestión de bases de datos relacionales con MySQL. Desarrollo básico de videojuegos con Unity. Creación y consumo de servicios web (APIs REST). Gestión de proyectos de desarrollo de software."
       }
     ]

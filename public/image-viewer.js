@@ -368,18 +368,18 @@ const imageViewer = new ImageViewer();
 // Mapeo de proyectos a sus imágenes
 const projectImages = {
   'App Prototype Creator': [
-    { src: '/Libreria_Prototipos_App_Prototype_Creator.png', title: 'Libreria Prototipos App Prototype Creator' },
-    { src: '/Chat_IA_Creacion_Prototipos_App_Prototype_Creator.png', title: 'Chat IA Creacion Prototipos App Prototype Creator' },
-    { src: '/Vista_Prototipo_App_Prototype_Creator.png', title: 'Vista Prototipo App Prototype Creator' },
-    { src: '/Libreria_Prototipos_Android_App_Prototype_Creator.png', title: 'Libreria Prototipos Android App Prototype Creator' },
-    { src: '/Vista_Prototipo_Android_App_Prototype_Creator.png', title: 'Vista Prototipo Android App Prototype Creator' }
+    { src: '/images/projects/Libreria_Prototipos_App_Prototype_Creator.png', title: 'Libreria Prototipos App Prototype Creator' },
+    { src: '/images/projects/Chat_IA_Creacion_Prototipos_App_Prototype_Creator.png', title: 'Chat IA Creacion Prototipos App Prototype Creator' },
+    { src: '/images/projects/Vista_Prototipo_App_Prototype_Creator.png', title: 'Vista Prototipo App Prototype Creator' },
+    { src: '/images/projects/Libreria_Prototipos_Android_App_Prototype_Creator.png', title: 'Libreria Prototipos Android App Prototype Creator' },
+    { src: '/images/projects/Vista_Prototipo_Android_App_Prototype_Creator.png', title: 'Vista Prototipo Android App Prototype Creator' }
   ],
   'Live Football': [
-    { src: '/Splash_Screen_FiveFootball.png', title: 'Splash Screen FiveFootball' },
-    { src: '/Menu_Principal_FiveFootball.png', title: 'Menu Principal FiveFootball' },
-    { src: '/Creacion_Equipos_LiveFootball.png', title: 'Creacion Equipos LiveFootball' },
-    { src: '/Edicion_Jugadores_LiveFootball.png', title: 'Edicion Jugadores LiveFootball' },
-    { src: '/Visualizacion_Equipos_LiveFootball.png', title: 'Visualizacion Equipos LiveFootball' }
+    { src: '/images/projects/Splash_Screen_FiveFootball.png', title: 'Splash Screen FiveFootball' },
+    { src: '/images/projects/Menu_Principal_FiveFootball.png', title: 'Menu Principal FiveFootball' },
+    { src: '/images/projects/Creacion_Equipos_LiveFootball.png', title: 'Creacion Equipos LiveFootball' },
+    { src: '/images/projects/Edicion_Jugadores_LiveFootball.png', title: 'Edicion Jugadores LiveFootball' },
+    { src: '/images/projects/Visualizacion_Equipos_LiveFootball.png', title: 'Visualizacion Equipos LiveFootball' }
   ]
 };
 
