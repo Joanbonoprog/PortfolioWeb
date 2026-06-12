@@ -11,7 +11,7 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
-    "title": "Software Developer + AI Specialist",
+    "title": "Software Developer + AI Integrator",
     "cta": "View Projects & Experience"
   },
   "about": {
@@ -71,7 +71,7 @@
         "company": "Artimark, Llanera de Ranes, Valencia",
         "period": "June 2024 - January 2025",
         "description": "Participation in Web Design and Structure|In charge of the Introduction and Testing of the Custom Product System|Participation in the Maintenance and Scalability of the Website|In charge of Testing and Maintenance of the eShop Payment Gateway|Support in Web Positioning (SEO)",
-        "icon": "/artimark_logo.webp",
+        "icon": "/images/experience/artimark_logo.webp",
         "website": "https://artimark.es"
       },
       {
@@ -98,7 +98,7 @@
         "name": "Live Football",
         "subtitle": "Final Degree Project",
         "description": "Comprehensive Android application for real-time football match tracking and team management. Features live updates, player statistics, custom notifications, and local storage with SQLite.\n\nSpecifically, I was responsible for designing and deploying the database architecture, implementing a robust local persistence system with SQLite for offline access.",
-        "icon": "/livefootbal_logo.png",
+        "icon": "/images/projects/livefootbal_logo.png",
         "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson"],
         "github": "https://github.com/Joanbonoprog/LiveFootball"
       },
@@ -108,7 +108,7 @@
         "subtitle": "Final Master Project",
         "description": "Tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes. Built with Kotlin Multiplatform and Compose Multiplatform, it offers a seamless experience on both Android and desktop.\n\nFeatures multi-provider AI chat (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), automatic prototype generation, gallery with search, HTML visualization, export to HTML/PDF, cross-platform support (Android 8.0+ and Desktop), light/dark theme, Spanish/English internationalization, and secure local storage with SQLDelight.",
         "github": "https://github.com/Joanbonoprog/App-Prototipe-Creator",
-        "icon": "/app_prototipado_icon.png",
+        "icon": "/images/projects/app_prototipado_icon.png",
         "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Material Design 3", "SQLDelight", "Koin", "OpenAI GPT-4o", "Anthropic Claude", "Google Gemini", "Ktor Client", "Napier"],
         "current": true
       }
@@ -123,6 +123,7 @@
         "type": "Master (480h + Final Project)",
         "institution": "EVOLVE, Remote",
         "year": "2025",
+        "logo": "/images/education/evolve_icono.png",
         "details": "AI Agents: Development of autonomous agents. Automation with AI: Integration of Generative AI capabilities in automated workflows. AI Chatbots: Design, implementation and optimization of chatbots powered by generative AI. No-code application development with AI: Creation of complete apps using platforms and tools with generative AI capability. Content Creation with AI (Image, Video, Audio): Content creation using Generative AI tools."
       },
       {
@@ -130,6 +131,7 @@
         "type": "Higher Degree - Vocational Training",
         "institution": "IFP FORMACIÓN, Remote",
         "year": "2021-2025",
+        "logo": "/images/education/ifp_logo.png",
         "details": "Development of applications for Android and Desktop mobile devices. Object-oriented programming with Java and C#. Web development with PHP and JavaScript. Design and management of relational databases with MySQL. Basic video game development with Unity. Creation and consumption of web services (REST APIs). Software development project management."
       }
     ]

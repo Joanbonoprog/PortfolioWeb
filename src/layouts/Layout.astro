@@ -26,7 +26,7 @@ const i18nEn = getTranslations('en');
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/images/brand/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Preconnect for performance -->
@@ -97,6 +97,9 @@ const i18nEn = getTranslations('en');
 		
 		<!-- Visor de imágenes -->
 		<script is:inline src="/image-viewer.js"></script>
+		
+		<!-- Previsualizaciones de enlaces en hover -->
+		<script is:inline src="/link-preview.js"></script>
 		
 		<!-- Script para el botón de scroll y progress bar -->
 		<script is:inline>

@@ -84,7 +84,7 @@ const contentTranslations = {
     'Aqui tienes varias formas de contactarme': 'Here are several ways to contact me',
     'Conoce más sobre mi trayectoria profesional': 'Learn more about my professional background',
     'Tecnologías y herramientas que domino': 'Technologies and tools I master',
-    'Desarrollador de Software + IA Specialist': 'Software Developer + AI Specialist',
+    'Desarrollador de Software + IA Integrator': 'Software Developer + AI Integrator',
     // Niveles de habilidades
     'Básico': 'Basic',
     'Intermedio': 'Intermediate',
