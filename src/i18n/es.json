@@ -124,7 +124,7 @@
         "subtitle": "Proyecto Final de Grado",
         "description": "Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.",
         "icon": "/images/projects/livefootbal_logo.png",
-        "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson"],
+        "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson", "JUnit", "Mockito"],
         "github": "https://github.com/Joanbonoprog/LiveFootball"
       },
       {
@@ -134,7 +134,7 @@
         "description": "Herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, ofrece una experiencia fluida tanto en Android como en escritorio.\n\nIncluye chat con IA multi-proveedor (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), generación automática de prototipos, galería con búsqueda, visualización HTML, exportación a HTML/PDF, soporte multiplataforma (Android 8.0+ y Desktop), tema claro/oscuro, internacionalización español/inglés, y almacenamiento local seguro con SQLDelight.",
         "github": "https://github.com/Joanbonoprog/App-Prototipe-Creator",
         "icon": "/images/projects/app_prototipado_icon.png",
-        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Material Design 3", "SQLDelight", "Koin", "OpenAI GPT-4o", "Anthropic Claude", "Google Gemini", "Ktor Client", "Napier"],
+        "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "Material Design 3", "SQLDelight", "Koin", "OpenAI GPT-4o", "Anthropic Claude", "Google Gemini", "Ktor Client", "Napier", "JUnit"],
         "current": true
       }
     ]
