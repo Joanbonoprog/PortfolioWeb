@@ -61,18 +61,18 @@
     "title": "Technical Skills",
     "subtitle": "Technologies and tools I master",
     "items": [
-      { "name": "Java Development", "level": 55, "levelName": "Intermediate" },
+      { "name": "JVM (Java & Kotlin)", "level": 55, "levelName": "Intermediate" },
       { "name": "Kotlin Multiplatform", "level": 45, "levelName": "Intermediate"},
-      { "name": "Basic knowledge in C#", "level": 30, "levelName": "Basic" },
-      { "name": "Database Development in mySQL", "level": 50, "levelName": "Intermediate" },
-      { "name": "Basic knowledge of JavaScript and PHP", "level": 35, "levelName": "Basic" },
-      { "name": "Android application development", "level": 55, "levelName": "Intermediate" },
-      { "name": "Basic knowledge in Unity", "level": 25, "levelName": "Basic" },
-      { "name": "Knowledge in automation with n8n and Make", "level": 55, "levelName": "Intermediate" },
-      { "name": "Knowledge in Generative AIs and their implementation in Applications", "level": 60, "levelName": "Intermediate" },
-      { "name": "Knowledge in AI chatbot development", "level": 55, "levelName": "Intermediate" },
-      { "name": "Basic knowledge in Docker", "level": 20, "levelName": "Basic" },
-      { "name": "Git & Github", "level": 55, "levelName": "Intermediate" }
+      { "name": "C#", "level": 30, "levelName": "Basic" },
+      { "name": "mySQL | PostgreSQL | SQLite | SQLDelight", "level": 50, "levelName": "Intermediate" },
+      { "name": "JavaScript and PHP", "level": 30, "levelName": "Basic" },
+      { "name": "Android Development", "level": 50, "levelName": "Intermediate" },
+      { "name": "Unity & Graphic Engines", "level": 20, "levelName": "Basic" },
+      { "name": "Automation - n8n & Make", "level": 50, "levelName": "Intermediate" },
+      { "name": "Generative AIs and LLMs", "level": 60, "levelName": "Intermediate" },
+      { "name": "AI chatbot development", "level": 50, "levelName": "Intermediate" },
+      { "name": "Conteiners - Docker", "level": 20, "levelName": "Basic" },
+      { "name": "Git & Github", "level": 40, "levelName": "Intermediate" }
     ]
   },
   "contact": {
@@ -171,7 +171,7 @@
     "items": [
       "Spanish (Native)",
       "Valencian/Catalan (Native)",
-      "English (Technical Professional)"
+      "English (Technical Professional `B1`)"
     ]
   },
   "gallery": {

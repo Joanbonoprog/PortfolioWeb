@@ -29,7 +29,7 @@ const contentTranslations = {
     // Idiomas
     'Castellano (Nativo)': 'Castellano (Nativo)',
     'Valenciano/Catalán (Nativo)': 'Valenciano/Catalán (Nativo)',
-    'Inglés (Técnico Profesional)': 'Inglés (Técnico Profesional)',
+    'Inglés (Técnico Profesional `B1`)': 'Inglés (Técnico Profesional `B1`)',
     // Bento Grid - About
     'Buscando trabajo para incorporación inmediata': 'Buscando trabajo para incorporación inmediata',
     'Carnet B + Coche propio': 'Carnet B + Coche propio',
@@ -158,7 +158,7 @@ const contentTranslations = {
     // Languages
     'Castellano (Nativo)': 'Spanish (Native)',
     'Valenciano/Catalán (Nativo)': 'Valencian/Catalan (Native)',
-    'Inglés (Técnico Profesional)': 'English (Technical Professional)',
+    'Inglés (Técnico Profesional `B1`)': 'English (Technical Professional `B1`)',
     // Bento Grid - About
     'Buscando trabajo para incorporación inmediata': 'Looking for work - Immediate availability',
     'Carnet B + Coche propio': 'License B + Own car',
@@ -196,18 +196,17 @@ const contentTranslations = {
     'IA': 'AI',
     'PostGreSQL': 'PostgreSQL',
     // Skills
-    'Desarrollo en Entorno Java (Java + Kotlin)': 'Java Development (Java + Kotlin)',
-    'Conocimientos básicos en C#': 'Basic knowledge in C#',
-    'Desarrollo de Bases de Datos en mySQL': 'Database Development in mySQL',
-    'Conocimientos básicos de JavaScript y PHP': 'Basic knowledge of JavaScript and PHP',
-    'Desarrollo de aplicaciones Android': 'Android application development',
+    'JVM (Java & Kotlin)': 'JVM (Java & Kotlin)',
+    'C#': 'C#',
+    'mySQL | PostgreSQL | SQLite | SQLDelight': 'mySQL | PostgreSQL | SQLite | SQLDelight',
+    'JavaScript y PHP': 'JavaScript and PHP',
+    'Desarrollo Android': 'Android Development',
     'Kotlin Multiplatform': 'Kotlin Multiplatform',
-    'Conocimientos básicos en Unity': 'Basic knowledge in Unity',
-    'Conocimientos en automatización con n8n y Make': 'Knowledge in automation with n8n and Make',
-    'Conocimientos en IAs Generativas y su implementación en Aplicaciones': 'Knowledge in Generative AIs and their implementation in Applications',
-    'Conocimientos en desarrollo de chatbots con IA': 'Knowledge in AI chatbot development',
-    'Conocimientos básicos en el uso de motores gráficos como Unity': 'Basic knowledge in the use of graphic engines like Unity',
-    'Conocimientos básicos en Docker': 'Basic knowledge in Docker',
+    'Automatización - n8n y Make': 'Automation - n8n & Make',
+    'IAs Generativas y LLMS': 'Generative AI & LLMs',
+    'Chatbots con IA': 'AI Chatbot Development',
+    'Unity y Motores Gráficos': 'Unity & Graphic Engines',
+    'Contenedores - Docker': 'Containers - Docker',
     'Git & Github': 'Git & Github',
     // Nuevas tecnologías de proyectos
     'Android SDK': 'Android SDK',

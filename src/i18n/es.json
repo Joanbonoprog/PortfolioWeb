@@ -61,18 +61,18 @@
     "title": "Habilidades Técnicas",
     "subtitle": "Tecnologías y herramientas que domino",
     "items": [
-      { "name": "Desarrollo en Entorno Java (Java + Kotlin)", "level": 55, "levelName": "Intermedio" },
+      { "name": "JVM (Java & Kotlin)", "level": 55, "levelName": "Intermedio" },
       { "name": "Kotlin Multiplatform", "level": 45, "levelName": "Intermedio" },
-      { "name": "Conocimientos básicos en C#", "level": 30, "levelName": "Básico" },
-      { "name": "Desarrollo de Bases de Datos en mySQL", "level": 50, "levelName": "Intermedio" },
-      { "name": "Conocimientos básicos de JavaScript y PHP", "level": 35, "levelName": "Básico" },
-      { "name": "Desarrollo de aplicaciones Android", "level": 55, "levelName": "Intermedio" },
-      { "name": "Conocimientos básicos en Unity", "level": 25, "levelName": "Básico" },
-      { "name": "Conocimientos en automatización con n8n y Make", "level": 55, "levelName": "Intermedio" },
-      { "name": "Conocimientos en IAs Generativas y su implementación en Aplicaciones", "level": 60, "levelName": "Intermedio" },
-      { "name": "Conocimientos en desarrollo de chatbots con IA", "level": 55, "levelName": "Intermedio" },
-      { "name": "Conocimientos básicos en Docker", "level": 20, "levelName": "Básico" },
-      { "name": "Git & Github", "level": 55, "levelName": "Intermedio" }
+      { "name": "C#", "level": 30, "levelName": "Básico" },
+      { "name": "mySQL | PostgreSQL | SQLite | SQLDelight", "level": 50, "levelName": "Intermedio" },
+      { "name": "JavaScript y PHP", "level": 30, "levelName": "Básico" },
+      { "name": "Desarrollo Android", "level": 50, "levelName": "Intermedio" },
+      { "name": "Unity y Motores Gráficos", "level": 20, "levelName": "Básico" },
+      { "name": "Automatización - n8n y Make", "level": 50, "levelName": "Intermedio" },
+      { "name": "IAs Generativas y LLMS", "level": 60, "levelName": "Intermedio" },
+      { "name": "Chatbots con IA", "level": 50, "levelName": "Intermedio" },
+      { "name": "Contenedores - Docker", "level": 20, "levelName": "Básico" },
+      { "name": "Git & Github", "level": 40, "levelName": "Intermedio" }
     ]
   },
   "contact": {
@@ -171,7 +171,7 @@
     "items": [
       "Castellano (Nativo)",
       "Valenciano/Catalán (Nativo)",
-      "Inglés (Técnico Profesional)"
+      "Inglés (Técnico Profesional `B1`"
     ]
   },
   "gallery": {
