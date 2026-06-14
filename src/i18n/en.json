@@ -1,4 +1,15 @@
 {
+  "meta": {
+    "description": "Professional portfolio of Joan Bono Frígols - Software Developer specialized in Java, Android and Kotlin Multiplatform. Generative AI Integrator with experience in automation and application development.",
+    "sections": {
+      "about": "Software developer specialized in Java, Android and Kotlin Multiplatform with training in generative AI and process automation.",
+      "education": "Master's in Generative AI and Higher Degree in Multiplatform Application Development. Training in AI agents, chatbots and automation.",
+      "projects": "Featured projects: Live Football (Android + SQLite) and App Prototype Creator (Kotlin Multiplatform + AI). Multiplatform development with shared code.",
+      "experience": "Professional experience in WordPress development, eShop management, SEO and digital marketing at Artimark.",
+      "skills": "Technical skills: Java, Kotlin, Android, Generative AI, automation with n8n, MySQL databases and multiplatform development.",
+      "contact": "Contact me: joanbonoprog@gmail.com | +34 630 414 612 | Sellent, Valencia. Available for software development and AI integration projects."
+    }
+  },
   "nav": {
     "contact": "Contact",
     "about": "About Me",
@@ -11,14 +22,28 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
-    "title": "Software Developer + AI Integrator",
+    "title": "Software Developer | Android, Kotlin Multiplatform & AI Integration",
     "cta": "View Projects & Experience"
   },
   "about": {
     "title": "About Me",
     "subtitle": "Learn more about my professional background",
-    "description": "Software developer specialized in Java and multiplatform development, with knowledge in designing and deploying scalable applications.\n \n I complement my technical profile with training in generative AI and process automation, applying these technologies to optimize productivity and improve user experience.\n \n Passionate about technological innovation, code efficiency and continuous improvement.",
-    "downloadCV": "Download CV"
+    "profileTitle": "Professional Profile",
+    "description": "Software developer specialized in Kotlin and the multiplatform ecosystem, with experience in Android applications and advanced generative AI integration.\n \n I have designed and implemented multiplatform solutions under clean architecture, integrating multi-provider language models (GPT-4, Claude, Gemini) and automation workflows.\n \n Focused on code rigor, technical efficiency and delivering robust, easily extensible software.",
+    "downloadCV": "Download CV",
+    "status": {
+      "title": "Current Status",
+      "value": "Looking for work - Immediate availability",
+      "available": true
+    },
+    "driverLicense": {
+      "title": "Driver's License",
+      "value": "License B + Own car"
+    },
+    "continuousLearning": {
+      "title": "Continuous Learning",
+      "description": "Currently training in Spring Boot and Spring AI to expand my backend development and AI application capabilities."
+    }
   },
   "cv": {
     "title": "Curriculum Vitae",
@@ -70,7 +95,7 @@
         "role": "WordPress Web Developer",
         "company": "Artimark, Llanera de Ranes, Valencia",
         "period": "June 2024 - January 2025",
-        "description": "Participation in Web Design and Structure|In charge of the Introduction and Testing of the Custom Product System|Participation in the Maintenance and Scalability of the Website|In charge of Testing and Maintenance of the eShop Payment Gateway|Support in Web Positioning (SEO)",
+        "description": "Website Architecture: Active participation in the structural design and technical deployment from scratch of the company's new e-shop using WordPress, WooCommerce, Elementor and Astro.|Configuration Logic: Development and testing of the custom product management and variation system, programming custom business rules in PHP and WooCommerce environments.|QA and Payment Gateway: Integration, maintenance and stress testing of the Redsys payment gateway, ensuring encryption and correct transactional flow in the production environment.|Performance and SEO: Server load optimization, semantic URL structure, metadata and technical monitoring using web analytics tools.",
         "icon": "/images/experience/artimark_logo.webp",
         "website": "https://artimark.es"
       },
@@ -141,7 +166,7 @@
     "items": [
       "Spanish (Native)",
       "Valencian/Catalan (Native)",
-      "English (Professional Basic)"
+      "English (Technical Professional)"
     ]
   },
   "gallery": {
@@ -168,5 +193,21 @@
       { "name": "Tailwind CSS", "url": "https://tailwindcss.com", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
       { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
     ]
+  },
+  "linkPreviews": {
+    "linkedin": {
+      "title": "Joan Bono Frígols | LinkedIn",
+      "desc": "Software Developer | Android, Kotlin Multiplatform & AI Integration. Visit my professional profile, additional projects and network."
+    },
+    "artimark": {
+      "title": "Artimark | Clothing & Promotional Products",
+      "desc": "Company specializing in sales and customization of clothing and promotional products where I worked as a web developer."
+    },
+    "projectLiveFootball": {
+      "desc": "Live Football project repository. Real-time match tracking."
+    },
+    "projectPrototypeCreator": {
+      "desc": "Master's final project repository. Multiplatform tool with advanced AI agent integration."
+    }
   }
 }

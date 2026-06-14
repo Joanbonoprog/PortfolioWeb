@@ -1,6 +1,8 @@
 ---
+import type { Translations } from '../types/translations';
+
 interface Props {
-  translations: any;
+  translations: Translations;
 }
 
 const { translations } = Astro.props;
@@ -27,7 +29,8 @@ const { education } = translations;
               <img 
                 src={edu.logo} 
                 alt={edu.institution} 
-                loading="lazy" 
+                loading="lazy"
+                decoding="async" 
                 class="w-24 h-24 flex-shrink-0 object-contain group-hover:scale-110 transition-transform duration-300"
               />
             )}

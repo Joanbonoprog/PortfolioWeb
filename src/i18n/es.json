@@ -1,4 +1,15 @@
 {
+  "meta": {
+    "description": "Portafolio profesional de Joan Bono Frígols - Desarrollador de Software especializado en Java, Android y Kotlin Multiplatform. Integrador de IA Generativa con experiencia en automatización y desarrollo de aplicaciones.",
+    "sections": {
+      "about": "Desarrollador de software especializado en Java, Android y Kotlin Multiplatform con formación en IA generativa y automatización de procesos.",
+      "education": "Máster en IA Generativa y Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Formación en agentes de IA, chatbots y automatización.",
+      "projects": "Proyectos destacados: Live Football (Android + SQLite) y App Prototype Creator (Kotlin Multiplatform + IA). Desarrollo multiplataforma con código compartido.",
+      "experience": "Experiencia profesional en desarrollo WordPress, gestión de eShop, SEO y marketing digital en Artimark.",
+      "skills": "Habilidades técnicas: Java, Kotlin, Android, IAs Generativas, automatización con n8n, bases de datos MySQL y desarrollo multiplataforma.",
+      "contact": "Contacta conmigo: joanbonoprog@gmail.com | +34 630 414 612 | Sellent, Valencia. Disponible para proyectos de desarrollo de software e integración de IA."
+    }
+  },
   "nav": {
     "contact": "Contacto",
     "about": "Sobre Mí",
@@ -11,14 +22,28 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
-    "title": "Desarrollador de Software + IA Integrator",
+    "title": "Software Developer | Android, Kotlin Multiplatform & AI Integration",
     "cta": "Ver Proyectos y Experiencia"
   },
   "about": {
     "title": "Sobre Mí",
     "subtitle": "Conoce más sobre mi trayectoria profesional",
-    "description": "Desarrollador de software especializado en Java y desarrollo multiplataforma, con conocimientos en diseño y despliegue de aplicaciones escalables.\n \n Complemento mi perfil técnico con formación en IA generativa y automatización de procesos, aplicando estas tecnologías para optimizar la productividad y mejorar la experiencia del usuario.\n \n Apasionado por la innovación tecnológica, la eficiencia en el código y la mejora continua.",
-    "downloadCV": "Descargar CV"
+    "profileTitle": "Perfil Profesional",
+    "description": "Desarrollador de software especializado en Kotlin y el ecosistema multiplataforma, con experiencia en aplicaciones Android e integración avanzada de IA generativa.\n \n He diseñado e implementado soluciones multiplataforma bajo arquitectura limpia, integrando modelos de lenguaje multi-proveedor (GPT-4, Claude, Gemini) y flujos de automatización.\n \n Enfocado en la rigurosidad del código, la eficiencia técnica y la entrega de software robusto y fácilmente extensible.",
+    "downloadCV": "Descargar CV",
+    "status": {
+      "title": "Estado Actual",
+      "value": "Buscando trabajo para incorporación inmediata",
+      "available": true
+    },
+    "driverLicense": {
+      "title": "Carnet de Conducir",
+      "value": "Carnet B + Coche propio"
+    },
+    "continuousLearning": {
+      "title": "Aprendizaje Continuo",
+      "description": "Actualmente formándome en Spring Boot y Spring AI para ampliar mis capacidades en desarrollo backend y aplicaciones con IA."
+    }
   },
   "cv": {
     "title": "Curriculum Vitae",
@@ -70,7 +95,7 @@
         "role": "Web Developer WordPress",
         "company": "Artimark, Llanera de Ranes, Valencia",
         "period": "Junio 2024 - Enero 2025",
-        "description": "Participación en el Diseño y Estructura de la Web|Encargado de la Introducción y Prueba del Sistema Personalizado de Productos|Participación en el Mantenimiento y Escalabilidad de la Página Web|Encargado de Pruebas y Mantenimiento de la Pasarela de Pagos de la eShop|Apoyo en el Posicionamiento de la Web (SEO)",
+        "description": "Arquitectura del Sitio Web: Participación activa en el diseño estructural y despliegue técnico desde cero de la nueva e-shop utilizando WordPress, WooCommerce, Elementor y Astro.|Lógica de Configuración: Desarrollo y testeo del sistema personalizado de gestión y variación de productos, programando reglas de negocio a medida bajo entornos PHP y WooCommerce.|QA y Pasarela de Pagos: Integración, mantenimiento y pruebas de estrés de la pasarela de pago Redsys, asegurando la encriptación y el correcto flujo transaccional en el entorno de producción.|Rendimiento y SEO: Optimización de la carga en servidores, estructura semántica de URLs, metadatos y monitorización técnica mediante herramientas de analítica web.",
         "icon": "/images/experience/artimark_logo.webp",
         "website": "https://artimark.es"
       },
@@ -141,7 +166,7 @@
     "items": [
       "Castellano (Nativo)",
       "Valenciano/Catalán (Nativo)",
-      "Inglés (Básico Profesional)"
+      "Inglés (Técnico Profesional)"
     ]
   },
   "gallery": {
@@ -168,5 +193,21 @@
       { "name": "Tailwind CSS", "url": "https://tailwindcss.com", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
       { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
     ]
+  },
+  "linkPreviews": {
+    "linkedin": {
+      "title": "Joan Bono Frígols | LinkedIn",
+      "desc": "Software Developer | Android, Kotlin Multiplatform & AI Integration. Visita mi perfil profesional, proyectos adicionales y red de contactos."
+    },
+    "artimark": {
+      "title": "Artimark | Ropa y Productos Promocionales",
+      "desc": "Empresa de venta y personalización de ropa y productos promocionales donde me desempeñé como desarrollador web."
+    },
+    "projectLiveFootball": {
+      "desc": "Repositorio del proyecto Live Football. Seguimiento de partidos en tiempo real."
+    },
+    "projectPrototypeCreator": {
+      "desc": "Repositorio del proyecto final de máster. Herramienta multiplataforma con integración avanzada de agentes de IA."
+    }
   }
 }

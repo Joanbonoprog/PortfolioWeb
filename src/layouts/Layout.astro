@@ -8,13 +8,24 @@ interface Props {
 	title?: string;
 	description?: string;
 	lang?: string;
+	image?: string;
 }
 
 const { 
-	title = 'Joan Bono Frigols - Portfolio', 
+	title = 'Joan Bono Frígols - Portfolio', 
 	description = 'Desarrollador de Software + IA Specialist',
-	lang = 'es'
+	lang = 'es',
+	image = '/images/hero/FotoPortfolio.jpg'
 } = Astro.props;
+
+const siteUrl = 'https://joanbonoprog.es';
+const currentPath = Astro.url.pathname + Astro.url.search;
+const canonicalUrl = new URL(currentPath, siteUrl).href;
+const ogImageUrl = new URL(image, siteUrl).href;
+
+// URLs alternativas para hreflang
+const alternateEs = new URL('/?lang=es', siteUrl).href;
+const alternateEn = new URL('/?lang=en', siteUrl).href;
 
 const i18nEs = getTranslations('es');
 const i18nEn = getTranslations('en');
@@ -26,8 +37,39 @@ const i18nEn = getTranslations('en');
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
+		<meta name="author" content="Joan Bono Frígols" />
+		<link rel="canonical" href={canonicalUrl} />
 		<link rel="icon" type="image/svg+xml" href="/images/brand/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Theme Color (dinámico para light/dark mode) -->
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
+		
+		<!-- Alternate Languages (hreflang) -->
+		<link rel="alternate" hreflang="es" href={alternateEs} />
+		<link rel="alternate" hreflang="en" href={alternateEn} />
+		<link rel="alternate" hreflang="x-default" href={alternateEs} />
+		
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:width" content="800" />
+		<meta property="og:image:height" content="800" />
+		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_ES'} />
+		<meta property="og:site_name" content="Joan Bono Frígols - Portfolio" />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		
+		<!-- Preload hero image for LCP optimization -->
+		<link rel="preload" as="image" href="/images/hero/FotoPortfolio.jpg" fetchpriority="high" />
 		
 		<!-- Preconnect for performance -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +88,33 @@ const i18nEn = getTranslations('en');
 		<link href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css" rel="stylesheet">
 		
 		<title>{title}</title>
+		
+		<!-- JSON-LD Structured Data (Schema.org) -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Joan Bono Frígols",
+				"jobTitle": "Software Developer + AI Integrator",
+				"url": "https://joanbonoprog.es",
+				"image": "https://joanbonoprog.es/images/hero/FotoPortfolio.jpg",
+				"sameAs": [
+					"https://linkedin.com/in/joanbonoprog",
+					"https://github.com/Joanbonoprog"
+				],
+				"email": "joanbonoprog@gmail.com",
+				"telephone": "+34630414612",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Sellent",
+					"addressRegion": "Valencia",
+					"postalCode": "46295",
+					"addressCountry": "ES"
+				},
+				"knowsAbout": ["Java", "Android Development", "Kotlin", "Generative AI", "Automation", "Software Development"]
+			}
+		</script>
+		
 		<!-- Traducciones SSR embebidas — fuente de verdad única para el cliente -->
 		<script is:inline define:vars={{ i18nEs, i18nEn }}>
 			window.__i18n__ = { es: i18nEs, en: i18nEn };

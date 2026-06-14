@@ -3,6 +3,40 @@
 /* Configuración de modo oscuro para Tailwind v4 */
 @variant dark (.dark &);
 
+/* Scrollbar personalizado moderno */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgb(79, 70, 229) 0%, rgb(99, 102, 241) 100%); /* indigo gradient */
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgb(67, 56, 202) 0%, rgb(79, 70, 229) 100%); /* darker indigo */
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.5);
+}
+
+/* Scrollbar en modo oscuro */
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgb(129, 140, 248) 0%, rgb(99, 102, 241) 100%); /* lighter indigo */
+  box-shadow: 0 2px 6px rgba(129, 140, 248, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgb(165, 180, 252) 0%, rgb(129, 140, 248) 100%); /* even lighter */
+  box-shadow: 0 2px 8px rgba(129, 140, 248, 0.6);
+}
+
 /* Controles de accesibilidad - Tamaño de fuente */
 html.font-size-normal {
   font-size: 16px;
@@ -422,12 +456,37 @@ body.language-changing [data-i18n-content] {
   html {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Offset para el header fijo */
+    scroll-padding-top: 45px; /* Offset para el header fijo */
   }
 
   body {
     min-height: 100vh;
     overflow-x: hidden;
+  }
+
+  /* Mejorar focus visible para accesibilidad */
+  *:focus-visible {
+    outline: 2px solid rgb(59, 130, 246);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .dark *:focus-visible {
+    outline-color: rgb(96, 165, 250);
+  }
+
+  /* Micro-interacciones en botones */
+  button, a {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  button:active:not(:disabled), a:active {
+    transform: scale(0.98);
+  }
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 
   /* Secciones con altura mínima de viewport */
@@ -469,11 +528,12 @@ body.language-changing [data-i18n-content] {
   animation: slideIn 0.4s ease-out forwards;
 }
 
-/* Animaciones de scroll */
+/* Animaciones de scroll - optimizadas para performance */
 .scroll-animate {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  will-change: opacity, transform;
 }
 
 .scroll-animate.animate-in {
@@ -481,11 +541,12 @@ body.language-changing [data-i18n-content] {
   transform: translateY(0);
 }
 
-/* Animación más suave para las tarjetas */
+/* Animación más suave para las tarjetas - optimizada */
 .animate-card {
   opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  transform: translateY(15px) scale(0.98);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  will-change: opacity, transform;
 }
 
 .animate-card.animate-in {

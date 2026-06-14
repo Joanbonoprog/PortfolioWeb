@@ -1,9 +1,9 @@
 // Sistema de animaciones al hacer scroll
 (function() {
-  // Configuración del Intersection Observer
+  // Configuración del Intersection Observer - optimizado para LCP
   const observerOptions = {
     root: null,
-    rootMargin: '0px', // Sin restricciones - anima inmediatamente al entrar en viewport
+    rootMargin: '50px', // Precargar animaciones 50px antes
     threshold: 0.01 // Solo requiere 1% de visibilidad para activar
   };
 
@@ -38,7 +38,8 @@
     const cards = document.querySelectorAll('.animate-card');
     cards.forEach((card, index) => {
       card.classList.add('scroll-animate');
-      card.style.transitionDelay = `${index * 0.1}s`;
+      // Reducir delay para mejorar performance
+      card.style.transitionDelay = `${index * 0.05}s`;
       observer.observe(card);
     });
   }
