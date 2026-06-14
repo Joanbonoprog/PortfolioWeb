@@ -201,6 +201,7 @@ const contentTranslations = {
     'Desarrollo de Bases de Datos en mySQL': 'Database Development in mySQL',
     'Conocimientos básicos de JavaScript y PHP': 'Basic knowledge of JavaScript and PHP',
     'Desarrollo de aplicaciones Android': 'Android application development',
+    'Kotlin Multiplatform': 'Kotlin Multiplatform',
     'Conocimientos básicos en Unity': 'Basic knowledge in Unity',
     'Conocimientos en automatización con n8n y Make': 'Knowledge in automation with n8n and Make',
     'Conocimientos en IAs Generativas y su implementación en Aplicaciones': 'Knowledge in Generative AIs and their implementation in Applications',

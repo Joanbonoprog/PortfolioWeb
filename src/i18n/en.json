@@ -1,6 +1,8 @@
 {
   "meta": {
-    "description": "Professional portfolio of Joan Bono Frígols - Software Developer specialized in Java, Android and Kotlin Multiplatform. Generative AI Integrator with experience in automation and application development.",
+    "title": "Joan Bono Frígols - Android & Kotlin Multiplatform Developer",
+    "description": "Android and Kotlin Multiplatform developer specialized in generative AI integration. Projects with Clean Architecture, LLMs and automation. Based in Valencia, Spain.",
+    "jobTitle": "Android & Kotlin Multiplatform Developer | AI Integrator",
     "sections": {
       "about": "Software developer specialized in Java, Android and Kotlin Multiplatform with training in generative AI and process automation.",
       "education": "Master's in Generative AI and Higher Degree in Multiplatform Application Development. Training in AI agents, chatbots and automation.",
@@ -60,6 +62,7 @@
     "subtitle": "Technologies and tools I master",
     "items": [
       { "name": "Java Development", "level": 55, "levelName": "Intermediate" },
+      { "name": "Kotlin Multiplatform", "level": 45, "levelName": "Intermediate"},
       { "name": "Basic knowledge in C#", "level": 30, "levelName": "Basic" },
       { "name": "Database Development in mySQL", "level": 50, "levelName": "Intermediate" },
       { "name": "Basic knowledge of JavaScript and PHP", "level": 35, "levelName": "Basic" },
@@ -107,7 +110,7 @@
         "company": "Asociación Cultura Festiva Sellent",
         "period": "2016-2018",
         "description": "Digital campaigns were designed and executed that Increased event visibility by +60%|Events were coordinated that Increased the number of attendees by 40%",
-        "icon": "📱"
+        "icon": "groups"
       }
     ]
   },

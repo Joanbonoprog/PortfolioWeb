@@ -17,6 +17,9 @@ const techLogos: Record<string, string> = {
   'chatbots': '/images/skills/telegram.svg',
   'JavaScript': '/images/skills/javascript-original.svg',
   'Java': '/images/skills/java-original.svg',
+  'Kotlin Multiplatform': '/images/skills/KMP.png',
+  'Kotlin': '/images/skills/KMP.svg',
+  'Multiplatform': '/images/skills/KMP.svg',
   'C#': '/images/skills/csharp-original.svg',
   'mySQL': '/images/skills/mysql-original.svg',
   'PHP': '/images/skills/php-original.svg',
@@ -58,8 +61,8 @@ function getTechLogo(skill: string): string {
       </button>
       
       <!-- Contenedor del slider -->
-      <div class="flex-1 overflow-hidden min-h-[300px] md:min-h-[400px] flex items-start">
-        <div id="skills-slider" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 transition-opacity duration-500 ease-out opacity-0 w-full auto-rows-max">
+      <div class="flex-1 overflow-hidden min-h-[300px] md:min-h-[400px] flex items-center">
+        <div id="skills-slider" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 transition-opacity duration-500 ease-out opacity-0 w-full auto-rows-max items-stretch">
           {skills.items.map((skill: any, index: number) => {
             const skillName = typeof skill === 'string' ? skill : skill.name;
             const skillLevel = typeof skill === 'string' ? 70 : skill.level;
@@ -67,9 +70,9 @@ function getTechLogo(skill: string): string {
             
             return (
               <div 
-                class="card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group"
+                class="card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group flex items-center"
               >
-                <div class="flex items-start gap-4 mb-3">
+                <div class="flex items-center gap-4 mb-3">
                   <div class="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
                     {getTechLogo(skillName).startsWith('http') || getTechLogo(skillName).startsWith('/') ? (
                       <img src={getTechLogo(skillName)} alt="" loading="lazy" decoding="async" class="w-8 h-8 object-contain" />

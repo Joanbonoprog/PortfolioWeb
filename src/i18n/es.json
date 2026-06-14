@@ -1,6 +1,8 @@
 {
   "meta": {
-    "description": "Portafolio profesional de Joan Bono Frígols - Desarrollador de Software especializado en Java, Android y Kotlin Multiplatform. Integrador de IA Generativa con experiencia en automatización y desarrollo de aplicaciones.",
+    "title": "Joan Bono Frígols - Android & Kotlin Multiplatform Developer",
+    "description": "Desarrollador Android y Kotlin Multiplatform especializado en integración de IA generativa. Proyectos con Clean Architecture, LLMs y automatización. Basado en Valencia, España.",
+    "jobTitle": "Android & Kotlin Multiplatform Developer | AI Integrator",
     "sections": {
       "about": "Desarrollador de software especializado en Java, Android y Kotlin Multiplatform con formación en IA generativa y automatización de procesos.",
       "education": "Máster en IA Generativa y Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Formación en agentes de IA, chatbots y automatización.",
@@ -60,6 +62,7 @@
     "subtitle": "Tecnologías y herramientas que domino",
     "items": [
       { "name": "Desarrollo en Entorno Java (Java + Kotlin)", "level": 55, "levelName": "Intermedio" },
+      { "name": "Kotlin Multiplatform", "level": 45, "levelName": "Intermedio" },
       { "name": "Conocimientos básicos en C#", "level": 30, "levelName": "Básico" },
       { "name": "Desarrollo de Bases de Datos en mySQL", "level": 50, "levelName": "Intermedio" },
       { "name": "Conocimientos básicos de JavaScript y PHP", "level": 35, "levelName": "Básico" },
@@ -107,7 +110,7 @@
         "company": "Asociación Cultura Festiva Sellent",
         "period": "2016-2018",
         "description": "Se diseñaron y ejecutaron campañas digitales que incrementaron la visibilidad de los eventos en un +60%|Se coordinaron eventos que aumentaron la cantidad de asistentes en un 40%",
-        "icon": "📱"
+        "icon": "groups"
       }
     ]
   },

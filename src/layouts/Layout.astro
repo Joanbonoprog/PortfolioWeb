@@ -12,10 +12,19 @@ interface Props {
 }
 
 const { 
-	title = 'Joan Bono Frígols - Portfolio', 
-	description = 'Desarrollador de Software + IA Specialist',
 	lang = 'es',
 	image = '/images/hero/FotoPortfolio.jpg'
+} = Astro.props;
+
+// Obtener traducciones
+const i18nEs = getTranslations('es');
+const i18nEn = getTranslations('en');
+const currentTranslations = lang === 'en' ? i18nEn : i18nEs;
+
+// Usar traducciones para title y description
+const { 
+	title = currentTranslations.meta.title, 
+	description = currentTranslations.meta.description
 } = Astro.props;
 
 const siteUrl = 'https://joanbonoprog.es';
@@ -26,9 +35,6 @@ const ogImageUrl = new URL(image, siteUrl).href;
 // URLs alternativas para hreflang
 const alternateEs = new URL('/?lang=es', siteUrl).href;
 const alternateEn = new URL('/?lang=en', siteUrl).href;
-
-const i18nEs = getTranslations('es');
-const i18nEn = getTranslations('en');
 ---
 
 <!doctype html>
@@ -90,27 +96,30 @@ const i18nEn = getTranslations('en');
 		<title>{title}</title>
 		
 		<!-- JSON-LD Structured Data (Schema.org) -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "Person",
-				"name": "Joan Bono Frígols",
-				"jobTitle": "Software Developer | Android, Kotlin Multiplatform & AI Integration",
-				"url": "https://joanbonoprog.es",
-				"image": "https://joanbonoprog.es/images/hero/FotoPortfolio.jpg",
-				"sameAs": [
-					"https://linkedin.com/in/joanbonoprog",
-					"https://github.com/Joanbonoprog"
-				],
-				"email": "joanbonoprog@gmail.com",
-				"telephone": "+34630414612",
-				"address": {
-					"@type": "PostalAddress",
-					"addressLocality": "Valencia",
-					"addressCountry": "ES"
-				},
-				"knowsAbout": ["Java", "Kotlin", "Android Development", "Kotlin Multiplatform", "Generative AI", "AI Integration", "Software Development", "Clean Architecture", "Compose Multiplatform", "Relational Databases", "Git"]
-			}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Joan Bono Frígols",
+			"jobTitle": currentTranslations.meta.jobTitle,
+			"url": "https://joanbonoprog.es",
+			"image": "https://joanbonoprog.es/images/hero/FotoPortfolio.jpg",
+			"sameAs": [
+				"https://linkedin.com/in/joanbonoprog",
+				"https://github.com/Joanbonoprog"
+			],
+			"email": "joanbonoprog@gmail.com",
+			"telephone": "+34 630 41 46 12",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Valencia",
+				"addressCountry": "ES"
+			},
+			"alumniOf": [
+				{ "@type": "EducationalOrganization", "name": "Evolve Academy" },
+				{ "@type": "EducationalOrganization", "name": "IFP Formación" }
+			],
+			"knowsAbout": ["Java", "Kotlin", "Android Development", "Kotlin Multiplatform", "Generative AI", "AI Integration", "Software Development", "Clean Architecture", "Compose Multiplatform", "Relational Databases", "Git"]
+		})} />
 		</script>
 		
 		<!-- Traducciones SSR embebidas — fuente de verdad única para el cliente -->

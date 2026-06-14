@@ -1,6 +1,8 @@
 export interface Translations {
   meta: {
+    title: string;
     description: string;
+    jobTitle: string;
     sections: {
       about: string;
       education: string;
