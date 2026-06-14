@@ -1,6 +1,8 @@
 ---
+import type { Translations } from '../types/translations';
+
 interface Props {
-  translations: any;
+  translations: Translations;
 }
 
 const { translations} = Astro.props;
@@ -17,33 +19,8 @@ const { about, languages } = translations;
       {about.subtitle}
     </p>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- About Description -->
-      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line" data-i18n="about.description">
-          {about.description}
-        </p>
-      </div>
-
-      <!-- Languages -->
-      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-          <span class="material-icons text-blue-600 dark:text-blue-400">language</span>
-          <span data-i18n="languages.title">{languages.title}</span>
-        </h3>
-        <ul class="space-y-3">
-          {languages.items.map((lang: string) => (
-            <li class="text-gray-700 dark:text-gray-300 flex items-start gap-3">
-              <span class="text-blue-600 dark:text-blue-400 mt-0.5 text-xl">•</span>
-              <span class="flex-1" data-i18n-content={lang}>{lang}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-
     <!-- Botón Descargar CV -->
-    <div class="flex justify-center mt-10">
+    <div class="flex justify-center mb-10">
       <button
         id="cv-download-btn"
         class="animate-card btn-ripple flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-300 border border-blue-400/30"
@@ -51,6 +28,79 @@ const { about, languages } = translations;
         <span class="material-icons">download</span>
         <span data-i18n="about.downloadCV">{about.downloadCV ?? 'Descargar CV'}</span>
       </button>
+    </div>
+
+    <!-- Bento Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
+      <!-- About Description - Grande (2 columnas, 2 filas) -->
+      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group md:col-span-2 md:row-span-2">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <span class="material-icons text-blue-600 dark:text-blue-400">person</span>
+          <span data-i18n="about.profileTitle">{about.profileTitle || 'Perfil Profesional'}</span>
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line" data-i18n="about.description">
+          {about.description}
+        </p>
+      </div>
+
+      <!-- Languages - Mediana -->
+      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <span class="material-icons text-blue-600 dark:text-blue-400">language</span>
+          <span data-i18n="languages.title">{languages.title}</span>
+        </h3>
+        <ul class="space-y-2">
+          {languages.items.map((lang: string) => (
+            <li class="text-gray-700 dark:text-gray-300 flex items-start gap-2 text-sm">
+              <span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span>
+              <span class="flex-1" data-i18n-content={lang}>{lang}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Estado Actual - Mediana -->
+      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+          <span class="material-icons text-blue-600 dark:text-blue-400">work_outline</span>
+          <span data-i18n="about.status.title">{about.status?.title || 'Estado Actual'}</span>
+        </h3>
+        <div class="flex items-start gap-2">
+          <span class="text-2xl">🟢</span>
+          <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed" data-i18n="about.status.value">
+            {about.status?.value || 'Buscando trabajo para incorporación inmediata'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Aprendizaje Continuo - Mediana (2 columnas) -->
+      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group md:col-span-2">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+          <span class="material-icons text-blue-600 dark:text-blue-400">school</span>
+          <span data-i18n="about.continuousLearning.title">{about.continuousLearning?.title || 'Aprendizaje Continuo'}</span>
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed" data-i18n="about.continuousLearning.description">
+          {about.continuousLearning?.description || 'En constante formación en nuevas tecnologías, tendencias del sector y mejores prácticas de desarrollo.'}
+        </p>
+      </div>
+
+      <!-- Carnet de Conducir - Pequeña -->
+      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <span class="material-icons text-blue-600 dark:text-blue-400">directions_car</span>
+          <span data-i18n="about.driverLicense.title">{about.driverLicense?.title || 'Carnet de Conducir'}</span>
+        </h3>
+        <ul class="space-y-2">
+          <li class="text-gray-700 dark:text-gray-300 flex items-start gap-2 text-sm">
+            <span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span>
+            <span class="flex-1">Carnet B</span>
+          </li>
+          <li class="text-gray-700 dark:text-gray-300 flex items-start gap-2 text-sm">
+            <span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span>
+            <span class="flex-1">Coche propio</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

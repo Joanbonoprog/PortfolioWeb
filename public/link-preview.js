@@ -1,39 +1,48 @@
 // Rich Link Preview Tooltips for Portfolio Links
-document.addEventListener('DOMContentLoaded', () => {
+(function() {
+  'use strict';
+  
   // Only initialize on desktop/mouse-pointer devices to ensure great UX
   if (!window.matchMedia('(pointer: fine)').matches) return;
 
-  // Configuration of metadata for specific static links
-  const previewData = {
-    'linkedin': {
-      siteName: 'LinkedIn',
-      title: 'Joan Bono Frígols | LinkedIn',
-      desc: 'Software Developer + AI Integrator. Visita mi perfil profesional, proyectos adicionales y red de contactos.',
-      image: '/images/hero/FotoPortfolio.jpg',
-      favicon: 'https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzuzsv'
-    },
-    'artimark': {
-      siteName: 'Artimark',
-      title: 'Artimark | Soluciones Digitales',
-      desc: 'Agencia de marketing digital y desarrollo web a medida donde me desempeñé como desarrollador WordPress.',
-      image: '/images/experience/artimark_logo.webp',
-      favicon: 'https://artimark.es/favicon.ico'
-    },
-    'project-livefootball': {
-      siteName: 'GitHub',
-      title: 'Joanbonoprog/LiveFootball',
-      desc: 'Repositorio del proyecto Live Football. Seguimiento de partidos en tiempo real y base de datos local SQLite.',
-      image: '/images/projects/livefootbal_logo.png',
-      favicon: 'https://github.githubassets.com/favicons/favicon.svg'
-    },
-    'project-prototype-creator': {
-      siteName: 'GitHub',
-      title: 'Joanbonoprog/App-Prototipe-Creator',
-      desc: 'Repositorio del proyecto final de máster. Herramienta multiplataforma con integración avanzada de agentes de IA.',
-      image: '/images/projects/app_prototipado_icon.png',
-      favicon: 'https://github.githubassets.com/favicons/favicon.svg'
-    }
-  };
+  // Get preview data based on current language
+  function getPreviewData() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lang') || 'es';
+    const i18n = window.__i18n__?.[currentLang] || window.__i18n__?.['es'] || {};
+    const linkPreviews = i18n.linkPreviews || {};
+
+    return {
+      'linkedin': {
+        siteName: 'LinkedIn',
+        title: linkPreviews.linkedin?.title || 'Joan Bono Frígols | LinkedIn',
+        desc: linkPreviews.linkedin?.desc || 'Software Developer + AI Integrator',
+        image: '/images/hero/FotoPortfolio.jpg',
+        favicon: 'https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzuzsv'
+      },
+      'artimark': {
+        siteName: 'Artimark',
+        title: linkPreviews.artimark?.title || 'Artimark',
+        desc: linkPreviews.artimark?.desc || 'Digital marketing agency',
+        image: '/images/experience/artimark_logo.webp',
+        favicon: 'https://artimark.es/favicon.ico'
+      },
+      'project-livefootball': {
+        siteName: 'GitHub',
+        title: 'Joanbonoprog/LiveFootball',
+        desc: linkPreviews.projectLiveFootball?.desc || 'Live Football project repository',
+        image: '/images/projects/livefootbal_logo.png',
+        favicon: 'https://github.githubassets.com/favicons/favicon.svg'
+      },
+      'project-prototype-creator': {
+        siteName: 'GitHub',
+        title: 'Joanbonoprog/App-Prototipe-Creator',
+        desc: linkPreviews.projectPrototypeCreator?.desc || 'App Prototype Creator repository',
+        image: '/images/projects/app_prototipado_icon.png',
+        favicon: 'https://github.githubassets.com/favicons/favicon.svg'
+      }
+    };
+  }
 
   // Create tooltip container in DOM
   const tooltip = document.createElement('div');
@@ -57,14 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeTrigger = null;
   let showTimeout = null;
   let hideTimeout = null;
+  const listenerMap = new WeakMap(); // Track which elements have listeners
 
   // Setup Event Listeners
   function setupListeners() {
     const targets = document.querySelectorAll('[data-preview-id]');
     
     targets.forEach(target => {
-      // Mouse Enter
-      target.addEventListener('mouseenter', (e) => {
+      // Skip if already has listeners
+      if (listenerMap.has(target)) return;
+      
+      // Mouse Enter handler
+      const mouseEnterHandler = (e) => {
         const dataId = target.getAttribute('data-preview-id');
         if (!dataId) return;
 
@@ -81,20 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
             showTooltip(target, dataId);
           }, 150);
         }
-      });
+      };
 
-      // Mouse Leave
-      target.addEventListener('mouseleave', () => {
+      // Mouse Leave handler
+      const mouseLeaveHandler = () => {
         clearTimeout(showTimeout);
         // Delay hide to allow moving to another tooltip target without flicker
         hideTimeout = setTimeout(() => {
           hideTooltip();
         }, 200);
-      });
+      };
+
+      // Add event listeners
+      target.addEventListener('mouseenter', mouseEnterHandler);
+      target.addEventListener('mouseleave', mouseLeaveHandler);
+      
+      // Mark as having listeners
+      listenerMap.set(target, true);
     });
   }
 
   function showTooltip(trigger, dataId) {
+    const previewData = getPreviewData();
     const data = previewData[dataId];
     if (!data) return;
 
@@ -159,9 +180,28 @@ document.addEventListener('DOMContentLoaded', () => {
   tooltip.style.transform = 'translateX(-50%)';
 }
 
-  // Initial setup
-  setupListeners();
+  // Initialize function
+  function init() {
+    // Append tooltip to body if not already present
+    if (!document.getElementById('link-preview-tooltip')) {
+      document.body.appendChild(tooltip);
+    }
+    setupListeners();
+  }
 
-  // Re-run setup after Astro page swaps (in case client router transitions pages)
-  document.addEventListener('astro:after-swap', setupListeners);
-});
+  // Initial setup when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Re-run setup after Astro page swaps
+  document.addEventListener('astro:after-swap', init);
+  
+  // Re-run setup when hash changes (navigation between sections)
+  window.addEventListener('hashchange', () => {
+    // Small delay to ensure DOM is updated
+    setTimeout(init, 100);
+  });
+})();

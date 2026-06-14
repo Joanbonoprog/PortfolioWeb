@@ -18,18 +18,25 @@ const currentLang: Language = (langParam === 'en' || langParam === 'es') ? langP
 
 // Obtener traducciones
 const translations = getTranslations(currentLang);
+
+// Detectar sección del hash para meta description dinámica
+const hash = url.hash.replace('#', '') as keyof typeof translations.meta.sections;
+const validSections = ['about', 'education', 'projects', 'experience', 'skills', 'contact'];
+const sectionDescription = validSections.includes(hash) 
+  ? translations.meta.sections[hash as keyof typeof translations.meta.sections]
+  : translations.meta.description;
 ---
 
-<Layout lang={currentLang} title={`${translations.hero.name} - Portfolio`}>
+<Layout lang={currentLang} title={`${translations.hero.name} - Portfolio`} description={sectionDescription}>
 	<Header currentLang={currentLang} translations={translations} />
 	<main>
 		<Hero translations={translations} currentLang={currentLang} />
-		<Contact translations={translations} />
 		<About translations={translations} />
 		<Education translations={translations} />
 		<Projects translations={translations} />
 		<Experience translations={translations} />
 		<Skills translations={translations} />
+		<Contact translations={translations} currentLang={currentLang} />
 	</main>
 	<Footer />
 </Layout>

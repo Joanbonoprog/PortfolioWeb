@@ -1,9 +1,10 @@
 ---
 import Image from 'astro/components/Image.astro';
 import { getImage } from 'astro:assets';
+import type { Translations } from '../types/translations';
 
 interface Props {
-  translations: any;
+  translations: Translations;
 }
 
 const { translations } = Astro.props;
@@ -71,7 +72,7 @@ function getTechLogo(skill: string): string {
                 <div class="flex items-start gap-4 mb-3">
                   <div class="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
                     {getTechLogo(skillName).startsWith('http') || getTechLogo(skillName).startsWith('/') ? (
-                      <img src={getTechLogo(skillName)} alt="" loading="lazy" class="w-8 h-8 object-contain" />
+                      <img src={getTechLogo(skillName)} alt="" loading="lazy" decoding="async" class="w-8 h-8 object-contain" />
                     ) : (
                       <span class="text-2xl">{getTechLogo(skillName)}</span>
                     )}

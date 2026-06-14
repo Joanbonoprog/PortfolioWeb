@@ -44,7 +44,7 @@ class ImageViewer {
             <span class="material-icons text-lg">swipe_down</span>
             <span data-i18n="gallery.swipeDown">Desliza abajo para cerrar</span>
           </div>
-          <button id="viewer-close" class="btn-ripple bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-close" class="btn-ripple bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm" aria-label="Cerrar galería">
             <span class="material-icons text-2xl">close</span>
           </button>
         </div>
@@ -52,7 +52,7 @@ class ImageViewer {
         <!-- Image Container -->
         <div class="flex-1 flex items-center justify-center relative">
           <!-- Previous Button -->
-          <button id="viewer-prev" class="btn-ripple absolute left-2 md:left-8 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-prev" class="btn-ripple absolute left-2 md:left-8 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm" aria-label="Imagen anterior">
             <span class="material-icons text-3xl">chevron_left</span>
           </button>
 
@@ -62,6 +62,8 @@ class ImageViewer {
               id="viewer-image" 
               src="" 
               alt="" 
+              loading="eager"
+              decoding="async"
               class="max-w-full max-h-[60vh] md:max-h-[60vh] object-contain rounded-lg shadow-2xl transition-all duration-300"
               style="cursor: zoom-in;"
             />
@@ -72,14 +74,16 @@ class ImageViewer {
           </div>
 
           <!-- Next Button -->
-          <button id="viewer-next" class="btn-ripple absolute right-2 md:right-8 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-next" class="btn-ripple absolute right-2 md:right-8 z-10 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm" aria-label="Imagen siguiente">
             <span class="material-icons text-3xl">chevron_right</span>
           </button>
         </div>
 
-        <!-- Image Title -->
+        <!-- Image Title and Project Name -->
         <div class="mt-4 text-center">
-          <h3 id="viewer-title" class="text-xl font-semibold text-white"></h3>
+          <h2 id="viewer-project-name" class="text-2xl font-bold text-white mb-1"></h2>
+          <h3 id="viewer-title" class="text-lg font-medium text-gray-300"></h3>
+          <p id="viewer-counter" class="text-sm text-gray-400 mt-1"></p>
         </div>
 
         <!-- Thumbnails Slider -->
@@ -91,13 +95,13 @@ class ImageViewer {
 
         <!-- Zoom Controls -->
         <div class="mt-4 flex justify-center gap-4">
-          <button id="viewer-zoom-out" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-zoom-out" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm" aria-label="Alejar zoom">
             <span class="material-icons">zoom_out</span>
           </button>
-          <button id="viewer-zoom-reset" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-zoom-reset" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm" aria-label="Restablecer zoom">
             <span class="material-icons">fit_screen</span>
           </button>
-          <button id="viewer-zoom-in" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button id="viewer-zoom-in" class="btn-ripple bg-black/30 hover:bg-black/50 text-white px-4 py-2 rounded-full transition-all hover:scale-105 shadow-lg backdrop-blur-sm" aria-label="Acercar zoom">
             <span class="material-icons">zoom_in</span>
           </button>
         </div>
@@ -214,6 +218,12 @@ class ImageViewer {
     this.images = images;
     this.currentIndex = startIndex;
     
+    // Mostrar nombre del proyecto
+    const projectNameEl = document.getElementById('viewer-project-name');
+    if (projectNameEl) {
+      projectNameEl.textContent = projectName;
+    }
+    
     // Crear miniaturas
     this.createThumbnails();
     
@@ -247,12 +257,14 @@ class ImageViewer {
     
     this.images.forEach((image, index) => {
       const thumb = document.createElement('div');
-      thumb.className = 'thumbnail flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent hover:border-blue-500 transition-all';
+      thumb.className = 'thumbnail flex-shrink-0 w-24 h-24 md:w-28 md:h-28 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent hover:border-blue-500 transition-all hover:scale-105';
       thumb.dataset.index = index;
       
       const img = document.createElement('img');
       img.src = image.src;
       img.alt = image.title;
+      img.loading = 'lazy';
+      img.decoding = 'async';
       img.className = 'w-full h-full object-cover';
       
       thumb.appendChild(img);
@@ -289,6 +301,12 @@ class ImageViewer {
     // Traducir el título
     const translatedTitle = this.translateImageTitle(currentImage.title);
     title.textContent = translatedTitle;
+    
+    // Actualizar contador
+    const counter = document.getElementById('viewer-counter');
+    if (counter) {
+      counter.textContent = `${this.currentIndex + 1} / ${this.images.length}`;
+    }
     
     // Resetear zoom
     this.resetZoom();
