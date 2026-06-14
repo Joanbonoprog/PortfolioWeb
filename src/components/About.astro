@@ -51,8 +51,8 @@ const { about, languages } = translations;
         </h3>
         <ul class="space-y-2">
           {languages.items.map((lang: string) => (
-            <li class="text-gray-700 dark:text-gray-300 flex items-start gap-2 text-sm">
-              <span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span>
+            <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2 text-sm">
+              <span class="text-blue-600 dark:text-blue-400">•</span>
               <span class="flex-1" data-i18n-content={lang}>{lang}</span>
             </li>
           ))}
@@ -65,7 +65,7 @@ const { about, languages } = translations;
           <span class="material-icons text-blue-600 dark:text-blue-400">work_outline</span>
           <span data-i18n="about.status.title">{about.status?.title || 'Estado Actual'}</span>
         </h3>
-        <div class="flex items-start gap-2">
+        <div class="flex items-center gap-2">
           <span class="text-2xl">🟢</span>
           <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed" data-i18n="about.status.value">
             {about.status?.value || 'Buscando trabajo para incorporación inmediata'}
@@ -91,13 +91,13 @@ const { about, languages } = translations;
           <span data-i18n="about.driverLicense.title">{about.driverLicense?.title || 'Carnet de Conducir'}</span>
         </h3>
         <ul class="space-y-2">
-          <li class="text-gray-700 dark:text-gray-300 flex items-start gap-2 text-sm">
-            <span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span>
-            <span class="flex-1">Carnet B</span>
+          <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2 text-sm">
+            <span class="text-blue-600 dark:text-blue-400">•</span>
+            <span class="flex-1" data-i18n-content="Carnet B">Carnet B</span>
           </li>
-          <li class="text-gray-700 dark:text-gray-300 flex items-start gap-2 text-sm">
-            <span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span>
-            <span class="flex-1">Coche propio</span>
+          <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2 text-sm">
+            <span class="text-blue-600 dark:text-blue-400">•</span>
+            <span class="flex-1" data-i18n-content="Coche propio">Coche propio</span>
           </li>
         </ul>
       </div>

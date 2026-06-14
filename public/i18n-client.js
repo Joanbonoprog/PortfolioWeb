@@ -33,6 +33,8 @@ const contentTranslations = {
     // Bento Grid - About
     'Buscando trabajo para incorporación inmediata': 'Buscando trabajo para incorporación inmediata',
     'Carnet B + Coche propio': 'Carnet B + Coche propio',
+    'Carnet B': 'Carnet B',
+    'Coche propio': 'Coche propio',
     'Actualmente formándome en Spring Boot y Spring AI para ampliar mis capacidades en desarrollo backend y aplicaciones con IA.': 'Actualmente formándome en Spring Boot y Spring AI para ampliar mis capacidades en desarrollo backend y aplicaciones con IA.',
     // Educación
     'Máster en IA Generativa': 'Máster en IA Generativa',
@@ -160,6 +162,8 @@ const contentTranslations = {
     // Bento Grid - About
     'Buscando trabajo para incorporación inmediata': 'Looking for work - Immediate availability',
     'Carnet B + Coche propio': 'License B + Own car',
+    'Carnet B': 'License B',
+    'Coche propio': 'Own car',
     'Actualmente formándome en Spring Boot y Spring AI para ampliar mis capacidades en desarrollo backend y aplicaciones con IA.': 'Currently training in Spring Boot and Spring AI to expand my backend development and AI application capabilities.',
     // Education
     'Máster en IA Generativa': 'Master in Generative AI',
@@ -220,6 +224,8 @@ const contentTranslations = {
     'Material Design 3': 'Material Design 3',
     'IA Generativa': 'Generative AI',
     'Napier': 'Napier',
+    'JUnit': 'JUnit',
+    'Mockito': 'Mockito',
     // Footer
     'Construido Con': 'Built With'
   }
