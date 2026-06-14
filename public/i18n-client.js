@@ -29,7 +29,7 @@ const contentTranslations = {
     // Idiomas
     'Castellano (Nativo)': 'Castellano (Nativo)',
     'Valenciano/Catalán (Nativo)': 'Valenciano/Catalán (Nativo)',
-    'Inglés (Técnico Profesional `B1`)': 'Inglés (Técnico Profesional `B1`)',
+    'Inglés (Técnico Profesional "B1")': 'Inglés (Técnico Profesional "B1")',
     // Bento Grid - About
     'Buscando trabajo para incorporación inmediata': 'Buscando trabajo para incorporación inmediata',
     'Carnet B + Coche propio': 'Carnet B + Coche propio',
@@ -158,7 +158,7 @@ const contentTranslations = {
     // Languages
     'Castellano (Nativo)': 'Spanish (Native)',
     'Valenciano/Catalán (Nativo)': 'Valencian/Catalan (Native)',
-    'Inglés (Técnico Profesional `B1`)': 'English (Technical Professional `B1`)',
+    'Inglés (Técnico Profesional "B1")': 'English (Technical Professional "B1")',
     // Bento Grid - About
     'Buscando trabajo para incorporación inmediata': 'Looking for work - Immediate availability',
     'Carnet B + Coche propio': 'License B + Own car',
