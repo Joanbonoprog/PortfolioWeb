@@ -65,7 +65,7 @@ const contentTranslations = {
     'Conocimientos en desarrollo de chatbots con IA': 'Conocimientos en desarrollo de chatbots con IA',
     'Conocimientos básicos en el uso de motores gráficos como Unity': 'Conocimientos básicos en el uso de motores gráficos como Unity',
     'Conocimientos básicos en Docker': 'Conocimientos básicos en Docker',
-    'Conocimientos básicos en Git': 'Conocimientos básicos en Git',
+    'Git & Github': 'Git & Github',
     // Nuevas tecnologías de proyectos
     'Android SDK': 'Android SDK',
     'SQLite': 'SQLite',
@@ -207,7 +207,7 @@ const contentTranslations = {
     'Conocimientos en desarrollo de chatbots con IA': 'Knowledge in AI chatbot development',
     'Conocimientos básicos en el uso de motores gráficos como Unity': 'Basic knowledge in the use of graphic engines like Unity',
     'Conocimientos básicos en Docker': 'Basic knowledge in Docker',
-    'Conocimientos básicos en Git': 'Basic knowledge in Git',
+    'Git & Github': 'Git & Github',
     // Nuevas tecnologías de proyectos
     'Android SDK': 'Android SDK',
     'SQLite': 'SQLite',

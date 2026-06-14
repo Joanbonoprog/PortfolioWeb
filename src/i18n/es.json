@@ -69,7 +69,7 @@
       { "name": "Conocimientos en IAs Generativas y su implementación en Aplicaciones", "level": 60, "levelName": "Intermedio" },
       { "name": "Conocimientos en desarrollo de chatbots con IA", "level": 55, "levelName": "Intermedio" },
       { "name": "Conocimientos básicos en Docker", "level": 20, "levelName": "Básico" },
-      { "name": "Conocimientos básicos en Git", "level": 55, "levelName": "Intermedio" }
+      { "name": "Git & Github", "level": 55, "levelName": "Intermedio" }
     ]
   },
   "contact": {
@@ -80,9 +80,11 @@
     "email": "Email",
     "emailValue": "joanbonoprog@gmail.com",
     "address": "Dirección",
-    "addressValue": "Calle Assagador, 15. Sellent (Valencia) 46295 - España",
+    "addressValue": "Valencia, España",
     "linkedin": "LinkedIn",
-    "linkedinValue": "linkedin.com/in/joanbonoprog"
+    "linkedinValue": "linkedin.com/in/joanbonoprog",
+    "github": "GitHub",
+    "githubValue": "github.com/Joanbonoprog"
   },
   "experience": {
     "title": "Experiencia Laboral",
