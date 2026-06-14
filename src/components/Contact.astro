@@ -21,29 +21,14 @@ const { contact } = translations;
       {contact.subtitle}
     </p>
 
-    <!-- Contact Cards -->
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Phone -->
-      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
-        <div class="flex items-center gap-4 mb-3">
-          <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
-            <span class="material-icons text-blue-600 dark:text-blue-400">phone</span>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-i18n="contact.phone">
-            {contact.phone}
-          </h3>
-        </div>
-        <p class="text-gray-700 dark:text-gray-300 text-lg">
-          {contact.phoneValue}
-        </p>
-      </div>
-
-      <!-- Email -->
+    <!-- Contact Cards - Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
+      <!-- Email - Grande (2 columnas) -->
       <button
         id="email-copy-btn"
         data-email={contact.emailValue}
         aria-label={currentLang === 'es' ? 'Copiar email al portapapeles' : 'Copy email to clipboard'}
-        class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 group cursor-pointer w-full text-left active:scale-95"
+        class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 group cursor-pointer w-full text-left active:scale-95 md:col-span-2"
       >
         <div class="flex items-center gap-4 mb-3">
           <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
@@ -59,42 +44,78 @@ const { contact } = translations;
         </p>
       </button>
 
-      <!-- Address -->
-      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
-        <div class="flex items-center gap-4 mb-3">
-          <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
-            <span class="material-icons text-blue-600 dark:text-blue-400">location_on</span>
+      <!-- Phone - Pequeña -->
+      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
+            <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">phone</span>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-i18n="contact.address">
-            {contact.address}
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.phone">
+            {contact.phone}
           </h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300 text-lg" data-i18n="contact.addressValue">
-          {contact.addressValue}
+        <p class="text-gray-700 dark:text-gray-300 text-sm">
+          {contact.phoneValue}
         </p>
       </div>
 
-      <!-- LinkedIn -->
+      <!-- LinkedIn - Mediana -->
       <a 
         href={contact.linkedinValue.startsWith('http') ? contact.linkedinValue : `https://${contact.linkedinValue}`}
         target="_blank"
         rel="noopener noreferrer"
         data-preview-id="linkedin"
-        class="animate-card card-shimmer btn-ripple bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group"
+        class="animate-card card-shimmer btn-ripple bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group"
       >
-        <div class="flex items-center gap-4 mb-3">
-          <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
-            <span class="material-icons text-blue-600 dark:text-blue-400">business</span>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
+            <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">business</span>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-i18n="contact.linkedin">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.linkedin">
             {contact.linkedin}
           </h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300 text-lg flex flex-wrap items-center gap-x-2 gap-y-1">
+        <p class="text-gray-700 dark:text-gray-300 text-sm flex flex-wrap items-center gap-x-2 gap-y-1">
           <span class="break-all">{contact.linkedinValue}</span>
-          <span class="material-icons text-blue-600 dark:text-blue-400 flex-shrink-0">open_in_new</span>
+          <span class="material-icons text-blue-600 dark:text-blue-400 flex-shrink-0 text-sm">open_in_new</span>
         </p>
       </a>
+
+      <!-- GitHub - Mediana -->
+      <a 
+        href={contact.githubValue?.startsWith('http') ? contact.githubValue : `https://${contact.githubValue}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="animate-card card-shimmer btn-ripple bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group"
+      >
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
+            <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">code</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.github">
+            {contact.github}
+          </h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 text-sm flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span class="break-all">{contact.githubValue}</span>
+          <span class="material-icons text-blue-600 dark:text-blue-400 flex-shrink-0 text-sm">open_in_new</span>
+        </p>
+      </a>
+
+      <!-- Address - Pequeña -->
+      <div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
+            <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">location_on</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.address">
+            {contact.address}
+          </h3>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 text-sm" data-i18n="contact.addressValue">
+          {contact.addressValue}
+        </p>
+      </div>
     </div>
   </div>
 </section>

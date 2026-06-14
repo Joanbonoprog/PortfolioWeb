@@ -62,6 +62,8 @@ export interface Translations {
     addressValue: string;
     linkedin: string;
     linkedinValue: string;
+    github: string;
+    githubValue: string;
   };
   education: {
     title: string;
