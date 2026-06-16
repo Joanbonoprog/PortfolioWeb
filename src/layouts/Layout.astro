@@ -13,7 +13,7 @@ interface Props {
 
 const { 
 	lang = 'es',
-	image = '/images/hero/FotoPortfolio.jpg'
+	image = '/images/hero/FotoPortfolio.webp'
 } = Astro.props;
 
 // Obtener traducciones
@@ -75,7 +75,7 @@ const alternateEn = new URL('/?lang=en', siteUrl).href;
 		<meta name="twitter:image" content={ogImageUrl} />
 		
 		<!-- Preload hero image for LCP optimization -->
-		<link rel="preload" as="image" href="/images/hero/FotoPortfolio.jpg" fetchpriority="high" />
+		<link rel="preload" as="image" href="/images/hero/FotoPortfolio.webp" fetchpriority="high" />
 		
 		<!-- Preconnect for performance -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,7 +102,7 @@ const alternateEn = new URL('/?lang=en', siteUrl).href;
 			"name": "Joan Bono Frígols",
 			"jobTitle": currentTranslations.meta.jobTitle,
 			"url": "https://joanbonoprog.es",
-			"image": "https://joanbonoprog.es/images/hero/FotoPortfolio.jpg",
+			"image": "https://joanbonoprog.es/images/hero/FotoPortfolio.webp",
 			"sameAs": [
 				"https://linkedin.com/in/joanbonoprog",
 				"https://github.com/Joanbonoprog"

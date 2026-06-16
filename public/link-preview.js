@@ -17,7 +17,7 @@
         siteName: 'LinkedIn',
         title: linkPreviews.linkedin?.title || 'Joan Bono Frígols | LinkedIn',
         desc: linkPreviews.linkedin?.desc || 'Software Developer + AI Integrator',
-        image: '/images/hero/FotoPortfolio.jpg',
+        image: '/images/hero/FotoPortfolio.webp',
         favicon: 'https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzuzsv'
       },
       'artimark': {
@@ -31,14 +31,14 @@
         siteName: 'GitHub',
         title: 'Joanbonoprog/LiveFootball',
         desc: linkPreviews.projectLiveFootball?.desc || 'Live Football project repository',
-        image: '/images/projects/livefootbal_logo.png',
+        image: '/images/projects/livefootbal_logo.webp',
         favicon: 'https://github.githubassets.com/favicons/favicon.svg'
       },
       'project-prototype-creator': {
         siteName: 'GitHub',
         title: 'Joanbonoprog/App-Prototipe-Creator',
         desc: linkPreviews.projectPrototypeCreator?.desc || 'App Prototype Creator repository',
-        image: '/images/projects/app_prototipado_icon.png',
+        image: '/images/projects/app_prototipado_icon.webp',
         favicon: 'https://github.githubassets.com/favicons/favicon.svg'
       }
     };
