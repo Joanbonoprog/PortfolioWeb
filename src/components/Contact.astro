@@ -14,10 +14,10 @@ const { contact } = translations;
 <section id="contact" class="py-20 px-6 transition-colors duration-300">
   <div class="max-w-4xl mx-auto">
     <!-- Title -->
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center" data-i18n="contact.title">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
       {contact.title}
     </h2>
-    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-i18n="contact.subtitle">
+    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
       {contact.subtitle}
     </p>
 
@@ -34,7 +34,7 @@ const { contact } = translations;
           <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
             <span class="material-icons text-blue-600 dark:text-blue-400">email</span>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-i18n="contact.email">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
             {contact.email}
           </h3>
         </div>
@@ -50,7 +50,7 @@ const { contact } = translations;
           <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
             <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">phone</span>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.phone">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
             {contact.phone}
           </h3>
         </div>
@@ -71,7 +71,7 @@ const { contact } = translations;
           <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
             <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">business</span>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.linkedin">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
             {contact.linkedin}
           </h3>
         </div>
@@ -92,7 +92,7 @@ const { contact } = translations;
           <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
             <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">code</span>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.github">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
             {contact.github}
           </h3>
         </div>
@@ -108,11 +108,11 @@ const { contact } = translations;
           <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
             <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">location_on</span>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white" data-i18n="contact.address">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
             {contact.address}
           </h3>
         </div>
-        <p class="text-gray-700 dark:text-gray-300 text-sm" data-i18n="contact.addressValue">
+        <p class="text-gray-700 dark:text-gray-300 text-sm">
           {contact.addressValue}
         </p>
       </div>
@@ -141,9 +141,8 @@ const { contact } = translations;
       try {
         await navigator.clipboard.writeText(email);
         
-        // Obtener idioma actual
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentLang = urlParams.get('lang') || 'es';
+        // Idioma actual desde la ruta i18n (Astro fija <html lang>)
+        const currentLang = document.documentElement.lang || 'es';
         
         // Actualizar texto del toast según idioma
         toastText.textContent = currentLang === 'es' 
@@ -171,8 +170,7 @@ const { contact } = translations;
         document.body.removeChild(tempInput);
         
         // Mostrar toast de todas formas
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentLang = urlParams.get('lang') || 'es';
+        const currentLang = document.documentElement.lang || 'es';
         toastText.textContent = currentLang === 'es' 
           ? 'Email copiado al portapapeles' 
           : 'Email copied to clipboard';

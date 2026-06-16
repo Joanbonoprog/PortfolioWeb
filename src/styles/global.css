@@ -179,16 +179,6 @@ body.page-transition {
   opacity: 0;
 }
 
-/* Elementos con traducción - transición suave */
-[data-i18n], [data-i18n-content] {
-  transition: opacity 0.2s ease-in-out;
-}
-
-body.language-changing [data-i18n],
-body.language-changing [data-i18n-content] {
-  opacity: 0.5;
-}
-
 /* Texto con aparición gradual - Títulos de sección */
 .section-title {
   animation: fadeInUp 0.8s ease-out forwards;

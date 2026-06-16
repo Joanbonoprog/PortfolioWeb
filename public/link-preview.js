@@ -7,10 +7,7 @@
 
   // Get preview data based on current language
   function getPreviewData() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || 'es';
-    const i18n = window.__i18n__?.[currentLang] || window.__i18n__?.['es'] || {};
-    const linkPreviews = i18n.linkPreviews || {};
+    const linkPreviews = window.__i18n__?.linkPreviews || {};
 
     return {
       'linkedin': {

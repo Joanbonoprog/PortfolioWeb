@@ -134,12 +134,21 @@ export interface Translations {
   };
   footer: {
     builtWith: string;
+    footerRole: string;
     techStack: Array<{
       name: string;
       url: string;
       logo: string;
       logoDark?: string;
     }>;
+  };
+  accessibility: {
+    title: string;
+    textSize: string;
+    normal: string;
+    large: string;
+    extraLarge: string;
+    hint: string;
   };
   linkPreviews: {
     linkedin: {

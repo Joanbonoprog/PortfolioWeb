@@ -1,8 +1,10 @@
 ---
 import type { Translations } from '../types/translations';
+import type { Language } from '../i18n/index';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 interface Props {
-  currentLang: string;
+  currentLang: Language;
   translations: Translations;
   showNav?: boolean;
   showLogo?: boolean;
@@ -11,6 +13,11 @@ interface Props {
 
 const { currentLang, translations, showNav = true, showLogo = false, showBackButton = false } = Astro.props;
 const { nav } = translations;
+
+// URLs localizadas (rutas i18n nativas)
+const homeUrl = getRelativeLocaleUrl(currentLang, '/');
+const esUrl = getRelativeLocaleUrl('es', '/');
+const enUrl = getRelativeLocaleUrl('en', '/');
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
@@ -19,7 +26,7 @@ const { nav } = translations;
     <div class="flex items-center">
       {showBackButton ? (
         <a 
-          href={`/?lang=${currentLang}`}
+          href={homeUrl}
           class="flex items-center gap-2 px-3 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all hover:scale-105 shadow-md font-medium text-sm"
           aria-label={currentLang === 'es' ? 'Volver al inicio' : 'Back to home'}
         >
@@ -42,22 +49,22 @@ const { nav } = translations;
     <!-- Navigation Links (desktop - centrado absoluto) -->
     {showNav && (
       <div class="hidden lg:flex items-center gap-4 xl:gap-6 absolute left-1/2 transform -translate-x-1/2">
-        <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base" data-i18n="nav.about" data-i18n-content={nav.about}>
+        <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base">
           {nav.about}
         </a>
-        <a href="#education" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base" data-i18n="nav.education" data-i18n-content={nav.education || 'Educación'}>
-          {nav.education || 'Educación'}
+        <a href="#education" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base">
+          {nav.education}
         </a>
-        <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base" data-i18n="nav.projects" data-i18n-content={nav.projects || 'Proyectos'}>
-          {nav.projects || 'Proyectos'}
+        <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base">
+          {nav.projects}
         </a>
-        <a href="#experience" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base" data-i18n="nav.experience" data-i18n-content={nav.experience || 'Experiencia'}>
-          {nav.experience || 'Experiencia'}
+        <a href="#experience" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base">
+          {nav.experience}
         </a>
-        <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base" data-i18n="nav.skills" data-i18n-content={nav.skills}>
+        <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base">
           {nav.skills}
         </a>
-        <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base" data-i18n="nav.contact" data-i18n-content={nav.contact}>
+        <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm xl:text-base">
           {nav.contact}
         </a>
       </div>
@@ -95,6 +102,7 @@ const { nav } = translations;
           <li
             role="option"
             data-lang="es"
+            data-href={esUrl}
             aria-selected={currentLang === 'es' ? 'true' : 'false'}
             class="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors"
           >
@@ -103,6 +111,7 @@ const { nav } = translations;
           <li
             role="option"
             data-lang="en"
+            data-href={enUrl}
             aria-selected={currentLang === 'en' ? 'true' : 'false'}
             class="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors"
           >
@@ -117,22 +126,22 @@ const { nav } = translations;
   {showNav && (
     <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
       <div class="px-4 py-4 space-y-3">
-        <a href="#about" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2" data-i18n="nav.about" data-i18n-content={nav.about}>
+        <a href="#about" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2">
           {nav.about}
         </a>
-        <a href="#education" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2" data-i18n="nav.education" data-i18n-content={nav.education || 'Educación'}>
-          {nav.education || 'Educación'}
+        <a href="#education" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2">
+          {nav.education}
         </a>
-        <a href="#projects" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2" data-i18n="nav.projects" data-i18n-content={nav.projects || 'Proyectos'}>
-          {nav.projects || 'Proyectos'}
+        <a href="#projects" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2">
+          {nav.projects}
         </a>
-        <a href="#experience" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2" data-i18n="nav.experience" data-i18n-content={nav.experience || 'Experiencia'}>
-          {nav.experience || 'Experiencia'}
+        <a href="#experience" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2">
+          {nav.experience}
         </a>
-        <a href="#skills" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2" data-i18n="nav.skills" data-i18n-content={nav.skills}>
+        <a href="#skills" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2">
           {nav.skills}
         </a>
-        <a href="#contact" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2" data-i18n="nav.contact" data-i18n-content={nav.contact}>
+        <a href="#contact" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2">
           {nav.contact}
         </a>
       </div>
@@ -141,18 +150,17 @@ const { nav } = translations;
 </header>
 
 <script>
-  // Establecer el valor del selector basado en la URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const currentLang = urlParams.get('lang') || 'es';
+  // Idioma actual desde la ruta i18n (Astro fija <html lang>)
+  const currentLang = document.documentElement.lang || 'es';
 
   // #6: fuente de verdad única para el mapeo idioma → código de bandera
-  const langToFlag = (lang) => lang === 'en' ? 'gb' : 'es';
+  const langToFlag = (lang: string) => lang === 'en' ? 'gb' : 'es';
 
   // Theme toggle button event listener
   const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle && typeof window.toggleTheme === 'function') {
+  if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      window.toggleTheme();
+      window.toggleTheme?.();
     });
   }
 
@@ -195,19 +203,18 @@ const { nav } = translations;
     // Seleccionar idioma
     dropdownMenu.querySelectorAll('li[data-lang]').forEach(item => {
       item.addEventListener('click', () => {
-        const ALLOWED_LANGS = ['es', 'en'];
         const lang = item.getAttribute('data-lang') || 'es';
-        const safeLang = ALLOWED_LANGS.includes(lang) ? lang : 'es';
+        const targetHref = item.getAttribute('data-href') || '/';
         
         // Si ya estamos en ese idioma, no hacer nada
-        if (safeLang === currentLang) {
+        if (lang === currentLang) {
           dropdownMenu.classList.add('hidden');
           dropdownBtn.setAttribute('aria-expanded', 'false');
           return;
         }
         
-        // Cambiar idioma y volver al inicio de la página (Hero)
-        window.location.href = window.location.pathname + '?lang=' + safeLang;
+        // Navegar a la ruta localizada del idioma seleccionado
+        window.location.href = targetHref;
       });
     });
 

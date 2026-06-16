@@ -13,9 +13,9 @@ const { experience } = translations;
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
       <span class="material-icons text-5xl text-blue-600 dark:text-blue-400 align-middle mr-2">work</span>
-      <span data-i18n="experience.title" data-i18n-content={experience.title}>{experience.title}</span>
+      <span>{experience.title}</span>
     </h2>
-    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-i18n="experience.subtitle">
+    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
       {experience.subtitle}
     </p>
 
@@ -36,21 +36,21 @@ const { experience } = translations;
               )}
               <div class="flex-1">
                 <div class="flex items-center flex-wrap gap-2 mb-2">
-                  <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={exp.role}>
+                  <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {exp.role}
                   </h3>
                   {exp.current && (
-                    <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full whitespace-nowrap" data-i18n="experience.current">
+                    <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full whitespace-nowrap">
                       {experience.current}
                     </span>
                   )}
                 </div>
-                <p class="text-blue-600 dark:text-blue-400 font-medium mb-1" data-i18n-content={exp.company}>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-1">
                   {exp.company}
                 </p>
                 <p class="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-1">
                   <span class="material-icons text-sm">calendar_today</span>
-                  <span data-i18n-content={exp.period}>{exp.period}</span>
+                  <span>{exp.period}</span>
                 </p>
               </div>
             </div>
@@ -61,12 +61,12 @@ const { experience } = translations;
                 {exp.description.split('|').map((item: string) => (
                   <li class="text-gray-700 dark:text-gray-300 leading-relaxed flex items-start gap-2">
                     <span class="text-blue-600 dark:text-blue-400 leading-relaxed">•</span>
-                    <span class="flex-1" data-i18n-content={item.trim()}>{item.trim()}</span>
+                    <span class="flex-1">{item.trim()}</span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6" data-i18n-content={exp.description}>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 {exp.description}
               </p>
             )}
@@ -81,7 +81,7 @@ const { experience } = translations;
                 class="btn-ripple flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover:scale-105 font-medium"
               >
                 <span class="material-icons text-lg">language</span>
-                <span data-i18n="experience.visitWebsite">{experience.visitWebsite}</span>
+                <span>{experience.visitWebsite}</span>
               </a>
             )}
           </div>

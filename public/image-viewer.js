@@ -335,13 +335,8 @@ class ImageViewer {
   }
 
   translateImageTitle(filename) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || document.documentElement.lang || 'es';
-
-    // Leer de window.__i18n__ (fuente de verdad SSR)
-    const images = window.__i18n__?.[currentLang]?.gallery?.images
-      || window.__i18n__?.['es']?.gallery?.images
-      || {};
+    // Leer del idioma actual embebido desde SSR en Layout.astro
+    const images = window.__i18n__?.gallery?.images || {};
 
     return images[filename] || filename;
   }

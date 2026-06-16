@@ -1,22 +1,22 @@
 ---
-import { getTranslations, type Language } from '../i18n';
+import type { Translations } from '../types/translations';
 
-// Obtener idioma de la URL
-const url = Astro.url;
-const langParam = url.searchParams.get('lang');
-const currentLang: Language = (langParam === 'en' || langParam === 'es') ? langParam as Language : 'es';
-const translations = getTranslations(currentLang);
+interface Props {
+  translations: Translations;
+}
+
+const { translations } = Astro.props;
 const { footer } = translations;
 ---
 
 <footer class="bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm text-gray-900 dark:text-white py-12 px-6 transition-colors duration-300">
   <div class="max-w-6xl mx-auto text-center">
     <!-- Tech Stack Section -->
-    <h3 class="text-gray-600 dark:text-gray-400 text-sm font-semibold uppercase tracking-wider mb-6" data-i18n="footer.builtWith">
+    <h3 class="text-gray-600 dark:text-gray-400 text-sm font-semibold uppercase tracking-wider mb-6">
       {footer.builtWith}
     </h3>
     <div class="flex flex-wrap items-center justify-center gap-8 mb-8">
-      {footer.techStack.map((tech: any) => (
+      {footer.techStack.map((tech) => (
         <a
           href={tech.url}
           target="_blank"
@@ -46,7 +46,7 @@ const { footer } = translations;
 
     <!-- Copyright -->
     <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">
-      © {new Date().getFullYear()} Joan Bono Frígols. Todos los derechos reservados.
+      © {new Date().getFullYear()} Joan Bono Frígols. {footer.footerRole}
     </p>
   </div>
 </footer>

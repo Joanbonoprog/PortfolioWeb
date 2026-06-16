@@ -14,9 +14,9 @@ const { education } = translations;
     <!-- Title -->
     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
       <span class="material-icons text-5xl text-blue-600 dark:text-blue-400 align-middle mr-2">school</span>
-      <span data-i18n="education.title">{education.title}</span>
+      <span>{education.title}</span>
     </h2>
-    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-i18n="education.subtitle">
+    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
       {education.subtitle}
     </p>
 
@@ -35,19 +35,19 @@ const { education } = translations;
               />
             )}
             <div class="flex-1">
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" data-i18n-content={edu.title}>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {edu.title}
               </h3>
-              <p class="text-blue-600 dark:text-blue-400 font-medium mb-1" data-i18n-content={edu.type}>
+              <p class="text-blue-600 dark:text-blue-400 font-medium mb-1">
                 {edu.type}
               </p>
               <p class="text-gray-600 dark:text-gray-400 mb-2 flex items-center gap-2">
                 <span class="material-icons text-sm">business</span>
-                <span data-i18n-content={edu.institution}>{edu.institution}</span>
+                <span>{edu.institution}</span>
               </p>
               <p class="text-gray-600 dark:text-gray-400 flex items-center gap-2">
                 <span class="material-icons text-sm">calendar_today</span>
-                <span data-i18n-content={edu.year}>{edu.year}</span>
+                <span>{edu.year}</span>
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ const { education } = translations;
               {edu.details.split('. ').filter((item: string) => item.trim()).map((detail: string) => (
                 <li class="text-gray-700 dark:text-gray-300 leading-relaxed flex items-start gap-2">
                   <span class="text-blue-600 dark:text-blue-400 leading-relaxed">•</span>
-                  <span class="flex-1" data-i18n-content={detail.trim()}>{detail.trim()}{detail.endsWith('.') ? '' : '.'}</span>
+                  <span class="flex-1">{detail.trim()}{detail.endsWith('.') ? '' : '.'}</span>
                 </li>
               ))}
             </ul>

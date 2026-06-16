@@ -29,7 +29,7 @@ const { hero } = translations;
     </div>
 
     <!-- Greeting -->
-    <p class="text-xl text-gray-600 dark:text-gray-400 mb-4 animate-fade-in" style="animation-delay: 0.1s;" data-i18n="hero.greeting">
+    <p class="text-xl text-gray-600 dark:text-gray-400 mb-4 animate-fade-in" style="animation-delay: 0.1s;">
       {hero.greeting}
     </p>
 
@@ -62,12 +62,8 @@ const { hero } = translations;
     // Limpiar cualquier contenido previo
     typewriterText.textContent = '';
 
-    // Leer de window.__i18n__ (fuente de verdad SSR)
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || 'es';
-    const text = window.__i18n__?.[currentLang]?.hero?.title
-      || window.__i18n__?.['es']?.hero?.title
-      || '';
+    // Leer el título del idioma actual embebido desde SSR en Layout.astro
+    const text = window.__i18n__?.hero?.title || '';
     let index = 0;
     
     function typeWriter() {
