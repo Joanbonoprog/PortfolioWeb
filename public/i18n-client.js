@@ -15,7 +15,7 @@ const contentTranslations = {
     'Proyecto Final de Master': 'Proyecto Final de Master',
     // Descripciones actualizadas
     'Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.': 'Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.',
-    'Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.': 'Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.',
+    'Herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, ofrece una experiencia fluida tanto en Android como en escritorio.\n\nIncluye chat con IA multi-proveedor (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), generación automática de prototipos, galería con búsqueda, visualización HTML, exportación a HTML/PDF, soporte multiplataforma (Android 8.0+ y Desktop), tema claro/oscuro, internacionalización español/inglés, y almacenamiento local seguro con SQLDelight.': 'Herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, ofrece una experiencia fluida tanto en Android como en escritorio.\n\nIncluye chat con IA multi-proveedor (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), generación automática de prototipos, galería con búsqueda, visualización HTML, exportación a HTML/PDF, soporte multiplataforma (Android 8.0+ y Desktop), tema claro/oscuro, internacionalización español/inglés, y almacenamiento local seguro con SQLDelight.',
     // Experiencias
     'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.': 'Gestión y diseño de redes sociales, Venta de Productos, Diseño de carteles, flyers, etc., Organización de Eventos.',
     'Arquitectura del Sitio Web: Participación activa en el diseño estructural y despliegue técnico desde cero de la nueva e-shop utilizando WordPress, WooCommerce, Elementor y Astro.': 'Arquitectura del Sitio Web: Participación activa en el diseño estructural y despliegue técnico desde cero de la nueva e-shop utilizando WordPress, WooCommerce, Elementor y Astro.',
@@ -84,7 +84,8 @@ const contentTranslations = {
     'Anthropic Claude': 'Anthropic Claude',
     'Google Gemini': 'Google Gemini',
     'Ktor Client': 'Ktor Client',
-    'Napier': 'Napier'
+    'Napier': 'Napier',
+    'JUnit': 'JUnit'
   },
   en: {
     // Navigation
@@ -134,7 +135,7 @@ const contentTranslations = {
     'Final Master Project': 'Final Master Project',
     // Descripciones actualizadas
     'Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.': 'Comprehensive Android application for real-time football match tracking and team management. Features live updates, player statistics, custom notifications, and local storage with SQLite.\n\nSpecifically, I was responsible for designing and deploying the database architecture, implementing a robust local persistence system with SQLite for offline access.',
-    'Herramienta multiplataforma que utiliza IA para transformar ideas conceptuales en prototipos funcionales de aplicaciones. Ofrece chat conversacional con IA, galería de prototipos, vista detallada y capacidad de exportación.\n\nDesarrollada con Kotlin Multiplatform y Compose Multiplatform, funciona en Android y Desktop con código compartido, integrando Supabase para persistencia en la nube y soporte completo de internacionalización.': 'Cross-platform tool that uses AI to transform conceptual ideas into functional application prototypes. Features conversational AI chat, prototype gallery, detailed view, and export capabilities.\n\nDeveloped with Kotlin Multiplatform and Compose Multiplatform, runs on Android and Desktop with shared code, integrating Supabase for cloud persistence and full internationalization support.',
+    'Herramienta que utiliza inteligencia artificial para convertir ideas conceptuales en prototipos funcionales y detallados de aplicaciones. Construida con Kotlin Multiplatform y Compose Multiplatform, ofrece una experiencia fluida tanto en Android como en escritorio.\n\nIncluye chat con IA multi-proveedor (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), generación automática de prototipos, galería con búsqueda, visualización HTML, exportación a HTML/PDF, soporte multiplataforma (Android 8.0+ y Desktop), tema claro/oscuro, internacionalización español/inglés, y almacenamiento local seguro con SQLDelight.': 'Tool that uses artificial intelligence to convert conceptual ideas into functional and detailed application prototypes. Built with Kotlin Multiplatform and Compose Multiplatform, it offers a seamless experience on both Android and desktop.\n\nFeatures multi-provider AI chat (OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Flash), automatic prototype generation, gallery with search, HTML visualization, export to HTML/PDF, cross-platform support (Android 8.0+ and Desktop), light/dark theme, Spanish/English internationalization, and secure local storage with SQLDelight.',
     // Experiences
     'Web Developer WordPress': 'WordPress Web Developer',
     'Creador de Contenido': 'Content Creator',
@@ -219,10 +220,13 @@ const contentTranslations = {
     'Gson': 'Gson',
     'Kotlin Multiplatform': 'Kotlin Multiplatform',
     'Compose Multiplatform': 'Compose Multiplatform',
-    'Supabase': 'Supabase',
+    'SQLDelight': 'SQLDelight',
     'Koin': 'Koin',
     'Material Design 3': 'Material Design 3',
-    'IA Generativa': 'Generative AI',
+    'OpenAI GPT-4o': 'OpenAI GPT-4o',
+    'Anthropic Claude': 'Anthropic Claude',
+    'Google Gemini': 'Google Gemini',
+    'Ktor Client': 'Ktor Client',
     'Napier': 'Napier',
     'JUnit': 'JUnit',
     'Mockito': 'Mockito',
