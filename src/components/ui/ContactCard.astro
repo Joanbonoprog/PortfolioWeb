@@ -1,0 +1,68 @@
+---
+import IconBadge from './IconBadge.astro';
+
+interface Props {
+  icon: string;
+  title: string;
+  colSpan?: '1' | '2' | '3';
+  padding?: 'md' | 'lg';
+  onClick?: boolean;
+  href?: string;
+  copyIcon?: boolean;
+  externalIcon?: boolean;
+  ariaLabel?: string;
+  dataPreviewId?: string;
+  id?: string;
+  className?: string;
+}
+
+const { 
+  icon, 
+  title, 
+  colSpan = '1', 
+  padding = 'md',
+  onClick = false,
+  href,
+  copyIcon = false,
+  externalIcon = false,
+  ariaLabel,
+  dataPreviewId,
+  id,
+  className = ''
+} = Astro.props;
+
+const paddingClasses = {
+  md: 'p-6',
+  lg: 'p-8'
+};
+
+const colSpanClasses = {
+  '1': '',
+  '2': 'md:col-span-2',
+  '3': 'md:col-span-3'
+};
+
+const Wrapper = href ? 'a' : (onClick ? 'button' : 'div');
+const wrapperProps = href 
+  ? { href, target: '_blank', rel: 'noopener noreferrer', 'data-preview-id': dataPreviewId, id }
+  : onClick 
+  ? { 'aria-label': ariaLabel, id }
+  : { id };
+---
+
+<Wrapper
+  {...wrapperProps}
+  class={`animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md ${paddingClasses[padding]} rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group ${onClick ? 'cursor-pointer active:scale-95' : ''} ${href ? 'btn-ripple' : ''} ${colSpanClasses[colSpan]} ${className}`}
+>
+  <div class="flex items-center gap-3 mb-3">
+    <IconBadge icon={icon} size={padding === 'lg' ? 'lg' : 'md'} />
+    <h3 class={`font-semibold text-gray-900 dark:text-white ${padding === 'lg' ? 'text-xl' : 'text-lg'}`}>
+      {title}
+    </h3>
+  </div>
+  <p class="text-gray-700 dark:text-gray-300 text-sm flex flex-wrap items-center gap-x-2 gap-y-1">
+    <span class="break-all"><slot /></span>
+    {copyIcon && <span class="material-icons text-sm text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">content_copy</span>}
+    {externalIcon && <span class="material-icons text-blue-600 dark:text-blue-400 flex-shrink-0 text-sm">open_in_new</span>}
+  </p>
+</Wrapper>

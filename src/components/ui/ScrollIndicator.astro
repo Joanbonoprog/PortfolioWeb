@@ -1,0 +1,33 @@
+---
+interface Props {
+  href: string;
+  ariaLabel?: string;
+  icon?: string;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  href, 
+  ariaLabel, 
+  icon = 'keyboard_arrow_down', 
+  size = 'md',
+  className = ''
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-3xl',
+  md: 'text-4xl',
+  lg: 'text-5xl'
+};
+---
+
+<a 
+  href={href} 
+  class={`scroll-indicator block mt-8 md:mt-16 animate-bounce cursor-pointer group ${className}`}
+  aria-label={ariaLabel}
+>
+  <span class={`material-icons ${sizeClasses[size]} text-gray-700 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-lg`}>
+    {icon}
+  </span>
+</a>

@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "./layout/Header.astro";
+import Hero from "./sections/Hero.astro";
+import About from "./sections/About.astro";
+import Education from "./sections/Education.astro";
+import Projects from "./sections/Projects.astro";
+import Experience from "./sections/Experience.astro";
+import Skills from "./sections/Skills.astro";
+import Contact from "./sections/Contact.astro";
+import Footer from "./layout/Footer.astro";
+import { getTranslations, type Language } from "../i18n/index";
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+const translations = getTranslations(lang);
+---
+
+<Layout
+	lang={lang}
+	title={`${translations.hero.name} - ${translations.hero.pageTitle}`}
+	description={translations.meta.description}
+>
+	<Header currentLang={lang} translations={translations} />
+	<main>
+		<Hero translations={translations} currentLang={lang} />
+		<About translations={translations} />
+		<Education translations={translations} />
+		<Projects translations={translations} />
+		<Experience translations={translations} />
+		<Skills translations={translations} />
+		<Contact translations={translations} currentLang={lang} />
+	</main>
+	<Footer translations={translations} />
+</Layout>

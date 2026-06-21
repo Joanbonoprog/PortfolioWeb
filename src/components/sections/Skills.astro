@@ -1,0 +1,94 @@
+---
+import type { Translations, SkillItem } from '../../types/translations';
+import IconButton from '../ui/IconButton.astro';
+import ProgressBar from '../ui/ProgressBar.astro';
+import { getTechLogo, isImageLogo } from '../../data/tech-logos';
+
+interface Props {
+  translations: Translations;
+}
+
+const { translations } = Astro.props;
+const { skills, gallery } = translations;
+---
+
+<section id="skills" class="py-20 px-6 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto">
+    <!-- Title -->
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+      {skills.title}
+    </h2>
+    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+      {skills.subtitle}
+    </p>
+
+    <!-- Skills Slider -->
+    <div class="flex items-center gap-2 md:gap-4">
+      <!-- Botón Anterior -->
+      <IconButton 
+        id="skills-prev"
+        icon="chevron_left"
+        variant="secondary"
+        size="md"
+        className="hidden md:flex"
+      />
+      
+      <!-- Contenedor del slider -->
+      <div class="flex-1 overflow-hidden min-h-[300px] md:min-h-[400px] flex items-center">
+        <div id="skills-slider" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 transition-opacity duration-500 ease-out opacity-0 w-full auto-rows-max items-start">
+          {skills.items.map((skill: SkillItem, index: number) => {
+            const skillName = typeof skill === 'string' ? skill : skill.name;
+            const skillLevel = typeof skill === 'string' ? 70 : skill.level;
+            const skillLevelName = typeof skill === 'string' ? 'Intermedio' : skill.levelName;
+            const techLogo = getTechLogo(skillName);
+
+            return (
+              <div 
+                class="card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group w-full"
+              >
+                <div class="flex flex-col gap-3">
+                  <div class="flex items-center gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
+                      {isImageLogo(techLogo) ? (
+                        <img src={techLogo} alt="" loading="lazy" decoding="async" class="w-8 h-8 object-contain" />
+                      ) : (
+                        <span class="text-2xl">{techLogo}</span>
+                      )}
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed break-words">
+                      {skillName}
+                    </p>
+                  </div>
+                  <ProgressBar level={skillLevel} />
+                  <span class="text-xs font-medium text-blue-700 dark:text-blue-300">{skillLevelName}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      
+      <!-- Botón Siguiente -->
+      <IconButton 
+        id="skills-next"
+        icon="chevron_right"
+        variant="secondary"
+        size="md"
+        className="hidden md:flex"
+      />
+    </div>
+
+    <!-- Indicadores de página -->
+    <div id="skills-indicators" class="flex justify-center gap-2 mt-6 md:mt-8">
+      <!-- Los indicadores se generarán dinámicamente -->
+    </div>
+    
+    <!-- Hint de gestos para móviles -->
+    <div id="skills-swipe-hint" class="md:hidden text-center mt-4 text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 opacity-70">
+      <span class="material-icons text-base">swipe</span>
+      <span>{gallery.swipeNavigate}</span>
+    </div>
+  </div>
+</section>
+
+<script src="../../scripts/skills-slider.ts"></script>

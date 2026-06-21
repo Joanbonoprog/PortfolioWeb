@@ -1,8 +1,49 @@
+export interface EducationItem {
+  title: string;
+  type: string;
+  institution: string;
+  year: string;
+  logo: string;
+  details: string;
+}
+
+export interface ProjectItem {
+  id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  icon: string;
+  tech?: string[];
+  github?: string;
+  website?: string;
+  current?: boolean;
+}
+
+export interface ExperienceItem {
+  id: string;
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  icon: string;
+  website?: string;
+  current?: boolean;
+}
+
+export interface SkillItem {
+  name: string;
+  level: number;
+  levelName: string;
+}
+
 export interface Translations {
   meta: {
     title: string;
     description: string;
     jobTitle: string;
+    author: string;
+    siteName: string;
+    scrollToTop: string;
     sections: {
       about: string;
       education: string;
@@ -26,6 +67,7 @@ export interface Translations {
     name: string;
     title: string;
     cta: string;
+    pageTitle: string;
   };
   about: {
     title: string;
@@ -52,6 +94,8 @@ export interface Translations {
     subtitle: string;
     styleHarvard: string;
     styleDetailed: string;
+    spanish: string;
+    english: string;
   };
   contact: {
     title: string;
@@ -70,14 +114,7 @@ export interface Translations {
   education: {
     title: string;
     subtitle: string;
-    items: Array<{
-      title: string;
-      type: string;
-      institution: string;
-      year: string;
-      logo: string;
-      details: string;
-    }>;
+    items: EducationItem[];
   };
   projects: {
     title: string;
@@ -87,41 +124,19 @@ export interface Translations {
     viewGallery: string;
     viewGithub: string;
     visitWebsite: string;
-    items: Array<{
-      id: string;
-      name: string;
-      subtitle: string;
-      description: string;
-      icon: string;
-      tech?: string[];
-      github?: string;
-      website?: string;
-      current?: boolean;
-    }>;
+    items: ProjectItem[];
   };
   experience: {
     title: string;
     subtitle: string;
     visitWebsite: string;
     current: string;
-    items: Array<{
-      id: string;
-      role: string;
-      company: string;
-      period: string;
-      description: string;
-      icon: string;
-      website?: string;
-    }>;
+    items: ExperienceItem[];
   };
   skills: {
     title: string;
     subtitle: string;
-    items: Array<{
-      name: string;
-      level: number;
-      levelName: string;
-    }>;
+    items: SkillItem[];
   };
   languages: {
     title: string;
@@ -134,6 +149,7 @@ export interface Translations {
   };
   footer: {
     builtWith: string;
+    footerRole: string;
     techStack: Array<{
       name: string;
       url: string;
@@ -141,8 +157,45 @@ export interface Translations {
       logoDark?: string;
     }>;
   };
+  accessibility: {
+    title: string;
+    textSize: string;
+    normal: string;
+    large: string;
+    extraLarge: string;
+    hint: string;
+  };
+  copyMessages: {
+    emailCopied: string;
+    phoneCopied: string;
+    copyEmailAria: string;
+    copyPhoneAria: string;
+    copyError: string;
+    copyFallback: string;
+  };
+  ariaLabels: {
+    goToAbout: string;
+    backToHome: string;
+    openNavMenu: string;
+    toggleTheme: string;
+    changeLanguage: string;
+    closeGallery: string;
+    previousImage: string;
+    nextImage: string;
+    zoomOut: string;
+    zoomReset: string;
+    zoomIn: string;
+  };
+  header: {
+    backToHome: string;
+    sections: string;
+  };
   linkPreviews: {
     linkedin: {
+      title: string;
+      desc: string;
+    };
+    github: {
       title: string;
       desc: string;
     };

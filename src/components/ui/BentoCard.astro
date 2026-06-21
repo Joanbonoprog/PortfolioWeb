@@ -1,0 +1,46 @@
+---
+interface Props {
+  icon?: string;
+  iconType?: 'image' | 'emoji' | 'material';
+  current?: boolean;
+  currentLabel?: string;
+  altText?: string;
+}
+
+const { icon, iconType = 'emoji', current, currentLabel, altText = 'Icon' } = Astro.props;
+---
+
+<div class="animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group">
+  <div class="flex items-start gap-4 mb-6 relative">
+    {icon && (
+      iconType === 'image' ? (
+        <img 
+          src={icon} 
+          alt={altText}
+          loading="lazy"
+          decoding="async"
+          class="w-24 h-24 flex-shrink-0 object-contain group-hover:scale-110 transition-transform duration-300"
+        />
+      ) : iconType === 'material' ? (
+        <div class="w-24 h-24 flex-shrink-0 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="material-icons text-5xl text-blue-600 dark:text-blue-400">{icon}</span>
+        </div>
+      ) : (
+        <div class="text-6xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{icon}</div>
+      )
+    )}
+    <div class="flex-1">
+      <div class="flex items-center flex-wrap gap-2 mb-2">
+        <slot name="title" />
+        {current && currentLabel && (
+          <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full whitespace-nowrap">
+            {currentLabel}
+          </span>
+        )}
+      </div>
+      <slot name="subtitle" />
+    </div>
+  </div>
+  <slot name="content" />
+  <slot name="footer" />
+</div>

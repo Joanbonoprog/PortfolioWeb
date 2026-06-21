@@ -1,0 +1,16 @@
+---
+interface Props {
+  level: number;
+  className?: string;
+}
+
+const { level, className = '' } = Astro.props;
+---
+
+<div class={`w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden ${className}`}>
+  <div 
+    class="h-full bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-500 dark:to-blue-300 rounded-full transition-all duration-1000 skill-progress"
+    style={`width: 0%;`}
+    data-level={level}
+  ></div>
+</div>

@@ -179,16 +179,6 @@ body.page-transition {
   opacity: 0;
 }
 
-/* Elementos con traducción - transición suave */
-[data-i18n], [data-i18n-content] {
-  transition: opacity 0.2s ease-in-out;
-}
-
-body.language-changing [data-i18n],
-body.language-changing [data-i18n-content] {
-  opacity: 0.5;
-}
-
 /* Texto con aparición gradual - Títulos de sección */
 .section-title {
   animation: fadeInUp 0.8s ease-out forwards;
@@ -552,4 +542,38 @@ body.language-changing [data-i18n-content] {
 .animate-card.animate-in {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+/* Respeto a usuarios que prefieren menos movimiento (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Asegurar que los elementos animados queden visibles en su estado final */
+  .scroll-animate,
+  .animate-card,
+  .section-title,
+  .stagger-text {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .title-underline::after {
+    width: 100% !important;
+  }
+
+  /* Detener el fondo animado de ondas */
+  .wave {
+    animation: none !important;
+  }
 }

@@ -1,0 +1,44 @@
+---
+import type { Translations, EducationItem } from '../../types/translations';
+import SectionHeading from '../ui/SectionHeading.astro';
+import BentoCard from '../ui/BentoCard.astro';
+import BulletList from '../ui/BulletList.astro';
+import InfoRow from '../ui/InfoRow.astro';
+
+interface Props {
+  translations: Translations;
+}
+
+const { translations } = Astro.props;
+const { education } = translations;
+---
+
+<section id="education" class="py-20 px-6 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto">
+      <SectionHeading icon="school" title={education.title} subtitle={education.subtitle} />
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {education.items.map((edu: EducationItem) => (
+        <BentoCard icon={edu.logo} iconType="image" altText={edu.institution}>
+          <h3 slot="title" class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            {edu.title}
+          </h3>
+          <div slot="subtitle">
+            <p class="text-blue-600 dark:text-blue-400 font-medium mb-1">
+              {edu.type}
+            </p>
+            <InfoRow icon="business" size="sm" className="mb-2">{edu.institution}</InfoRow>
+            <InfoRow icon="calendar_today" size="sm">{edu.year}</InfoRow>
+          </div>
+          <div slot="content">
+            {edu.details && (
+              <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <BulletList items={edu.details.split('. ').filter((item: string) => item.trim())} separator="" bulletColor="blue" />
+              </div>
+            )}
+          </div>
+        </BentoCard>
+      ))}
+    </div>
+  </div>
+</section>

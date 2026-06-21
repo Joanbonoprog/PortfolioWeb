@@ -1,0 +1,172 @@
+---
+import type { Translations } from '../../types/translations';
+import type { Language } from '../../i18n/index';
+import ContactCard from '../ui/ContactCard.astro';
+
+interface Props {
+  translations: Translations;
+  currentLang?: Language;
+}
+
+const { translations, currentLang = 'es' } = Astro.props;
+const { contact } = translations;
+---
+
+<section id="contact" class="py-20 px-6 transition-colors duration-300">
+  <div class="max-w-4xl mx-auto">
+    <!-- Title -->
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+      {contact.title}
+    </h2>
+    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+      {contact.subtitle}
+    </p>
+
+    <!-- Contact Cards - Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
+      <!-- Email - Grande (2 columnas) -->
+      <ContactCard
+        id="email-copy-btn"
+        data-email={contact.emailValue}
+        icon="email"
+        title={contact.email}
+        colSpan="2"
+        padding="lg"
+        onClick={true}
+        copyIcon={true}
+        ariaLabel={translations.copyMessages.copyEmailAria}
+      >
+        {contact.emailValue}
+      </ContactCard>
+
+      <!-- Phone - Pequeña -->
+      <ContactCard
+        id="phone-copy-btn"
+        data-phone={contact.phoneValue}
+        icon="phone"
+        title={contact.phone}
+        padding="md"
+        onClick={true}
+        copyIcon={true}
+        ariaLabel={translations.copyMessages.copyPhoneAria}
+      >
+        {contact.phoneValue}
+      </ContactCard>
+
+      <!-- LinkedIn - Mediana -->
+      <ContactCard
+        href={contact.linkedinValue.startsWith('http') ? contact.linkedinValue : `https://${contact.linkedinValue}`}
+        icon="business"
+        title={contact.linkedin}
+        padding="md"
+        externalIcon={true}
+        dataPreviewId="linkedin"
+      >
+        {contact.linkedinValue}
+      </ContactCard>
+
+      <!-- GitHub - Mediana -->
+      <ContactCard
+        href={contact.githubValue?.startsWith('http') ? contact.githubValue : `https://${contact.githubValue}`}
+        icon="code"
+        title={contact.github}
+        padding="md"
+        externalIcon={true}
+        dataPreviewId="github"
+      >
+        {contact.githubValue}
+      </ContactCard>
+
+      <!-- Address - Pequeña -->
+      <ContactCard
+        icon="location_on"
+        title={contact.address}
+        padding="md"
+      >
+        {contact.addressValue}
+      </ContactCard>
+    </div>
+  </div>
+</section>
+
+<!-- Toast notification -->
+<div id="copy-toast" class="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-lg shadow-2xl flex items-center gap-3 transform translate-y-32 opacity-0 transition-all duration-300" style="z-index: 99999;">
+  <span class="material-icons">check_circle</span>
+  <span id="copy-toast-text">{translations.copyMessages.emailCopied}</span>
+</div>
+
+<script>
+  function showToast(message: string) {
+    const toast = document.getElementById('copy-toast');
+    const toastText = document.getElementById('copy-toast-text');
+    
+    if (!toast || !toastText) return;
+    
+    toastText.textContent = message;
+    toast.classList.remove('translate-y-32', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-32', 'opacity-0');
+    }, 3000);
+  }
+
+  async function copyToClipboard(text: string, messageKey: 'emailCopied' | 'phoneCopied') {
+    try {
+      await navigator.clipboard.writeText(text);
+      const copyMessages = window.__i18n__?.copyMessages;
+      const message = copyMessages?.[messageKey] || copyMessages?.copyFallback || 'Copiado al portapapeles';
+      showToast(message);
+    } catch {
+      // Fallback: seleccionar texto
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      
+      const copyMessages = window.__i18n__?.copyMessages;
+      const message = copyMessages?.[messageKey] || copyMessages?.copyFallback || 'Copiado al portapapeles';
+      showToast(message);
+    }
+  }
+
+  function initEmailCopy() {
+    const emailBtn = document.getElementById('email-copy-btn');
+    
+    if (!emailBtn) return;
+    
+    emailBtn.addEventListener('click', async () => {
+      const email = emailBtn.getAttribute('data-email');
+      if (!email) return;
+      await copyToClipboard(email, 'emailCopied');
+    });
+  }
+
+  function initPhoneCopy() {
+    const phoneBtn = document.getElementById('phone-copy-btn');
+    
+    if (!phoneBtn) return;
+    
+    phoneBtn.addEventListener('click', async () => {
+      const phone = phoneBtn.getAttribute('data-phone');
+      if (!phone) return;
+      await copyToClipboard(phone, 'phoneCopied');
+    });
+  }
+  
+  function initCopyButtons() {
+    initEmailCopy();
+    initPhoneCopy();
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCopyButtons);
+  } else {
+    initCopyButtons();
+  }
+  
+  document.addEventListener('astro:after-swap', initCopyButtons);
+</script>

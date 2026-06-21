@@ -1,0 +1,16 @@
+---
+interface Props {
+  ariaLabel?: string;
+  className?: string;
+}
+
+const { ariaLabel, className = '' } = Astro.props;
+---
+
+<button
+  id="theme-toggle"
+  class={`p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all flex items-center justify-center ${className}`}
+  aria-label={ariaLabel}
+>
+  <span class="material-icons text-xl">dark_mode</span>
+</button>

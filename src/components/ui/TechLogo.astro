@@ -1,0 +1,44 @@
+---
+interface Props {
+  name: string;
+  logo: string;
+  logoDark?: string;
+  url?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { 
+  name, 
+  logo, 
+  logoDark, 
+  url, 
+  size = 'md' 
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-8 h-8',
+  md: 'w-12 h-12',
+  lg: 'w-16 h-16'
+};
+
+const Wrapper = url ? 'a' : 'div';
+const wrapperProps = url 
+  ? { href: url, target: '_blank', rel: 'noopener noreferrer' } 
+  : {};
+---
+
+<Wrapper {...wrapperProps} class="group flex flex-col items-center gap-2 hover:scale-110 transition-transform">
+  <div class={`${sizeClasses[size]} bg-gray-200 dark:bg-gray-800 rounded-lg p-2 flex items-center justify-center group-hover:bg-gray-300 dark:group-hover:bg-gray-700 transition-colors`}>
+    {logoDark ? (
+      <>
+        <img src={logo} alt={name} loading="lazy" decoding="async" class="w-full h-full object-contain dark:hidden" />
+        <img src={logoDark} alt={name} loading="lazy" decoding="async" class="w-full h-full object-contain hidden dark:block" />
+      </>
+    ) : (
+      <img src={logo} alt={name} loading="lazy" decoding="async" class="w-full h-full object-contain" />
+    )}
+  </div>
+  <span class="text-gray-600 dark:text-gray-400 text-xs group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+    {name}
+  </span>
+</Wrapper>

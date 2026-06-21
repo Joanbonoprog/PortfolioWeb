@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  className?: string;
+}
+
+const { title, className = '' } = Astro.props;
+---
+
+<div
+  id="accessibility-panel"
+  class={`absolute bottom-16 right-0 bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 w-80 hidden transition-all duration-300 border border-gray-200 dark:border-gray-700 ${className}`}
+>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+    {title}
+  </h3>
+  <slot />
+</div>
