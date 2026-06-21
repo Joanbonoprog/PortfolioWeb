@@ -14,6 +14,8 @@ interface Props {
   dataPreviewId?: string;
   id?: string;
   className?: string;
+  'data-email'?: string;
+  'data-phone'?: string;
 }
 
 const { 
@@ -28,7 +30,9 @@ const {
   ariaLabel,
   dataPreviewId,
   id,
-  className = ''
+  className = '',
+  'data-email': dataEmail,
+  'data-phone': dataPhone
 } = Astro.props;
 
 const paddingClasses = {
@@ -46,7 +50,7 @@ const Wrapper = href ? 'a' : (onClick ? 'button' : 'div');
 const wrapperProps = href 
   ? { href, target: '_blank', rel: 'noopener noreferrer', 'data-preview-id': dataPreviewId, id }
   : onClick 
-  ? { 'aria-label': ariaLabel, id }
+  ? { 'aria-label': ariaLabel, id, 'data-email': dataEmail, 'data-phone': dataPhone }
   : { id };
 ---
 

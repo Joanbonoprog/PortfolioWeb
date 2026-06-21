@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Joan Bono Frígols - Android & Kotlin Multiplatform Developer",
+    "title": "Joan Bono Frígols - Java & Kotlin Software Developer | Android · Backend · AI Integration",
     "description": "Desarrollador Android y Kotlin Multiplatform especializado en integración de IA generativa. Proyectos con Clean Architecture, LLMs y automatización. Basado en Valencia, España.",
     "jobTitle": "Android & Kotlin Multiplatform Developer | AI Integrator",
     "author": "Joan Bono Frígols",
@@ -10,7 +10,7 @@
       "about": "Desarrollador de software especializado en Java, Android y Kotlin Multiplatform con formación en IA generativa y automatización de procesos.",
       "education": "Máster en IA Generativa y Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Formación en agentes de IA, chatbots y automatización.",
       "projects": "Proyectos destacados: Live Football (Android + SQLite) y App Prototype Creator (Kotlin Multiplatform + IA). Desarrollo multiplataforma con código compartido.",
-      "experience": "Experiencia profesional en desarrollo WordPress, gestión de eShop, SEO y marketing digital en Artimark.",
+      "experience": "Experiencia profesional en desarrollo WordPress, participación en el desarrollo de la eShop, SEO y marketing digital en Artimark.",
       "skills": "Habilidades técnicas: Java, Kotlin, Android, IAs Generativas, automatización con n8n, bases de datos MySQL y desarrollo multiplataforma.",
       "contact": "Contacta conmigo: joanbonoprog@gmail.com | +34 630 414 612 | Sellent, Valencia. Disponible para proyectos de desarrollo de software e integración de IA."
     }
@@ -27,9 +27,9 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
-    "title": "Software Developer | Android, Kotlin Multiplatform & AI Integration",
+    "title": "Software Developer | Java, Android, Kotlin Multiplatform, Backend & AI Integration",
     "cta": "Ver Proyectos y Experiencia",
-    "pageTitle": "Android & Kotlin Multiplatform Developer"
+    "pageTitle": "Java & Kotlin Software Developer"
   },
   "about": {
     "title": "Sobre Mí",
@@ -177,7 +177,7 @@
     "items": [
       "Castellano (Nativo)",
       "Valenciano/Catalán (Nativo)",
-      "Inglés (Técnico Profesional \"B1\")"
+      "Inglés ( Técnico Profesional \"B1\" )"
     ]
   },
   "gallery": {
