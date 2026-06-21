@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Joan Bono Frígols - Android & Kotlin Multiplatform Developer",
+    "title": "Joan Bono Frígols - Java & Kotlin Software Developer | Android · Backend · AI Integration",
     "description": "Android and Kotlin Multiplatform developer specialized in generative AI integration. Projects with Clean Architecture, LLMs and automation. Based in Valencia, Spain.",
     "jobTitle": "Android & Kotlin Multiplatform Developer | AI Integrator",
     "author": "Joan Bono Frígols",
@@ -10,7 +10,7 @@
       "about": "Software developer specialized in Java, Android and Kotlin Multiplatform with training in generative AI and process automation.",
       "education": "Master's in Generative AI and Higher Degree in Multiplatform Application Development. Training in AI agents, chatbots and automation.",
       "projects": "Featured projects: Live Football (Android + SQLite) and App Prototype Creator (Kotlin Multiplatform + AI). Multiplatform development with shared code.",
-      "experience": "Professional experience in WordPress development, eShop management, SEO and digital marketing at Artimark.",
+      "experience": "Professional experience in WordPress development, participation in eShop development, SEO and digital marketing at Artimark.",
       "skills": "Technical skills: Java, Kotlin, Android, Generative AI, automation with n8n, MySQL databases and multiplatform development.",
       "contact": "Contact me: joanbonoprog@gmail.com | +34 630 414 612 | Sellent, Valencia. Available for software development and AI integration projects."
     }
@@ -27,7 +27,7 @@
   "hero": {
     "greeting": "",
     "name": "Joan Bono Frígols",
-    "title": "Software Developer | Android, Kotlin Multiplatform & AI Integration",
+    "title": "Software Developer | Java, Android, Kotlin Multiplatform, Backend & AI Integration",
     "cta": "View Projects & Experience",
     "pageTitle": "Android & Kotlin Multiplatform Developer"
   },
