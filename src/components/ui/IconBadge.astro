@@ -1,0 +1,31 @@
+---
+interface Props {
+  icon: string;
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'blue' | 'gray' | 'green' | 'red' | 'yellow';
+}
+
+const { 
+  icon, 
+  size = 'md', 
+  color = 'blue' 
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-8 h-8',
+  md: 'w-10 h-10',
+  lg: 'w-12 h-12'
+};
+
+const colorClasses = {
+  blue: 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40',
+  gray: 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:bg-gray-200 dark:group-hover:bg-gray-700',
+  green: 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 group-hover:bg-green-100 dark:group-hover:bg-green-800/40',
+  red: 'bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 group-hover:bg-red-100 dark:group-hover:bg-red-800/40',
+  yellow: 'bg-yellow-50 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 group-hover:bg-yellow-100 dark:group-hover:bg-yellow-800/40'
+};
+---
+
+<div class={`${sizeClasses[size]} ${colorClasses[color]} rounded-full flex items-center justify-center transition-colors`}>
+  <span class="material-icons text-xl md:text-2xl">{icon}</span>
+</div>

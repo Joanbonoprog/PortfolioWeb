@@ -3,6 +3,9 @@
     "title": "Joan Bono Frígols - Android & Kotlin Multiplatform Developer",
     "description": "Android and Kotlin Multiplatform developer specialized in generative AI integration. Projects with Clean Architecture, LLMs and automation. Based in Valencia, Spain.",
     "jobTitle": "Android & Kotlin Multiplatform Developer | AI Integrator",
+    "author": "Joan Bono Frígols",
+    "siteName": "Joan Bono Frígols - Portfolio",
+    "scrollToTop": "Scroll to top",
     "sections": {
       "about": "Software developer specialized in Java, Android and Kotlin Multiplatform with training in generative AI and process automation.",
       "education": "Master's in Generative AI and Higher Degree in Multiplatform Application Development. Training in AI agents, chatbots and automation.",
@@ -25,7 +28,8 @@
     "greeting": "",
     "name": "Joan Bono Frígols",
     "title": "Software Developer | Android, Kotlin Multiplatform & AI Integration",
-    "cta": "View Projects & Experience"
+    "cta": "View Projects & Experience",
+    "pageTitle": "Android & Kotlin Multiplatform Developer"
   },
   "about": {
     "title": "About Me",
@@ -51,7 +55,9 @@
     "title": "Curriculum Vitae",
     "subtitle": "Select the language and style of CV you prefer",
     "styleHarvard": "Harvard Style",
-    "styleDetailed": "Detailed"
+    "styleDetailed": "Detailed",
+    "spanish": "Spanish",
+    "english": "English"
   },
   "phone": {
     "title": "My Projects & Experience",
@@ -192,6 +198,7 @@
   },
   "footer": {
     "builtWith": "Built With",
+    "footerRole": "Android, Kotlin Multiplatform & AI Integration",
     "techStack": [
       { "name": "Astro", "url": "https://astro.build", "logo": "https://astro.build/assets/press/astro-icon-dark.svg", "logoDark": "https://astro.build/assets/press/astro-icon-light.svg" },
       { "name": "TypeScript", "url": "https://www.typescriptlang.org", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
@@ -199,19 +206,58 @@
       { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
     ]
   },
+  "accessibility": {
+    "title": "Accessibility",
+    "textSize": "Text Size",
+    "normal": "Normal",
+    "large": "Large",
+    "extraLarge": "Extra Large",
+    "hint": "Use these controls to improve your reading experience"
+  },
+  "copyMessages": {
+    "emailCopied": "Email copied to clipboard",
+    "phoneCopied": "Phone copied to clipboard",
+    "copyEmailAria": "Copy email to clipboard",
+    "copyPhoneAria": "Copy phone to clipboard",
+    "copyError": "Error copying",
+    "copyFallback": "Copied to clipboard"
+  },
+  "ariaLabels": {
+    "goToAbout": "Go to About Me",
+    "backToHome": "Back to home",
+    "openNavMenu": "Open navigation menu",
+    "toggleTheme": "Toggle color theme",
+    "changeLanguage": "Change language",
+    "closeGallery": "Close gallery",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "zoomOut": "Zoom out",
+    "zoomReset": "Reset zoom",
+    "zoomIn": "Zoom in"
+  },
+  "header": {
+    "backToHome": "Back to Home",
+    "sections": "Sections"
+  },
   "linkPreviews": {
     "linkedin": {
       "title": "Joan Bono Frígols | LinkedIn",
-      "desc": "Software Developer | Android, Kotlin Multiplatform & AI Integration. Visit my professional profile, additional projects and network."
+      "desc": "Visit my professional profile, check my posts and network."
+    },
+    "github": {
+      "title": "Joan Bono Frígols | GitHub",
+      "desc": "Visit my GitHub profile, with open source projects using modern and current technologies."
     },
     "artimark": {
       "title": "Artimark | Clothing & Promotional Products",
       "desc": "Company specializing in sales and customization of clothing and promotional products where I worked as a web developer."
     },
     "projectLiveFootball": {
-      "desc": "Live Football project repository. Real-time match tracking."
+      "title": "LiveFootball",
+      "desc": "Final degree project repository. Real-time match tracking."
     },
     "projectPrototypeCreator": {
+      "title": "App Prototype Creator",
       "desc": "Master's final project repository. Multiplatform tool with advanced AI agent integration."
     }
   }

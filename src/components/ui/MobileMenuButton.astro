@@ -1,0 +1,18 @@
+---
+interface Props {
+  ariaLabel?: string;
+  className?: string;
+}
+
+const { ariaLabel, className = '' } = Astro.props;
+---
+
+<button
+  id="mobile-menu-toggle"
+  class={`lg:hidden flex items-center gap-2 p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${className}`}
+  aria-label={ariaLabel}
+  aria-expanded="false"
+>
+  <span class="material-icons text-2xl">menu</span>
+  <span id="menu-sections-text" class="font-medium text-sm"><slot /></span>
+</button>

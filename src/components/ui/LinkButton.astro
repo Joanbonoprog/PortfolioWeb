@@ -1,0 +1,51 @@
+---
+interface Props {
+  href: string;
+  icon?: string;
+  variant?: 'primary' | 'secondary' | 'dark' | 'gradient';
+  size?: 'sm' | 'md' | 'lg';
+  fullWidth?: boolean;
+  target?: string;
+  rel?: string;
+  className?: string;
+  dataPreviewId?: string;
+}
+
+const { 
+  href, 
+  icon, 
+  variant = 'primary', 
+  size = 'md',
+  fullWidth = false,
+  target = '_blank',
+  rel = 'noopener noreferrer',
+  className = '',
+  dataPreviewId
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'px-3 py-2 text-sm',
+  md: 'px-4 py-3 text-base',
+  lg: 'px-6 py-4 text-lg'
+};
+
+const variantClasses = {
+  primary: 'bg-blue-600 text-white hover:bg-blue-700',
+  secondary: 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700',
+  dark: 'bg-gray-900 text-white hover:bg-gray-800',
+  gradient: 'bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 hover:from-blue-700 hover:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-500'
+};
+
+const widthClass = fullWidth ? 'w-full' : 'flex-1';
+---
+
+<a
+  href={href}
+  target={target}
+  rel={rel}
+  data-preview-id={dataPreviewId}
+  class={`btn-ripple ${widthClass} flex items-center justify-center gap-2 ${sizeClasses[size]} ${variantClasses[variant]} rounded-lg transition-all hover:scale-105 font-medium shadow-lg hover:shadow-blue-500/50 ${className}`}
+>
+  {icon && <span class="material-icons text-lg">{icon}</span>}
+  <span><slot /></span>
+</a>

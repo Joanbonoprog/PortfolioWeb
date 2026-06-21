@@ -1,0 +1,36 @@
+# Joan Bono Frígols — Portfolio
+
+> Personal portfolio of Joan Bono Frígols, a Software Developer specialized in
+> Android, Kotlin Multiplatform and AI integration. The site is available in
+> Spanish (default) and English, and is fully static (server-rendered HTML),
+> so all content is readable without executing JavaScript.
+
+## About
+- Name: Joan Bono Frígols
+- Role: Android & Kotlin Multiplatform Developer | AI Integrator
+- Location: Valencia, Spain
+- Focus: Java, Kotlin, Android, Kotlin Multiplatform, Compose Multiplatform, Generative AI, AI integration, Clean Architecture, relational databases, Git.
+
+## Pages
+- [Home (Spanish)](https://joanbonoprog.es/): Main portfolio — hero, about, education, projects, experience, skills and contact.
+- [Home (English)](https://joanbonoprog.es/en/): English version of the portfolio.
+
+## Sections
+- About: professional profile and continuous learning.
+- Education: academic background (Evolve Academy, IFP Formación).
+- Projects: featured work including "App Prototype Creator" and "Live Football", with image galleries and source links.
+- Experience: professional roles and collaborations.
+- Skills: technologies and proficiency levels.
+- Contact: email, phone, LinkedIn and GitHub.
+
+## Resources
+- [Sitemap](https://joanbonoprog.es/sitemap-index.xml)
+- [robots.txt](https://joanbonoprog.es/robots.txt)
+
+## Links
+- LinkedIn: https://linkedin.com/in/joanbonoprog
+- GitHub: https://github.com/Joanbonoprog
+
+## Notes for crawlers
+- Content is pre-rendered static HTML; no client-side rendering is required to read it.
+- All AI and search crawlers are allowed (see robots.txt) and are exempt from rate limiting.
