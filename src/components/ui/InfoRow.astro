@@ -1,0 +1,30 @@
+---
+interface Props {
+  icon: string;
+  size?: 'sm' | 'md';
+  color?: 'gray' | 'blue';
+  className?: string;
+}
+
+const { 
+  icon, 
+  size = 'sm', 
+  color = 'gray',
+  className = ''
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-sm',
+  md: 'text-base'
+};
+
+const colorClasses = {
+  gray: 'text-gray-600 dark:text-gray-400',
+  blue: 'text-blue-600 dark:text-blue-400'
+};
+---
+
+<p class={`${sizeClasses[size]} ${colorClasses[color]} flex items-center gap-1 ${className}`}>
+  <span class="material-icons ${size === 'sm' ? 'text-sm' : 'text-base'}">{icon}</span>
+  <span><slot /></span>
+</p>

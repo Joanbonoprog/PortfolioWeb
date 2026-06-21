@@ -1,0 +1,223 @@
+---
+import type { Translations } from '../../types/translations';
+import type { Language } from '../../i18n/index';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import ThemeToggle from '../ui/ThemeToggle.astro';
+import BackButton from '../ui/BackButton.astro';
+import NavLink from '../ui/NavLink.astro';
+import LanguageSelector from '../ui/LanguageSelector.astro';
+import MobileMenuButton from '../ui/MobileMenuButton.astro';
+
+interface Props {
+  currentLang: Language;
+  translations: Translations;
+  showNav?: boolean;
+  showLogo?: boolean;
+  showBackButton?: boolean;
+}
+
+const { currentLang, translations, showNav = true, showLogo = false, showBackButton = false } = Astro.props;
+const { nav, ariaLabels, header } = translations;
+
+// URLs localizadas (rutas i18n nativas)
+const homeUrl = getRelativeLocaleUrl(currentLang, '/');
+const esUrl = getRelativeLocaleUrl('es', '/');
+const enUrl = getRelativeLocaleUrl('en', '/');
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between relative">
+    <!-- Back Button o Hamburger Menu (izquierda) -->
+    <div class="flex items-center">
+      {showBackButton ? (
+        <BackButton
+          href={homeUrl}
+          ariaLabel={ariaLabels.backToHome}
+        >
+          {header.backToHome}
+        </BackButton>
+      ) : showNav && (
+        <MobileMenuButton ariaLabel={ariaLabels.openNavMenu}>
+          {header.sections}
+        </MobileMenuButton>
+      )}
+    </div>
+
+    <!-- Navigation Links (desktop - centrado absoluto) -->
+    {showNav && (
+      <div class="hidden lg:flex items-center gap-4 xl:gap-6 absolute left-1/2 transform -translate-x-1/2">
+        <NavLink href="#about">{nav.about}</NavLink>
+        <NavLink href="#education">{nav.education}</NavLink>
+        <NavLink href="#projects">{nav.projects}</NavLink>
+        <NavLink href="#experience">{nav.experience}</NavLink>
+        <NavLink href="#skills">{nav.skills}</NavLink>
+        <NavLink href="#contact">{nav.contact}</NavLink>
+      </div>
+    )}
+
+    <!-- Theme Toggle & Language Selector (derecha) -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Theme Toggle Button -->
+      <ThemeToggle ariaLabel={currentLang === 'es' ? 'Cambiar tema de color' : 'Toggle color theme'} />
+
+      <!-- Language Selector -->
+      <LanguageSelector
+        currentLang={currentLang}
+        esUrl={esUrl}
+        enUrl={enUrl}
+        ariaLabel={currentLang === 'es' ? 'Cambiar idioma' : 'Change language'}
+      />
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  {showNav && (
+    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+      <div class="px-4 py-4 space-y-3">
+        <NavLink href="#about" className="block py-2">{nav.about}</NavLink>
+        <NavLink href="#education" className="block py-2">{nav.education}</NavLink>
+        <NavLink href="#projects" className="block py-2">{nav.projects}</NavLink>
+        <NavLink href="#experience" className="block py-2">{nav.experience}</NavLink>
+        <NavLink href="#skills" className="block py-2">{nav.skills}</NavLink>
+        <NavLink href="#contact" className="block py-2">{nav.contact}</NavLink>
+      </div>
+    </div>
+  )}
+</header>
+
+<script>
+  // Idioma actual desde la ruta i18n (Astro fija <html lang>)
+  const currentLang = document.documentElement.lang || 'es';
+
+  // #6: fuente de verdad única para el mapeo idioma → código de bandera
+  const langToFlag = (lang: string) => lang === 'en' ? 'gb' : 'es';
+
+  // Theme toggle button event listener
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      window.toggleTheme?.();
+    });
+  }
+
+  // Dropdown de idioma
+  const dropdownBtn = document.getElementById('lang-dropdown-btn');
+  const dropdownMenu = document.getElementById('lang-menu');
+  const langFlag = document.getElementById('lang-flag');
+  const langLabel = document.getElementById('lang-label');
+
+  if (dropdownBtn && dropdownMenu) {
+    // Sincronizar estado visual con idioma actual
+    if (langFlag) {
+      langFlag.className = `fi fi-${langToFlag(currentLang)} rounded-sm`;
+    }
+    if (langLabel) langLabel.textContent = currentLang.toUpperCase();
+    dropdownMenu.querySelectorAll('li[data-lang]').forEach(item => {
+      item.setAttribute('aria-selected', item.getAttribute('data-lang') === currentLang ? 'true' : 'false');
+    });
+
+    // #7: AbortController para poder eliminar el listener global al destruir
+    const dropdownController = new AbortController();
+
+    // Abrir/cerrar
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !dropdownMenu.classList.contains('hidden');
+      dropdownMenu.classList.toggle('hidden');
+      dropdownBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !dropdownMenu.classList.contains('hidden')) {
+        dropdownMenu.classList.add('hidden');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+        dropdownBtn.focus();
+      }
+    });
+
+    // Seleccionar idioma
+    dropdownMenu.querySelectorAll('li[data-lang]').forEach(item => {
+      item.addEventListener('click', () => {
+        const lang = item.getAttribute('data-lang') || 'es';
+        const targetHref = item.getAttribute('data-href') || '/';
+        
+        // Si ya estamos en ese idioma, no hacer nada
+        if (lang === currentLang) {
+          dropdownMenu.classList.add('hidden');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+          return;
+        }
+        
+        // Navegar a la ruta localizada del idioma seleccionado
+        window.location.href = targetHref;
+      });
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener('click', () => {
+      dropdownMenu.classList.add('hidden');
+      dropdownBtn.setAttribute('aria-expanded', 'false');
+    }, { signal: dropdownController.signal });
+
+    // Limpiar listener global al salir de la página
+    window.addEventListener('pagehide', () => dropdownController.abort(), { once: true });
+  }
+
+  // Toggle mobile menu
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+      const icon = mobileMenuToggle.querySelector('.material-icons');
+      if (icon) {
+        icon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+      }
+    });
+
+    // Close menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        const icon = mobileMenuToggle.querySelector('.material-icons');
+        if (icon) {
+          icon.textContent = 'menu';
+        }
+      });
+    });
+
+    // Close mobile menu with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        const icon = mobileMenuToggle.querySelector('.material-icons');
+        if (icon) {
+          icon.textContent = 'menu';
+        }
+        mobileMenuToggle.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  header {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+</style>

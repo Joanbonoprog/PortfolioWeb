@@ -1,0 +1,15 @@
+---
+interface Props {
+  fontSize: 'normal' | 'large' | 'extra-large';
+  className?: string;
+}
+
+const { fontSize, className = '' } = Astro.props;
+---
+
+<button
+  data-font-size={fontSize}
+  class={`px-4 py-3 text-sm font-medium border-2 border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all hover:scale-105 ${className}`}
+>
+  <slot />
+</button>

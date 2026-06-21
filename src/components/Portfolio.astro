@@ -1,14 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "./Header.astro";
-import Hero from "./Hero.astro";
-import About from "./About.astro";
-import Education from "./Education.astro";
-import Projects from "./Projects.astro";
-import Experience from "./Experience.astro";
-import Skills from "./Skills.astro";
-import Contact from "./Contact.astro";
-import Footer from "./Footer.astro";
+import Header from "./layout/Header.astro";
+import Hero from "./sections/Hero.astro";
+import About from "./sections/About.astro";
+import Education from "./sections/Education.astro";
+import Projects from "./sections/Projects.astro";
+import Experience from "./sections/Experience.astro";
+import Skills from "./sections/Skills.astro";
+import Contact from "./sections/Contact.astro";
+import Footer from "./layout/Footer.astro";
 import { getTranslations, type Language } from "../i18n/index";
 
 interface Props {
@@ -21,7 +21,7 @@ const translations = getTranslations(lang);
 
 <Layout
 	lang={lang}
-	title={`${translations.hero.name} - Android & Kotlin Multiplatform Developer`}
+	title={`${translations.hero.name} - ${translations.hero.pageTitle}`}
 	description={translations.meta.description}
 >
 	<Header currentLang={lang} translations={translations} />

@@ -38,6 +38,29 @@ const requestCounts = new Map();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minuto
 const RATE_LIMIT_MAX_REQUESTS = 100; // 100 peticiones por minuto
 
+// Extensiones de assets estáticos: no se contabilizan en el rate limit
+// para no penalizar a crawlers que cargan la página con todos sus recursos.
+const STATIC_ASSET_EXTENSIONS = new Set([
+  '.js', '.mjs', '.css', '.json', '.xml', '.txt', '.pdf',
+  '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.webp',
+  '.woff', '.woff2', '.ttf',
+]);
+
+// User-agents de crawlers de IA/buscadores que quedan exentos del rate limit
+// para garantizar que todos los modelos puedan indexar y leer el sitio.
+const AI_BOT_USER_AGENTS = [
+  'gptbot', 'oai-searchbot', 'chatgpt-user', 'claudebot', 'claude-web',
+  'anthropic-ai', 'perplexitybot', 'google-extended', 'googlebot', 'bingbot',
+  'applebot', 'ccbot', 'bytespider', 'meta-externalagent', 'cohere-ai',
+  'diffbot', 'duckassistbot', 'youbot', 'amazonbot', 'mistralai-user',
+];
+
+function isAiBot(userAgent) {
+  if (!userAgent) return false;
+  const ua = userAgent.toLowerCase();
+  return AI_BOT_USER_AGENTS.some((bot) => ua.includes(bot));
+}
+
 // Limpiar registros antiguos cada 5 minutos
 setInterval(() => {
   const now = Date.now();
@@ -86,12 +109,16 @@ const SECURITY_HEADERS = {
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
   'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+  // NOTA: script-src mantiene 'unsafe-inline' porque Astro inyecta inline los
+  // scripts de módulo pequeños. Para eliminarlo de forma segura habría que activar
+  // security.csp de Astro (hashes), lo que obliga a quitar TODOS los style="" inline
+  // (también incompatibles con 'unsafe-inline' de style-src). Es un refactor aparte.
   'Content-Security-Policy':
     "default-src 'self'; " +
     "script-src 'self' 'unsafe-inline'; " +
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; " +
     "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; " +
-    "img-src 'self' data: https://cdn.jsdelivr.net https://astro.build; " +
+    "img-src 'self' data: https://cdn.jsdelivr.net https://astro.build https://static.licdn.com https://github.githubassets.com https://artimark.es; " +
     "connect-src 'self'; " +
     "base-uri 'self'; " +
     "form-action 'self'; " +
@@ -105,25 +132,35 @@ const server = createServer((req, res) => {
                    req.headers['x-real-ip'] || 
                    req.socket.remoteAddress;
   
-  // Verificar rate limit
-  const rateLimitResult = checkRateLimit(clientIp);
-  
-  if (!rateLimitResult.allowed) {
-    console.warn(`[Rate Limit] IP ${clientIp} exceeded limit. Retry after ${rateLimitResult.retryAfter}s`);
-    res.writeHead(429, {
-      'Content-Type': 'application/json',
-      'Retry-After': rateLimitResult.retryAfter,
-      'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS,
-      'X-RateLimit-Remaining': 0,
-      'X-RateLimit-Reset': new Date(Date.now() + rateLimitResult.retryAfter * 1000).toISOString(),
-      ...SECURITY_HEADERS
-    });
-    res.end(JSON.stringify({
-      error: 'Too Many Requests',
-      message: `Rate limit exceeded. Please try again in ${rateLimitResult.retryAfter} seconds.`,
-      retryAfter: rateLimitResult.retryAfter
-    }));
-    return;
+  // Determinar exenciones del rate limit:
+  // - Bots de IA/buscadores conocidos (para garantizar el acceso de los LLMs)
+  // - Assets estáticos (no penalizar la carga completa de la página)
+  const userAgent = req.headers['user-agent'] || '';
+  const requestExt = extname((req.url || '/').split('?')[0]).toLowerCase();
+  const skipRateLimit = isAiBot(userAgent) || STATIC_ASSET_EXTENSIONS.has(requestExt);
+
+  // Verificar rate limit (salvo exenciones)
+  let rateLimitResult = { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS };
+  if (!skipRateLimit) {
+    rateLimitResult = checkRateLimit(clientIp);
+
+    if (!rateLimitResult.allowed) {
+      console.warn(`[Rate Limit] IP ${clientIp} exceeded limit. Retry after ${rateLimitResult.retryAfter}s`);
+      res.writeHead(429, {
+        'Content-Type': 'application/json',
+        'Retry-After': rateLimitResult.retryAfter,
+        'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS,
+        'X-RateLimit-Remaining': 0,
+        'X-RateLimit-Reset': new Date(Date.now() + rateLimitResult.retryAfter * 1000).toISOString(),
+        ...SECURITY_HEADERS
+      });
+      res.end(JSON.stringify({
+        error: 'Too Many Requests',
+        message: `Rate limit exceeded. Please try again in ${rateLimitResult.retryAfter} seconds.`,
+        retryAfter: rateLimitResult.retryAfter
+      }));
+      return;
+    }
   }
   
   let rawUrl = req.url === '/' ? '/index.html' : req.url;
@@ -150,13 +187,15 @@ const server = createServer((req, res) => {
   filePath = resolvedPath;
 
   // Check if file exists
+  let statusCode = 200;
   if (!existsSync(filePath)) {
     // Try with .html extension
     if (!filePath.endsWith('.html') && existsSync(filePath + '.html')) {
       filePath = filePath + '.html';
     } else {
-      // Serve index.html for SPA routing
-      filePath = join(DIST_DIR, 'index.html');
+      // Ruta inexistente: servir la página 404 con su estado HTTP correcto
+      filePath = join(DIST_DIR, '404.html');
+      statusCode = 404;
     }
   }
   
@@ -174,7 +213,7 @@ const server = createServer((req, res) => {
       res.end('Not Found');
       return;
     }
-    res.writeHead(200, {
+    res.writeHead(statusCode, {
       'Content-Type': contentType,
       'Cache-Control': 'public, max-age=0',
       'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS,

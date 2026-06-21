@@ -1,0 +1,16 @@
+---
+interface Props {
+  ariaLabel?: string;
+  className?: string;
+}
+
+const { ariaLabel, className = '' } = Astro.props;
+---
+
+<button
+  id="accessibility-toggle"
+  class={`btn-ripple w-12 h-12 bg-blue-600 dark:bg-gray-800 text-white dark:text-gray-300 rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-gray-700 transition-all hover:scale-110 flex items-center justify-center ${className}`}
+  aria-label={ariaLabel}
+>
+  <span class="material-icons">settings_accessibility</span>
+</button>

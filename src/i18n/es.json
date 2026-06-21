@@ -3,6 +3,9 @@
     "title": "Joan Bono Frígols - Android & Kotlin Multiplatform Developer",
     "description": "Desarrollador Android y Kotlin Multiplatform especializado en integración de IA generativa. Proyectos con Clean Architecture, LLMs y automatización. Basado en Valencia, España.",
     "jobTitle": "Android & Kotlin Multiplatform Developer | AI Integrator",
+    "author": "Joan Bono Frígols",
+    "siteName": "Joan Bono Frígols - Portfolio",
+    "scrollToTop": "Volver arriba",
     "sections": {
       "about": "Desarrollador de software especializado en Java, Android y Kotlin Multiplatform con formación en IA generativa y automatización de procesos.",
       "education": "Máster en IA Generativa y Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Formación en agentes de IA, chatbots y automatización.",
@@ -25,7 +28,8 @@
     "greeting": "",
     "name": "Joan Bono Frígols",
     "title": "Software Developer | Android, Kotlin Multiplatform & AI Integration",
-    "cta": "Ver Proyectos y Experiencia"
+    "cta": "Ver Proyectos y Experiencia",
+    "pageTitle": "Android & Kotlin Multiplatform Developer"
   },
   "about": {
     "title": "Sobre Mí",
@@ -51,7 +55,9 @@
     "title": "Curriculum Vitae",
     "subtitle": "Selecciona el idioma y el estilo de CV que prefieras",
     "styleHarvard": "Estilo Harvard",
-    "styleDetailed": "Detallado"
+    "styleDetailed": "Detallado",
+    "spanish": "Español",
+    "english": "English"
   },
   "phone": {
     "title": "Mis Proyectos y Experiencia",
@@ -208,19 +214,50 @@
     "extraLarge": "Muy Grande",
     "hint": "Usa estos controles para mejorar tu experiencia de lectura"
   },
+  "copyMessages": {
+    "emailCopied": "Email copiado al portapapeles",
+    "phoneCopied": "Teléfono copiado al portapapeles",
+    "copyEmailAria": "Copiar email al portapapeles",
+    "copyPhoneAria": "Copiar teléfono al portapapeles",
+    "copyError": "Error al copiar",
+    "copyFallback": "Copiado al portapapeles"
+  },
+  "ariaLabels": {
+    "goToAbout": "Ir a Sobre Mí",
+    "backToHome": "Volver al inicio",
+    "openNavMenu": "Abrir menú de navegación",
+    "toggleTheme": "Cambiar tema de color",
+    "changeLanguage": "Cambiar idioma",
+    "closeGallery": "Cerrar galería",
+    "previousImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente",
+    "zoomOut": "Alejar zoom",
+    "zoomReset": "Restablecer zoom",
+    "zoomIn": "Acercar zoom"
+  },
+  "header": {
+    "backToHome": "Volver al Inicio",
+    "sections": "Secciones"
+  },
   "linkPreviews": {
     "linkedin": {
       "title": "Joan Bono Frígols | LinkedIn",
-      "desc": "Software Developer | Android, Kotlin Multiplatform & AI Integration. Visita mi perfil profesional, proyectos adicionales y red de contactos."
+      "desc": "Visita mi perfil profesional, mis publicaciones y red de contactos."
+    },
+    "github": {
+      "title": "Joan Bono Frígols| GitHub",
+      "desc": "Visita mi perfil de GitHub, con proyectos de código abierto usando tecnologías modernas y actuales."
     },
     "artimark": {
       "title": "Artimark | Ropa y Productos Promocionales",
       "desc": "Empresa de venta y personalización de ropa y productos promocionales donde me desempeñé como desarrollador web."
     },
     "projectLiveFootball": {
-      "desc": "Repositorio del proyecto Live Football. Seguimiento de partidos en tiempo real."
+      "title": "LiveFootball",
+      "desc": "Repositorio del proyecto de final de grado. Seguimiento de partidos en tiempo real."
     },
     "projectPrototypeCreator": {
+      "title": "App Prototipe Creator-",
       "desc": "Repositorio del proyecto final de máster. Herramienta multiplataforma con integración avanzada de agentes de IA."
     }
   }

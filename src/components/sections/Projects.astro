@@ -1,0 +1,113 @@
+---
+import type { Translations, ProjectItem } from '../../types/translations';
+import SectionHeading from '../ui/SectionHeading.astro';
+import BentoCard from '../ui/BentoCard.astro';
+import Tag from '../ui/Tag.astro';
+import LinkButton from '../ui/LinkButton.astro';
+
+interface Props {
+  translations: Translations;
+}
+
+const { translations } = Astro.props;
+const { projects } = translations;
+---
+
+<section id="projects" class="py-20 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+      <SectionHeading icon="code" title={projects.title} subtitle={projects.subtitle} />
+
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      {projects.items.map((project: ProjectItem) => {
+        const iconType = project.icon.startsWith('/') ? 'image' : 'emoji';
+        const iconSize = project.icon.includes('app_prototipado') ? 'w-32 h-32' : 'w-28 h-28';
+        
+        return (
+          <BentoCard
+            icon={project.icon}
+            iconType={iconType}
+            current={project.current}
+            currentLabel={projects.current}
+            altText={project.name}
+          >
+            <h3 slot="title" class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {project.name}
+            </h3>
+            <p slot="subtitle" class="text-blue-600 dark:text-blue-400 font-medium text-sm">
+              {project.subtitle}
+            </p>
+            <div slot="content">
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 whitespace-pre-line">
+                {project.description}
+              </p>
+
+              {project.tech && (
+                <div class="mb-6">
+                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                    <span class="material-icons text-blue-600 dark:text-blue-400 text-lg">code</span>
+                    <span>{projects.technologies}</span>
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    {project.tech.map((tech: string) => (
+                      <Tag color="blue" size="md">{tech}</Tag>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div class="mb-6">
+                <button
+                  data-project-name={project.name}
+                  class="gallery-btn btn-ripple w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 text-white rounded-lg hover:from-blue-700 hover:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-500 transition-all hover:scale-105 font-medium shadow-lg hover:shadow-blue-500/50"
+                >
+                  <span class="material-icons text-lg">photo_library</span>
+                  <span>{projects.viewGallery}</span>
+                  <span class="material-icons text-lg">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+            <div slot="footer">
+              <div class="flex gap-3">
+                {project.github && (
+                  <LinkButton
+                    href={project.github}
+                    icon="code"
+                    variant="dark"
+                    dataPreviewId={project.github.toLowerCase().includes('football') ? "project-livefootball" : (project.github.toLowerCase().includes('protot') ? "project-prototype-creator" : undefined)}
+                  >
+                    {projects.viewGithub}
+                  </LinkButton>
+                )}
+                {project.website && (
+                  <LinkButton
+                    href={project.website}
+                    icon="language"
+                    variant="primary"
+                  >
+                    {projects.visitWebsite}
+                  </LinkButton>
+                )}
+              </div>
+            </div>
+          </BentoCard>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('button.gallery-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-project-name');
+      if (name) window.openProjectGallery?.(name);
+    });
+  });
+</script>
+
+<style>
+  /* Limpiar artefactos del icono de App Prototype Creator */
+  .project-icon-clean {
+    clip-path: inset(0 15% 15% 0);
+  }
+</style>

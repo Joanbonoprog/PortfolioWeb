@@ -1,0 +1,257 @@
+---
+import type { Translations } from '../../types/translations';
+import IconBadge from '../ui/IconBadge.astro';
+import Divider from '../ui/Divider.astro';
+import InfoCard from '../ui/InfoCard.astro';
+import BulletList from '../ui/BulletList.astro';
+import ActionButton from '../ui/ActionButton.astro';
+
+interface Props {
+  translations: Translations;
+}
+
+const { translations} = Astro.props;
+const { about, languages, cv } = translations;
+const driverLicenseItems = (about.driverLicense?.value ?? '').split(' + ').filter(Boolean);
+---
+
+<section id="about" class="py-20 px-6 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto">
+    <!-- Title -->
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+      {about.title}
+    </h2>
+    <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+      {about.subtitle}
+    </p>
+
+    <!-- Botón Descargar CV -->
+    <div class="flex justify-center mb-10">
+      <ActionButton
+        id="cv-download-btn"
+        icon="download"
+        variant="gradient"
+        rounded="full"
+        size="lg"
+        className="animate-card"
+      >
+        {about.downloadCV}
+      </ActionButton>
+    </div>
+
+    <!-- Bento Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
+      <!-- About Description - Grande (2 columnas, 2 filas) -->
+      <InfoCard colSpan="2" rowSpan="2" padding="lg">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <IconBadge icon="person" size="md" />
+          <span>{about.profileTitle}</span>
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
+          {about.description}
+        </p>
+      </InfoCard>
+
+      <!-- Languages - Mediana -->
+      <InfoCard padding="md">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <IconBadge icon="language" size="md" />
+          <span>{languages.title}</span>
+        </h3>
+        <BulletList items={languages.items} bulletColor="blue" />
+      </InfoCard>
+
+      <!-- Estado Actual - Mediana -->
+      <InfoCard padding="md">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+          <IconBadge icon="work_outline" size="md" />
+          <span>{about.status?.title}</span>
+        </h3>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🟢</span>
+          <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+            {about.status?.value}
+          </p>
+        </div>
+      </InfoCard>
+
+      <!-- Aprendizaje Continuo - Mediana (2 columnas) -->
+      <InfoCard colSpan="2" padding="md">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+          <IconBadge icon="school" size="md" />
+          <span>{about.continuousLearning?.title}</span>
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+          {about.continuousLearning?.description}
+        </p>
+      </InfoCard>
+
+      <!-- Carnet de Conducir - Pequeña -->
+      <InfoCard padding="md">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <IconBadge icon="directions_car" size="md" />
+          <span>{about.driverLicense?.title}</span>
+        </h3>
+        <BulletList items={driverLicenseItems} bulletColor="blue" />
+      </InfoCard>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de CV -->
+<div id="cv-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+  <!-- Backdrop -->
+  <div id="cv-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+  <!-- Modal Content -->
+  <div class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-lg p-8 z-10 animate-modal">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <span class="material-icons text-blue-600 dark:text-blue-400 text-3xl">description</span>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {cv.title}
+        </h3>
+      </div>
+      <button id="cv-modal-close" class="btn-ripple text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all duration-300 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+        <span class="material-icons text-2xl">close</span>
+      </button>
+    </div>
+
+    <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm">
+      {cv.subtitle}
+    </p>
+
+    <!-- Sección Español -->
+    <div class="mb-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="fi fi-es rounded-sm text-lg"></span>
+        <span class="font-semibold text-gray-900 dark:text-white text-sm tracking-wide uppercase">{cv.spanish}</span>
+        <div class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <!-- ES Harvard -->
+        <a
+          href="/CV/CV%20Harvard%20Espa%C3%B1ol%20(Joan%20Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">article</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">{cv.styleHarvard}</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+        <!-- ES Detallado -->
+        <a
+          href="/CV/CV%20Detallado%20Espa%C3%B1ol%20%20(Joan%20Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">feed</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">{cv.styleDetailed}</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Separador -->
+    <Divider spacing="sm" />
+
+    <!-- Sección English -->
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="fi fi-gb rounded-sm text-lg"></span>
+        <span class="font-semibold text-gray-900 dark:text-white text-sm tracking-wide uppercase">{cv.english}</span>
+        <div class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <!-- EN Harvard -->
+        <a
+          href="/CV/CV%20Harvard%20English%20(Joan%20Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">article</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">{cv.styleHarvard}</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+        <!-- EN Detailed -->
+        <a
+          href="/CV/CV%20Detailed%20English%20(Joan%20Bono).pdf"
+          download
+          class="cv-option animate-card card-shimmer group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
+        >
+          <span class="material-icons text-3xl text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">feed</span>
+          <div class="text-center">
+            <p class="font-semibold text-gray-900 dark:text-white text-sm">{cv.styleDetailed}</p>
+          </div>
+          <span class="material-icons text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes modal-in {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .animate-modal {
+    animation: modal-in 0.25s ease-out forwards;
+  }
+</style>
+
+<script>
+  function initCVModal() {
+    const btn = document.getElementById('cv-download-btn');
+    const modal = document.getElementById('cv-modal');
+    const backdrop = document.getElementById('cv-modal-backdrop');
+    const closeBtn = document.getElementById('cv-modal-close');
+
+    if (!btn || !modal) return;
+
+    function openModal() {
+      modal!.classList.remove('hidden');
+      modal!.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      // Disparar animación de entrada en las tarjetas
+      const cards = modal!.querySelectorAll('.animate-card');
+      cards.forEach((card, i) => {
+        const el = card as HTMLElement;
+        el.classList.remove('animate-in');
+        el.style.transitionDelay = `${i * 0.08}s`;
+        requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('animate-in')));
+      });
+    }
+
+    function closeModal() {
+      modal!.classList.add('hidden');
+      modal!.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', openModal);
+    backdrop?.addEventListener('click', closeModal);
+    closeBtn?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCVModal);
+  } else {
+    initCVModal();
+  }
+
+  document.addEventListener('astro:after-swap', initCVModal);
+</script>

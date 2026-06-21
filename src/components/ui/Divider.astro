@@ -1,0 +1,24 @@
+---
+interface Props {
+  spacing?: 'sm' | 'md' | 'lg';
+  color?: 'gray' | 'blue';
+}
+
+const { 
+  spacing = 'md', 
+  color = 'gray' 
+} = Astro.props;
+
+const spacingClasses = {
+  sm: 'my-4',
+  md: 'my-8',
+  lg: 'my-12'
+};
+
+const colorClasses = {
+  gray: 'border-gray-300 dark:border-gray-700',
+  blue: 'border-blue-200 dark:border-blue-800'
+};
+---
+
+<div class={`border-t ${colorClasses[color]} ${spacingClasses[spacing]}`}></div>

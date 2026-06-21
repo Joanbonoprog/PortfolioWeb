@@ -1,0 +1,18 @@
+---
+interface Props {
+  href: string;
+  ariaLabel?: string;
+  className?: string;
+}
+
+const { href, ariaLabel, className = '' } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`flex items-center gap-2 px-3 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all hover:scale-105 shadow-md font-medium text-sm ${className}`}
+  aria-label={ariaLabel}
+>
+  <span class="material-icons text-sm">arrow_back</span>
+  <span class="hidden sm:inline"><slot /></span>
+</a>
