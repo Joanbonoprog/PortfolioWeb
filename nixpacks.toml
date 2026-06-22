@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["nodejs_22"]
+
+[phases.install]
+cmds = ["cd Portafolio-Astro && npm ci --legacy-peer-deps"]
+
+[phases.build]
+cmds = ["cd Portafolio-Astro && npm run build"]
+
+[start]
+cmd = "cd Portafolio-Astro && node server.js"
