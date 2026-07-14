@@ -1,0 +1,240 @@
+---
+import '../styles/global.css';
+import AccessibilityControls from '../components/layout/AccessibilityControls.astro';
+import { getTranslations, type Language } from '../i18n/index';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { profile, buildPersonJsonLd } from '../data/profile';
+
+interface Props {
+	title?: string;
+	description?: string;
+	lang?: Language;
+	image?: string;
+}
+
+const { 
+	lang = 'es',
+	image = '/images/hero/FotoPortfolio.webp'
+} = Astro.props;
+
+// Traducciones del idioma actual (fuente de verdad única: JSON de src/i18n)
+const currentTranslations = getTranslations(lang);
+
+// Usar traducciones para title y description
+const { 
+	title = currentTranslations.meta.title, 
+	description = currentTranslations.meta.description
+} = Astro.props;
+
+const siteUrl = profile.url;
+const currentPath = Astro.url.pathname + Astro.url.search;
+const canonicalUrl = new URL(currentPath, siteUrl).href;
+const ogImageUrl = new URL(image, siteUrl).href;
+
+// URLs alternativas para hreflang (rutas i18n nativas)
+const alternateEs = getAbsoluteLocaleUrl('es', '/');
+const alternateEn = getAbsoluteLocaleUrl('en', '/');
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<meta name="author" content={currentTranslations.meta.author} />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="icon" type="image/svg+xml" href="/images/brand/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Theme Color (dinámico para light/dark mode) -->
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
+		
+		<!-- Alternate Languages (hreflang) -->
+		<link rel="alternate" hreflang="es" href={alternateEs} />
+		<link rel="alternate" hreflang="en" href={alternateEn} />
+		<link rel="alternate" hreflang="x-default" href={alternateEs} />
+		
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:width" content="800" />
+		<meta property="og:image:height" content="800" />
+		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_ES'} />
+		<meta property="og:site_name" content={currentTranslations.meta.siteName} />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		
+		<!-- Preload hero image for LCP optimization -->
+		<link rel="preload" as="image" href="/images/hero/FotoPortfolio.webp" fetchpriority="high" />
+		
+		<!-- Preconnect for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+		<!-- Google Fonts - Inter (solo pesos usados: 400/500/600/700; carga no bloqueante) -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" data-onload-media="all">
+		<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+		
+		<!-- Material Icons (carga no bloqueante vía font-loader.ts) -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="print" data-onload-media="all">
+		<noscript><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></noscript>
+		
+		<!-- Flag Icons -->
+		<link rel="preconnect" href="https://cdn.jsdelivr.net">
+		<link href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css" rel="stylesheet">
+		
+		<title>{title}</title>
+		
+		<!-- JSON-LD Structured Data (Schema.org) -->
+		<script type="application/ld+json" set:html={JSON.stringify(buildPersonJsonLd(currentTranslations.meta.jobTitle))} />
+		
+		<!-- Traducciones embebidas como data island (JSON no ejecutable, CSP-safe) -->
+		<script type="application/json" id="i18n-data" set:html={JSON.stringify(currentTranslations)}></script>
+	</head>
+	<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased transition-colors duration-300">
+		<!-- Scroll Progress Indicator -->
+		<div id="scroll-progress" class="scroll-progress"></div>
+		
+		<!-- Fondo animado con ondas -->
+		<div class="animated-background">
+			<div class="wave"></div>
+			<div class="wave"></div>
+			<div class="wave"></div>
+		</div>
+		
+		<slot />
+		
+		<!-- Controles de accesibilidad -->
+		<AccessibilityControls translations={currentTranslations} />
+		
+		<!-- Botón flotante para volver arriba -->
+		<button 
+			id="scroll-to-top" 
+			class="btn-ripple fixed left-6 bottom-6 w-12 h-12 bg-blue-600 dark:bg-gray-800 text-white dark:text-gray-300 rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-gray-700 hover:scale-110 flex items-center justify-center z-[9998]"
+			style="opacity: 0; pointer-events: none; transition: opacity 0.3s ease;"
+			aria-label={currentTranslations.meta.scrollToTop}
+		>
+			<span class="material-icons">arrow_upward</span>
+		</button>
+		
+		<!-- Bootstrap de traducciones (debe ir antes que los scripts que usan window.__i18n__) -->
+		<script src="../scripts/i18n-bootstrap.ts"></script>
+		
+		<!-- Carga no bloqueante de fuentes -->
+		<script src="../scripts/font-loader.ts"></script>
+		
+		<!-- Sistema de temas (debe cargarse primero para evitar flash) -->
+		<script src="../scripts/theme.ts"></script>
+		
+		<!-- Sistema de animaciones al hacer scroll -->
+		<script src="../scripts/scroll-animations.ts"></script>
+		
+		<!-- Sistema de accesibilidad -->
+		<script src="../scripts/accessibility.ts"></script>
+		
+		<!-- Animaciones de texto -->
+		<script src="../scripts/text-animations.ts"></script>
+		
+		<!-- Visor de imágenes -->
+		<script src="../scripts/image-viewer.ts"></script>
+		
+		<!-- Previsualizaciones de enlaces en hover -->
+		<script src="../scripts/link-preview.ts"></script>
+		
+		<!-- Botón de scroll y barra de progreso -->
+		<script src="../scripts/scroll-ui.ts"></script>
+		
+		<!-- Inicialización del terminal (asegurar que se ejecute en todas las páginas) -->
+		<script is:inline>
+			console.log('=== TERMINAL INITIALIZATION START ===');
+			
+			// Función simple para crear el modal del terminal
+			function createTerminalModal() {
+				console.log('Creating terminal modal...');
+				
+				// Crear HTML del modal
+				const modalHTML = `
+					<div id="terminal-modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true">
+						<div class="bg-gray-900 rounded-lg shadow-2xl max-w-4xl w-full mx-4 max-h-[80vh] flex flex-col">
+							<div class="flex items-center justify-between p-4 border-b border-gray-700">
+								<h2 class="text-white font-mono text-lg">Terminal KMP</h2>
+								<button id="terminal-close" class="text-gray-400 hover:text-white transition-colors">
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+									</svg>
+								</button>
+							</div>
+							<div class="flex-1 overflow-hidden">
+								<iframe id="terminal-iframe" src="/wasm/index.html" class="w-full h-full"></iframe>
+							</div>
+						</div>
+					</div>
+				`;
+				
+				// Añadir al DOM
+				document.body.insertAdjacentHTML('beforeend', modalHTML);
+				
+				// Configurar eventos
+				const modal = document.getElementById('terminal-modal');
+				const closeBtn = document.getElementById('terminal-close');
+				const iframe = document.getElementById('terminal-iframe');
+				
+				closeBtn?.addEventListener('click', () => {
+					modal?.classList.add('opacity-0', 'pointer-events-none');
+					modal?.setAttribute('aria-hidden', 'true');
+				});
+				
+				// Manejar cambios de idioma via localStorage
+				setInterval(() => {
+					const langChange = localStorage.getItem('terminalLangChange');
+					if (langChange) {
+						try {
+							const data = JSON.parse(langChange);
+							console.log('Language change detected:', data);
+							if (data.type === 'changeLanguage') {
+								localStorage.removeItem('terminalLangChange');
+								sessionStorage.setItem('reopenTerminal', 'true');
+								
+								const currentPath = window.location.pathname;
+								const search = window.location.search;
+								const hash = window.location.hash;
+								
+								if (data.language === 'es') {
+									window.location.href = (currentPath.replace(/^\/en\//, '/') || '/') + search + hash;
+								} else {
+									window.location.href = '/en' + (currentPath === '/' ? '' : currentPath) + search + hash;
+								}
+							}
+						} catch (e) {
+							console.error('Error parsing language change:', e);
+						}
+					}
+				}, 100);
+				
+				console.log('Terminal modal created successfully');
+			}
+			
+			// Inicializar inmediatamente
+			createTerminalModal();
+			
+			// También inicializar después de navegaciones de Astro
+			document.addEventListener('astro:page-load', () => {
+				console.log('Astro page load detected');
+				if (!document.getElementById('terminal-modal')) {
+					createTerminalModal();
+				}
+			});
+			
+			console.log('=== TERMINAL INITIALIZATION COMPLETE ===');
+		</script>
+	</body>
+</html>
