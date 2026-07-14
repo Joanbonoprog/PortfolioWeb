@@ -79,6 +79,11 @@ public/
 
 server.js                        # Custom static file server (security headers, CSP, rate limit)
 scripts/check-i18n-parity.js     # Dev tool: verifies es.json / en.json key parity
+
+Terminal-KMP/                    # Kotlin/Wasm terminal (built into Portafolio-Astro/public/wasm/)
+├── shared/                        # Common KMP sources: data, i18n, command engine, Compose UI
+├── webApp/                        # WASM executable + copyWasmToAstro Gradle task
+└── buildSrc/                      # Custom Gradle plugins
 ```
 
 ## Commands
@@ -161,6 +166,64 @@ Interactive slider with:
 - Technology logos from `/public/images/skills/`
 - Progress bars showing skill levels
 - Responsive grid layout (1-3 columns)
+
+## Terminal-KMP Project
+
+A Kotlin Multiplatform module that compiles an interactive terminal UI to Kotlin/Wasm and embeds it into the Astro portfolio.
+
+### Structure
+
+```
+Terminal-KMP/
+├── shared/
+│   └── src/commonMain/kotlin/org/portafolio/terminalkmp/
+│       ├── data/                  # Portfolio data models (Lang, PortfolioData)
+│       ├── i18n/
+│       │   └── SystemStrings.kt     # All terminal UI strings in ES/EN
+│       └── terminal/
+│           ├── engine/              # Command engine (DefaultCommands.kt, TerminalEngine.kt)
+│           ├── ui/                  # Compose terminal screen + state
+│           └── engine/Span.kt       # Terminal output styling
+├── webApp/
+│   ├── build.gradle.kts             # Defines copyWasmToAstro task
+│   └── src/wasmJsMain/kotlin/       # WASM-specific entry point + platform hooks
+├── buildSrc/                        # Custom Gradle plugins/tasks
+└── nixpacks.toml (root)             # Deployment build pipeline
+```
+
+### How It Integrates
+
+1. KMP sources live in `Terminal-KMP/`
+2. `./gradlew :webApp:copyWasmToAstro` builds the terminal and copies the output to `Portafolio-Astro/public/wasm/`
+3. `Portafolio-Astro/src/scripts/terminal-modal.ts` creates the modal, loads `/wasm/index.html` in an iframe, and orchestrates boot/shutdown/glitch/vignette animations
+4. Portfolio data is generated from `Portafolio-Astro/src/i18n/es.json` and `en.json` via the `generatePortfolioData` Gradle task
+5. Language sync uses `postMessage` (`setLanguage`) and a `localStorage` fallback
+6. `public/wasm/` is ignored in git; Nixpacks rebuilds it on every deploy
+
+### Local Development
+
+After modifying the KMP terminal, run:
+
+```bash
+cd Terminal-KMP
+./gradlew :webApp:copyWasmToAstro
+```
+
+Then reload the Astro page. If you changed data in `Portafolio-Astro/src/i18n/*.json`, rebuild KMP so the generated data is refreshed.
+
+### Translations
+
+Terminal strings are centralized in `Terminal-KMP/shared/src/commonMain/kotlin/org/portafolio/terminalkmp/i18n/SystemStrings.kt`:
+- `ES` and `EN` constructors hold every translatable string
+- Command descriptions, labels, CV prompts, and stack items all live there
+- To add a new language or string, update `SystemStrings` and use `ctx.strings` inside commands
+
+### Commands
+
+Commands are implemented in `Terminal-KMP/shared/src/commonMain/kotlin/org/portafolio/terminalkmp/terminal/engine/DefaultCommands.kt`:
+- `HelpCommand`, `AboutCommand`, `ProjectsCommand`, `ExperienceCommand`, `SkillsCommand`, `StackCommand`, `ContactCommand`, `LanguagesCommand`, `WhoamiCommand`, `CvCommand`, `OpenCommand`, `GalleryCommand`, `LangchangeCommand`, `ClearCommand`, `EchoCommand`, `BannerCommand`
+- Each command implements `Command` and returns `CommandResult(lines, clear, newLang)`
+- `TerminalEngine` dispatches input, manages history, and provides `CommandContext` with data, strings, and platform services
 
 ### Security & Server
 The production server (`server.js`) is a dependency-free Node static file server that adds:
