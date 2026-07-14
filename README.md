@@ -19,6 +19,8 @@ A modern and responsive portfolio website built with **Astro** and **Tailwind CS
 - **Scroll Progress Indicator**: Visual progress bar showing scroll position
 - **Schema.org**: Structured data (JSON-LD) for improved SEO
 - **Skills Slider**: Interactive slider with navigation controls for skills display
+- **KMP Terminal**: Embedded Kotlin/Wasm terminal modal with boot/shutdown sequences and language sync
+- **Terminal Effects**: Glitch animation on open, full-page vignette power-off on close
 - **Hardened Server**: Custom Node server with security headers, CSP, rate limiting, and AI-crawler allowlist
 - **Custom 404**: Real 404 page served with the correct HTTP status
 - **Crawler-friendly**: `robots.txt` and `llms.txt` for search engines and LLMs
@@ -53,6 +55,7 @@ src/
 │   ├── image-viewer/            # Modular image viewer (modal, zoom, gestures, orchestrator)
 │   ├── i18n-bootstrap.ts        # Reads the i18n JSON data island into window.__i18n__
 │   ├── theme.ts                 # Light/dark theme system
+│   ├── terminal-modal.ts        # KMP terminal modal (boot, shutdown, glitch, vignette)
 │   ├── skills-slider.ts         # Skills slider + progress bars
 │   ├── scroll-ui.ts             # Scroll progress bar + back-to-top (rAF throttled)
 │   ├── scroll-animations.ts     # IntersectionObserver fade-ins
@@ -70,6 +73,7 @@ public/
 ├── CV/                          # PDF documents (Spanish and English)
 ├── images/
 │   ├── brand/ education/ experience/ hero/ projects/ skills/   # WebP assets
+├── wasm/                        # KMP terminal build output (copied from Terminal-KMP)
 ├── robots.txt                   # Crawler rules (incl. explicit AI bots)
 └── llms.txt                     # Site summary for LLMs
 
@@ -88,12 +92,23 @@ scripts/check-i18n-parity.js     # Dev tool: verifies es.json / en.json key pari
 | `node server.js` | Serve the built `./dist/` in production (used on deploy) |
 | `node scripts/check-i18n-parity.js` | Verify that `es.json` and `en.json` share the same keys |
 
+### Terminal-KMP commands (inside `Terminal-KMP/`)
+
+| Command | Description |
+|---------|-------------|
+| `./gradlew :webApp:copyWasmToAstro` | Build the KMP terminal and copy it to `Portafolio-Astro/public/wasm/` |
+| `./gradlew :shared:compileKotlinWasmJs` | Compile the shared KMP module for WASM |
+| `./gradlew :webApp:wasmJsBrowserDevelopmentRun` | Run the terminal standalone in dev mode |
+
 ## Tech Stack
 
 - **[Astro 6.4.8](https://astro.build)** - Modern SSG framework with native i18n routing
 - **[Tailwind CSS 4.1.17](https://tailwindcss.com)** - Utility-first CSS framework
 - **[Vite](https://vitejs.dev)** - Ultra-fast bundler
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development (strict)
+- **[Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html)** - Shared terminal logic and Compose UI
+- **[Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/)** - Terminal UI compiled to Kotlin/Wasm
+- **[Kotlin/Wasm](https://kotl.in/wasm/)** - Terminal runtime embedded as a static WASM app
 - **[Material Icons](https://fonts.google.com/icons)** - Google's icon library
 - **Node.js** - Custom static file server (`server.js`) for production
 - **Client scripts** - Plain TypeScript modules bundled by Astro (no runtime dependencies)
@@ -111,6 +126,9 @@ Includes options to increase font size, improving the experience for all users. 
 - **Typewriter effect**: Dynamic text animation in the hero section
 - **Scroll animations**: Fade-in effects when elements come into view
 - **Animated background**: Wave animation in the hero section
+- **Terminal boot/shutdown**: Typed terminal sequences on modal open/close
+- **Glitch effect**: RGB channel split + scanlines when opening the terminal modal
+- **Vignette power-off**: Full-page dark radial pulse after the terminal shuts down
 
 ### Dynamic Theme
 A lightweight theme switching system (light/dark) stored in localStorage. The theme persists across sessions and adapts all UI elements including the custom scrollbar.
@@ -126,6 +144,16 @@ Structured data (JSON-LD) for improved SEO including:
 - Contact information
 - Educational background (alumniOf)
 - Skills and expertise (knowsAbout)
+
+### KMP Terminal
+An embedded Kotlin/Wasm terminal accessible:
+- Opens in a full-screen modal
+- Boot sequence with typed system messages
+- Shutdown sequence when closing
+- Glitch opening effect with portfolio brand colors
+- Full-page vignette "power-off" after shutdown
+- Language sync between the Astro page and the terminal via `postMessage`
+- Close button hidden during boot, shutdown, and glitch animations
 
 ### Skills Slider
 Interactive slider with:
