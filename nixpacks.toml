@@ -9,7 +9,7 @@ cmds = [
 
 [phases.build]
 cmds = [
-    "cd Terminal-KMP && ./gradlew :webApp:wasmJsBrowserDistribution",
+    "cd Terminal-KMP && ./gradlew :webApp:copyWasmToAstro",
     "cd Portafolio-Astro && npm run build"
 ]
 

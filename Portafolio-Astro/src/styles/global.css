@@ -61,6 +61,30 @@ html.font-size-extra-large {
   color: rgb(96, 165, 250) !important;
 }
 
+/* Vignette power-off animation for terminal shutdown */
+@keyframes terminal-vignette-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+.terminal-vignette-pulse {
+  animation: terminal-vignette-pulse 0.85s ease-in-out forwards;
+}
+
 .nav-active::after {
   content: '';
   position: absolute;
