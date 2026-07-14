@@ -24,6 +24,7 @@ export const techLogos: Record<string, string> = {
   n8n: '/images/skills/n8n.webp',
   Docker: '/images/skills/docker-original.webp',
   Git: '/images/skills/git-original.webp',
+  Shell: '/images/skills/Shell.webp',
 };
 
 /**

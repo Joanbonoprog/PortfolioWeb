@@ -67,18 +67,19 @@
     "title": "Habilidades Técnicas",
     "subtitle": "Tecnologías y herramientas que domino",
     "items": [
-      { "name": "JVM (Java & Kotlin)", "level": 55, "levelName": "Intermedio" },
+            { "name": "JVM (Java & Kotlin)", "level": 55, "levelName": "Intermedio" },
       { "name": "Kotlin Multiplatform", "level": 45, "levelName": "Intermedio" },
-      { "name": "C#", "level": 30, "levelName": "Básico" },
-      { "name": "mySQL | PostgreSQL | SQLite | SQLDelight", "level": 50, "levelName": "Intermedio" },
-      { "name": "JavaScript y PHP", "level": 30, "levelName": "Básico" },
       { "name": "Desarrollo Android", "level": 50, "levelName": "Intermedio" },
-      { "name": "Unity y Motores Gráficos", "level": 20, "levelName": "Básico" },
-      { "name": "Automatización - n8n y Make", "level": 50, "levelName": "Intermedio" },
       { "name": "IAs Generativas y LLMS", "level": 60, "levelName": "Intermedio" },
       { "name": "Chatbots con IA", "level": 50, "levelName": "Intermedio" },
+      { "name": "Shell", "level": 50, "levelName": "Intermedio", "action": "terminal" },
+      { "name": "mySQL | PostgreSQL | SQLite | SQLDelight", "level": 50, "levelName": "Intermedio" },
+      { "name": "Automatización - n8n y Make", "level": 50, "levelName": "Intermedio" },
+      { "name": "Git & Github", "level": 40, "levelName": "Intermedio" },
+      { "name": "JavaScript y PHP", "level": 30, "levelName": "Básico" },
       { "name": "Contenedores - Docker", "level": 20, "levelName": "Básico" },
-      { "name": "Git & Github", "level": 40, "levelName": "Intermedio" }
+      { "name": "C#", "level": 30, "levelName": "Básico" },
+      { "name": "Unity y Motores Gráficos", "level": 20, "levelName": "Básico" }
     ]
   },
   "contact": {

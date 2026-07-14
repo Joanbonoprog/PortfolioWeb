@@ -41,10 +41,12 @@ const { skills, gallery } = translations;
             const skillLevel = typeof skill === 'string' ? 70 : skill.level;
             const skillLevelName = typeof skill === 'string' ? 'Intermedio' : skill.levelName;
             const techLogo = getTechLogo(skillName);
+            const isInteractive = typeof skill !== 'string' && skill.action === 'terminal';
 
             return (
               <div 
-                class="card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group w-full"
+                class={`card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group w-full ${isInteractive ? 'cursor-pointer hover:ring-2 hover:ring-blue-500/50' : ''}`}
+                {...(isInteractive ? { 'data-action': 'terminal', 'data-skill-name': skillName } : {})}
               >
                 <div class="flex flex-col gap-3">
                   <div class="flex items-center gap-4">
@@ -58,6 +60,12 @@ const { skills, gallery } = translations;
                     <p class="text-gray-700 dark:text-gray-300 leading-relaxed break-words">
                       {skillName}
                     </p>
+                    {isInteractive && (
+                      <svg class="w-5 h-5 text-blue-500 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.375 3h17.25c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125H3.375c-.621 0-1.125-.504-1.125-1.125V4.125C2.25 3.504 2.754 3 3.375 3z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3"></path>
+                      </svg>
+                    )}
                   </div>
                   <ProgressBar level={skillLevel} />
                   <span class="text-xs font-medium text-blue-700 dark:text-blue-300">{skillLevelName}</span>
@@ -90,5 +98,25 @@ const { skills, gallery } = translations;
     </div>
   </div>
 </section>
+
+<script>
+  import { initTerminalModal, openTerminalModal } from '../../scripts/terminal-modal';
+  
+  // Initialize terminal modal when component loads
+  initTerminalModal();
+  
+  // Handle clicks on interactive skills
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+    const skillCard = target.closest('[data-action="terminal"]');
+    
+    if (skillCard) {
+      e.preventDefault();
+      const skillName = skillCard.getAttribute('data-skill-name');
+      console.log(`Opening terminal for skill: ${skillName}`);
+      await openTerminalModal();
+    }
+  });
+</script>
 
 <script src="../../scripts/skills-slider.ts"></script>

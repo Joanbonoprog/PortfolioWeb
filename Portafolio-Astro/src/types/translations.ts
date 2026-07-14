@@ -34,6 +34,7 @@ export interface SkillItem {
   name: string;
   level: number;
   levelName: string;
+  action?: string;
 }
 
 export interface Translations {

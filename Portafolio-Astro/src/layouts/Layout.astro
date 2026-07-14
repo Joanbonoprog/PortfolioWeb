@@ -152,5 +152,89 @@ const alternateEn = getAbsoluteLocaleUrl('en', '/');
 		
 		<!-- Botón de scroll y barra de progreso -->
 		<script src="../scripts/scroll-ui.ts"></script>
+		
+		<!-- Inicialización del terminal (asegurar que se ejecute en todas las páginas) -->
+		<script is:inline>
+			console.log('=== TERMINAL INITIALIZATION START ===');
+			
+			// Función simple para crear el modal del terminal
+			function createTerminalModal() {
+				console.log('Creating terminal modal...');
+				
+				// Crear HTML del modal
+				const modalHTML = `
+					<div id="terminal-modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true">
+						<div class="bg-gray-900 rounded-lg shadow-2xl max-w-4xl w-full mx-4 max-h-[80vh] flex flex-col">
+							<div class="flex items-center justify-between p-4 border-b border-gray-700">
+								<h2 class="text-white font-mono text-lg">Terminal KMP</h2>
+								<button id="terminal-close" class="text-gray-400 hover:text-white transition-colors">
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+									</svg>
+								</button>
+							</div>
+							<div class="flex-1 overflow-hidden">
+								<iframe id="terminal-iframe" src="/wasm2/index.html" class="w-full h-full"></iframe>
+							</div>
+						</div>
+					</div>
+				`;
+				
+				// Añadir al DOM
+				document.body.insertAdjacentHTML('beforeend', modalHTML);
+				
+				// Configurar eventos
+				const modal = document.getElementById('terminal-modal');
+				const closeBtn = document.getElementById('terminal-close');
+				const iframe = document.getElementById('terminal-iframe');
+				
+				closeBtn?.addEventListener('click', () => {
+					modal?.classList.add('opacity-0', 'pointer-events-none');
+					modal?.setAttribute('aria-hidden', 'true');
+				});
+				
+				// Manejar cambios de idioma via localStorage
+				setInterval(() => {
+					const langChange = localStorage.getItem('terminalLangChange');
+					if (langChange) {
+						try {
+							const data = JSON.parse(langChange);
+							console.log('Language change detected:', data);
+							if (data.type === 'changeLanguage') {
+								localStorage.removeItem('terminalLangChange');
+								sessionStorage.setItem('reopenTerminal', 'true');
+								
+								const currentPath = window.location.pathname;
+								const search = window.location.search;
+								const hash = window.location.hash;
+								
+								if (data.language === 'es') {
+									window.location.href = (currentPath.replace(/^\/en\//, '/') || '/') + search + hash;
+								} else {
+									window.location.href = '/en' + (currentPath === '/' ? '' : currentPath) + search + hash;
+								}
+							}
+						} catch (e) {
+							console.error('Error parsing language change:', e);
+						}
+					}
+				}, 100);
+				
+				console.log('Terminal modal created successfully');
+			}
+			
+			// Inicializar inmediatamente
+			createTerminalModal();
+			
+			// También inicializar después de navegaciones de Astro
+			document.addEventListener('astro:page-load', () => {
+				console.log('Astro page load detected');
+				if (!document.getElementById('terminal-modal')) {
+					createTerminalModal();
+				}
+			});
+			
+			console.log('=== TERMINAL INITIALIZATION COMPLETE ===');
+		</script>
 	</body>
 </html>

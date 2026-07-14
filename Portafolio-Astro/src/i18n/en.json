@@ -69,16 +69,17 @@
     "items": [
       { "name": "JVM (Java & Kotlin)", "level": 55, "levelName": "Intermediate" },
       { "name": "Kotlin Multiplatform", "level": 45, "levelName": "Intermediate"},
-      { "name": "C#", "level": 30, "levelName": "Basic" },
-      { "name": "mySQL | PostgreSQL | SQLite | SQLDelight", "level": 50, "levelName": "Intermediate" },
-      { "name": "JavaScript and PHP", "level": 30, "levelName": "Basic" },
       { "name": "Android Development", "level": 50, "levelName": "Intermediate" },
-      { "name": "Unity & Graphic Engines", "level": 20, "levelName": "Basic" },
-      { "name": "Automation - n8n & Make", "level": 50, "levelName": "Intermediate" },
       { "name": "Generative AIs and LLMs", "level": 60, "levelName": "Intermediate" },
       { "name": "AI chatbot development", "level": 50, "levelName": "Intermediate" },
+      { "name": "Shell", "level": 50, "levelName": "Intermediate", "action": "terminal" },
+      { "name": "mySQL | PostgreSQL | SQLite | SQLDelight", "level": 50, "levelName": "Intermediate" },
+      { "name": "Automation - n8n & Make", "level": 50, "levelName": "Intermediate" },
+      { "name": "Git & Github", "level": 40, "levelName": "Intermediate" },
+      { "name": "JavaScript and PHP", "level": 30, "levelName": "Basic" },
       { "name": "Conteiners - Docker", "level": 20, "levelName": "Basic" },
-      { "name": "Git & Github", "level": 40, "levelName": "Intermediate" }
+      { "name": "C#", "level": 30, "levelName": "Basic" },
+      { "name": "Unity & Graphic Engines", "level": 20, "levelName": "Basic" }
     ]
   },
   "contact": {
