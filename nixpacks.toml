@@ -1,11 +1,17 @@
 [phases.setup]
-nixPkgs = ["nodejs_22"]
+nixPkgs = ["nodejs_22", "jdk17"]
 
 [phases.install]
-cmds = ["npm ci --legacy-peer-deps"]
+cmds = [
+    "cd Portafolio-Astro && npm ci --legacy-peer-deps",
+    "cd Terminal-KMP && chmod +x gradlew"
+]
 
 [phases.build]
-cmds = ["npm run build"]
+cmds = [
+    "cd Terminal-KMP && ./gradlew :webApp:wasmJsBrowserDistribution",
+    "cd Portafolio-Astro && npm run build"
+]
 
 [start]
-cmd = "node server.js"
+cmd = "cd Portafolio-Astro && node server.js"
