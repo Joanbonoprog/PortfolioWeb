@@ -14,6 +14,7 @@ plugins {
 // libatomic.so.1 and fails in the minimal Nixpacks image).
 // This must run after the Kotlin plugins create the root Node specs.
 gradle.projectsEvaluated {
+    // New spec-based extensions
     rootProject.extensions.findByType<NodeJsEnvSpec>()?.apply {
         version.set("22.13.1")
         download.set(false)
