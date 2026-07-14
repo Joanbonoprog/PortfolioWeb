@@ -33,7 +33,7 @@ tasks.register<Copy>("copyWasmToAstro") {
     dependsOn(wasmJsBrowserDistributionTask)
     
     val wasmOutputDir = layout.buildDirectory.dir("dist/wasmJs/productionExecutable")
-    val astroPublicDir = file("../../Portafolio-Astro/public/wasm2")
+    val astroPublicDir = file("../../Portafolio-Astro/public/wasm")
     
     from(wasmOutputDir)
     into(astroPublicDir)
@@ -59,7 +59,7 @@ tasks.named("wasmJsBrowserProductionWebpack") {
 
 // Clean task to remove wasm from Astro public directory
 tasks.register<Delete>("cleanAstroWasm") {
-    delete(file("../Portafolio-Astro/public/wasm2"))
+    delete(file("../Portafolio-Astro/public/wasm"))
 }
 
 // Make clean also clean Astro wasm directory

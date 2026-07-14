@@ -313,11 +313,11 @@ private fun linkBullet(label: String, url: String): Line = Line(
     ),
 )
 
-private fun copyableField(label: String, value: String): Line = Line(
+private fun copyableField(label: String, value: String, copyLabel: String): Line = Line(
     listOf(
         Span(label.padEnd(padFor(label)), SpanStyle.Muted),
         Span(value, SpanStyle.Link, TerminalAction.Copy(value)),
-        Span("  [copiar]", SpanStyle.Muted),
+        Span("  [$copyLabel]", SpanStyle.Muted),
     ),
 )
 
@@ -428,7 +428,7 @@ class ProjectsCommand : Command {
             lines += Line(
                 listOf(
                     Span(l.gallery.padEnd(padFor(l.gallery)), SpanStyle.Muted),
-                    Span("ver im\u00e1genes", SpanStyle.Link, TerminalAction.OpenGallery(p.name)),
+                    Span(ctx.strings.viewImages, SpanStyle.Link, TerminalAction.OpenGallery(p.name)),
                 ),
             )
         }
@@ -487,12 +487,12 @@ class StackCommand : Command {
     override fun execute(args: List<String>, ctx: CommandContext): CommandResult {
         return CommandResult(
             listOf(
-                Line.of("Terminal Stack", SpanStyle.Title),
+                Line.of(ctx.strings.stackTitle, SpanStyle.Title),
                 Line.Empty,
                 bullet("Kotlin Multiplatform (KMP)"),
                 bullet("Compose Multiplatform"),
                 bullet("Compose for Web (wasmJs)"),
-                bullet("Gradle + buildSrc personalizado"),
+                bullet(ctx.strings.gradleBuildSrc),
                 bullet("JetBrains Mono Nerd Font"),
                 bullet("kotlinx.serialization"),
                 bullet("Material3 Components"),
@@ -507,9 +507,10 @@ class ContactCommand : Command {
     override fun execute(args: List<String>, ctx: CommandContext): CommandResult {
         val c = ctx.data.contact
         val l = ctx.strings.labels
+        val s = ctx.strings
         val lines = listOf(
-            copyableField(l.email, c.email),
-            copyableField(l.phone, c.phone),
+            copyableField(l.email, c.email, s.copyLabel),
+            copyableField(l.phone, c.phone, s.copyLabel),
             field(l.address, c.address),
             link(l.linkedin, "https://${c.linkedin}"),
             link(l.github, "https://${c.github}"),
@@ -548,22 +549,18 @@ class CvCommand : Command {
     override val name = "cv"
     override val aliases = listOf("resume")
     override fun execute(args: List<String>, ctx: CommandContext): CommandResult {
-        val note = if (ctx.lang == Lang.EN) {
-            "Select a CV to download:"
-        } else {
-            "Selecciona un CV para descargar:"
-        }
+        val s = ctx.strings
         return CommandResult(
             listOf(
-                Line.of(note, SpanStyle.Normal),
+                Line.of(s.cvPrompt, SpanStyle.Normal),
                 Line.Empty,
-                Line.of("Espa\u00f1ol", SpanStyle.Subtitle),
+                Line.of(s.languageEs, SpanStyle.Subtitle),
                 linkBullet("Harvard", "/CV/CV%20Harvard%20Espa%C3%B1ol%20(Joan%20Bono).pdf"),
-                linkBullet("Detallado", "/CV/CV%20Detallado%20Espa%C3%B1ol%20%20(Joan%20Bono).pdf"),
+                linkBullet(s.cvDetailed, "/CV/CV%20Detallado%20Espa%C3%B1ol%20%20(Joan%20Bono).pdf"),
                 Line.Empty,
-                Line.of("English", SpanStyle.Subtitle),
+                Line.of(s.languageEn, SpanStyle.Subtitle),
                 linkBullet("Harvard", "/CV/CV%20Harvard%20English%20(Joan%20Bono).pdf"),
-                linkBullet("Detailed", "/CV/CV%20Detailed%20English%20(Joan%20Bono).pdf"),
+                linkBullet(s.cvDetailed, "/CV/CV%20Detailed%20English%20(Joan%20Bono).pdf"),
             ),
         )
     }
@@ -678,12 +675,10 @@ class LangchangeCommand : Command {
             )
         }
         val strings = SystemStrings.of(newLang)
-        
+
         // Notify parent page of language change
-        println("DEBUG: LangchangeCommand calling languageChanger.change with ${newLang.tag}")
         ctx.services.languageChanger.change(newLang.tag)
-        println("DEBUG: LangchangeCommand completed languageChanger.change")
-        
+
         return CommandResult(
             lines = listOf(Line.of(strings.langChanged.replace("{lang}", newLang.tag), SpanStyle.Success)),
             newLang = newLang,

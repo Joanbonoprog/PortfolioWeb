@@ -9,6 +9,7 @@ interface TerminalModal {
   loadingIndicator: HTMLElement | null;
   bootSequence: HTMLElement | null;
   glitchOverlay: HTMLElement | null;
+  closeButton: HTMLElement | null;
   isOpen: boolean;
 }
 
@@ -19,6 +20,7 @@ const terminalModal: TerminalModal = {
   loadingIndicator: null,
   bootSequence: null,
   glitchOverlay: null,
+  closeButton: null,
   isOpen: false,
 };
 
@@ -47,12 +49,15 @@ export function initTerminalModal(): void {
   
   // Create boot sequence container
   const bootSequence = document.createElement('div');
-  bootSequence.className = 'absolute inset-0 flex items-center justify-center bg-gray-900/95 font-mono';
+  bootSequence.className = 'absolute inset-0 flex items-center justify-center bg-gray-950 font-mono';
   bootSequence.innerHTML = `
-    <div class="text-green-400 text-sm leading-relaxed max-w-2xl mx-auto p-8">
-      <div id="boot-output"></div>
-      <div class="mt-4">
-        <span class="inline-block w-2 h-4 bg-green-400 animate-pulse"></span>
+    <div class="w-full max-w-3xl mx-auto p-8 md:p-12">
+      <div class="relative rounded-lg border border-green-500/20 bg-black/60 p-6 md:p-8 shadow-2xl shadow-green-500/10 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none opacity-[0.07]" style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(74,222,128,0.3) 2px, rgba(74,222,128,0.3) 4px);"></div>
+        <div id="boot-output" class="relative z-10 text-green-400 text-base md:text-lg leading-loose whitespace-pre-wrap" style="text-shadow: 0 0 8px rgba(74,222,128,0.45);"></div>
+        <div class="relative z-10 mt-4">
+          <span class="inline-block w-2.5 h-5 bg-green-400 animate-pulse" style="box-shadow: 0 0 6px rgba(74,222,128,0.7);"></span>
+        </div>
       </div>
     </div>
   `;
@@ -124,6 +129,7 @@ export function initTerminalModal(): void {
   terminalModal.loadingIndicator = loadingIndicator;
   terminalModal.bootSequence = bootSequence;
   terminalModal.glitchOverlay = glitchOverlay;
+  terminalModal.closeButton = closeButton;
   
   // Event listeners
   closeButton.addEventListener('click', closeTerminalModal);
@@ -270,16 +276,16 @@ async function runBootSequence(): Promise<void> {
     'Loading terminal interface...',
     'System ready.',
     '',
+    'Welcome',
     'joanbonoprog@portfolio:~$ '
   ]);
 }
 
 async function runShutdownSequence(): Promise<void> {
   await runTypedSequence([
-    '',
     'System shutdown requested...',
     'Stopping terminal services... [OK]',
-    'Saving session history... [OK]',
+    'Saving terminal history... [OK]',
     'Unloading WASM runtime... [OK]',
     'Unmounting virtual filesystem... [OK]',
     'Powering off terminal.',
@@ -288,21 +294,42 @@ async function runShutdownSequence(): Promise<void> {
   ]);
 }
 
+function formatBootLine(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\[OK\]/g, '<span class="text-emerald-300 font-semibold">[OK]</span>');
+}
+
 async function runTypedSequence(commands: string[]): Promise<void> {
   if (!terminalModal.bootSequence) return;
-  
+
   const output = terminalModal.bootSequence.querySelector('#boot-output') as HTMLElement;
   if (!output) return;
-  
+
   output.innerHTML = '';
-  
-  for (const command of commands) {
-    const index = commands.indexOf(command);
-    for (let i = 0; i <= command.length; i++) {
-      output.textContent = commands.slice(0, index + 1).join('\n') + '\n' + command.slice(0, i);
-      await new Promise(resolve => setTimeout(resolve, 30 + Math.random() * 30));
+
+  for (let lineIndex = 0; lineIndex < commands.length; lineIndex++) {
+    const command = commands[lineIndex];
+    const isLast = lineIndex === commands.length - 1;
+
+    const lineEl = document.createElement('div');
+    lineEl.className = 'boot-line mb-1';
+    output.appendChild(lineEl);
+
+    if (command === '') {
+      lineEl.innerHTML = '&nbsp;';
+      await new Promise(resolve => setTimeout(resolve, 80));
+      continue;
     }
-    await new Promise(resolve => setTimeout(resolve, 100));
+
+    for (let i = 0; i <= command.length; i++) {
+      lineEl.innerHTML = formatBootLine(command.slice(0, i));
+      await new Promise(resolve => setTimeout(resolve, 25 + Math.random() * 25));
+    }
+
+    await new Promise(resolve => setTimeout(resolve, isLast ? 250 : 100));
   }
 }
 
@@ -360,15 +387,20 @@ function triggerGlitch(): void {
  */
 export async function openTerminalModal(): Promise<void> {
   if (!terminalModal.modal || terminalModal.isOpen) return;
-  
+
   // Prevent body scroll
   document.body.style.overflow = 'hidden';
-  
+
+  // Hide close button until the terminal iframe is actually ready
+  if (terminalModal.closeButton) {
+    terminalModal.closeButton.style.visibility = 'hidden';
+  }
+
   // Show modal with animation
   terminalModal.modal.classList.remove('invisible');
   terminalModal.modal.classList.remove('opacity-0');
   terminalModal.modal.setAttribute('aria-hidden', 'false');
-  
+
   // Animate overlay
   requestAnimationFrame(() => {
     if (terminalModal.overlay) {
@@ -381,7 +413,7 @@ export async function openTerminalModal(): Promise<void> {
   // Update iframe src with current language and cache busting
   const currentLang = window.location.pathname.match(/^\/(es|en)(\/|$)/)?.[1] || 'es';
   const timestamp = Date.now(); // Force refresh every time
-  const iframeUrl = `/wasm2/index.html?v=20240707-2&t=${timestamp}&lang=${currentLang}`;
+  const iframeUrl = `/wasm/index.html?v=20240707-2&t=${timestamp}&lang=${currentLang}`;
   
   if (terminalModal.iframe) {
     terminalModal.iframe.src = iframeUrl;
@@ -393,16 +425,24 @@ export async function openTerminalModal(): Promise<void> {
   // Wait for glitch to finish
   await new Promise(resolve => setTimeout(resolve, 500));
   
-  // Show boot sequence
+  // Show boot sequence (hide close button while it plays)
   if (terminalModal.bootSequence) {
+    if (terminalModal.closeButton) {
+      terminalModal.closeButton.style.visibility = 'hidden';
+    }
+
     terminalModal.bootSequence.style.display = 'flex';
     await runBootSequence();
-    
+
     // Hide boot sequence and show terminal
     terminalModal.bootSequence.style.display = 'none';
-    
+
     if (terminalModal.iframe) {
       terminalModal.iframe.style.display = 'block';
+      // Show close button again now that the terminal is interactive
+      if (terminalModal.closeButton) {
+        terminalModal.closeButton.style.visibility = 'visible';
+      }
       // Focus iframe for keyboard input
       setTimeout(() => {
         terminalModal.iframe?.focus();
@@ -416,7 +456,12 @@ export async function openTerminalModal(): Promise<void> {
  */
 export async function closeTerminalModal(): Promise<void> {
   if (!terminalModal.modal || !terminalModal.isOpen) return;
-  
+
+  // Hide close button during shutdown animation
+  if (terminalModal.closeButton) {
+    terminalModal.closeButton.style.visibility = 'hidden';
+  }
+
   // Show shutdown sequence
   if (terminalModal.bootSequence && terminalModal.iframe) {
     terminalModal.iframe.style.display = 'none';
