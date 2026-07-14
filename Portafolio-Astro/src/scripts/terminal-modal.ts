@@ -9,6 +9,7 @@ interface TerminalModal {
   loadingIndicator: HTMLElement | null;
   bootSequence: HTMLElement | null;
   glitchOverlay: HTMLElement | null;
+  vignetteOverlay: HTMLElement | null;
   closeButton: HTMLElement | null;
   isOpen: boolean;
 }
@@ -20,6 +21,7 @@ const terminalModal: TerminalModal = {
   loadingIndicator: null,
   bootSequence: null,
   glitchOverlay: null,
+  vignetteOverlay: null,
   closeButton: null,
   isOpen: false,
 };
@@ -80,6 +82,11 @@ export function initTerminalModal(): void {
     </div>
   `;
 
+  // Create vignette overlay for shutdown effect
+  const vignetteOverlay = document.createElement('div');
+  vignetteOverlay.className = 'absolute inset-0 pointer-events-none opacity-0 z-[60]';
+  vignetteOverlay.style.background = 'radial-gradient(circle at center, transparent 0%, rgba(2, 6, 23, 0.65) 55%, rgba(15, 23, 42, 0.95) 100%)';
+
   // Create loading indicator (fallback)
   const loadingIndicator = document.createElement('div');
   loadingIndicator.className = 'absolute inset-0 flex items-center justify-center bg-gray-900/95 hidden';
@@ -115,6 +122,7 @@ export function initTerminalModal(): void {
   modal.appendChild(overlay);
   modal.appendChild(bootSequence);
   modal.appendChild(glitchOverlay);
+  modal.appendChild(vignetteOverlay);
   modal.appendChild(loadingIndicator);
   modal.appendChild(iframeContainer);
   modal.appendChild(closeButton);
@@ -129,6 +137,7 @@ export function initTerminalModal(): void {
   terminalModal.loadingIndicator = loadingIndicator;
   terminalModal.bootSequence = bootSequence;
   terminalModal.glitchOverlay = glitchOverlay;
+  terminalModal.vignetteOverlay = vignetteOverlay;
   terminalModal.closeButton = closeButton;
   
   // Event listeners
@@ -456,6 +465,7 @@ export async function openTerminalModal(): Promise<void> {
  */
 export async function closeTerminalModal(): Promise<void> {
   if (!terminalModal.modal || !terminalModal.isOpen) return;
+  terminalModal.isOpen = false;
 
   // Hide close button during shutdown animation
   if (terminalModal.closeButton) {
@@ -468,22 +478,33 @@ export async function closeTerminalModal(): Promise<void> {
     terminalModal.bootSequence.style.display = 'flex';
     await runShutdownSequence();
   }
-  
+
+  // Full-page vignette "power-off" pulse after shutdown
+  const vignetteDuration = 850;
+  if (terminalModal.vignetteOverlay) {
+    terminalModal.vignetteOverlay.classList.remove('terminal-vignette-pulse');
+    void terminalModal.vignetteOverlay.offsetWidth; // force reflow
+    terminalModal.vignetteOverlay.classList.add('terminal-vignette-pulse');
+  }
+
+  // Wait for vignette to finish before fading the modal out
+  await new Promise(resolve => setTimeout(resolve, vignetteDuration));
+
   // Animate out
   if (terminalModal.overlay) {
     terminalModal.overlay.classList.add('opacity-0');
   }
   terminalModal.modal.classList.add('opacity-0');
-  
+
   setTimeout(() => {
     if (terminalModal.modal) {
       terminalModal.modal.classList.add('invisible');
       terminalModal.modal.setAttribute('aria-hidden', 'true');
     }
-    
+
     // Restore body scroll
     document.body.style.overflow = '';
-    
+
     // Reset state
     if (terminalModal.loadingIndicator) {
       terminalModal.loadingIndicator.style.display = 'flex';
@@ -496,9 +517,10 @@ export async function closeTerminalModal(): Promise<void> {
       // Reload iframe to reset state
       terminalModal.iframe.src = terminalModal.iframe.src;
     }
+    if (terminalModal.vignetteOverlay) {
+      terminalModal.vignetteOverlay.classList.remove('terminal-vignette-pulse');
+    }
   }, 300);
-  
-  terminalModal.isOpen = false;
 }
 
 /**
