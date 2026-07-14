@@ -1,6 +1,7 @@
 [phases.setup]
 nixPkgs = ["nodejs_22", "jdk17"]
 nixpkgsArchive = "51ad838b03a05b1de6f9f2a0fffecee64a9788ee"
+aptPkgs = ["libatomic1"]
 
 [phases.install]
 cmds = [
