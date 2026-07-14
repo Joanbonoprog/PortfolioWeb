@@ -4,13 +4,12 @@ nixpkgsArchive = "51ad838b03a05b1de6f9f2a0fffecee64a9788ee"
 
 [phases.install]
 cmds = [
-    "cd Portafolio-Astro && npm ci --legacy-peer-deps",
-    "cd Terminal-KMP && chmod +x gradlew"
+    "cd Portafolio-Astro && npm ci --legacy-peer-deps"
 ]
 
 [phases.build]
 cmds = [
-    "cd Terminal-KMP && ./gradlew :webApp:copyWasmToAstro",
+    "cd Terminal-KMP && chmod +x gradlew && ./gradlew :webApp:copyWasmToAstro",
     "cd Portafolio-Astro && npm run build"
 ]
 
