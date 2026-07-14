@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
-import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsEnvSpec
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsPlugin
 
 plugins {
     // this is necessary to avoid the plugins to be loaded multiple times
@@ -9,10 +9,10 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
 }
 
-// Use the Node.js already installed by Nixpacks instead of downloading one.
-// Downloaded Node 25 binaries require libatomic.so.1, which is missing in the
-// minimal Nixpacks image; the system Node 22 from nixPkgs works without it.
-plugins.withType<NodeJsRootPlugin> {
-    val nodeJs = extensions.getByName("kotlinNodeJs") as NodeJsRootExtension
-    nodeJs.download = false
+// Pin the Node.js version used by Kotlin/JS/Wasm to avoid downloading a
+// newer build (e.g. Node 25) that requires libatomic.so.1 in the Nixpacks image.
+allprojects {
+    plugins.withType<NodeJsPlugin> {
+        extensions.getByType<NodeJsEnvSpec>().version = "22.13.1"
+    }
 }
