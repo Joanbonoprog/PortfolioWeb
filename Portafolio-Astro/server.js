@@ -118,7 +118,9 @@ const SECURITY_HEADERS = {
   // (también incompatibles con 'unsafe-inline' de style-src). Es un refactor aparte.
   'Content-Security-Policy':
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline'; " +
+    // 'wasm-unsafe-eval' is required for WebAssembly.instantiate/compile
+    // (used by the Compose/Wasm terminal) to run under CSP.
+    "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; " +
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; " +
     "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; " +
     "img-src 'self' data: https://cdn.jsdelivr.net https://astro.build https://static.licdn.com https://github.githubassets.com https://artimark.es; " +
