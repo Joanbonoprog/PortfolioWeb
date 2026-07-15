@@ -29,6 +29,7 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf',
   '.webp': 'image/webp',
+  '.wasm': 'application/wasm',
 };
 
 const DIST_DIR_RESOLVED = resolve(DIST_DIR);
@@ -43,7 +44,7 @@ const RATE_LIMIT_MAX_REQUESTS = 100; // 100 peticiones por minuto
 const STATIC_ASSET_EXTENSIONS = new Set([
   '.js', '.mjs', '.css', '.json', '.xml', '.txt', '.pdf',
   '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.webp',
-  '.woff', '.woff2', '.ttf',
+  '.woff', '.woff2', '.ttf', '.wasm',
 ]);
 
 // User-agents de crawlers de IA/buscadores que quedan exentos del rate limit
@@ -105,7 +106,9 @@ function checkRateLimit(ip) {
 
 const SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
-  'X-Frame-Options': 'DENY',
+  // SAMEORIGIN (not DENY) because /wasm/index.html is embedded in an
+  // iframe by the terminal modal on this same site.
+  'X-Frame-Options': 'SAMEORIGIN',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
   'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
@@ -122,7 +125,9 @@ const SECURITY_HEADERS = {
     "connect-src 'self'; " +
     "base-uri 'self'; " +
     "form-action 'self'; " +
-    "frame-ancestors 'none'; " +
+    // 'self' (not 'none') because /wasm/index.html is loaded inside an
+    // iframe from this same origin (terminal modal).
+    "frame-ancestors 'self'; " +
     "upgrade-insecure-requests;"
 };
 
