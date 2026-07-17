@@ -3,6 +3,7 @@ package org.portafolio.terminalkmp.terminal.engine
 import org.portafolio.terminalkmp.data.Lang
 import org.portafolio.terminalkmp.data.PortfolioData
 import org.portafolio.terminalkmp.i18n.SystemStrings
+import org.portafolio.terminalkmp.terminal.isCompactScreen
 
 fun defaultCommands(): List<Command> = listOf(
     HelpCommand(),
@@ -242,14 +243,10 @@ private val bannerVariants = listOf(
     ),
 )
 
-fun welcomeLines(data: PortfolioData, strings: SystemStrings): List<Line> {
+fun welcomeLines(data: PortfolioData, strings: SystemStrings, compact: Boolean = isCompactScreen()): List<Line> {
     val id = data.identity
     val labels = strings.labels
     val c = data.contact
-    
-    val variant = bannerVariants.random()
-    val art = variant.art
-    val artStyles = variant.styles
 
     val role = id.role.substringBefore("|").trim()
     val sep = "\u2500".repeat(id.name.length.coerceIn(6, 28))
@@ -264,15 +261,36 @@ fun welcomeLines(data: PortfolioData, strings: SystemStrings): List<Line> {
         bannerRow(labels.github, "https://${c.github}"),
         bannerRow(labels.linkedin, "https://${c.linkedin}"),
     )
-    val artWidth = art.maxOf { it.length }
-    val rows = maxOf(art.size, info.size)
+
     val lines = mutableListOf<Line>()
-    for (r in 0 until rows) {
-        val leftText = (art.getOrNull(r) ?: "").padEnd(artWidth)
-        val style = artStyles.getOrNull(r) ?: SpanStyle.Accent
-        val rightSpans = info.getOrNull(r) ?: emptyList()
-        lines += Line(listOf(Span(leftText, style), Span("   ", SpanStyle.Normal)) + rightSpans)
+
+    if (compact) {
+        // On narrow screens (smartphones) the text was overlapping the ASCII art.
+        // Render the art on its own lines, then the info rows below it.
+        val variant = bannerVariants.minByOrNull { it.art.maxOf { line -> line.length } } ?: bannerVariants.random()
+        val art = variant.art
+        val artStyles = variant.styles
+        art.forEachIndexed { i, artLine ->
+            val style = artStyles.getOrNull(i) ?: SpanStyle.Accent
+            lines += Line(listOf(Span(artLine, style)), nowrap = true)
+        }
+        lines += Line.Empty
+        info.forEach { spans -> lines += Line(spans) }
+    } else {
+        // On wider screens keep the decorative ASCII art next to the info.
+        val variant = bannerVariants.random()
+        val art = variant.art
+        val artStyles = variant.styles
+        val artWidth = art.maxOf { it.length }
+        val rows = maxOf(art.size, info.size)
+        for (r in 0 until rows) {
+            val leftText = (art.getOrNull(r) ?: "").padEnd(artWidth)
+            val style = artStyles.getOrNull(r) ?: SpanStyle.Accent
+            val rightSpans = info.getOrNull(r) ?: emptyList()
+            lines += Line(listOf(Span(leftText, style), Span("   ", SpanStyle.Normal)) + rightSpans)
+        }
     }
+
     lines += Line.Empty
     lines += Line(
         listOf(

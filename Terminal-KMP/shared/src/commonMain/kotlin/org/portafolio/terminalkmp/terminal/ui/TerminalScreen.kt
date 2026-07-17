@@ -3,8 +3,11 @@ package org.portafolio.terminalkmp.terminal.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -127,18 +130,15 @@ private fun TerminalPrompt(
     onSectionClick: () -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxWidth().padding(top = 12.dp)) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
+        FlowRow(
             modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
         ) {
             Bubble("\uF007 joan", TerminalTheme.UserBg)
-            Spacer(Modifier.width(6.dp))
             Bubble("\uF07B ~/portfolio", TerminalTheme.PathBg)
-            Spacer(Modifier.width(6.dp))
             Bubble("\uE0A0 $currentSection", TerminalTheme.GitBg, onClick = onSectionClick)
-            Spacer(Modifier.weight(1f))
             Bubble("\uF0AC $language", TerminalTheme.LangBg)
-            Spacer(Modifier.width(6.dp))
             Bubble("\uF017 $time", TerminalTheme.TimeBg)
         }
         Row(
@@ -262,16 +262,19 @@ fun TerminalApp() {
         LocalFocusRequester provides focusRequester,
         LocalCopyFeedback provides { value -> state.addCopyFeedback(value) },
     ) {
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxSize()
-                .background(TerminalTheme.Background)
-                .clickable(interactionSource = interactionSource, indication = null) {
-                    focusRequester.requestFocus()
-                }
-                .padding(horizontal = 20.dp, vertical = 16.dp),
-        ) {
+        BoxWithConstraints(Modifier.fillMaxSize()) {
+            val compact = maxWidth < 500.dp
+            val horizontalPadding = if (compact) 8.dp else 20.dp
+            LazyColumn(
+                state = listState,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(TerminalTheme.Background)
+                    .clickable(interactionSource = interactionSource, indication = null) {
+                        focusRequester.requestFocus()
+                    }
+                    .padding(horizontal = horizontalPadding, vertical = 16.dp),
+            ) {
             if (state.showBanner) {
                 item { BannerView(state) }
                 item { LineView(Line.Empty) }
@@ -294,6 +297,7 @@ fun TerminalApp() {
                     onSectionClick = { state.run(if (state.currentSection == "main") "help" else state.currentSection) },
                 )
             }
+            }
         }
     }
 }
@@ -302,9 +306,12 @@ fun TerminalApp() {
 private fun BannerView(state: TerminalState) {
     val data = state.engine.data()
     val strings = state.engine.strings()
-    val lines = remember(data, strings) { welcomeLines(data, strings) }
-    Column {
-        lines.forEach { line -> LineView(line) }
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val compact = maxWidth < 600.dp
+        val lines = remember(data, strings, compact) { welcomeLines(data, strings, compact) }
+        Column(Modifier.fillMaxWidth()) {
+            lines.forEach { line -> LineView(line) }
+        }
     }
 }
 
@@ -320,11 +327,11 @@ private fun LineView(line: Line) {
         )
         return
     }
-    LineSpans(line.spans)
+    LineSpans(line.spans, line.nowrap)
 }
 
 @Composable
-private fun LineSpans(spans: List<Span>) {
+private fun LineSpans(spans: List<Span>, nowrap: Boolean = false) {
     val annotated = buildAnnotatedString {
         spans.forEach { span ->
             withStyle(
@@ -356,12 +363,15 @@ private fun LineSpans(spans: List<Span>) {
             focusRequester?.requestFocus()
         }
         null -> Modifier
-    }
+    }.fillMaxWidth()
     androidx.compose.material3.Text(
         text = annotated,
         fontFamily = LocalMono.current,
         fontSize = TerminalTheme.FontSize,
         lineHeight = TerminalTheme.LineHeight,
+        softWrap = !nowrap,
+        maxLines = if (nowrap) 1 else Int.MAX_VALUE,
+        overflow = androidx.compose.ui.text.style.TextOverflow.Clip,
         modifier = modifier,
     )
 }
