@@ -56,6 +56,9 @@ actual fun createLanguageChanger(): LanguageChanger = object : LanguageChanger {
 actual fun detectLanguageTag(): String =
     js("(function(){const p=new URLSearchParams(window.location.search).get('lang');if(p==='es'||p==='en')return p;const l=(navigator.language||'es').substring(0,2);return (l==='es'||l==='en')?l:'es';})()")
 
+actual fun isCompactScreen(): Boolean =
+    js("return (typeof window !== 'undefined' && (window.innerWidth || document.documentElement.clientWidth) < 600);")
+
 // Global callback for language updates
 private var languageCallback: ((String) -> Unit)? = null
 

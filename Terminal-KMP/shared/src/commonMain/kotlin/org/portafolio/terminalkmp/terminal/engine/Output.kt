@@ -17,6 +17,9 @@ data class Span(
 data class Line(
     val spans: List<Span>,
     val small: Boolean = false,
+    // If true, the line is rendered on a single line and clipped at the edges
+    // instead of being wrapped. Useful for ASCII art that must not break.
+    val nowrap: Boolean = false,
 ) {
     val plainText: String get() = spans.joinToString("") { it.text }
 
