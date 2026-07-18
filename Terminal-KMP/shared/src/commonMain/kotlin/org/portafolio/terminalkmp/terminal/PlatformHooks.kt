@@ -21,3 +21,5 @@ expect fun detectLanguageTag(): String
 expect fun initLanguageListener()
 
 expect var onLanguageUpdate: ((String) -> Unit)?
+
+expect fun isCompactScreen(): Boolean

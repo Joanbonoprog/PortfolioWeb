@@ -1,0 +1,48 @@
+# Dependencies
+**/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime / environment
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Astro build output
+Portafolio-Astro/dist/
+Portafolio-Astro/.astro/
+
+# Playwright test artifacts
+Portafolio-Astro/test-results/
+Portafolio-Astro/playwright-report/
+Portafolio-Astro/playwright/.cache/
+
+# Gradle / Kotlin build outputs
+.gradle/
+Terminal-KMP/build/
+Terminal-KMP/**/build/
+Terminal-KMP/*/build/
+Terminal-KMP/.gradle/
+Terminal-KMP/local.properties
+
+# Kotlin/JS distribution bundles
+Terminal-KMP/webApp/build/distributions/
+
+# TypeScript
+*.tsbuildinfo
