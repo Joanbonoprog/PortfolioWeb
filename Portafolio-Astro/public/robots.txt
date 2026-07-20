@@ -1,42 +1,55 @@
 # Acceso abierto para todos los rastreadores
 User-agent: *
 Allow: /
+Disallow: /blog/admin/
 
 # Crawlers de IA / LLMs (permiso explícito)
 User-agent: GPTBot
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: CCBot
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /blog/admin/
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /blog/admin/
 
 Sitemap: https://joanbonoprog.es/sitemap-index.xml
