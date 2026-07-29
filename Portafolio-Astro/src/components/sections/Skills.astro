@@ -2,7 +2,7 @@
 import type { Translations, SkillItem } from '../../types/translations';
 import IconButton from '../ui/IconButton.astro';
 import ProgressBar from '../ui/ProgressBar.astro';
-import { getTechLogo, isImageLogo } from '../../data/tech-logos';
+import { getTechLogo, isImageLogo, shouldInvertInDark } from '../../data/tech-logos';
 
 interface Props {
   translations: Translations;
@@ -52,7 +52,7 @@ const { skills, gallery } = translations;
                   <div class="flex items-center gap-4">
                     <div class="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-800/40 transition-colors">
                       {isImageLogo(techLogo) ? (
-                        <img src={techLogo} alt="" loading="lazy" decoding="async" class="w-8 h-8 object-contain" />
+                        <img src={techLogo} alt="" loading="lazy" decoding="async" class={`w-8 h-8 object-contain ${shouldInvertInDark(techLogo) ? 'dark:invert' : ''}`} />
                       ) : (
                         <span class="text-2xl">{techLogo}</span>
                       )}

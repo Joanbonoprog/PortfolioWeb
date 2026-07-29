@@ -49,3 +49,16 @@ export function getTechLogo(skill: string): string {
 export function isImageLogo(logo: string): boolean {
   return logo.startsWith('http') || logo.startsWith('/');
 }
+
+/** Logos monocromos oscuros que se invierten en modo oscuro para mejor visibilidad. */
+const DARK_INVERT_LOGOS = new Set([
+  '/images/skills/openai.webp',
+  '/images/skills/telegram.webp',
+  '/images/skills/Shell.webp',
+  '/images/skills/n8n.webp',
+]);
+
+/** True si el logo debe invertirse en modo oscuro (monocromo oscuro sobre fondo oscuro). */
+export function shouldInvertInDark(logo: string): boolean {
+  return DARK_INVERT_LOGOS.has(logo);
+}
