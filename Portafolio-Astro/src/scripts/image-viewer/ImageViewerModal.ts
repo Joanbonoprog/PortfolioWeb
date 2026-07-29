@@ -10,7 +10,7 @@ export class ImageViewerModal {
     this.root = document.createElement('div');
     this.root.id = MODAL_ID;
     this.root.className =
-      'fixed inset-0 bg-black/90 backdrop-blur-sm z-[10000] hidden items-center justify-center p-2 md:p-4';
+      'fixed inset-0 bg-black/90 backdrop-blur-sm z-[10000] hidden items-center justify-center p-2 md:p-4 pb-4 md:pb-6';
     this.root.setAttribute('role', 'dialog');
     this.root.setAttribute('aria-modal', 'true');
     this.root.setAttribute('aria-label', window.__i18n__?.ariaLabels?.closeGallery || 'Galería de imágenes');
@@ -109,8 +109,8 @@ export class ImageViewerModal {
     const nextBtn = this.el('viewer-next');
     const zoomControls = this.el('viewer-zoom-controls');
 
-    if (prevBtn) prevBtn.style.display = mobile ? 'none' : 'block';
-    if (nextBtn) nextBtn.style.display = mobile ? 'none' : 'block';
+    if (prevBtn) prevBtn.style.display = mobile ? 'none' : 'flex';
+    if (nextBtn) nextBtn.style.display = mobile ? 'none' : 'flex';
     if (zoomControls) zoomControls.style.display = mobile ? 'none' : 'flex';
   }
 }

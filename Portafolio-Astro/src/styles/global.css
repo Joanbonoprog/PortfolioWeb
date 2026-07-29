@@ -384,7 +384,11 @@ body.page-transition {
 }
 
 #viewer-image {
-  transition: transform 0.3s ease;
+  transition: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
 }
 
 /* Thumbnails slider */
@@ -416,6 +420,90 @@ body.page-transition {
 
 .thumbnail:hover {
   transform: scale(1.1);
+}
+
+/* Botones modernos del visor de imágenes (cerrar, navegación, zoom) */
+.viewer-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.viewer-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+@media (min-width: 768px) {
+  .viewer-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .viewer-btn svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+}
+
+.viewer-btn:hover {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: rgba(129, 140, 248, 0.6);
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+}
+
+.viewer-btn:active {
+  transform: scale(0.96);
+}
+
+.viewer-btn:focus-visible {
+  outline: 2px solid rgba(129, 140, 248, 0.9);
+  outline-offset: 2px;
+}
+
+/* Grupo/toolbar de controles de zoom */
+.viewer-zoom-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.viewer-zoom-toolbar .viewer-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.viewer-zoom-toolbar .viewer-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (min-width: 768px) {
+  .viewer-zoom-toolbar .viewer-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .viewer-zoom-toolbar .viewer-btn svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
 }
 
 /* Gesture hint */

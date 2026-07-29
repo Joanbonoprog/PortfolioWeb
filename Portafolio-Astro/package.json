@@ -17,10 +17,12 @@
     "ci": "npm run build && npm run test:e2e:ci"
   },
   "dependencies": {
+    "@astrojs/check": "0.9.9",
     "@astrojs/sitemap": "3.7.3",
     "@tailwindcss/vite": "4.1.17",
     "astro": "6.4.8",
-    "tailwindcss": "4.1.17"
+    "tailwindcss": "4.1.17",
+    "typescript": "6.0.3"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

@@ -10,21 +10,21 @@ export const techLogos: Record<string, string> = {
   'Generative AIs and LLMs': '/images/skills/openai.webp',
   'AI chatbot development': '/images/skills/telegram.webp',
   'IAs Generativas': '/images/skills/openai.webp',
-  chatbots: '/images/skills/telegram.webp',
-  JavaScript: '/images/skills/javascript-original.webp',
-  Java: '/images/skills/java-original.webp',
+  'chatbots': '/images/skills/telegram.webp',
+  'JavaScript': '/images/skills/javascript-original.webp',
+  'Java': '/images/skills/java-original.webp',
   'Kotlin Multiplatform': '/images/skills/KMP.webp',
-  Kotlin: '/images/skills/KMP.webp',
-  Multiplatform: '/images/skills/KMP.webp',
+  'Kotlin': '/images/skills/KMP.webp',
+  'Multiplatform': '/images/skills/KMP.webp',
   'C#': '/images/skills/csharp-original.webp',
-  mySQL: '/images/skills/mysql-original.webp',
-  PHP: '/images/skills/php-original.webp',
-  Android: '/images/skills/android-original.webp',
-  Unity: '/images/skills/unity-original.webp',
-  n8n: '/images/skills/n8n.webp',
-  Docker: '/images/skills/docker-original.webp',
-  Git: '/images/skills/git-original.webp',
-  Shell: '/images/skills/Shell.webp',
+  'mySQL': '/images/skills/mysql-original.webp',
+  'PHP': '/images/skills/php-original.webp',
+  'Android': '/images/skills/android-original.webp',
+  'Unity': '/images/skills/unity-original.webp',
+  'n8n': '/images/skills/n8n.webp',
+  'Docker': '/images/skills/docker-original.webp',
+  'Git': '/images/skills/git-original.webp',
+  'Shell': '/images/skills/Shell.webp',
 };
 
 /**
@@ -48,4 +48,17 @@ export function getTechLogo(skill: string): string {
 /** True si el logo es una imagen (ruta) en lugar de un emoji. */
 export function isImageLogo(logo: string): boolean {
   return logo.startsWith('http') || logo.startsWith('/');
+}
+
+/** Logos monocromos oscuros que se invierten en modo oscuro para mejor visibilidad. */
+const DARK_INVERT_LOGOS = new Set([
+  '/images/skills/openai.webp',
+  '/images/skills/telegram.webp',
+  '/images/skills/Shell.webp',
+  '/images/skills/n8n.webp',
+]);
+
+/** True si el logo debe invertirse en modo oscuro (monocromo oscuro sobre fondo oscuro). */
+export function shouldInvertInDark(logo: string): boolean {
+  return DARK_INVERT_LOGOS.has(logo);
 }

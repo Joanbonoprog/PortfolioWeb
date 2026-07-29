@@ -57,6 +57,7 @@ const { contact } = translations;
       <ContactCard
         href={contact.linkedinValue.startsWith('http') ? contact.linkedinValue : `https://${contact.linkedinValue}`}
         icon="business"
+        brand="linkedin"
         title={contact.linkedin}
         padding="md"
         externalIcon={true}
@@ -69,6 +70,7 @@ const { contact } = translations;
       <ContactCard
         href={contact.githubValue?.startsWith('http') ? contact.githubValue : `https://${contact.githubValue}`}
         icon="code"
+        brand="github"
         title={contact.github}
         padding="md"
         externalIcon={true}
