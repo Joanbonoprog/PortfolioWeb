@@ -15,8 +15,16 @@ export class ImageViewer {
   private readonly zoom = new ZoomController(() => this.modal.image);
   private readonly gestures = new TouchGestureHandler();
 
+  private isDragging = false;
+  private hasMoved = false;
+  private dragStartX = 0;
+  private dragStartY = 0;
+  private lastPanX = 0;
+  private lastPanY = 0;
+
   constructor() {
     this.bindControls();
+    this.bindPan();
     this.bindKeyboard();
     this.bindGestures();
   }
@@ -77,8 +85,61 @@ export class ImageViewer {
       if (e.target === this.modal.root) this.close();
     });
 
-    // Click en la imagen alterna el zoom.
-    this.modal.image?.addEventListener('click', () => this.zoom.toggleClickZoom());
+  }
+
+  private bindPan(): void {
+    const img = this.modal.image;
+    if (!img) return;
+    img.draggable = false;
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.button !== 0) return;
+      this.isDragging = true;
+      this.hasMoved = false;
+      this.dragStartX = e.clientX;
+      this.dragStartY = e.clientY;
+      this.lastPanX = e.clientX;
+      this.lastPanY = e.clientY;
+      img.setPointerCapture(e.pointerId);
+      if (this.zoom.isZoomed) {
+        this.zoom.startPan();
+      }
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!this.isDragging) return;
+
+      const dx = e.clientX - this.dragStartX;
+      const dy = e.clientY - this.dragStartY;
+      if (Math.hypot(dx, dy) > 5) {
+        this.hasMoved = true;
+      }
+
+      if (this.zoom.isZoomed) {
+        e.preventDefault();
+        this.zoom.panBy(e.clientX - this.lastPanX, e.clientY - this.lastPanY);
+      }
+
+      this.lastPanX = e.clientX;
+      this.lastPanY = e.clientY;
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      if (!this.isDragging) return;
+      this.isDragging = false;
+      this.zoom.endPan();
+      img.releasePointerCapture(e.pointerId);
+
+      if (!this.hasMoved) {
+        this.zoom.toggleClickZoom();
+      }
+      this.hasMoved = false;
+    };
+
+    img.addEventListener('pointerdown', onPointerDown);
+    img.addEventListener('pointermove', onPointerMove, { passive: false });
+    img.addEventListener('pointerup', onPointerUp);
+    img.addEventListener('pointercancel', onPointerUp);
   }
 
   private bindKeyboard(): void {
@@ -113,9 +174,15 @@ export class ImageViewer {
     const container = this.modal.gestureContainer;
     if (!container) return;
     this.gestures.attach(container, {
-      onSwipeLeft: () => this.next(),
-      onSwipeRight: () => this.prev(),
-      onSwipeDown: () => this.close(),
+      onSwipeLeft: () => {
+        if (!this.zoom.isZoomed) this.next();
+      },
+      onSwipeRight: () => {
+        if (!this.zoom.isZoomed) this.prev();
+      },
+      onSwipeDown: () => {
+        if (!this.zoom.isZoomed) this.close();
+      },
     });
   }
 
@@ -141,9 +208,9 @@ export class ImageViewer {
     if (isMobileViewport()) return;
     const prevBtn = this.modal.el('viewer-prev');
     const nextBtn = this.modal.el('viewer-next');
-    if (prevBtn) prevBtn.style.display = this.currentIndex > 0 ? 'block' : 'none';
+    if (prevBtn) prevBtn.style.display = this.currentIndex > 0 ? 'flex' : 'none';
     if (nextBtn) {
-      nextBtn.style.display = this.currentIndex < this.images.length - 1 ? 'block' : 'none';
+      nextBtn.style.display = this.currentIndex < this.images.length - 1 ? 'flex' : 'none';
     }
   }
 
