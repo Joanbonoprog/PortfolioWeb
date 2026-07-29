@@ -4,6 +4,7 @@ import IconBadge from './IconBadge.astro';
 interface Props {
   icon: string;
   title: string;
+  brand?: 'linkedin' | 'github';
   colSpan?: '1' | '2' | '3';
   padding?: 'md' | 'lg';
   onClick?: boolean;
@@ -20,7 +21,8 @@ interface Props {
 
 const { 
   icon, 
-  title, 
+  title,
+  brand,
   colSpan = '1', 
   padding = 'md',
   onClick = false,
@@ -59,7 +61,7 @@ const wrapperProps = href
   class={`animate-card card-shimmer bg-gray-50/50 dark:bg-gray-800/80 backdrop-blur-md ${paddingClasses[padding]} rounded-2xl border border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-2xl hover:shadow-gray-900/20 dark:hover:shadow-blue-500/50 hover:-translate-y-1 transition-all duration-300 group ${onClick ? 'cursor-pointer active:scale-95' : ''} ${href ? 'btn-ripple' : ''} ${colSpanClasses[colSpan]} ${className}`}
 >
   <div class="flex items-center gap-3 mb-3">
-    <IconBadge icon={icon} size={padding === 'lg' ? 'lg' : 'md'} />
+    <IconBadge icon={icon} size={padding === 'lg' ? 'lg' : 'md'} brand={brand} />
     <h3 class={`font-semibold text-gray-900 dark:text-white ${padding === 'lg' ? 'text-xl' : 'text-lg'}`}>
       {title}
     </h3>
