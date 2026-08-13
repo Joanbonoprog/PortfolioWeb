@@ -116,16 +116,16 @@ html.font-size-extra-large {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0.08),
     transparent
   );
-  transition: left 0.5s ease;
   z-index: 1;
   pointer-events: none;
 }
 
 .card-shimmer:hover::before {
   left: 100%;
+  transition: left 0.5s ease;
 }
 
 .dark .card-shimmer::before {

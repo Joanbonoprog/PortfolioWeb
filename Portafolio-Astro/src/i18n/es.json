@@ -134,9 +134,9 @@
         "id": "proj-1",
         "name": "Live Football",
         "subtitle": "Proyecto Final de Grado",
-        "description": "Aplicación Android completa para seguimiento en tiempo real de partidos de fútbol y gestión de equipos. Incluye actualizaciones en vivo, estadísticas de jugadores, notificaciones personalizadas y almacenamiento local con SQLite.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando un sistema robusto de persistencia local con SQLite para acceso offline.",
+        "description": "Aplicación Android nativa para la gestión de clubes de fútbol y seguimiento de partidos en directo, desarrollada en Java con persistencia local SQLite. Incluye acceso basado en roles (Entrenador crea equipos, jugadores y partidos; Asistente gestiona marcador, cronómetro y tarjetas en directo), operaciones CRUD completas e integración con Firebase Analytics/Crashlytics.\n\nEspecíficamente, me encargué del diseño y despliegue de la arquitectura de base de datos, implementando la capa completa de persistencia SQLite con métodos CRUD específicos por entidad.",
         "icon": "/images/projects/livefootbal_logo.webp",
-        "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson", "JUnit", "Mockito"],
+        "tech": ["Java", "Android SDK", "SQLite", "SQLiteOpenHelper", "Material Design", "Firebase Analytics", "Firebase Crashlytics", "ViewBinding", "Gradle", "JUnit", "Espresso"],
         "github": "https://github.com/Joanbonoprog/LiveFootball"
       },
       {
@@ -255,7 +255,7 @@
     },
     "projectLiveFootball": {
       "title": "LiveFootball",
-      "desc": "Repositorio del proyecto de final de grado. Seguimiento de partidos en tiempo real."
+      "desc": "Repositorio del proyecto de final de grado. Gestión de clubes de fútbol y seguimiento de partidos en directo."
     },
     "projectPrototypeCreator": {
       "title": "App Prototipe Creator-",
