@@ -134,9 +134,9 @@
         "id": "proj-1",
         "name": "Live Football",
         "subtitle": "Final Degree Project",
-        "description": "Comprehensive Android application for real-time football match tracking and team management. Features live updates, player statistics, custom notifications, and local storage with SQLite.\n\nSpecifically, I was responsible for designing and deploying the database architecture, implementing a robust local persistence system with SQLite for offline access.",
+        "description": "Native Android application for football club management and live match tracking, developed in Java with local SQLite persistence. Features role-based access (Coach creates teams, players, and matches; Assistant manages live score, timer, and cards), complete CRUD operations, and Firebase Analytics/Crashlytics integration.\n\nSpecifically, I was responsible for designing and deploying the database architecture, implementing the complete SQLite persistence layer with entity-specific CRUD methods.",
         "icon": "/images/projects/livefootbal_logo.webp",
-        "tech": ["Java", "Android SDK", "SQLite", "Retrofit", "Material Design", "Glide", "RxJava", "OkHttp", "Gson", "JUnit", "Mockito"],
+        "tech": ["Java", "Android SDK", "SQLite", "SQLiteOpenHelper", "Material Design", "Firebase Analytics", "Firebase Crashlytics", "ViewBinding", "Gradle", "JUnit", "Espresso"],
         "github": "https://github.com/Joanbonoprog/LiveFootball"
       },
       {
@@ -255,7 +255,7 @@
     },
     "projectLiveFootball": {
       "title": "LiveFootball",
-      "desc": "Final degree project repository. Real-time match tracking."
+      "desc": "Final degree project repository. Football club management and live match tracking."
     },
     "projectPrototypeCreator": {
       "title": "App Prototype Creator",
