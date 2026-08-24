@@ -45,6 +45,29 @@ package-lock.json linguist-generated
 **/composeResources/** linguist-generated
 
 # ============================================================
+# Exclusiones para jerarquía de lenguajes
+# (tests, tooling y configs no son representativos del proyecto)
+# ============================================================
+
+# Configs de herramientas de build
+*.config.ts  linguist-generated
+*.config.js  linguist-generated
+*.config.mjs linguist-generated
+
+# Tests (E2E de Playwright y tests unitarios de Kotlin)
+Portafolio-Astro/e2e/**       linguist-generated
+Terminal-KMP/**/commonTest/** linguist-generated
+
+# Build tooling de Gradle
+Terminal-KMP/buildSrc/** linguist-generated
+*.gradle.kts             linguist-generated
+*.gradle                 linguist-generated
+
+# Declaraciones de tipos generadas / solo-tipos
+Portafolio-Astro/src/env.d.ts  linguist-generated
+Portafolio-Astro/src/types/**  linguist-generated
+
+# ============================================================
 # Binarios (sin diff, sin conversión de EOL)
 # ============================================================
 *.webp binary
