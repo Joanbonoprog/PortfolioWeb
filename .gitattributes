@@ -1,0 +1,63 @@
+# ============================================================
+# Normalización de finales de línea
+# ============================================================
+* text=auto eol=lf
+
+# Scripts de shell siempre con LF
+*.sh text eol=lf
+
+# Scripts de Windows siempre con CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# ============================================================
+# Jerarquía de lenguajes (GitHub Linguist)
+# ============================================================
+
+# Lenguajes principales del portfolio
+*.astro linguist-detectable linguist-language=Astro
+*.ts    linguist-language=TypeScript
+*.kt    linguist-language=Kotlin
+*.kts   linguist-language=Kotlin
+*.css   linguist-language=CSS
+*.js    linguist-language=JavaScript
+
+# ============================================================
+# Archivos generados / vendored (excluidos de las estadísticas)
+# ============================================================
+
+# Lockfiles y archivos de dependencias
+package-lock.json linguist-generated
+*.lock            linguist-generated
+
+# Sourcemaps y minificados
+*.min.js  linguist-generated linguist-vendored
+*.min.css linguist-generated linguist-vendored
+*.map     linguist-generated
+
+# Configuración del IDE
+.idea/**  linguist-vendored
+.vscode/** linguist-vendored
+
+# Salida compilada de Kotlin/JS/WASM (Terminal-KMP)
+**/wasm/**/*.js      linguist-generated
+**/wasm/**/*.map     linguist-generated
+**/composeResources/** linguist-generated
+
+# ============================================================
+# Binarios (sin diff, sin conversión de EOL)
+# ============================================================
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.otf  binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary
+*.wasm binary
+*.zip  binary
+*.jar  binary
