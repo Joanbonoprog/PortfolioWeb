@@ -8,6 +8,7 @@ updates:
   #Astro,  TypeScript and npm packages
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/Portafolio-Astro" # Location of package manifests
+    target-branch: "develop"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
@@ -15,6 +16,7 @@ updates:
   #Kotlin, Compose and Gradle
   - package-ecosystem: "gradle"
     directory: "/Terminal-KMP"
+    target-branch: "develop"
     schedule: 
       interval: "weekly"
     open-pull-requests-limit: 5
