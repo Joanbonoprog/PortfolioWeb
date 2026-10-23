@@ -22,7 +22,7 @@
     "@tailwindcss/vite": "4.1.17",
     "astro": "6.4.8",
     "tailwindcss": "4.1.17",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
