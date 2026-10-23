@@ -17,7 +17,7 @@
     "ci": "npm run build && npm run test:e2e:ci"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.9",
+    "@astrojs/check": "0.9.11",
     "@astrojs/sitemap": "3.7.3",
     "@tailwindcss/vite": "4.1.17",
     "astro": "6.4.8",
